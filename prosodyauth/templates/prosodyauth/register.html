@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block header %}
+Register on FairbanksNano
+{% endblock header %}
+
+{% block content %}
+<div class="row">
+	<div class="large-6 columns">
+		<div class="signup-panel">
+			<form action="" method="post">
+				{% csrf_token %}
+				<div class="row collapse">
+					<div class="small-2  columns">
+						<span class="prefix"><i class="fi-torso-female"></i></span>
+					</div>
+					<div class="small-10  columns {% if form.username.errors %}error{% endif %}">
+						{{ form.username }}
+						{% if form.username.errors %}<small class="error">{{ form.username.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<div class="row collapse">
+					<div class="small-2 columns">
+						<span class="prefix"><i class="fi-mail"></i></span>
+					</div>
+					<div class="small-10  columns {% if form.email.errors %}error{% endif %}">
+						{{ form.email }}
+						{% if form.email.errors %}<small class="error">{{ form.email.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<div class="row collapse">
+					<div class="small-2 columns ">
+						<span class="prefix"><i class="fi-lock"></i></span>
+					</div>
+					<div class="small-10  columns {% if form.password.errors %}error{% endif %}">
+						{{ form.password }}
+						{% if form.password.errors %}<small class="error">{{ form.password.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<div class="row collapse">
+					<div class="small-2 columns ">
+						<span class="prefix"><i class="fi-lock"></i></span>
+					</div>
+					<div class="small-10  columns {% if form.password_confirm.errors %}error{% endif %}">
+						{{ form.password_confirm }}
+						{% if form.password_confirm.errors %}<small class="error">{{ form.password_confirm.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<div class="row collapse">
+					<div class="small-4 columns ">
+						<span class="prefix">{{ form.captcha.label }}</span>
+					</div>
+					<div class="small-8  columns {% if form.captcha.errors %}error{% endif %}">
+						{{ form.captcha }}
+						{% if form.captcha.errors %}<small class="error">{{ form.captcha.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<button type="submit" class="button">Register!</button>
+				<p>Already have an account? <a href="{% url 'login' %}">Login here &raquo;</a></p>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}

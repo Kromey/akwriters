@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block header %}
+Login to FairbanksNano
+{% endblock header %}
+
+{% block content %}
+<div class="row">
+	<div class="large-6 columns">
+		<div class="signup-panel">
+			<form action="" method="post">
+				{% csrf_token %}
+				<div class="row collapse">
+					<div class="small-2  columns">
+						<span class="prefix"><i class="fi-torso-female"></i></span>
+					</div>
+					<div class="small-10  columns {% if form.username.errors %}error{% endif %}">
+						{{ form.username }}
+						{% if form.username.errors %}<small class="error">{{ form.username.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<div class="row collapse">
+					<div class="small-2 columns ">
+						<span class="prefix"><i class="fi-lock"></i></span>
+					</div>
+					<div class="small-10  columns {% if form.password.errors %}error{% endif %}">
+						{{ form.password }}
+						{% if form.password.errors %}<small class="error">{{ form.password.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<button type="submit" class="button">Login!</button>
+				<p>Need an account? <a href="{% url 'register' %}">Register here &raquo;</a></p>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}
