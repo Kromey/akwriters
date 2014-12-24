@@ -1,5 +1,5 @@
 """
-Django settings for xmpp_dev project.
+Django settings for fbxnano project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -54,9 +54,9 @@ MIDDLEWARE_CLASSES = (
     'prosodyauth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'xmpp_dev.urls'
+ROOT_URLCONF = 'fbxnano.urls'
 
-WSGI_APPLICATION = 'xmpp_dev.wsgi.application'
+WSGI_APPLICATION = 'fbxnano.wsgi.application'
 
 
 # Authentication settings

@@ -1,7 +1,7 @@
 # Project cruft not needed in Git
 /activate
 /simplecaptcha
-/xmpp_dev/secrets.py
+/fbxnano/secrets.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
