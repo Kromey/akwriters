@@ -1,0 +1,85 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="{% static 'foundation/css/foundation.min.css' %}" />
+<link rel="stylesheet" href="{% static 'foundation/css/foundation-icons.css' %}" />
+<link rel="stylesheet" href="{% static 'css/site.css' %}" />
+<script type="text/javascript" src="{% static 'foundation/js/vendor/modernizr.js' %}"></script>
+<title>{% block title %}FairbanksNano Chat{% endblock %}</title>
+</head>
+
+<body onload="$(document).foundation();">
+
+<div class="row">
+	<div class="large-3 columns">
+		{% block brand %}<h1>FairbanksNano</h1>{% endblock brand %}
+	</div>
+	<div class="large-9 columns">
+		{% block navbar %}
+		<ul class="inline-list right">
+			<li><a href="http://nanowrimo.org/">NaNoWriMo</a></li>
+			<li><a href="https://www.facebook.com/groups/FairbanksNanowrimo">Facebook Group</a></li>
+		</ul>
+		{% endblock navbar %}
+		{% if user.is_authenticated %}
+		<div class="right" style="clear:both;">Welcome, {{ user.username }}!</div>
+		{% endif %}
+	</div>
+</div>
+
+{% if messages %}
+<div class="row">
+	<div class="large-12 columns">
+			{% for message in messages %}
+			<div data-alert class="alert-box {{ message.tags }} radius" tabindex="0" aria-live="assertive" role="dialogalert">
+				{{ message }}
+				<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+			</div>
+			{% endfor %}
+	</div>
+</div>
+{% endif %}
+
+<div class="row">
+	<div class="large-9 push-3 columns">
+		<h2>{% block header %}FairbanksNano Chat <small>Home of the Writing Ravens</small>{% endblock header %}</h2>
+		{% block content %}{% endblock content %}
+	</div>
+
+	<div class="large-3 pull-9 columns">
+		{% block sidebar %}
+		<ul class="side-nav">
+			<li><a href="{% url 'index' %}">Home</a></li>
+			{% if user.is_authenticated %}
+			<li><a href="{% url 'logout' %}">Logout</a></li>
+			{# <li><a href="{% url 'account_settings' %}">Account Settings</a></li> #}
+			{% else %}
+			<li><a href="{% url 'login' %}">Login</a></li>
+			{% endif %}
+			<li><a href="/profiles">Profiles</a></li>
+		</ul>
+		{% endblock sidebar %}
+	</div>
+</div>
+
+<footer class="row">
+	<div class="large-12 columns">
+		<hr/>
+		<div class="row">
+			<div class="large-6 columns">
+				<p>&copy; 2014 FairbanksNano. Site by Travis Veazey.</p>
+			</div>
+			<div class="large-6 columns">
+				{# TODO: copy header links here #}
+			</div>
+		</div>
+	</div>
+</footer>
+
+<script type="text/javascript" src="{% static 'foundation/js/vendor/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'foundation/js/vendor/fastclick.js' %}"></script>
+<script type="text/javascript" src="{% static 'foundation/js/foundation.min.js' %}"></script>
+</body>
+</html>
