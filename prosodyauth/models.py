@@ -56,7 +56,6 @@ class User(models.Model):
 
     @property
     def xmpp_last_ip(self):
-        self._get_lastlog_data()
         return self._lastlog_data.get('ip')
 
     @property
