@@ -69,7 +69,7 @@ def register(request):
                     email_html = render_to_string('prosodyauth/email.html', context)
 
                     #And, finally, send the email
-                    send_mail('Activate your account', email_text, 'tech.head@fairbanksnano.org', ['travisvz@gmail.com'], html_message=email_html)
+                    send_mail('Activate your account', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
 
                 messages.success(request, 'An activation email has been sent to your supplied email address')
                 return redirect('index')

@@ -96,6 +96,7 @@ USE_TZ = True
 
 # Custom settings
 PROSODY_DEFAULT_DOMAIN = 'fairbanksnano.org'
+EMAIL_SENDER = 'prosody@fairbanksnano.org'
 
 # Override default message tags to fit with Foundation
 from django.contrib.messages import constants as msg_constants
