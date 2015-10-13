@@ -73,3 +73,6 @@ def register(request):
 
     return render(request, 'prosodyauth/register.html', {'form': form})
 
+def activate(request, token):
+    return render(request, 'prosodyauth/activate.html', {'token': token})
+

@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^login', 'prosodyauth.views.login', name='login'),
     url(r'^logout', 'prosodyauth.views.logout', name='logout'),
     url(r'^register', 'prosodyauth.views.register', name='register'),
+    url(r'^activate/(?P<token>[0-9a-zA-Z]+)', 'prosodyauth.views.activate', name='activate'),
 )
