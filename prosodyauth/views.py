@@ -2,12 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import IntegrityError, transaction
 from django.conf import settings
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
 
 
 from prosodyauth.forms import LoginForm, RegistrationForm
 from prosodyauth.prosody.backend import ProsodyBackend
 from prosodyauth import utils
-from prosodyauth.models import User, EmailConfirmation
+from prosodyauth.models import User, RegistrationConfirmation
 
 
 backend = ProsodyBackend()
@@ -56,6 +58,11 @@ def register(request):
                     user.save()
                     confirmation = RegistrationConfirmation(user=user)
                     confirmation.save()
+
+                    email_text = render_to_string('prosodyauth/email.txt', {})
+                    email_html = render_to_string('prosodyauth/email.html', {})
+
+                    send_mail('Activate your account', email_text, 'tech.head@fairbanksnano.org', ['travisvz@gmail.com'], html_message=email_html)
 
                 messages.success(request, 'A confirmation email has been sent to your supplied email address')
                 return redirect('index')
