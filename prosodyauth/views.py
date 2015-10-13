@@ -4,6 +4,7 @@ from django.db import IntegrityError, transaction
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 
 
 from prosodyauth.forms import LoginForm, RegistrationForm
@@ -59,13 +60,18 @@ def register(request):
                     confirmation = RegistrationConfirmation(user=user)
                     confirmation.save()
 
-                    context = {'username': user.username, 'token': confirmation.token}
+                    #Build the URL for account activation
+                    activation_url = request.build_absolute_uri(reverse('activate', args=(confirmation.token,)))
+                    #Build the context for our email templates
+                    context = {'username': user.username, 'activation_url': activation_url}
+                    #Now parse our plaintext and HTMLy templates
                     email_text = render_to_string('prosodyauth/email.txt', context)
                     email_html = render_to_string('prosodyauth/email.html', context)
 
+                    #And, finally, send the email
                     send_mail('Activate your account', email_text, 'tech.head@fairbanksnano.org', ['travisvz@gmail.com'], html_message=email_html)
 
-                messages.success(request, 'A confirmation email has been sent to your supplied email address')
+                messages.success(request, 'An activation email has been sent to your supplied email address')
                 return redirect('index')
             except IntegrityError as e:
                 messages.error(request, 'A database error occurred: {}'.format(str(e)))
