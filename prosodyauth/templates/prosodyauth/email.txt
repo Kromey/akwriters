@@ -1,6 +1,6 @@
-Hi [user],
+Hi {{ username }},
 
 Thank you for registering on FairbanksNano.org!
 
 Just one more step: Visit this address to activate your account:
-http://example.com/auth/account/tokengoeshereorsomethingidunno
+{% url 'activate' token %}

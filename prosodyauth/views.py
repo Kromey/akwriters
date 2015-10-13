@@ -59,8 +59,9 @@ def register(request):
                     confirmation = RegistrationConfirmation(user=user)
                     confirmation.save()
 
-                    email_text = render_to_string('prosodyauth/email.txt', {})
-                    email_html = render_to_string('prosodyauth/email.html', {})
+                    context = {'username': user.username, 'token': confirmation.token}
+                    email_text = render_to_string('prosodyauth/email.txt', context)
+                    email_html = render_to_string('prosodyauth/email.html', context)
 
                     send_mail('Activate your account', email_text, 'tech.head@fairbanksnano.org', ['travisvz@gmail.com'], html_message=email_html)
 

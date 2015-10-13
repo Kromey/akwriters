@@ -1,7 +1,7 @@
 <html>
 <body>
 <p>
-Hi [user],
+Hi {{ username }},
 </p>
 <p>
 Thank you for registering on
@@ -9,7 +9,7 @@ Thank you for registering on
 </p>
 <p>
 Just one more step:
-<a href="http://example.com/auth/activate/tokengoeshereorsomethingidunno">Activate your account</a>
+<a href="{% url 'activate' token %}">Activate your account</a>
 </p>
 </body>
 </html>
