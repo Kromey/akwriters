@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url('^privacy/$', TemplateView.as_view(template_name='privacy.html'), name='privacy'),
     url(r'^auth/', include('prosodyauth.urls')),
 )
