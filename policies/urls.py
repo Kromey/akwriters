@@ -7,4 +7,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^privacy$', TemplateView.as_view(template_name='policies/privacy.html'), name='privacy'),
+    url(r'^terms$', TemplateView.as_view(template_name='policies/terms.html'), name='terms_of_service'),
 )
