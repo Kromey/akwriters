@@ -1,3 +1,6 @@
+import binascii
+
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import IntegrityError, transaction
@@ -58,6 +61,8 @@ def register(request):
                     user = User(username=form.cleaned_data['username'], domain=settings.PROSODY_DEFAULT_DOMAIN, email=form.cleaned_data['email'], is_active=False)
                     user.save()
                     confirmation = RegistrationConfirmation(user=user)
+                    confirmation.save()
+                    confirmation.password = binascii.hexlify(backend.salt_password(form.cleaned_data['password'], confirmation.token, confirmation.iterations))
                     confirmation.save()
 
                     #Build the URL for account activation
