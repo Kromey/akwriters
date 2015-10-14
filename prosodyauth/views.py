@@ -66,7 +66,7 @@ def register(request):
                     confirmation.save()
 
                     #Build the URL for account activation
-                    activation_url = request.build_absolute_uri(reverse('activate', args=(confirmation.token,)))
+                    activation_url = request.build_absolute_uri(reverse('auth:activate', args=(confirmation.token,)))
                     #Build the context for our email templates
                     context = {'username': user.username, 'activation_url': activation_url}
                     #Now parse our plaintext and HTMLy templates
