@@ -6,5 +6,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'fbxnano.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url('^$', TemplateView.as_view(template_name='chat/index.html'), name='chat_index'),
+    url('^$', TemplateView.as_view(template_name='chat/index.html'), name='index'),
 )
