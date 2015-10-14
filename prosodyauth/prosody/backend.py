@@ -42,21 +42,21 @@ class ProsodyBackend:
             return None
 
 
+    def salt_password(self, password, salt, iterations):
+        return scram.derive_digest(password, salt.encode('utf-8'), int(iterations), 'sha-1')
+
+
     def _check_password(self, username, domain, password):
         data = ProsodyDatastore.get_data_store(username, domain, 'accounts')
 
         try:
-            salted_pass = self._salt_password(password, data['salt'], data['iteration_count'])
+            salted_pass = self.salt_password(password, data['salt'], data['iteration_count'])
             stored_key = self._stored_key(salted_pass)
             server_key = self._server_key(salted_pass)
 
             return (stored_key == data['stored_key'] and server_key == data['server_key'])
         except KeyError:
             return False
-
-
-    def _salt_password(self, password, salt, iterations):
-        return scram.derive_digest(password, salt.encode('utf-8'), int(iterations), 'sha-1')
 
 
     def _stored_key(self, salted_pass):
