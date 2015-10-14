@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^auth/', include('prosodyauth.urls')),
     url(r'^chat/', include('chat.urls', namespace='chat')),
-    url(r'^policies/', include('policies.urls')),
+    url(r'^policies/', include('policies.urls', namespace='policies')),
 )
