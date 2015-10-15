@@ -15,3 +15,12 @@ class ProsodyDatastore:
 
         return data
 
+    @staticmethod
+    def get_data_value(username, domain, store, key):
+        try:
+            data = get_data_store(username, domain, store)[key]
+        except KeyError:
+            data = None
+
+        return data
+
