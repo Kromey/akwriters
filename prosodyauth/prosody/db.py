@@ -31,7 +31,7 @@ def update(username, domain, store, key, value):
 def insert(username, domain, store, key, value):
     with connection.cursor() as cursor:
         cursor.execute(
-                'INSERT INTO prosody.prosody SET value=%s, UPPER("user")=UPPER(%s), UPPER(host)=UPPER(%s), store=%s, key=%s',
-                [value, username, domain, store, key]
+                'INSERT INTO prosody.prosody (host, "user", store, key, value) VALUES (%s, %s, %s, %s, %s)',
+                [domain, username, store, key, value]
                 )
 
