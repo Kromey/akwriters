@@ -24,3 +24,19 @@ class ProsodyDatastore:
 
         return data
 
+    @staticmethod
+    def set_value(username, domain, store, key, value):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                    'UPDATE prosody.prosody SET value=%s WHERE UPPER("user")=UPPER(%s) AND UPPER(host)=UPPER(%s) AND store=%s AND key=%s',
+                    [value, username, domain, store, key]
+                    )
+
+    @staticmethod
+    def insert_value(username, domain, store, key, value):
+        with connection.cursor() as cursor:
+            cursor.execute(
+                    'INSERT INTO prosody.prosody SET value=%s, UPPER("user")=UPPER(%s), UPPER(host)=UPPER(%s), store=%s, key=%s',
+                    [value, username, domain, store, key]
+                    )
+
