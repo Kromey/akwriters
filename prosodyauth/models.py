@@ -5,7 +5,7 @@ import uuid
 from django.db import models, connection
 
 
-from prosodyauth.prosody.datastore import ProsodyDatastore
+from prosodyauth.prosody import db
 
 
 # Create your models here.
@@ -23,7 +23,7 @@ class User(models.Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         try:
-            self._lastlog_data = ProsodyDatastore.get_data_store(self.username, self.domain, 'lastlog')
+            self._lastlog_data = db.get_data_store(self.username, self.domain, 'lastlog')
         except:
             self._lastlog_data = {}
 
