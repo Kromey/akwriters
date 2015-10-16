@@ -1,6 +1,10 @@
 from passlib.hash import scram
 import hmac
 from hashlib import sha1
+import uuid
+
+
+from django.conf import settings
 
 
 def verify_password(password, salt, iterations, stored_key, server_key):
@@ -19,7 +23,10 @@ def make_salt():
     return uuid.uuid4().hex
 
 
-def salt_password(password, salt, iterations):
+def salt_password(password, salt=None, iterations=settings.SCRAM_ITERATIONS):
+    if salt is None:
+        salt = make_salt()
+
     return scram.derive_digest(password, salt.encode('utf-8'), int(iterations), 'sha-1')
 
 

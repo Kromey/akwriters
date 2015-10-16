@@ -69,6 +69,9 @@ AUTHENTICATION_BACKENDS = (
     'backends.prosody.ProsodyBackend',
 )
 
+#Number of iterations for SCRAM password hashing
+SCRAM_ITERATIONS = 8192
+
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
