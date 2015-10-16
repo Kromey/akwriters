@@ -29,7 +29,9 @@ class ProsodyBackend:
             except User.DoesNotExist:
                 # Create a new user. Note that we don't set password, because
                 # Prosody will manage it.
-                user = User(username=username, domain=domain, is_active=True)
+                # TODO: This probably needs to go away since we're managing
+                #  users via our Django app, not from Prosody...
+                user = User(username=username, is_active=True)
                 user.save()
             return user
         return None

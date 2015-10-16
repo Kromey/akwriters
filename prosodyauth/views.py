@@ -58,7 +58,7 @@ def register(request):
         if form.is_valid():
             try:
                 with transaction.atomic():
-                    user = User(username=form.cleaned_data['username'], domain=settings.PROSODY_DEFAULT_DOMAIN, email=form.cleaned_data['email'], is_active=False)
+                    user = User(username=form.cleaned_data['username'], email=form.cleaned_data['email'], is_active=False)
                     user.save()
                     confirmation = RegistrationConfirmation(user=user)
                     confirmation.save()
