@@ -12,6 +12,22 @@ from prosodyauth.prosody import db
 # Create your models here.
 
 class Prosody(models.Model):
+    """
+    Prosody model
+
+    This model provides an interface for Django to access Prosody's database
+    table. Each item in this table is indexed by Prosody via the tuple of
+    (host,user,store,key). The type field describes the type of data that is
+    stored in the value field, and can be one of:
+      * string: String data
+      * number: A (potentially) floating-point number
+      * json: A JSON string
+      * boolean: Simple true/false
+    Note that this app assumes that Prosody is configured not to manage its own
+    table; letting Prosody manage its table will very probably make it unusable
+    in Django, and/or result in data loss.
+    """
+
     host = models.TextField(default=settings.PROSODY_DEFAULT_DOMAIN)
     user = models.TextField(db_index=True)
     store = models.TextField(db_index=True)
@@ -20,6 +36,7 @@ class Prosody(models.Model):
     value = models.TextField()
 
     class Meta:
+        #Prosody is hard-coded to use the prosody table, so that's what we use
         db_table = 'prosody'
 
 class User(models.Model):
@@ -54,6 +71,8 @@ class User(models.Model):
 
     @property
     def xmpp_last_login(self):
+        #TODO: Name is misleading, as the result could also be the last logoff
+        #TODO: There seems to be significant timezone-related issues here
         return datetime.utcfromtimestamp(self._get_lastlog('timestamp'))
 
     @property
@@ -85,10 +104,21 @@ class User(models.Model):
         return self.username
 
     def _get_lastlog(self, key):
+        """
+        Get data from Prosody's lastlog store
+
+        Prosody stores information about the last logon/logoff in the rows with
+        store='lastlog'. We grab them here and index them so that we can display
+        this data to/about users. The entire store is cached within the User
+        instance so that we don't generate too much database churn.
+        """
+
         if self._lastlog_data is None:
+            #No lastlog data fetched yet, go fetch it
             store = Prosody.objects.filter(user__iexact=self.username, store='lastlog')
             self._lastlog_data = dict()
             for item in store:
+                #Process into a dict for easy referencing
                 if item.type == 'number':
                     #Safer to do a floating-point conversion, but we know that
                     #lastlog only has integers (well, one integer...)
@@ -100,6 +130,12 @@ class User(models.Model):
 
 
 def make_token():
+    """
+    Generate a random token suitable for activation/confirmation via email
+
+    A hex-encoded random UUID has plenty of entropy to be secure enough for our
+    needs.
+    """
     return uuid.uuid4().hex
 
 class ConfirmationBase(models.Model):
