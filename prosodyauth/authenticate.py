@@ -23,7 +23,7 @@ def make_salt():
     return uuid.uuid4().hex
 
 
-def salt_password(password, salt=None, iterations=settings.SCRAM_ITERATIONS):
+def salt_password(password, salt, iterations=settings.SCRAM_ITERATIONS):
     if salt is None:
         salt = make_salt()
 
