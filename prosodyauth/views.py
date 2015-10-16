@@ -93,5 +93,10 @@ def activate(request, token):
     except RegistrationConfirmation.DoesNotExist:
         raise Http404("Activation token not found")
 
+    with transaction.atomic():
+        user.is_active = True
+        user.set_password(salted_pass=activate.salted_pass, salt=activate.token, iterations=activate.iterations)
+        user.save()
+
     return render(request, 'prosodyauth/activate.html', {'user': user})
 
