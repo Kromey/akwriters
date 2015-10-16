@@ -13,9 +13,9 @@ from prosodyauth.prosody import db
 
 class Prosody(models.Model):
     host = models.TextField(default=settings.PROSODY_DEFAULT_DOMAIN)
-    user = models.TextField()
-    store = models.TextField()
-    key = models.TextField()
+    user = models.TextField(db_index=True)
+    store = models.TextField(db_index=True)
+    key = models.TextField(db_index=True)
     type = models.TextField()
     value = models.TextField()
 
