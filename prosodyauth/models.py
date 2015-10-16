@@ -30,13 +30,6 @@ class User(models.Model):
     about the user, including password and the XMPP domain.
     """
 
-    #def __init__(self, *args, **kwargs):
-    #    super().__init__(*args, **kwargs)
-    #    try:
-    #        self._lastlog_data = db.get_data_store(self.username, 'lastlog')
-    #    except:
-    #        self._lastlog_data = {}
-
     username = models.CharField(max_length=30, unique=True)
     email = models.EmailField(null=True)
     first_name = models.CharField(max_length=30, null=True)
