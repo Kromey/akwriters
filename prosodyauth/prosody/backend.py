@@ -7,7 +7,7 @@ from django.conf import settings
 
 
 from prosodyauth.models import User
-from prosodyauth.prosody.datastore import ProsodyDatastore
+from prosodyauth.prosody import db
 
 
 class ProsodyBackend:
@@ -47,7 +47,7 @@ class ProsodyBackend:
 
 
     def _check_password(self, username, domain, password):
-        data = ProsodyDatastore.get_data_store(username, domain, 'accounts')
+        data = db.get_data_store(username, domain, 'accounts')
 
         try:
             salted_pass = self.salt_password(password, data['salt'], data['iteration_count'])
