@@ -30,6 +30,10 @@ def salt_password(password, salt, iterations=settings.SCRAM_ITERATIONS):
     return scram.derive_digest(password, salt.encode('utf-8'), int(iterations), 'sha-1')
 
 
+def compute_keys(salted_pass):
+    return compute_stored_key(salted_pass), compute_server_key(salted_pass)
+
+
 def compute_stored_key(salted_pass):
     h = sha1()
     h.update(hmac.new(salted_pass, b'Client Key', sha1).digest())
