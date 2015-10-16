@@ -30,12 +30,12 @@ class User(models.Model):
     about the user, including password and the XMPP domain.
     """
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        try:
-            self._lastlog_data = db.get_data_store(self.username, 'lastlog')
-        except:
-            self._lastlog_data = {}
+    #def __init__(self, *args, **kwargs):
+    #    super().__init__(*args, **kwargs)
+    #    try:
+    #        self._lastlog_data = db.get_data_store(self.username, 'lastlog')
+    #    except:
+    #        self._lastlog_data = {}
 
     username = models.CharField(max_length=30, unique=True)
     email = models.EmailField(null=True)
@@ -54,18 +54,18 @@ class User(models.Model):
 
     @property
     def xmpp_online(self):
-        if self._lastlog_data.get('event') == 'login':
+        if self._get_lastlog('event') == 'login':
             return True
         else:
             return False
 
     @property
     def xmpp_last_login(self):
-        return datetime.utcfromtimestamp(self._lastlog_data.get('timestamp'))
+        return datetime.utcfromtimestamp(self._get_lastlog('timestamp'))
 
     @property
     def xmpp_last_ip(self):
-        return self._lastlog_data.get('ip')
+        return self._get_lastlog('ip')
 
     @property
     def last_login(self):
@@ -90,6 +90,15 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+
+    def _get_lastlog(self, key):
+        if self._lastlog_data is None:
+            store = Prosody.objects.filter(user__iexact=self.username, store='lastlog')
+            self._lastlog_data = dict()
+            for item in store:
+                self._lastlog_data[item.key] = item.value
+
+        return self._lastlog_data.get(key)
 
 
 def make_token():
