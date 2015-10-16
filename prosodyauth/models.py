@@ -53,6 +53,8 @@ class Prosody(models.Model):
     class Meta:
         #Prosody is hard-coded to use the prosody table, so that's what we use
         db_table = 'prosody'
+        #Uniqueness is based on user,store,key (and host, but we're single-host)
+        unique_together = (("user","store","key"),)
 
 class User(models.Model):
     """
