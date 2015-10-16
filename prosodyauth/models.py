@@ -96,7 +96,12 @@ class User(models.Model):
             store = Prosody.objects.filter(user__iexact=self.username, store='lastlog')
             self._lastlog_data = dict()
             for item in store:
-                self._lastlog_data[item.key] = item.value
+                if item.type == 'number':
+                    #Safer to do a floating-point conversion, but we know that
+                    #lastlog only has integers (well, one integer...)
+                    self._lastlog_data[item.key] = int(item.value)
+                else:
+                    self._lastlog_data[item.key] = item.value
 
         return self._lastlog_data.get(key)
 
