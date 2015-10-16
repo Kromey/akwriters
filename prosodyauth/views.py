@@ -8,6 +8,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.http import Http404
 
 
 from prosodyauth.forms import LoginForm, RegistrationForm
@@ -86,5 +87,11 @@ def register(request):
     return render(request, 'prosodyauth/register.html', {'form': form})
 
 def activate(request, token):
-    return render(request, 'prosodyauth/activate.html', {'token': token})
+    try:
+        activate = RegistrationConfirmation.objects.get(token=token)
+        user = activate.user
+    except RegistrationConfirmation.DoesNotExist:
+        raise Http404("Activation token not found")
+
+    return render(request, 'prosodyauth/activate.html', {'user': user})
 
