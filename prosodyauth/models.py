@@ -19,6 +19,9 @@ class Prosody(models.Model):
     type = models.TextField()
     value = models.TextField()
 
+    class Meta:
+        db_table = 'prosody'
+
 class User(models.Model):
     """
     User model
