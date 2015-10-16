@@ -32,8 +32,23 @@ class Prosody(models.Model):
     user = models.TextField(db_index=True)
     store = models.TextField(db_index=True)
     key = models.TextField(db_index=True)
-    type = models.TextField()
+    type = models.TextField(default='string')
     value = models.TextField()
+
+    def save(self, *args, **kwargs):
+        #We need to set type correctly for Prosody to understand it
+        if self.store == 'lastlog' and self.key == 'timestamp':
+            self.type = 'number'
+        elif self.store == 'accounts' and self.key == 'iterations':
+            self.type = 'number'
+        elif self.store == 'roster':
+            self.type = 'json'
+        elif self.key == 'persistence':
+            self.type = 'boolean'
+        else:
+            self.type = 'string'
+
+        super().save(*args, **kwargs)
 
     class Meta:
         #Prosody is hard-coded to use the prosody table, so that's what we use
