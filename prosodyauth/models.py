@@ -26,10 +26,8 @@ class User(models.Model):
     """
     User model
 
-    This user model is designed around the concept of XMPP JIDs, and is
-    therefore intended to represent users as 'username'@'domain'. For this
-    reason it allows duplicate usernames, provided each has a distinct domain
-    part.
+    This User model relies in part on the Prosody model for additional data
+    about the user, including password and the XMPP domain.
     """
 
     def __init__(self, *args, **kwargs):
@@ -40,7 +38,6 @@ class User(models.Model):
             self._lastlog_data = {}
 
     username = models.CharField(max_length=30, unique=True)
-    domain = models.CharField(max_length=30)
     email = models.EmailField(null=True)
     first_name = models.CharField(max_length=30, null=True)
     last_name = models.CharField(max_length=30, null=True)
@@ -155,7 +152,6 @@ class AnonymousUser:
     An object to represent an anonymous/unauthenticated user
     """
     username = ''
-    domain = ''
     email = None
     first_name = None
     last_name = None
