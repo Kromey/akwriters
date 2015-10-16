@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import uuid
 
 
+from django.conf import settings
 from django.db import models, connection
 
 
@@ -9,6 +10,14 @@ from prosodyauth.prosody import db
 
 
 # Create your models here.
+
+class Prosody(models.Model):
+    host = models.TextField(default=settings.PROSODY_DEFAULT_DOMAIN)
+    user = models.TextField()
+    store = models.TextField()
+    key = models.TextField()
+    type = models.TextField()
+    value = models.TextField()
 
 class User(models.Model):
     """
