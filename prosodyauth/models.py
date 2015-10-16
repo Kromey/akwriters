@@ -6,7 +6,7 @@ from django.conf import settings
 from django.db import models, connection
 
 
-from prosodyauth.prosody import db
+from prosodyauth import authenticate
 
 
 # Create your models here.
@@ -116,6 +116,26 @@ class User(models.Model):
     def is_anonymous(self):
         #This is not an anonymous user
         return False
+
+    def set_password(self, password=None, salt=None, salted_pass=None, iterations=settings.SCRAM_ITERATIONS):
+        if salted_pass is None:
+            if salt is None:
+                #No salt provided, make some
+                salt = authenticate.make_salt()
+
+            #Salt the password
+            salted_pass = authenticate.salt_password(password, salt, iterations)
+
+        #Generate our keys
+        #I believe the standard only requires us to store one of these, but
+        # Prosody stores both and I don't know why -- so we will too.
+        stored_key, server_key = authenticate.compute_keys(salted_pass)
+
+        #And now we get to stash all of our values into Prosody's table
+        Prosody.objects.update_or_create(user=self.user, store='accounts', key='iterations', defaults={'value': iterations})
+        Prosody.objects.update_or_create(user=self.user, store='accounts', key='salt', defaults={'value': salt})
+        Prosody.objects.update_or_create(user=self.user, store='accounts', key='stored_key', defaults={'value': stored_key})
+        Prosody.objects.update_or_create(user=self.user, store='accounts', key='server_key', defaults={'value': server_key})
 
     def __str__(self):
         return self.username
