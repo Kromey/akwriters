@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
+{% block header %}
+Join Our Chat Server!
+{% endblock header %}
+
 {% block content %}
-This will have instructions for connecting to the chat server, eventually.
+<ul class="inline-list">
+	<li>Recommended Clients:</li>
+	<li>Pidgin</li>
+	<li>Adium</li>
+</ul>
+<p>
+You can log into the chat server using any client that supports the XMPP (aka
+"Jabber") protocol, such as Pidgin or Adium, with the ID
+<em>{{ user.username|default:"username" }}@{{ domain }}</em> and the password
+you chose when you signed up.
+</p>
 {% endblock content %}
