@@ -7,4 +7,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url('^$', 'chat.views.index', name='index'),
+    url(r'^pidgin$', 'chat.views.pidgin', name='pidgin'),
+    url(r'^adium$', 'chat.views.adium', name='adium'),
 )
