@@ -132,10 +132,10 @@ class User(models.Model):
         stored_key, server_key = authenticate.compute_keys(salted_pass)
 
         #And now we get to stash all of our values into Prosody's table
-        Prosody.objects.update_or_create(user=self.user, store='accounts', key='iterations', defaults={'value': iterations})
-        Prosody.objects.update_or_create(user=self.user, store='accounts', key='salt', defaults={'value': salt})
-        Prosody.objects.update_or_create(user=self.user, store='accounts', key='stored_key', defaults={'value': stored_key})
-        Prosody.objects.update_or_create(user=self.user, store='accounts', key='server_key', defaults={'value': server_key})
+        Prosody.objects.update_or_create(user=self.username, store='accounts', key='iterations', defaults={'value': iterations})
+        Prosody.objects.update_or_create(user=self.username, store='accounts', key='salt', defaults={'value': salt})
+        Prosody.objects.update_or_create(user=self.username, store='accounts', key='stored_key', defaults={'value': stored_key})
+        Prosody.objects.update_or_create(user=self.username, store='accounts', key='server_key', defaults={'value': server_key})
 
     def __str__(self):
         return self.username
