@@ -99,5 +99,8 @@ def activate(request, token):
         user.set_password(salted_pass=activate.password, salt=activate.token, iterations=activate.iterations)
         user.save()
 
-    return render(request, 'prosodyauth/activate.html', {'user': user})
+        #Let's go ahead and log the user in as a freebie
+        utils.login(request, user)
+
+    return render(request, 'prosodyauth/activate.html')
 
