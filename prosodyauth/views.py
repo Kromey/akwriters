@@ -15,6 +15,7 @@ from prosodyauth.forms import LoginForm, RegistrationForm
 from prosodyauth.prosody.backend import ProsodyBackend
 from prosodyauth import utils
 from prosodyauth.models import User, RegistrationConfirmation
+from prosodyauth import authenticate
 
 
 backend = ProsodyBackend()
@@ -63,7 +64,7 @@ def register(request):
                     user.save()
                     confirmation = RegistrationConfirmation(user=user)
                     confirmation.save()
-                    confirmation.password = binascii.hexlify(backend.salt_password(form.cleaned_data['password'], confirmation.token, confirmation.iterations))
+                    confirmation.password = authenticate.salt_password(form.cleaned_data['password'], confirmation.token, confirmation.iterations)
                     confirmation.save()
 
                     #Build the URL for account activation
@@ -95,7 +96,7 @@ def activate(request, token):
 
     with transaction.atomic():
         user.is_active = True
-        user.set_password(salted_pass=activate.salted_pass, salt=activate.token, iterations=activate.iterations)
+        user.set_password(salted_pass=activate.password, salt=activate.token, iterations=activate.iterations)
         user.save()
 
     return render(request, 'prosodyauth/activate.html', {'user': user})

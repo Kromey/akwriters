@@ -1,3 +1,4 @@
+import binascii
 from passlib.hash import scram
 import hmac
 from hashlib import sha1
@@ -27,7 +28,8 @@ def salt_password(password, salt, iterations=settings.SCRAM_ITERATIONS):
     if salt is None:
         salt = make_salt()
 
-    return scram.derive_digest(password, salt.encode('utf-8'), int(iterations), 'sha-1')
+    raw = scram.derive_digest(password, salt.encode('utf-8'), int(iterations), 'sha-1')
+    return binascii.hexlify(raw)
 
 
 def compute_keys(salted_pass):
@@ -35,10 +37,12 @@ def compute_keys(salted_pass):
 
 
 def compute_stored_key(salted_pass):
+    key = binascii.unhexlify(salted_pass)
     h = sha1()
-    h.update(hmac.new(salted_pass, b'Client Key', sha1).digest())
+    h.update(hmac.new(key, b'Client Key', sha1).digest())
     return h.hexdigest()
 
 
 def compute_server_key(salted_pass):
-    return hmac.new(salted_pass, b'Server Key', sha1).hexdigest()
+    key = binascii.unhexlify(salted_pass)
+    return hmac.new(key, b'Server Key', sha1).hexdigest()
