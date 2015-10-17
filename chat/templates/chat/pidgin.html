@@ -1,9 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block header %}
 How to Set Up Pidgin
 {% endblock header %}
 
 {% block content %}
-Coming soon...
+<p>
+For <strong>Windows and Linux</strong> users, we recommend using
+<a href="https://pidgin.im/download/" target="_blank">Pidgin</a> to connect to
+the chat server. For <strong>Mac</strong> users, check out
+<a href="{% url 'chat:adium' %}">Adium</a> instead.
+</p>
+<p>
+Once you have downloaded and installed Pidgin, add a new account by opening the
+Accounts menu and selecting Manage Accounts, and then click the "Add..."
+button. Select "XMPP" for the protocol, and you should see something like this:
+<br /><img src="{% static 'img/pidgin_setup.png' %}" alt="Setup Pidgin" />
+</p>
 {% endblock content %}
