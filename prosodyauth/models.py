@@ -39,7 +39,7 @@ class Prosody(models.Model):
         #We need to set type correctly for Prosody to understand it
         if self.store == 'lastlog' and self.key == 'timestamp':
             self.type = 'number'
-        elif self.store == 'accounts' and self.key == 'iterations':
+        elif self.store == 'accounts' and self.key == 'iteration_count':
             self.type = 'number'
         elif self.store == 'roster':
             self.type = 'json'
@@ -132,7 +132,7 @@ class User(models.Model):
         stored_key, server_key = authenticate.compute_keys(salted_pass)
 
         #And now we get to stash all of our values into Prosody's table
-        Prosody.objects.update_or_create(user=self.username, store='accounts', key='iterations', defaults={'value': iterations})
+        Prosody.objects.update_or_create(user=self.username, store='accounts', key='iteration_count', defaults={'value': iterations})
         Prosody.objects.update_or_create(user=self.username, store='accounts', key='salt', defaults={'value': salt})
         Prosody.objects.update_or_create(user=self.username, store='accounts', key='stored_key', defaults={'value': stored_key})
         Prosody.objects.update_or_create(user=self.username, store='accounts', key='server_key', defaults={'value': server_key})
