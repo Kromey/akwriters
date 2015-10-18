@@ -54,12 +54,12 @@
 			<li><a href="{% url 'index' %}">Home</a></li>
 			{% if user.is_authenticated %}
 			<li><a href="{% url 'auth:logout' %}">Logout</a></li>
-			<li><a href="{% url 'chat:index' %}">Chat</a></li>
 			{# <li><a href="{% url 'account_settings' %}">Account Settings</a></li> #}
 			{% else %}
 			<li><a href="{% url 'auth:login' %}">Login</a></li>
 			<li><a href="{% url 'auth:register' %}">Register</a></li>
 			{% endif %}
+			<li><a href="{% url 'chat:index' %}">Chat</a></li>
 			{# <li><a href="/profiles">Profiles</a></li> #}
 		</ul>
 		{% endblock sidebar %}
