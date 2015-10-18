@@ -8,14 +8,40 @@ How to Set Up Pidgin
 {% block content %}
 <p>
 For <strong>Windows and Linux</strong> users, we recommend using
-<a href="https://pidgin.im/download/" target="_blank">Pidgin</a> to connect to
+<a href="{% url 'chat:pidgin' %}" target="_blank">Pidgin</a> to connect to
 the chat server. For <strong>Mac</strong> users, check out
 <a href="{% url 'chat:adium' %}">Adium</a> instead.
 </p>
 <p>
-Once you have downloaded and installed Pidgin, add a new account by opening the
-Accounts menu and selecting Manage Accounts, and then click the "Add..."
-button. Select "XMPP" for the protocol, and you should see something like this:
-<br /><img src="{% static 'img/pidgin_setup.png' %}" alt="Setup Pidgin" />
+Once you have <a href="https://pidgin.im/download/" target="_blank">downloaded</a>
+and installed Pidgin, add a new account by opening the Accounts menu and
+selecting Manage Accounts, and then click the "Add..." button.
+</p>
+<div class="right" style="margin: 3px; margin-top: -5px;">
+	<img src="{% static 'img/pidgin_setup.png' %}" alt="Setup Pidgin" width="85%" />
+</div>
+<p>
+To configure your account, set your options as so:
+<ol>
+	<li>Protocol: <img src="{% static 'img/xmpp.png' %}" alt="" style="margin-top: -5px;" width="16" height="16" /> XMPP</li>
+	<li>Username: {{ user.username|default:"<em>Your username</em>" }}</li>
+	<li>Domain: fairbanksnano.org </li>
+	<li>Resource: <em>Optionally identify this location to yourself.</em></li>
+</ol>
+</p>
+<p>
+Under User Options, give yourself a Local alias; this only shows up to you, and
+identifies your own messages. I like to set it to "Me".
+</p>
+<p>
+Now click the Add button to finish and connect to the server.
+</p>
+<div class="right" style="margin: 3px; margin-top: -5px;">
+	<img src="{% static 'img/pidgin_cert.png' %}" alt="Pidgin certificate error" width="85%" />
+</div>
+<p>
+You may see an error about an invalid certificate. This is fine; a "real"
+certificate costs a lot of money, so I'm currently using a "self-signed" one
+instead. Just click the Accept button to continue connecting.
 </p>
 {% endblock content %}
