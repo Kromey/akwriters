@@ -1,17 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'chat/index.html' %}
 {% load static %}
 
 {% block header %}
 How to Set Up Pidgin
 {% endblock header %}
 
-{% block content %}
-<p>
-For <strong>Windows and Linux</strong> users, we recommend using
-<a href="{% url 'chat:pidgin' %}" target="_blank">Pidgin</a> to connect to
-the chat server. For <strong>Mac</strong> users, check out
-<a href="{% url 'chat:adium' %}">Adium</a> instead.
-</p>
+{% block chatcontent %}
 <p>
 Once you have <a href="https://pidgin.im/download/" target="_blank">downloaded</a>
 and installed Pidgin, add a new account by opening the Accounts menu and
@@ -44,4 +38,4 @@ You may see an error about an invalid certificate. This is fine; a "real"
 certificate costs a lot of money, so I'm currently using a "self-signed" one
 instead. Just click the Accept button to continue connecting.
 </p>
-{% endblock content %}
+{% endblock chatcontent %}

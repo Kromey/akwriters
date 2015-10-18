@@ -5,15 +5,18 @@ Join Our Chat Server!
 {% endblock header %}
 
 {% block content %}
-<ul class="inline-list">
-	<li>Recommended Clients:</li>
-	<li><a href="{% url 'chat:pidgin' %}">Pidgin</a></li>
-	<li><a href="{% url 'chat:adium' %}">Adium</a></li>
-</ul>
+<p>
+For <strong>Windows and Linux</strong> users, we recommend using
+<a href="{% url 'chat:pidgin' %}">Pidgin</a> to connect to the chat server. For
+<strong>Mac</strong> users, check out
+<a href="{% url 'chat:adium' %}">Adium</a> instead.
+</p>
+{% block chatcontent %}
 <p>
 You can log into the chat server using any client that supports the XMPP (aka
 "Jabber") protocol, such as Pidgin or Adium, with the ID
 <em>{{ user.username|default:"username" }}@{{ domain }}</em> and the password
 you chose when you signed up.
 </p>
+{% endblock chatcontent %}
 {% endblock content %}
