@@ -1,7 +1,7 @@
 # Project cruft not needed in Git
 /activate
 /simplecaptcha
-/fbxnano/secrets.py
+/fbxnano/site_settings.py
 
 # Ignore maintenance mode flag
 /htdocs/maintenance_mode

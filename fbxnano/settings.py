@@ -17,14 +17,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#Found in secrets.py
+#Found in site_settings.py
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fairbanksnano.org']
 
 
 # Project templates
@@ -114,4 +114,7 @@ MESSAGE_TAGS = {
 
 STATIC_URL = '/static/'
 
-from .secrets import *
+#This should be the very last line, always, so we can override anything in
+#settings.py with site- or environment-specific values.
+from .site_settings import *
+
