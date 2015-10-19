@@ -3,6 +3,9 @@
 /simplecaptcha
 /fbxnano/secrets.py
 
+# Ignore our maintenance page (unless we explicitly add it)
+/htdocs/maintenance.*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
