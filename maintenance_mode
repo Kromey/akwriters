@@ -1,0 +1,24 @@
+#!/bin/bash
+
+MAINT_MODE=`dirname $0`/htdocs/maintenance_mode
+
+case "$1" in
+  start)
+	touch $MAINT_MODE
+	;;
+  stop)
+	rm $MAINT_MODE
+	;;
+  status)
+	if [ -f "$MAINT_MODE" ]; then
+		echo "Maintenance Mode Active"
+	else
+		echo "Maintenance Mode Inactive"
+	fi
+	;;
+
+  *)
+	echo "Usage: $0 {start|stop|status}" >&2
+	exit 3
+	;;
+esac
