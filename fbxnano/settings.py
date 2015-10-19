@@ -69,9 +69,6 @@ AUTHENTICATION_BACKENDS = (
     'backends.prosody.ProsodyBackend',
 )
 
-#Number of iterations for SCRAM password hashing
-SCRAM_ITERATIONS = 8192
-
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -100,6 +97,9 @@ USE_TZ = True
 # Custom settings
 PROSODY_DEFAULT_DOMAIN = 'fairbanksnano.org'
 EMAIL_SENDER = 'prosody@fairbanksnano.org'
+
+#Number of iterations for SCRAM password hashing
+SCRAM_ITERATIONS = 8192
 
 # Override default message tags to fit with Foundation
 from django.contrib.messages import constants as msg_constants
