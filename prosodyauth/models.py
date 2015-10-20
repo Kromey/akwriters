@@ -7,6 +7,7 @@ from django.db import models, connection
 
 
 from prosodyauth import authenticate
+from prosodyauth.prosody.parsejid import nodeprep
 
 
 # Create your models here.
@@ -47,6 +48,9 @@ class Prosody(models.Model):
             self.type = 'boolean'
         else:
             self.type = 'string'
+
+        #We also do some additional processing of username here
+        self.user = nodeprep(self.user)
 
         super().save(*args, **kwargs)
 

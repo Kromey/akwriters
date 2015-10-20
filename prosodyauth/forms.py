@@ -48,9 +48,12 @@ class RegistrationForm(LoginForm):
     def clean_username(self):
         username = self.cleaned_data.get('username')
         try:
-            username = nodeprep(username)
+            node = nodeprep(username)
         except UnicodeError as err:
             raise ValidationError(str(err), code='invalid')
+
+        if node.lower() != username.lower():
+            raise ValidationError('That username contains invalid characters', code='invalid')
 
         if User.objects.filter(username__iexact=username).count() > 0:
             raise ValidationError('That username is already taken', code='invalid')
