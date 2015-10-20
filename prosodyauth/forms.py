@@ -72,6 +72,6 @@ class RegistrationForm(LoginForm):
 
         if password and password != confirm:
             self.add_error('password_confirm', ValidationError('Confirmation must match password', code='invalid'))
-        elif not authenticate.password_is_compliant(password, cleaned_data.get('username')):
+        elif password and not authenticate.password_is_compliant(password, cleaned_data.get('username')):
             self.add_error('password', ValidationError('Password does not meet requirements', code='invalid'))
 
