@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 
-from prosodyauth import fields
+from prosodyauth import fields, authenticate
 from prosodyauth.prosody.parsejid import nodeprep
 from prosodyauth.models import User
 from simplecaptcha import captcha
@@ -72,4 +72,6 @@ class RegistrationForm(LoginForm):
 
         if password and password != confirm:
             self.add_error('password_confirm', ValidationError('Confirmation must match password', code='invalid'))
+        elif not authenticate.password_is_compliant(password, cleaned_data.get('username')):
+            self.add_error('password', ValidationError('Password does not meet requirements', code='invalid'))
 

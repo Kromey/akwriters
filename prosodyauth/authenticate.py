@@ -3,9 +3,60 @@ from passlib.hash import scram
 import hmac
 from hashlib import sha1
 import uuid
+import string
+import re
 
 
 from django.conf import settings
+
+
+def password_is_compliant(password, username):
+    """
+    Check whether or not this password complies with the site's password policy
+
+    Specifically, the password must:
+     * Be at least 8 characters long
+     * Have at least two of: Upper-case letters, lower-case letters, numbers, punctuation
+     * Not include the user's username
+    """
+
+    #Check length
+    if len(password) < 8:
+        return False
+
+    #Check for complexity
+    score = 0
+    #Upper-case letters
+    if password_contains(password, string.ascii_uppercase):
+        score = score + 1
+    #Lower-case letters
+    if password_contains(password, string.ascii_lowercase):
+        score = score + 1
+    #Numbers
+    if password_contains(password, string.digits):
+        score = score + 1
+    #Punctuation
+    if password_contains(password, string.punctuation):
+        score = score + 1
+
+    if score < 2:
+        return False
+
+    #Password must not contain username
+    if username.lower() in password.lower():
+        return False
+
+    #If we've gotten here, we've passed all the tests
+    return True
+
+
+def password_contains(password, contents):
+    pattern = "[{}]".format(contents)
+
+    if re.search(pattern, password) is None:
+        return False
+    else:
+        return True
 
 
 def verify_password(password, salt, iterations, stored_key, server_key):
