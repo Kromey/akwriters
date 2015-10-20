@@ -33,6 +33,13 @@ class LoginForm(PlaceholderForm):
     username = forms.CharField(min_length=3, max_length=30)
     password = fields.PassField(min_length=8)
 
+    def render_password(self, render_value=True):
+        for field_name in self.fields:
+            field = self.fields.get(field_name)
+            if field:
+                if type(field.widget) == forms.PasswordInput:
+                    field.widget.render_value = render_value
+
 @captcha
 class RegistrationForm(LoginForm):
     email = forms.EmailField()

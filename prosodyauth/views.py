@@ -82,6 +82,12 @@ def register(request):
                 return redirect('index')
             except IntegrityError as e:
                 messages.error(request, 'A database error occurred: {}'.format(str(e)))
+        elif form.errors.get('password') or form.errors.get('password_confirm'):
+            #Got an error on the password, don't re-render it
+            form.render_password(False)
+        else:
+            #Some other validation error, don't force user to re-enter password
+            form.render_password(True)
     else:
         form = RegistrationForm()
 
