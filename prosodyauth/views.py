@@ -105,5 +105,6 @@ def activate(request, token):
         #Let's go ahead and log the user in as a freebie
         utils.login(request, user)
 
-    return render(request, 'prosodyauth/activate.html')
+    #Now send the user over to our chat client instructions
+    return redirect('chat:index')
 
