@@ -1,7 +1,7 @@
 import binascii
 
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db import IntegrityError, transaction
 from django.conf import settings
@@ -94,11 +94,8 @@ def register(request):
     return render(request, 'prosodyauth/register.html', {'form': form})
 
 def activate(request, token):
-    try:
-        activate = RegistrationConfirmation.objects.get(token=token)
-        user = activate.user
-    except RegistrationConfirmation.DoesNotExist:
-        raise Http404("Activation token not found")
+    activate = get_object_or_404(RegistrationConfirmation, token=token)
+    user = activate.user
 
     with transaction.atomic():
         user.is_active = True
