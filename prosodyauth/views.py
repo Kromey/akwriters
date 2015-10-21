@@ -14,7 +14,7 @@ from django.http import Http404
 from prosodyauth.forms import LoginForm, RegistrationForm
 from prosodyauth.prosody.backend import ProsodyBackend
 from prosodyauth import utils
-from prosodyauth.models import User, RegistrationConfirmation
+from prosodyauth.models import User, RegistrationConfirmation, Prosody
 from prosodyauth import authenticate
 
 
@@ -101,6 +101,11 @@ def activate(request, token):
         user.is_active = True
         user.set_password(salted_pass=activate.password, salt=activate.token, iterations=activate.iterations)
         user.save()
+
+        #Now let's add the bot to the user's roster
+        data = '{{"name":"{}","ask":"subscribe","subscription":"none","groups":{{"Nano":true}}}}'.format(settings.THE_BOT['name'])
+        roster = Prosody(user=user.username, store='roster', key=settings.THE_BOT['jid'], value=data)
+        roster.save()
 
         #Let's go ahead and log the user in as a freebie
         utils.login(request, user)

@@ -95,6 +95,12 @@ EMAIL_SENDER = 'prosody@fairbanksnano.org'
 #Number of iterations for SCRAM password hashing
 SCRAM_ITERATIONS = 8192
 
+# Bot automatically added to new users' rosters
+THE_BOT = {
+    'name': 'Annika',
+    'jid': 'annika@fairbanksnano.org',
+}
+
 # Override default message tags to fit with Foundation
 from django.contrib.messages import constants as msg_constants
 MESSAGE_TAGS = {
