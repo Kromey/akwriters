@@ -107,6 +107,9 @@ def activate(request, token):
         roster = Prosody(user=user.username, store='roster', key=settings.THE_BOT['jid'], value=data)
         roster.save()
 
+        #All done, delete the activation token
+        activate.delete()
+
         #Let's go ahead and log the user in as a freebie
         utils.login(request, user)
 
