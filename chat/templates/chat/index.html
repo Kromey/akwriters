@@ -20,5 +20,12 @@ XMPP (aka "Jabber") protocol, such as Pidgin or Adium, with the ID
 <em>{{ user.username|default:"username" }}@{{ domain }}</em> and the password
 you chose when you signed up.
 </p>
+<p>
+For detailed setup instructions:
+<ul>
+	<li><a href="{% url 'chat:pidgin' %}">Pidgin</a></li>
+	<li><a href="{% url 'chat:adium' %}">Adium</a></li>
+</ul>
+</p>
 {% endblock chatcontent %}
 {% endblock content %}
