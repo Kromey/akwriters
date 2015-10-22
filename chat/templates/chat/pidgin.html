@@ -24,7 +24,7 @@ selecting Manage Accounts, and then click the "Add..." button.
 <p>
 To configure your account, set your options as so:
 <ol>
-	<li>Protocol: <img src="{% static 'img/xmpp.png' %}" alt="" style="margin-top: -5px;" width="16" height="16" /> XMPP</li>
+	<li>Protocol: {% prosody_proto %}</li>
 	<li>Username: {{ user.username|default:"<em>Your username</em>" }}</li>
 	<li>Domain: {% prosody_domain %}</li>
 	<li>Resource: <em>Optionally identify this location to yourself.</em></li>
