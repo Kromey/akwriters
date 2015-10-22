@@ -1,5 +1,6 @@
 {% extends 'chat/index.html' %}
 {% load static %}
+{% load chat_extras %}
 
 {% block header %}
 How to Set Up Pidgin
@@ -25,7 +26,7 @@ To configure your account, set your options as so:
 <ol>
 	<li>Protocol: <img src="{% static 'img/xmpp.png' %}" alt="" style="margin-top: -5px;" width="16" height="16" /> XMPP</li>
 	<li>Username: {{ user.username|default:"<em>Your username</em>" }}</li>
-	<li>Domain: fairbanksnano.org </li>
+	<li>Domain: {% prosody_domain %}</li>
 	<li>Resource: <em>Optionally identify this location to yourself.</em></li>
 </ol>
 </p>
