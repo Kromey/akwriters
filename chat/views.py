@@ -12,3 +12,6 @@ def pidgin(request):
 def adium(request):
     return render(request, 'chat/adium.html', {'domain': settings.PROSODY_DEFAULT_DOMAIN})
 
+def annika(request):
+    return render(request, 'chat/annika.html', {'domain': settings.PROSODY_DEFAULT_DOMAIN})
+

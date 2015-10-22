@@ -1,0 +1,59 @@
+{% extends 'chat/index.html' %}
+
+{% block header %}
+Meet Annika
+{% endblock header %}
+
+{% block chatcontent %}
+<p>
+Annika is our friendly local chat bot.
+</p>
+
+<h3>Introductions</h3>
+<p>
+When you log in for the first time, Annika will immediately ask you to be her
+friend. She's very helpful, and while she can be a but rough around the edges,
+she tries to be friendly.
+</p>
+<p>
+After you have accepted her request, you can start talking to her. She has a lot
+of good advice for writers, as well as some helpful tools for getting the most
+out of our chat server. To start with, say "invite me" to her, and she'll send
+you an invitation to join the group chat room. Say "help" to her to learn more.
+</p>
+
+<h4>Sending Annika Commands</h4>
+<p>
+There are two ways to send commands to Annika:
+<ul>
+	<li>In a single-user chat, simply say the command (e.g. "plot bunny")</li>
+	<li>In a group chat, start with her name (e.g. "annika, plot bunny")</li>
+</ul>
+When interacting with her in a group chat, she will also respond to the nickname
+"Annie", e.g. "annie, plot bunny".
+</p>
+
+<h3>Useful Commands</h3>
+<p>
+Here is a quick rundown of some of her more useful commands to help you in
+reaching 50,000 words:
+<ul>
+	<li>arcanobabble - Random arcanobabble</li>
+	<li>divination - Get a random kind of divination (e.g. chiropteromancy)</li>
+	<li>diviner - Get a random kind of diviner (e.g. chiropteromancer)</li>
+	<li>plot bunny - Get a random plot bunny</li>
+	<li>plot ninja - Get a random plot ninja</li>
+	<li>random name - Get a random name</li>
+	<li>random job - Alias of "random profession"</li>
+	<li>random profession - Get a random profession</li>
+	<li>technobabble - Random technobabble generator</li>
+</ul>
+You can also specify a name when asking for a plot bunny (e.g. "annika, plot
+bunny bob") to have that name inserted into her response (e.g. "Bob is out
+driving when the car stops running."). Also, when asking for a random name,
+Annika is pretty good at figuring out if you're asking for a male or female
+name: "random name male", "random male name", "random name man", "random man
+name" &mdash; these examples would all provide a man's name in her response.
+You can of course leave out the gender to get a randomly picked name of either.
+</p>
+{% endblock chatcontent %}

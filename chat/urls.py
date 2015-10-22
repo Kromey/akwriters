@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url('^$', 'chat.views.index', name='index'),
     url(r'^pidgin$', 'chat.views.pidgin', name='pidgin'),
     url(r'^adium$', 'chat.views.adium', name='adium'),
+    url(r'^annika$', 'chat.views.annika', name='annika'),
 )
