@@ -41,15 +41,14 @@ Contact Us
 				</div>
 				<div class="row collapse">
 					<div class="small-2  columns">
-						<span class="prefix"><i class="fi-list"></i></span>
+						<span class="prefix"><i class="fi-pencil"></i></span>
 					</div>
 					<div class="small-10  columns {% if form.message.errors %}error{% endif %}">
 						{{ form.message }}
 						{% if form.message.errors %}<small class="error">{{ form.message.errors }}</small>{% endif %}
 					</div>
 				</div>
-				<button type="submit" class="button">Register!</button>
-				<p>Already have an account? <a href="{% url 'auth:login' %}">Login here &raquo;</a></p>
+				<button type="submit" class="button">Send</button>
 			</form>
 		</div>
 	</div>
