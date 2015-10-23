@@ -5,6 +5,6 @@ register = template.Library()
 
 
 @register.simple_tag
-def fi_field(field, icon):
+def fi_field(field, icon='_none'):
     return render_to_string('formhelpers/fi_field.html', {'field': field, 'icon': icon})
 

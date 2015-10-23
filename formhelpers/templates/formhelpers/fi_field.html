@@ -1,3 +1,4 @@
+{% if icon != '_none' %}
 <div class="row collapse">
 	<div class="small-2  columns">
 		<span class="prefix"><i class="fi-{{ icon }}"></i></span>
@@ -7,3 +8,14 @@
 		{% if field.errors %}<small class="error">{{ field.errors }}</small>{% endif %}
 	</div>
 </div>
+{% else %}
+<div class="row collapse">
+	<div class="small-4 columns ">
+		<span class="prefix">{{ field.label }}</span>
+	</div>
+	<div class="small-8  columns {% if field.errors %}error{% endif %}">
+		{{ field }}
+		{% if field.errors %}<small class="error">{{ field.errors }}</small>{% endif %}
+	</div>
+</div>
+{% endif %}
