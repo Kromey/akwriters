@@ -14,7 +14,7 @@ contact_reasons = (
         )
 
 class ContactForm(PlaceholderForm):
-    username = forms.CharField(widget=forms.HiddenInput)
+    username = forms.CharField(widget=forms.HiddenInput, required=False)
     ip_address = forms.GenericIPAddressField(widget=forms.HiddenInput)
     reason = forms.ChoiceField(choices=contact_reasons)
     email = forms.EmailField()
