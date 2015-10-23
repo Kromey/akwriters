@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^events$', TemplateView.as_view(template_name='events.html'), name='events'),
     url(r'^auth/', include('prosodyauth.urls', namespace='auth')),
     url(r'^chat/', include('chat.urls', namespace='chat')),
+    url(r'^contact/', include('contact.urls', namespace='contact')),
     url(r'^policies/', include('policies.urls', namespace='policies')),
 )
