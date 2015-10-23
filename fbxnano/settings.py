@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'chat',
     'contact',
+    'formhelpers',
     'policies',
     'prosodyauth',
 )
