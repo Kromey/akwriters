@@ -17,6 +17,12 @@ SECRET_KEY = ''
 # Allow all hosts in dev
 #ALLOWED_HOSTS = ['*']
 
+# Email to send Contact Us messages to
+#CONTACT_EMAIL = 'you@example.com'
+
+# Dev domain
+PROSODY_DEFAULT_DOMAIN = 'dev.fairbanksnano.org'
+
 # Database configuration
 #DATABASES = {
 #    'default': {
