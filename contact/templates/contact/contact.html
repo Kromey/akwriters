@@ -14,20 +14,20 @@ Contact Us
 				{{ form.ip_address }}
 				<div class="row collapse">
 					<div class="small-2  columns">
-						<span class="prefix"><i class="fi-flag"></i></span>
-					</div>
-					<div class="small-10  columns {% if form.reason.errors %}error{% endif %}">
-						{{ form.reason }}
-						{% if form.reason.errors %}<small class="error">{{ form.reason.errors }}</small>{% endif %}
-					</div>
-				</div>
-				<div class="row collapse">
-					<div class="small-2  columns">
 						<span class="prefix"><i class="fi-mail"></i></span>
 					</div>
 					<div class="small-10  columns {% if form.email.errors %}error{% endif %}">
 						{{ form.email }}
 						{% if form.email.errors %}<small class="error">{{ form.email.errors }}</small>{% endif %}
+					</div>
+				</div>
+				<div class="row collapse">
+					<div class="small-2  columns">
+						<span class="prefix"><i class="fi-flag"></i></span>
+					</div>
+					<div class="small-10  columns {% if form.reason.errors %}error{% endif %}">
+						{{ form.reason }}
+						{% if form.reason.errors %}<small class="error">{{ form.reason.errors }}</small>{% endif %}
 					</div>
 				</div>
 				<div class="row collapse">
