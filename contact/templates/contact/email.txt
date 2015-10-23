@@ -1,0 +1,8 @@
+Hello,
+
+{{ username|default:"A user" }} ({{ email }}) has just submitted the
+following via the "Contact Us" form on:
+
+[{{ reason }}] {{ subject }}
+{{ message }}
+
