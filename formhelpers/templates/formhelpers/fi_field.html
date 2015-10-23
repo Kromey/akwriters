@@ -1,0 +1,9 @@
+<div class="row collapse">
+	<div class="small-2  columns">
+		<span class="prefix"><i class="fi-{{ icon }}"></i></span>
+	</div>
+	<div class="small-10  columns {% if field.errors %}error{% endif %}">
+		{{ field }}
+		{% if field.errors %}<small class="error">{{ field.errors }}</small>{% endif %}
+	</div>
+</div>
