@@ -16,7 +16,8 @@ contact_reasons = (
 class ContactForm(PlaceholderForm):
     username = forms.CharField(widget=forms.HiddenInput)
     ip_address = forms.GenericIPAddressField(widget=forms.HiddenInput)
-    subject = forms.ChoiceField(choices=contact_reasons)
+    reason = forms.ChoiceField(choices=contact_reasons)
     email = forms.EmailField()
+    subject = forms.CharField()
     message = forms.CharField(widget=forms.Textarea)
 
