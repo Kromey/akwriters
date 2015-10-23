@@ -16,6 +16,11 @@ from contact.forms import ContactForm
 # Create your views here.
 
 def contact(request):
+    form_init = {
+            'username': request.user.username,
+            'ip_address': request.META.get('REMOTE_ADDR'),
+            }
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -23,7 +28,7 @@ def contact(request):
         else:
             messages.error('Boo! Hiss!')
     else:
-        form = ContactForm()
+        form = ContactForm(initial=form_init)
 
     return render(request, 'contact/contact.html', {'form': form})
 
