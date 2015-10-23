@@ -2,3 +2,38 @@ ul.errorlist {
 	margin: 0;
 	list-style: none;
 }
+
+header, footer {
+	background-color: #CCEEFF;
+}
+
+#wrapper {
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 75px;
+}
+
+#site_content {
+	background-color: #FFFFFF;
+}
+
+header li {
+	background-color: #333399;
+	padding: 0px 5px 0px;
+	border-bottom-left-radius:  10px;
+	border-bottom-right-radius: 10px;
+}
+
+header li a {
+	color: #FFFFFF;
+}
+
+header li a:hover {
+	color: #CCEEFF;
+}
+
+footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+}

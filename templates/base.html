@@ -12,87 +12,94 @@
 
 <body onload="$(document).foundation();">
 
-<div class="row">
-	<div class="large-3 columns">
-		{% block brand %}<h1>FairbanksNano</h1>{% endblock brand %}
-	</div>
-	<div class="large-9 columns">
-		{% block navbar %}
-		<ul class="inline-list right">
-			<li><a href="http://nanowrimo.org/">NaNoWriMo</a></li>
-			<li><a href="https://www.facebook.com/groups/FairbanksNanowrimo">Facebook Group</a></li>
-		</ul>
-		{% endblock navbar %}
-		{% if user.is_authenticated %}
-		<div class="right" style="clear:both;">Welcome, {{ user.username }}!</div>
-		{% endif %}
-	</div>
-</div>
-
-{% if messages %}
-<div class="row">
-	<div class="large-12 columns">
-			{% for message in messages %}
-			<div data-alert class="alert-box {{ message.tags }} radius" tabindex="0" aria-live="assertive" role="dialogalert">
-				{{ message }}
-				<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
-			</div>
-			{% endfor %}
-	</div>
-</div>
-{% endif %}
-
-<div class="row">
-	<div class="large-9 push-3 columns">
-		<h2>{% block header %}Home of the Writing Ravens{% endblock header %}</h2>
-		{% block content %}{% endblock content %}
-	</div>
-
-	<div class="large-3 pull-9 columns">
-		{% block sidebar %}
-		<ul class="side-nav">
-			<li><a href="{% url 'index' %}">Home</a></li>
-			{% if user.is_authenticated %}
-			<li><a href="{% url 'auth:logout' %}">Logout</a></li>
-			{# <li><a href="{% url 'account_settings' %}">Account Settings</a></li> #}
-			{% else %}
-			<li><a href="{% url 'auth:login' %}">Login</a></li>
-			<li><a href="{% url 'auth:register' %}">Register</a></li>
-			{% endif %}
-			<li><a href="{% url 'chat:index' %}">Chat</a></li>
-			{# <li><a href="/profiles">Profiles</a></li> #}
-			<li><a href="{% url 'events' %}">Events</a></li>
-		</ul>
-		{% endblock sidebar %}
-	</div>
-</div>
-
-<footer class="row">
-	<div class="large-12 columns">
-		<hr/>
+<div id="wrapper">
+	<header>
 		<div class="row">
 			<div class="large-6 columns">
+				{% block brand %}<h1>FairbanksNano</h1>{% endblock brand %}
 			</div>
 			<div class="large-6 columns">
-				{# TODO: copy header links here #}
+				{% block navbar %}
+				<ul class="inline-list right">
+					<li><a href="http://nanowrimo.org/" target="_blank">NaNoWriMo</a></li>
+					<li><a href="https://www.facebook.com/groups/FairbanksNanowrimo" target="_blank">Facebook Group</a></li>
+				</ul>
+				{% endblock navbar %}
+				{% if user.is_authenticated %}
+				<div class="right" style="clear:both;">Welcome, {{ user.username }}!</div>
+				{% endif %}
 			</div>
 		</div>
+	</header>
+
+	<div id="site_content">
+		{% if messages %}
 		<div class="row">
 			<div class="large-12 columns">
-				<p>
-					<small>
-						&copy; 2015 FairbanksNano. Site by Travis Veazey. Your
-						use of this site and its associated services constitutes
-						acceptance of the
-						<a href="{% url 'policies:terms_of_service' %}">Terms of Service</a>
-						and
-						<a href="{% url 'policies:privacy' %}">Privacy and Cookie Policy</a>.
-					</small>
-				</p>
+				{% for message in messages %}
+				<div data-alert class="alert-box {{ message.tags }} radius" tabindex="0" aria-live="assertive" role="dialogalert">
+					{{ message }}
+					<button href="#" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="large-10 push-2 columns">
+				<h2>{% block header %}Home of the Writing Ravens{% endblock header %}</h2>
+				{% block content %}{% endblock content %}
+			</div>
+
+			<div class="large-2 pull-10 columns">
+				{% block sidebar %}
+				<ul class="side-nav">
+					<li><a href="{% url 'index' %}">Home</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'auth:logout' %}">Logout</a></li>
+					{# <li><a href="{% url 'account_settings' %}">Account Settings</a></li> #}
+					{% else %}
+					<li><a href="{% url 'auth:login' %}">Login</a></li>
+					<li><a href="{% url 'auth:register' %}">Register</a></li>
+					{% endif %}
+					<li><a href="{% url 'chat:index' %}">Chat</a></li>
+					{# <li><a href="/profiles">Profiles</a></li> #}
+					<li><a href="{% url 'events' %}">Events</a></li>
+				</ul>
+				{% endblock sidebar %}
 			</div>
 		</div>
 	</div>
-</footer>
+
+	<footer>
+		<div class="row">
+			<div class="large-12 columns">
+				<div class="row">
+					<div class="large-6 columns">
+					</div>
+					<div class="large-6 columns">
+						{# TODO: copy header links here #}
+					</div>
+				</div>
+				<div class="row">
+					<div class="large-12 columns">
+						<p>
+						<small>
+							&copy; 2015 FairbanksNano. Site by Travis Veazey. Your
+							use of this site and its associated services constitutes
+							acceptance of the
+							<a href="{% url 'policies:terms_of_service' %}">Terms of Service</a>
+							and
+							<a href="{% url 'policies:privacy' %}">Privacy and Cookie Policy</a>.
+						</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
 
 <script type="text/javascript" src="{% static 'foundation/js/vendor/jquery.js' %}"></script>
 <script type="text/javascript" src="{% static 'foundation/js/vendor/fastclick.js' %}"></script>
