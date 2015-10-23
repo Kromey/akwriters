@@ -25,16 +25,7 @@ Register on FairbanksNano
 				</div>
 				{% fi_field form.password 'lock' %}
 				{% fi_field form.password_confirm 'lock' %}
-				{# {% fi_field form.captcha form.captcha.label %} #}
-				<div class="row collapse">
-					<div class="small-4 columns ">
-						<span class="prefix">{{ form.captcha.label }}</span>
-					</div>
-					<div class="small-8  columns {% if form.captcha.errors %}error{% endif %}">
-						{{ form.captcha }}
-						{% if form.captcha.errors %}<small class="error">{{ form.captcha.errors }}</small>{% endif %}
-					</div>
-				</div>
+				{% fi_field form.captcha %}
 				<button type="submit" class="button">Register!</button>
 				<p>Already have an account? <a href="{% url 'auth:login' %}">Login here &raquo;</a></p>
 			</form>
