@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load form_extras %}
 
 {% block header %}
 Contact Us
@@ -12,42 +13,10 @@ Contact Us
 				{% csrf_token %}
 				{{ form.username }}
 				{{ form.ip_address }}
-				<div class="row collapse">
-					<div class="small-2  columns">
-						<span class="prefix"><i class="fi-mail"></i></span>
-					</div>
-					<div class="small-10  columns {% if form.email.errors %}error{% endif %}">
-						{{ form.email }}
-						{% if form.email.errors %}<small class="error">{{ form.email.errors }}</small>{% endif %}
-					</div>
-				</div>
-				<div class="row collapse">
-					<div class="small-2  columns">
-						<span class="prefix"><i class="fi-flag"></i></span>
-					</div>
-					<div class="small-10  columns {% if form.reason.errors %}error{% endif %}">
-						{{ form.reason }}
-						{% if form.reason.errors %}<small class="error">{{ form.reason.errors }}</small>{% endif %}
-					</div>
-				</div>
-				<div class="row collapse">
-					<div class="small-2  columns">
-						<span class="prefix"><i class="fi-info"></i></span>
-					</div>
-					<div class="small-10  columns {% if form.subject.errors %}error{% endif %}">
-						{{ form.subject }}
-						{% if form.subject.errors %}<small class="error">{{ form.subject.errors }}</small>{% endif %}
-					</div>
-				</div>
-				<div class="row collapse">
-					<div class="small-2  columns">
-						<span class="prefix"><i class="fi-pencil"></i></span>
-					</div>
-					<div class="small-10  columns {% if form.message.errors %}error{% endif %}">
-						{{ form.message }}
-						{% if form.message.errors %}<small class="error">{{ form.message.errors }}</small>{% endif %}
-					</div>
-				</div>
+				{% fi_field form.email 'mail' %}
+				{% fi_field form.reason 'flag' %}
+				{% fi_field form.subject 'info' %}
+				{% fi_field form.message 'pencil' %}
 				<button type="submit" class="button">Send</button>
 			</form>
 		</div>
