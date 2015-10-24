@@ -15,10 +15,7 @@
 <div id="wrapper">
 	<header>
 		<div class="row">
-			<div class="large-6 columns">
-				{% block brand %}<h1>FairbanksNano</h1>{% endblock brand %}
-			</div>
-			<div class="large-6 columns">
+			<div class="small-12 medium-6 medium-push-6 columns">
 				{% block navbar %}
 				<ul class="inline-list right">
 					<li><a href="http://nanowrimo.org/" target="_blank">NaNoWriMo</a></li>
@@ -28,6 +25,9 @@
 				{% if user.is_authenticated %}
 				<div class="right" style="clear:both;">Welcome, {{ user.username }}!</div>
 				{% endif %}
+			</div>
+			<div class="small-12 medium-6 medium-pull-6 columns">
+				{% block brand %}<h1>FairbanksNano</h1>{% endblock brand %}
 			</div>
 		</div>
 	</header>
@@ -47,12 +47,7 @@
 		{% endif %}
 
 		<div class="row">
-			<div class="large-10 push-2 columns">
-				<h2>{% block header %}Home of the Writing Ravens{% endblock header %}</h2>
-				{% block content %}{% endblock content %}
-			</div>
-
-			<div class="large-2 pull-10 columns">
+			<div class="large-2 columns">
 				{% block sidebar %}
 				<ul class="side-nav">
 					<li><a href="{% url 'index' %}">Home</a></li>
@@ -69,6 +64,11 @@
 					<li><a href="{% url 'contact:contact' %}">Contact Us</a></li>
 				</ul>
 				{% endblock sidebar %}
+			</div>
+
+			<div class="large-10 columns">
+				<h2>{% block header %}Home of the Writing Ravens{% endblock header %}</h2>
+				{% block content %}{% endblock content %}
 			</div>
 		</div>
 	</div>
