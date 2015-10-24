@@ -13,6 +13,7 @@ contact_reasons = (
         ('other', 'Other'),
         )
 
+@captcha
 class ContactForm(PlaceholderForm):
     username = forms.CharField(widget=forms.HiddenInput, required=False)
     # ip_address = forms.GenericIPAddressField(widget=forms.HiddenInput)
