@@ -35,7 +35,7 @@ def login(request):
                     utils.login(request, user)
                     messages.success(request, 'Login successful')
 
-                    redirect_url = request.GET.get('next', 'index')
+                    redirect_url = request.GET.get('next', 'chat:index')
                     return redirect(redirect_url)
                 else:
                     messages.error(request, 'User is inactive')
