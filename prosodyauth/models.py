@@ -4,6 +4,7 @@ import uuid
 
 from django.conf import settings
 from django.db import models, connection
+from django.utils import timezone
 
 
 from prosodyauth import authenticate
@@ -192,6 +193,10 @@ class ConfirmationBase(models.Model):
     @property
     def expiration_date(self):
         return self.date_sent + timedelta(hours=self._expiration_hours)
+
+    @property
+    def is_valid(self):
+        return self.expiration_date >= timezone.now()
 
     class Meta:
         abstract = True
