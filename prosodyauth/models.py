@@ -13,6 +13,9 @@ from prosodyauth.prosody.parsejid import nodeprep
 
 # Create your models here.
 
+def getProsodyDomain():
+    return settings.PROSODY_DEFAULT_DOMAIN
+
 class Prosody(models.Model):
     """
     Prosody model
@@ -30,7 +33,7 @@ class Prosody(models.Model):
     in Django, and/or result in data loss.
     """
 
-    host = models.TextField(default=settings.PROSODY_DEFAULT_DOMAIN)
+    host = models.TextField(default=getProsodyDomain)
     user = models.TextField(db_index=True)
     store = models.TextField(db_index=True)
     key = models.TextField(db_index=True)
@@ -186,7 +189,7 @@ class ConfirmationBase(models.Model):
     """
     user = models.OneToOneField(User, primary_key=True)
     token = models.CharField(max_length=40, default=make_token)
-    date_sent = models.DateTimeField(auto_now=True)
+    date_sent = models.DateTimeField(default=timezone.now)
 
     _expiration_hours = 24
 
