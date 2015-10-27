@@ -1,4 +1,6 @@
 {% extends 'chat/index.html' %}
+{% load static %}
+{% load chat_extras %}
 
 {% block header %}
 How to Set Up Adium
@@ -12,8 +14,46 @@ client for Mac users.
 
 <h3>Setting up Adium</h3>
 <p>
-Coming soon; in the meantime, the documentation for
-<a href="{% url 'chat:pidgin' %}">Pidgin</a> should be a good &mdash; albeit
-rough &mdash; guideline for setting up your account.
+Once you have <a href="https://adium.im/" target="_blank">downloaded</a>
+and installed Adium, add a new account by opening the File menu, going to the
+Add Account sub-menu, and choosing {% prosody_proto %} (Jabber).
+</p>
+<div class="right" style="margin: 3px; margin-top: -5px;">
+	<img src="{% static 'img/adium_setup.png' %}" alt="Setup Adium" width="450" />
+</div>
+<p>
+To configure your account, set your options as so:
+<ol>
+	<li>Jabber ID: {{ user.username|default:"<em>Your username</em>" }}@{% prosody_domain %}</li>
+	<li>Password: <em>Your password</em></li>
+</ol>
+</p>
+<p>
+Under Personal, give yourself an alias; this only shows up to you, and
+identifies your own messages. I like to set it to "Me".
+</p>
+<p>
+Now click the OK button to finish and connect to the server.
+</p>
+<div class="right" style="margin: 3px; margin-top: -5px;">
+	<img src="{% static 'img/adium_cert.png' %}" alt="Adium certificate error" width="450" />
+</div>
+<p>
+You may see an error about an invalid certificate. This is fine; a "real"
+certificate costs a lot of money, so I'm currently using a "self-signed" one
+instead. Just click the Continue button to connect.
+</p>
+
+<h3>Joining the Conversation</h3>
+<p>
+The first time you sign in, <a href="{% url 'chat:annika' %}">Annika</a> will
+ask to be your friend. Annika is our chat bot, and has a growing number of
+useful talents. You should accept her request, and then ask her for help
+(simply say "help" in a chat window with her) to start learning what she can do
+to help your writing.
+</p>
+<p>
+You can also jump straight into the group chat by simply asking Annika to invite
+you (i.e. type "invite me" in a chat window with her).
 </p>
 {% endblock chatcontent %}
