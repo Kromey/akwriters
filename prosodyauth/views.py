@@ -11,7 +11,7 @@ from django.core.urlresolvers import reverse
 from django.http import Http404
 
 
-from prosodyauth.forms import LoginForm, RegistrationForm
+from prosodyauth.forms import LoginForm, RegistrationForm, ResendActivationForm
 from prosodyauth.prosody.backend import ProsodyBackend
 from prosodyauth import utils
 from prosodyauth.models import User, RegistrationConfirmation, Prosody
@@ -94,7 +94,16 @@ def register(request):
     return render(request, 'prosodyauth/register.html', {'form': form})
 
 def resend(request):
-    return render(request, 'prosodyauth/resend.html')
+    if request.method == 'POST':
+        form = ResendActivationForm(request.POST)
+        if form.is_valid():
+            messages.success(request, 'Valid form')
+        else:
+            messages.error(request, 'Invalid form')
+    else:
+        form = ResendActivationForm()
+
+    return render(request, 'prosodyauth/resend.html', {'form': form})
 
 def activate(request, token):
     activate = get_object_or_404(RegistrationConfirmation, token=token)

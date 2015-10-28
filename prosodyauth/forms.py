@@ -60,3 +60,6 @@ class RegistrationForm(LoginForm):
         elif password and not authenticate.password_is_compliant(password, cleaned_data.get('username')):
             self.add_error('password', ValidationError('Password does not meet requirements', code='invalid'))
 
+class ResendActivationForm(PlaceholderForm):
+    user = forms.CharField(label='username or email')
+

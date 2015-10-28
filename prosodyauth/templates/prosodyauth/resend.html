@@ -6,5 +6,16 @@ Resend Activation Email
 {% endblock header %}
 
 {% block content %}
-Not yet implemented...
+<div class="row">
+	<div class="large-6 columns">
+		<div class="signup-panel">
+			<form action="" method="post">
+				{% csrf_token %}
+				<p>Enter the username or email you signed up with:</p>
+				{% fi_field form.user 'torso-female' %}
+				<button type="submit" class="button">Resend Email</button>
+			</form>
+		</div>
+	</div>
+</div>
 {% endblock content %}
