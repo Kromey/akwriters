@@ -4,6 +4,7 @@ import binascii
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db import IntegrityError, transaction
+from django.db.models import Q
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
@@ -88,9 +89,18 @@ def resend(request):
     if request.method == 'POST':
         form = ResendActivationForm(request.POST)
         if form.is_valid():
-            messages.success(request, 'Valid form')
-        else:
-            messages.error(request, 'Invalid form')
+            try:
+                user = User.objects.get(
+                        Q(username__iexact=form.cleaned_data['user']) |
+                        Q(email__iexact=form.cleaned_data['user']))
+
+                _send_activation_email(request, user)
+
+                messages.success(request, 'Activation email has been resent')
+            except User.DoesNotExist:
+                messages.error(request, 'Could not find a matching user')
+            except RegistrationConfirmation.DoesNotExist:
+                messages.error(request, 'Account has already been activated')
     else:
         form = ResendActivationForm()
 
