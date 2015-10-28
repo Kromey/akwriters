@@ -93,6 +93,9 @@ def register(request):
 
     return render(request, 'prosodyauth/register.html', {'form': form})
 
+def resend(request):
+    return render(request, 'prosodyauth/resend.html')
+
 def activate(request, token):
     activate = get_object_or_404(RegistrationConfirmation, token=token)
     user = activate.user

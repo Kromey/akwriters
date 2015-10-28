@@ -29,6 +29,10 @@ Register on FairbanksNano
 				<button type="submit" class="button">Register!</button>
 				<p>Already have an account? <a href="{% url 'auth:login' %}">Login here &raquo;</a></p>
 			</form>
+			<p>
+				Didn't get your activation email?
+				<a href="{% url 'auth:resend' %}">Request another!</a>
+			</p>
 		</div>
 	</div>
 </div>
