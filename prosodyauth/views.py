@@ -67,16 +67,7 @@ def register(request):
                     confirmation.password = authenticate.salt_password(form.cleaned_data['password'], confirmation.token, confirmation.iterations)
                     confirmation.save()
 
-                    #Build the URL for account activation
-                    activation_url = request.build_absolute_uri(reverse('auth:activate', args=(confirmation.token,)))
-                    #Build the context for our email templates
-                    context = {'username': user.username, 'activation_url': activation_url}
-                    #Now parse our plaintext and HTMLy templates
-                    email_text = render_to_string('prosodyauth/email.txt', context)
-                    email_html = render_to_string('prosodyauth/email.html', context)
-
-                    #And, finally, send the email
-                    send_mail('Activate your account', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
+                    _send_activation_email(request, user)
 
                 messages.success(request, 'An activation email has been sent to your supplied email address')
                 return redirect('index')
@@ -127,4 +118,16 @@ def activate(request, token):
 
     #Now send the user over to our chat client instructions
     return redirect('chat:index')
+
+def _send_activation_email(request, user):
+    #Build the URL for account activation
+    activation_url = request.build_absolute_uri(reverse('auth:activate', args=(user.registrationconfirmation.token,)))
+    #Build the context for our email templates
+    context = {'username': user.username, 'activation_url': activation_url}
+    #Now parse our plaintext and HTMLy templates
+    email_text = render_to_string('prosodyauth/email.txt', context)
+    email_html = render_to_string('prosodyauth/email.html', context)
+
+    #And, finally, send the email
+    send_mail('Activate your account', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
 
