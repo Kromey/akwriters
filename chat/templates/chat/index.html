@@ -8,23 +8,27 @@ Join Our Chat Server!
 
 {% block content %}
 <ul class="inline-list">
+	<li><a href="#" onclick="launchCandy();"><i class="fi-page-copy"></i> In-Browser Chat</a></li>
 	<li><a href="{% url 'chat:pidgin' %}">Set Up Pidgin</a></li>
 	<li><a href="{% url 'chat:adium' %}">Set Up Adium</a></li>
 	<li><a href="{% url 'chat:annika' %}">Meet Annika</a></li>
-	<li><a href="#" onclick="launchCandy();return false;"><i class="fi-page-copy"></i> In-Browser Chat!</a></li>
 </ul>
 {% block chatcontent %}
 <p>
-You can log into the chat server using any client that supports the {% prosody_proto %}
-(aka "Jabber") protocol, such as Pidgin or Adium, with the username and
-password you selected, and the domain <em>{% prosody_domain %}</em>.
+To jump straight into the chat room, simply launch the In-Browser Chat app by
+clicking on the link above. To log in, your username is
+<em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
 </p>
 <p>
-Detailed setup instructions for our recommended chat programs &mdash; Pidgin on
-Windows and Linux, or Adium on Mac &mdash; can be found on the pages linked
-above. If you choose to use a different client, and it doesn't ask for the
-"domain" separately, it probably expects to see your username (aka ID, JID,
-etc.) in the form <em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
+You can also log into the chat server using any client that supports the
+{% prosody_proto %} (aka "Jabber") protocol, such as Pidgin or Adium, with the
+username and password you selected, and the domain <em>{% prosody_domain %}</em>.
+If you choose to go this route, detailed setup instructions for our recommended
+chat clients &mdash; Pidgin on Windows and Linux, or Adium on Mac &mdash; can be
+found on the pages linked above. If you choose to use a different client, and it
+doesn't ask for the "domain" separately, it probably expects to see your
+username (aka ID, JID, etc.) in the form
+<em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
 </p>
 {% endblock chatcontent %}
 <script type="text/javascript">
