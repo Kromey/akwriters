@@ -40,3 +40,8 @@ footer {
 	padding: 1.5em 1em;
 	text-align: center;
 }
+
+a.popup {
+	padding-left: 16px;
+	background: transparent url('/static/img/icon_popup.gif') no-repeat center left;
+}
