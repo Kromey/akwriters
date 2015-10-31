@@ -1,0 +1,59 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>FairbanksNano Chat</title>
+	<link rel="shortcut icon" href= "{% static 'candy/res/img/favicon.png" type="image/gif' %}" />
+	<link rel="stylesheet" type="text/css" href= "{% static 'candy/res/default.css' %}" />
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src= "{% static 'candy/js/libs.min.js' %}"></script>
+	<script type="text/javascript" src= "{% static 'candy/js/candy.min.js' %}"></script>
+	{% comment %}
+	<script type="text/javascript">
+		function configureLoginPanel()
+		{
+			$('#username').val('{{ user.username|default:"USERNAME" }}@fairbanksnano.org');
+
+			var header = document.createElement('div');
+			header.appendChild(document.createTextNode('FairbanksNano Chat'));
+			var modal = $('#chat-modal').get(0);
+			modal.insertBefore(header, modal.firstChild);
+
+			$('#password').focus();
+
+			$('#username').blur(function(event){
+				username = $('#username').val().split('@')[0];
+				$('#username').val(username + "@fairbanksnano.org");
+				return true;
+			});
+		}
+		$(Candy).on('candy:core.login', function(){ setTimeout(configureLoginPanel, 100); })
+	</script>
+	{% endcomment %}
+	<script type="text/javascript">
+		$(document).ready(function() {
+			Candy.init('/http-bind/', {
+				core: {
+					debug: false,
+					autojoin: ['nano@conf.fairbanksnano.org']
+				},
+				view: {
+					assets: '{% static "candy/res/" %}',
+					enableXHTML: true
+				}
+			});
+
+			Candy.Core.connect();
+
+			var header = document.createElement('div');
+			header.appendChild(document.createTextNode('FairbanksNano Chat'));
+			var modal = $('#chat-modal').get(0);
+			modal.insertBefore(header, modal.firstChild);
+		});
+	</script>
+</head>
+<body>
+	<div id="candy"></div>
+</body>
+</html>

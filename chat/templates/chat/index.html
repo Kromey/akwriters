@@ -11,6 +11,7 @@ Join Our Chat Server!
 	<li><a href="{% url 'chat:pidgin' %}">Set Up Pidgin</a></li>
 	<li><a href="{% url 'chat:adium' %}">Set Up Adium</a></li>
 	<li><a href="{% url 'chat:annika' %}">Meet Annika</a></li>
+	<li><a href="#" onclick="launchCandy();return false;"><i class="fi-page-copy"></i> In-Browser Chat!</a></li>
 </ul>
 {% block chatcontent %}
 <p>
@@ -26,4 +27,14 @@ above. If you choose to use a different client, and it doesn't ask for the
 etc.) in the form <em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
 </p>
 {% endblock chatcontent %}
+<script type="text/javascript">
+function launchCandy()
+{
+	newWin = window.open('{% url "chat:candy" %}', 'Candy', 'width=800,height=500');
+	if(!newWin || newWin.closed || typeof newWin.closed=='undefined')
+	{
+		alert("Your browser has blocked the pop-up. Please allow pop-ups for this site.");
+	}
+}
+</script>
 {% endblock content %}
