@@ -42,6 +42,8 @@ class Prosody(models.Model):
 
     # Custom managers
     objects = managers.ProsodyQuerySet.as_manager()
+    accounts = managers.ProsodyAccountsManager.from_queryset(managers.ProsodyQuerySet)()
+    roster = managers.ProsodyRosterManager.from_queryset(managers.ProsodyQuerySet)()
 
     def save(self, *args, **kwargs):
         #We need to set type correctly for Prosody to understand it

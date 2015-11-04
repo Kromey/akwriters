@@ -27,3 +27,11 @@ class ProsodyQuerySet(models.QuerySet):
 
         return super().get(**kwargs)
 
+class ProsodyAccountsManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(store='accounts')
+
+class ProsodyRosterManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(store='roster')
+
