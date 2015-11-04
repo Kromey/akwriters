@@ -64,22 +64,37 @@ class Prosody(models.Model):
 
     def save(self, *args, **kwargs):
         #We need to set type correctly for Prosody to understand it
-        if self.store == 'lastlog' and self.key == 'timestamp':
-            self.type = 'number'
-        elif self.store == 'accounts' and self.key == 'iteration_count':
-            self.type = 'number'
-        elif self.store == 'roster':
-            self.type = 'json'
-        elif self.key == 'persistence':
-            self.type = 'boolean'
-        else:
-            # Either use the model's default, or assume it's been set correctly
-            pass
+        self._set_type()
 
         #We also do some additional processing of username here
         self.user = nodeprep(self.user)
 
         super().save(*args, **kwargs)
+
+    def _set_type(self):
+        """Set the type field to ensure Prosody can understand the value.
+
+        Prosody relies on the type field in order to understand how to process
+        the value. To help ensure that whatever we do to Prosody's database is
+        usable by Prosody, we map some known store and store/key values to the
+        proper type value that Prosody expects to find there.
+
+        However, we do not guarantee that the mapping in here is exhaustive, so
+        we allow the type to be overridden (or simply fall back to the default)
+        in cases where we don't explicitly map type.
+        """
+        if self.store == 'lastlog' and self.key == 'timestamp':
+            self.type = 'number'
+        elif self.store == 'lastlog':
+            self.type = 'string'
+        elif self.store == 'accounts' and self.key == 'iteration_count':
+            self.type = 'number'
+        elif self.store == 'accounts':
+            self.type = 'string'
+        elif self.store == 'roster':
+            self.type = 'json'
+        elif self.key == 'persistence':
+            self.type = 'boolean'
 
     class Meta:
         #Prosody is hard-coded to use the prosody table, so that's what we use
