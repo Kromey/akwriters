@@ -7,7 +7,7 @@ from django.db import models, connection
 from django.utils import timezone
 
 
-from prosodyauth import authenticate
+from prosodyauth import authenticate, managers
 from prosodyauth.prosody.parsejid import nodeprep
 
 
@@ -39,6 +39,9 @@ class Prosody(models.Model):
     key = models.TextField(db_index=True)
     type = models.TextField(default='string')
     value = models.TextField()
+
+    # Custom managers
+    objects = managers.ProsodyManager()
 
     def save(self, *args, **kwargs):
         #We need to set type correctly for Prosody to understand it
