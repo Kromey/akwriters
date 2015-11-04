@@ -58,7 +58,7 @@ class Prosody(models.Model):
         elif self.type == 'json':
             return json.loads(self.value)
         elif self.type == 'boolean':
-            return self.type == "true"
+            return self.value == "true"
         else:
             raise AttributeError('Unknown type definition: {}'.format(self.type))
 
