@@ -41,7 +41,7 @@ class Prosody(models.Model):
     value = models.TextField()
 
     # Custom managers
-    objects = managers.ProsodyManager()
+    objects = managers.ProsodyQuerySet.as_manager()
 
     def save(self, *args, **kwargs):
         #We need to set type correctly for Prosody to understand it

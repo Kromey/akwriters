@@ -4,9 +4,9 @@ from django.db import models
 from prosodyauth.prosody import parsejid
 
 
-# Custom model managers
+# Custom model managers/querysets
 
-class ProsodyManager(models.Manager):
+class ProsodyQuerySet(models.QuerySet):
     def filter(self, **kwargs):
         try:
             user = parsejid.nodeprep(kwargs['user'])
