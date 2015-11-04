@@ -1,4 +1,6 @@
 from datetime import datetime, timedelta
+from decimal import Decimal
+import json
 import uuid
 
 
@@ -44,6 +46,21 @@ class Prosody(models.Model):
     objects = managers.ProsodyQuerySet.as_manager()
     accounts = managers.ProsodyAccountsManager.from_queryset(managers.ProsodyQuerySet)()
     roster = managers.ProsodyRosterManager.from_queryset(managers.ProsodyQuerySet)()
+
+    @property
+    def decoded(self):
+        if not self.type:
+            raise AttributeError('Cannot decode value without a type')
+        elif self.type == 'string':
+            return self.value
+        elif self.type == 'number':
+            return Decimal(self.value)
+        elif self.type == 'json':
+            return json.loads(self.value)
+        elif self.type == 'boolean':
+            return self.type == "true"
+        else:
+            raise AttributeError('Unknown type definition: {}'.format(self.type))
 
     def save(self, *args, **kwargs):
         #We need to set type correctly for Prosody to understand it
