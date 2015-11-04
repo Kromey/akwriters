@@ -62,6 +62,34 @@ class Prosody(models.Model):
         else:
             raise AttributeError('Unknown type definition: {}'.format(self.type))
 
+    def encode(self, value):
+        """Encode a native Python object into a string for Prosody's database.
+
+        This method uses the type field to assume the type of the object being
+        supplied, or more accurately to choose the correct method for encoding
+        the supplied value into a string for Prosody.
+
+        WARNING: This method REQUIRES that the store and key properties are
+        already set correctly in order for it to properly detect the type.
+
+        SIDE EFFECTS: This method may change the value of the type property, in
+        the same manner as the save() method maps it based on store and key.
+        """
+        self._set_type()
+
+        if self.type == 'boolean':
+            if value:
+                self.value = "true"
+            else:
+                self.value = "false"
+        elif self.type == 'json':
+            # Use a compact JSON encoding
+            self.value = json.dumps(value, separators=(',', ':'))
+        elif self.type == 'number' or self.type == 'string':
+            self.value = str(value)
+        else:
+            raise AttributeError('Unknown type definition: {}'.format(self.type))
+
     def save(self, *args, **kwargs):
         #We need to set type correctly for Prosody to understand it
         self._set_type()
