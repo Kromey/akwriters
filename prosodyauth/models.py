@@ -51,7 +51,8 @@ class Prosody(models.Model):
         elif self.key == 'persistence':
             self.type = 'boolean'
         else:
-            self.type = 'string'
+            # Either use the model's default, or assume it's been set correctly
+            pass
 
         #We also do some additional processing of username here
         self.user = nodeprep(self.user)
