@@ -115,6 +115,11 @@ MESSAGE_TAGS = {
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "htdocs/static"),
+)
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+STATIC_ROOT = '/var/www/fairbanksnano.org/static'
 
 #This should be the very last line, always, so we can override anything in
 #settings.py with site- or environment-specific values.
