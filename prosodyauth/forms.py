@@ -15,6 +15,19 @@ class LoginForm(PlaceholderForm):
     username = forms.CharField(min_length=3, max_length=30)
     password = fields.PassField(min_length=8)
 
+    def clean_username(self):
+        """Normalize the username field by stripping '@domain' part
+
+        Users may end up with their JID ('username@domain.tld') in their
+        browser's stored passwords, which then can obstruct their ability to
+        log into the website. This is easily remedied by simply stripping out
+        any '@domain.tld' attached to the username when logging in.
+        """
+        username = self.cleaned_data.get('username')
+
+        # Might be best to only strip out our XMPP domain, but this works too
+        return username.split('@')[0]
+
     def render_password(self, render_value=True):
         for field_name in self.fields:
             field = self.fields.get(field_name)
