@@ -2,6 +2,7 @@ import json
 
 
 from django.http import HttpResponse
+from django.utils.cache import add_never_cache_headers
 
 
 class ApiResponse(HttpResponse):
@@ -26,7 +27,11 @@ def apimethod(method):
     returns properly-encoded JSON."""
     def wrapper(*args, **kwargs):
         data = method(*args, **kwargs)
-        return ApiResponse(data)
+        response = ApiResponse(data)
+        # Ensure API responses are never cached
+        add_never_cache_headers(response)
+
+        return response
 
     return wrapper
 
