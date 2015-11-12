@@ -9,4 +9,7 @@ from .utils import apimethod
 class StatusView(View):
     @apimethod
     def get(self, request):
-        return {'status': 'The Website is UP! :)'}
+        return {
+                'web': 'UP', #Tautological: If we're responding, we're up
+                'xmpp': 'UNK', #TODO: Check if it's up
+                }
