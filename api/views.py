@@ -12,4 +12,5 @@ class StatusView(View):
         return {
                 'web': 'UP', #Tautological: If we're responding, we're up
                 'xmpp': 'UNK', #TODO: Check if it's up
+                'coffee': 'ERROR 418',
                 }
