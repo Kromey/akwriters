@@ -18,3 +18,15 @@ class ApiResponse(HttpResponse):
         jdata = json.dumps(data, separators=(',', ':'))
         super().__init__(jdata, content_type="application/json")
 
+def apimethod(method):
+    """Decorator for an API method to properly handle encoding API responses.
+
+    The decorated method is expected to return a Python object that can be
+    encoded into JSON; it will then be magically transformed into one that
+    returns properly-encoded JSON."""
+    def wrapper(*args, **kwargs):
+        data = method(*args, **kwargs)
+        return ApiResponse(data)
+
+    return wrapper
+
