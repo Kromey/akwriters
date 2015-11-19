@@ -26,7 +26,19 @@ def apimethod(method):
     encoded into JSON; it will then be magically transformed into one that
     returns properly-encoded JSON."""
     def wrapper(*args, **kwargs):
-        data = method(*args, **kwargs)
+        data = {
+                "meta": {
+                    "status": "OK",
+                    },
+                "response": {}
+                }
+
+        try:
+            data["response"] = method(*args, **kwargs)
+        except Exception as e:
+            data["meta"]["status"] = "ERR"
+            data["meta"]["error"] = str(e)
+
         response = ApiResponse(data)
         # Ensure API responses are never cached
         add_never_cache_headers(response)
