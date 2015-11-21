@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#####
+# Commands used later
+#####
+MAINT_MODE=`dirname $0`/maintenance_mode
+ECHO="echo -e"
+#####
+# End Commands
+#####
+
+#####
+# Text formatting escape sequences
+#####
+RESET='\e[0m'
+
+RED='\e[31m'
+BLUE='\e[34m'
+
+BOLD='\e[1m'
+DIM='\e[2m'
+#####
+# End Formatting
+#####
+
+# Make sure we're in a virtual environment
+# TODO: Provide an option to force install sans venv?
+if [ -z "$VIRTUAL_ENV" ] ; then
+	$ECHO "${RED}No virtual environment active, aborting.$RESET"
+	exit 1
+fi
+
+VENV=`basename $VIRTUAL_ENV`
+
+$ECHO
+$ECHO "Current virtual environment is $BLUE$BOLD$VENV$RESET"
+$ECHO "Is this the environment you want to deploy into?"
+read -e -p " Type the name of the environment to confirm: " input
+
+if [ "$input" != "$VENV" ] ; then
+	$ECHO "${RED}Aborting$RESET"
+	exit 2
+fi
+
+$ECHO
+$ECHO "Will continue with site deployment..."
