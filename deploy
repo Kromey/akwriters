@@ -37,6 +37,11 @@ if [ -z "$VIRTUAL_ENV" ] ; then
 	$ECHO "${RED}No virtual environment active, aborting.$RESET"
 	exit 1
 fi
+# Make sure we have a vassal.ini file/link
+if [ ! -e vassal.ini ] ; then
+	$ECHO "${RED}No vassal.ini found, aborting.$RESET"
+	exit 1
+fi
 
 VENV=`basename $VIRTUAL_ENV`
 
