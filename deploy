@@ -5,6 +5,13 @@
 #####
 MAINT_MODE=`dirname $0`/maintenance_mode
 ECHO="echo -e"
+GIT=/usr/bin/git
+TAIL=/usr/bin/tail
+TAC=/usr/bin/tac
+SLEEP=/bin/sleep
+# Rely on the venv to provide these on the path
+PIP=pip
+PYTHON=python
 #####
 # End Commands
 #####
@@ -43,4 +50,39 @@ if [ "$input" != "$VENV" ] ; then
 fi
 
 $ECHO
-$ECHO "Will continue with site deployment..."
+$ECHO "Starting maintenance mode..."
+$MAINT_MODE start
+# Let everything "settle"
+$SLEEP 2
+
+$ECHO "Updating repository..."
+$GIT fetch --all
+
+# Check that we're trying to update to a current tag
+TAGS=`$GIT tag | $TAIL -5`
+if [[ "$TAGS" =~ "$1" ]] ; then
+	# Check out tag
+	$GIT checkout --force $1
+
+	# pip requirements
+	$PIP install -r requirements.txt
+
+	# Django migrations
+	$PYTHON manage.py migrate
+
+	# Django collect static files
+	$PYTHON manage.py collectstatic
+
+	# Touch the vassal file to force uWSGI to reload the code
+
+fi
+
+# Let everything "settle"
+$SLEEP 2
+$ECHO "Ending maintenance mode..."
+$MAINT_MODE stop
+
+$ECHO
+$ECHO "$BLUE${BOLD}Deployment complete!$RESET"
+$ECHO
+
