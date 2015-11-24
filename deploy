@@ -42,6 +42,11 @@ if [ ! -e vassal.ini ] ; then
 	$ECHO "${RED}No vassal.ini found, aborting.$RESET"
 	exit 1
 fi
+# Make sure we were given a version to deploy
+if [ -z "$1" ] ; then
+	$ECHO "${RED}No version to deploy, aborting.$RESET"
+	exit 1
+fi
 
 VENV=`basename $VIRTUAL_ENV`
 
