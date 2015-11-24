@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="stylesheet" href="{% static 'foundation/css/foundation.min.css' %}" />
-<link rel="stylesheet" href="{% static 'foundation/css/foundation-icons.css' %}" />
-<link rel="stylesheet" href="{% static 'css/site.css' %}" />
+{#<link rel="stylesheet" href="{% static 'css/site.css' %}" />#}
 {% include 'favicons.html' %}
-<script type="text/javascript" src="{% static 'foundation/js/vendor/modernizr.js' %}"></script>
 <title>{% block title %}FairbanksNano Chat{% endblock %}</title>
 </head>
 
-<body onload="$(document).foundation();">
+<body>
 
 <div id="wrapper">
 	<header>
@@ -86,8 +83,5 @@
 	</footer>
 </div>
 
-<script type="text/javascript" src="{% static 'foundation/js/vendor/jquery.js' %}"></script>
-<script type="text/javascript" src="{% static 'foundation/js/vendor/fastclick.js' %}"></script>
-<script type="text/javascript" src="{% static 'foundation/js/foundation.min.js' %}"></script>
 </body>
 </html>
