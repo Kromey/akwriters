@@ -11,7 +11,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
-{#<link rel="stylesheet" href="{% static 'css/site.css' %}">#}
+<link rel="stylesheet" href="{% static 'css/site.css' %}">
 
 {% include 'favicons.html' %}
 
@@ -19,25 +19,7 @@
 
 <body>
 
-<div id="wrapper" class="container">
-	<header style="height: 70px;">
-		<div class="row">
-			<div class="col-sm-12 col-md-6 col-md-push-6">
-				{% block navbar %}
-				<ul class="list-inline pull-right">
-					<li><a href="https://www.facebook.com/groups/FairbanksNanowrimo" target="_blank">Facebook</a></li>
-				</ul>
-				{% endblock navbar %}
-				{% if user.is_authenticated %}
-				<div class="pull-right" style="clear:both;">Welcome, {{ user.username }}!</div>
-				{% endif %}
-			</div>
-			<div class="col-sm-12 col-md-6 col-md-pull-6">
-				
-			</div>
-		</div>
-	</header>
-
+<div class="container">
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -100,17 +82,17 @@
 			</div>
 		</div>
 	</div>
-
-	<footer>
-		&copy; 2015 FairbanksNano. Site by Travis Veazey
-		<a href="https://github.com/Kromey/fbxnano" target="_blank"><i class="fi-social-github"></i></a>.
-		Your use of this site and its associated services constitutes acceptance
-		of the
-		<a href="{% url 'policies:terms_of_service' %}">Terms of Service</a>
-		and
-		<a href="{% url 'policies:privacy' %}">Privacy and Cookie Policy</a>.
-	</footer>
 </div>
+
+<footer>
+	&copy; 2015 FairbanksNano. Site by Travis Veazey
+	<a href="https://github.com/Kromey/fbxnano" target="_blank"><i class="fi-social-github"></i></a>.
+	Your use of this site and its associated services constitutes acceptance
+	of the
+	<a href="{% url 'policies:terms_of_service' %}">Terms of Service</a>
+	and
+	<a href="{% url 'policies:privacy' %}">Privacy and Cookie Policy</a>.
+</footer>
 
 {# Bootstrap requires JQuery #}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

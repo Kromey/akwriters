@@ -7,10 +7,14 @@ header, footer {
 	background-color: #CCEEFF;
 }
 
-#wrapper {
+html {
 	min-height: 100%;
 	position: relative;
 	padding-bottom: 125px;
+}
+
+body {
+	padding-top: 70px;
 }
 
 #site_content {
