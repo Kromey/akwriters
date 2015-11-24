@@ -4,6 +4,9 @@
 # Ignore maintenance mode flag
 /htdocs/maintenance_mode
 
+# Ignore the vassal file/symlink
+/vassal.ini
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
