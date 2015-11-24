@@ -9,6 +9,7 @@ GIT=/usr/bin/git
 TAIL=/usr/bin/tail
 TAC=/usr/bin/tac
 SLEEP=/bin/sleep
+TOUCH=/usr/bin/touch
 # Rely on the venv to provide these on the path
 PIP=pip
 PYTHON=python
@@ -74,11 +75,11 @@ if [[ "$TAGS" =~ "$1" ]] ; then
 	$PYTHON manage.py collectstatic --noinput
 
 	# Touch the vassal file to force uWSGI to reload the code
-
+	$TOUCH vassal.ini
 fi
 
 # Let everything "settle"
-$SLEEP 2
+$SLEEP 3
 $ECHO "Ending maintenance mode..."
 $MAINT_MODE stop
 
