@@ -71,7 +71,7 @@ if [[ "$TAGS" =~ "$1" ]] ; then
 	$PYTHON manage.py migrate
 
 	# Django collect static files
-	$PYTHON manage.py collectstatic
+	$PYTHON manage.py collectstatic --noinput
 
 	# Touch the vassal file to force uWSGI to reload the code
 
