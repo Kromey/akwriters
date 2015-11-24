@@ -19,25 +19,59 @@
 
 <body>
 
-<div id="wrapper">
-	<header>
+<div id="wrapper" class="container">
+	<header style="height: 70px;">
 		<div class="row">
-			<div class="small-12 medium-6 medium-push-6 columns">
+			<div class="col-sm-12 col-md-6 col-md-push-6">
 				{% block navbar %}
-				<ul class="inline-list right">
-					<li><a href="http://nanowrimo.org/" target="_blank"><i class='fi-pencil'></i> NaNoWriMo</a></li>
-					<li><a href="https://www.facebook.com/groups/FairbanksNanowrimo" target="_blank"><i class='fi-social-facebook'></i> Facebook</a></li>
+				<ul class="list-inline pull-right">
+					<li><a href="https://www.facebook.com/groups/FairbanksNanowrimo" target="_blank">Facebook</a></li>
 				</ul>
 				{% endblock navbar %}
 				{% if user.is_authenticated %}
-				<div class="right" style="clear:both;">Welcome, {{ user.username }}!</div>
+				<div class="pull-right" style="clear:both;">Welcome, {{ user.username }}!</div>
 				{% endif %}
 			</div>
-			<div class="small-12 medium-6 medium-pull-6 columns">
-				{% block brand %}<h1>FairbanksNano</h1>{% endblock brand %}
+			<div class="col-sm-12 col-md-6 col-md-pull-6">
+				
 			</div>
 		</div>
 	</header>
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{% url 'index' %}">{% block brand %}FairbanksNano{% endblock brand %}</a>
+			</div>
+
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="{% url 'chat:index' %}">Chat</a></li>
+					{# <li><a href="/profiles">Profiles</a></li> #}
+					<li><a href="{% url 'events' %}">Events</a></li>
+					<li><a href="{% url 'contact:contact' %}">Contact Us</a></li>
+					<li><a href="{% url 'links' %}">Links</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="http://nanowrimo.org/" target="_blank">NaNoWriMo</a></li>
+					{% if user.is_authenticated %}
+					<li><a href="{% url 'auth:logout' %}">Logout</a></li>
+					{# <li><a href="{% url 'account_settings' %}">Account Settings</a></li> #}
+					{% else %}
+					<li><a href="{% url 'auth:login' %}">Login</a></li>
+					<li><a href="{% url 'auth:register' %}">Register</a></li>
+					{% endif %}
+				</ul>
+			</div>
+		</div>
+	</nav>
 
 	<div id="site_content">
 		{% if messages %}
@@ -54,25 +88,6 @@
 		{% endif %}
 
 		<div class="row">
-			<div class="small-3 medium-2 columns">
-				{% block sidebar %}
-				<ul class="side-nav">
-					<li><a href="{% url 'index' %}">Home</a></li>
-					{% if user.is_authenticated %}
-					<li><a href="{% url 'auth:logout' %}">Logout</a></li>
-					{# <li><a href="{% url 'account_settings' %}">Account Settings</a></li> #}
-					{% else %}
-					<li><a href="{% url 'auth:login' %}">Login</a></li>
-					<li><a href="{% url 'auth:register' %}">Register</a></li>
-					{% endif %}
-					<li><a href="{% url 'chat:index' %}">Chat</a></li>
-					{# <li><a href="/profiles">Profiles</a></li> #}
-					<li><a href="{% url 'events' %}">Events</a></li>
-					<li><a href="{% url 'contact:contact' %}">Contact Us</a></li>
-					<li><a href="{% url 'links' %}">Links</a></li>
-				</ul>
-				{% endblock sidebar %}
-			</div>
 
 			<div class="small-9 medium-10 columns">
 				<h2>{% block header %}Home of the Writing Ravens{% endblock header %}</h2>
