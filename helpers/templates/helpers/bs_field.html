@@ -1,8 +1,9 @@
+{% load frontend_extras %}
 <div class="form-group">
 	{% if icon %}
 		<label class="sr-only" for="{{ field.id_for_label }}">{{ field.label }}</label>
 		<div class="input-group">
-			<div class="input-group-addon"><span class="glyphicon glyphicon-{{ icon }}" aria-hidden="true"></span></div>
+			<div class="input-group-addon">{% glyphicon icon %}</div>
 			{{ widget }}
 			{% if field.errors %}<small class="error">{{ field.errors }}</small>{% endif %}
 		</div>
