@@ -78,7 +78,7 @@
 	<div id="site_content">
 		{% if messages %}
 		<div class="row">
-			<div class="large-12 columns">
+			<div class="col-xs-12">
 				{% for message in messages %}
 				<div data-alert class="alert-box {{ message.tags }} radius" tabindex="0" aria-live="assertive" role="dialogalert">
 					{{ message }}
@@ -90,8 +90,7 @@
 		{% endif %}
 
 		<div class="row">
-
-			<div class="small-9 medium-10 columns">
+			<div class="col-xs-10 col-xs-offset-1">
 				<h2>{% block header %}Home of the Writing Ravens{% endblock header %}</h2>
 				{% block content %}{% endblock content %}
 			</div>
