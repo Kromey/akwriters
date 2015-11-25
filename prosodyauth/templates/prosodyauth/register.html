@@ -11,8 +11,8 @@ Register on FairbanksNano
 		<div class="signup-panel">
 			<form action="" method="post">
 				{% csrf_token %}
-				{% fi_field form.username 'torso-female' %}
-				{% fi_field form.email 'mail' %}
+				{% bs_field form.username 'user' %}
+				{% bs_field form.email 'envelope' %}
 				<div class="row collapse">
 					<div class="small-12  columns">
 						Your password must:
@@ -23,9 +23,9 @@ Register on FairbanksNano
 						</ol>
 					</div>
 				</div>
-				{% fi_field form.password 'lock' %}
-				{% fi_field form.password_confirm 'lock' %}
-				{% fi_field form.captcha %}
+				{% bs_field form.password 'lock' %}
+				{% bs_field form.password_confirm 'lock' %}
+				{% bs_field form.captcha %}
 				<button type="submit" class="button">Register!</button>
 				<p>Already have an account? <a href="{% url 'auth:login' %}">Login here &raquo;</a></p>
 			</form>

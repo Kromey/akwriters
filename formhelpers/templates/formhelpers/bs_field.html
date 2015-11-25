@@ -1,0 +1,16 @@
+<div class="form-group">
+	{% if icon %}
+		<label class="sr-only" for="{{ field.id_for_label }}">{{ field.label }}</label>
+		<div class="input-group">
+			<div class="input-group-addon"><span class="glyphicon glyphicon-{{ icon }}" aria-hidden="true"></span></div>
+			{{ widget }}
+			{% if field.errors %}<small class="error">{{ field.errors }}</small>{% endif %}
+		</div>
+	{% else %}
+		<div class="input-group">
+			<label class="input-group-addon" for="{{ field.id_for_label }}">{{ field.label }}</label>
+			{{ widget }}
+			{% if field.errors %}<small class="error">{{ field.errors }}</small>{% endif %}
+		</div>
+	{% endif %}
+</div>

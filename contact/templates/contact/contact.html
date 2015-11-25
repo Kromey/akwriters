@@ -13,11 +13,11 @@ Contact Us
 				{% csrf_token %}
 				{{ form.username }}
 				{{ form.ip_address }}
-				{% fi_field form.email 'mail' %}
-				{% fi_field form.reason 'flag' %}
-				{% fi_field form.subject 'info' %}
-				{% fi_field form.message 'pencil' %}
-				{% fi_field form.captcha %}
+				{% bs_field form.email 'envelope' %}
+				{% bs_field form.reason 'tag' %}
+				{% bs_field form.subject 'info-sign' %}
+				{% bs_field form.message 'pencil' %}
+				{% bs_field form.captcha %}
 				<button type="submit" class="button">Send</button>
 			</form>
 		</div>
