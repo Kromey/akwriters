@@ -43,7 +43,7 @@ INSTALLED_APPS = (
     'api',
     'chat',
     'contact',
-    'formhelpers',
+    'helpers',
     'policies',
     'prosodyauth',
 )

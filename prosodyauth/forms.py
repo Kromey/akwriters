@@ -8,7 +8,7 @@ from prosodyauth.models import User
 from simplecaptcha import captcha
 
 
-from formhelpers.forms import PlaceholderForm
+from helpers.forms import PlaceholderForm
 
 
 class LoginForm(PlaceholderForm):

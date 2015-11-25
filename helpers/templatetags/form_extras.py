@@ -20,7 +20,7 @@ def fi_field(field, icon=None):
             'widget_width': widget_width,
             }
 
-    return render_to_string('formhelpers/fi_field.html', context)
+    return render_to_string('helpers/fi_field.html', context)
 
 @register.simple_tag
 def bs_field(field, icon=None):
@@ -43,5 +43,5 @@ def bs_field(field, icon=None):
             'widget_width': widget_width,
             }
 
-    return render_to_string('formhelpers/bs_field.html', context)
+    return render_to_string('helpers/bs_field.html', context)
 

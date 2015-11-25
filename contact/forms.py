@@ -2,7 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 
-from formhelpers.forms import PlaceholderForm
+from helpers.forms import PlaceholderForm
 from simplecaptcha import captcha
 
 
