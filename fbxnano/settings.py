@@ -104,11 +104,11 @@ THE_BOT = {
     'jid': 'annika@fairbanksnano.org',
 }
 
-# Override default message tags to fit with Foundation
+# Override default message tags to fit with Bootstrap
 from django.contrib.messages import constants as msg_constants
 MESSAGE_TAGS = {
-    msg_constants.ERROR: 'alert',
-    msg_constants.DEBUG: 'secondary',
+    msg_constants.ERROR: 'danger',
+    msg_constants.DEBUG: 'warning',
     }
 
 
