@@ -3,8 +3,10 @@ ul.errorlist {
 	list-style: none;
 }
 
-header, footer {
+nav.navbar.navbar-fixed-top, footer {
 	background-color: #CCEEFF;
+	background-image: none;
+	border-color: #BBDDEE;
 }
 
 html {
