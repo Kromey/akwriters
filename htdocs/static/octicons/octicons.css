@@ -15,7 +15,12 @@
 
 */
 .octicon, .mega-octicon {
-  font: normal normal normal 16px/1 octicons;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  font-size: 115%;
+  line-height: 1;
+  font-family: octicons;
   display: inline-block;
   text-decoration: none;
   text-rendering: auto;
