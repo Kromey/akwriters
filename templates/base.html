@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'octicons/octicons.css' %}">
 <link rel="stylesheet" href="{% static 'css/site.css' %}">
 
 {% include 'favicons.html' %}
@@ -86,7 +87,7 @@
 
 <footer>
 	&copy; 2015 FairbanksNano. Site by Travis Veazey
-	<a href="https://github.com/Kromey/fbxnano" target="_blank"><i class="fi-social-github"></i></a>.
+	<a href="https://github.com/Kromey/fbxnano" target="_blank"><span class="octicon octicon-mark-github" style="font-size: 11px;"></span></a>.
 	Your use of this site and its associated services constitutes acceptance
 	of the
 	<a href="{% url 'policies:terms_of_service' %}">Terms of Service</a>
