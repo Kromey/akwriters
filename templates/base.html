@@ -34,7 +34,18 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="{% url 'chat:index' %}">Chat</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="{% url 'chat:index' %}">General Instructions</a></li>
+						<li><a href="{% url 'chat:annika' %}">Meet Annika</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="#" onclick="launchCandy();">In-Browser Chat <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{% url 'chat:pidgin' %}">Set Up Pidgin</a></li>
+						<li><a href="{% url 'chat:adium' %}">Set Up Adium</a></li>
+					</ul>
+				</li>
 				{# <li><a href="/profiles">Profiles</a></li> #}
 				<li><a href="{% url 'events' %}">Events</a></li>
 				<li><a href="{% url 'contact:contact' %}">Contact Us</a></li>
@@ -99,5 +110,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 {# Bootstrap JS at bottom so that it doesn't block page loading #}
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+<script type="text/javascript">
+function launchCandy()
+{
+	newWin = window.open('{% url "chat:candy" %}', 'Candy', 'width=800,height=500');
+	if(!newWin || newWin.closed || typeof newWin.closed=='undefined')
+	{
+		alert("Your browser has blocked the pop-up. Please allow pop-ups for this site.");
+	}
+}
+</script>
 </body>
 </html>

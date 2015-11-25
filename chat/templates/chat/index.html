@@ -7,12 +7,6 @@ Join Our Chat Server!
 {% endblock header %}
 
 {% block content %}
-<ul class="inline-list">
-	<li><a href="#" onclick="launchCandy();" class="popup">In-Browser Chat</a></li>
-	<li><a href="{% url 'chat:pidgin' %}">Set Up Pidgin</a></li>
-	<li><a href="{% url 'chat:adium' %}">Set Up Adium</a></li>
-	<li><a href="{% url 'chat:annika' %}">Meet Annika</a></li>
-</ul>
 {% block chatcontent %}
 <p>
 To jump straight into the chat room, simply launch the In-Browser Chat app by
@@ -31,14 +25,4 @@ username (aka ID, JID, etc.) in the form
 <em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
 </p>
 {% endblock chatcontent %}
-<script type="text/javascript">
-function launchCandy()
-{
-	newWin = window.open('{% url "chat:candy" %}', 'Candy', 'width=800,height=500');
-	if(!newWin || newWin.closed || typeof newWin.closed=='undefined')
-	{
-		alert("Your browser has blocked the pop-up. Please allow pop-ups for this site.");
-	}
-}
-</script>
 {% endblock content %}
