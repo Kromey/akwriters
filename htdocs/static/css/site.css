@@ -31,3 +31,8 @@ footer {
 	padding: 1em;
 	text-align: center;
 }
+
+/* Override hard-coded Octicons font-size */
+span.octicon {
+	font-size: 115%;
+}
