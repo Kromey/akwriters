@@ -7,14 +7,16 @@ Login to FairbanksNano
 
 {% block content %}
 <div class="row">
-	<div class="col-lg-6">
+	<div class="col-md-6">
 		<form action="" method="post">
 			{% csrf_token %}
 			{% bs_field form.username 'user' %}
 			{% bs_field form.password 'lock' %}
-			<button type="submit" class="button">Login!</button>
-			<p>Need an account? <a href="{% url 'auth:register' %}">Register here &raquo;</a></p>
+			<button type="submit" class="btn btn-success">Login!</button>
 		</form>
+	</div>
+	<div class="col-md-6">
+		<p>Need an account? <a href="{% url 'auth:register' %}">Register here &raquo;</a></p>
 		<p>
 			Didn't get your activation email?
 			<a href="{% url 'auth:resend' %}">Request another!</a>

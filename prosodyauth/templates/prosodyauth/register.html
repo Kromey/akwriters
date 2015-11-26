@@ -7,33 +7,31 @@ Register on FairbanksNano
 
 {% block content %}
 <div class="row">
-	<div class="large-6 columns">
-		<div class="signup-panel">
-			<form action="" method="post">
-				{% csrf_token %}
-				{% bs_field form.username 'user' %}
-				{% bs_field form.email 'envelope' %}
-				<div class="row collapse">
-					<div class="small-12  columns">
-						Your password must:
-						<ol>
-							<li>Be at least 8 characters long</li>
-							<li>Contain at least 2 of: Upper-case letters, lower-case letters, numbers, or punctuation</li>
-							<li>Not contain your username</li>
-						</ol>
-					</div>
-				</div>
-				{% bs_field form.password 'lock' %}
-				{% bs_field form.password_confirm 'lock' %}
-				{% bs_field form.captcha %}
-				<button type="submit" class="button">Register!</button>
-				<p>Already have an account? <a href="{% url 'auth:login' %}">Login here &raquo;</a></p>
-			</form>
-			<p>
-				Didn't get your activation email?
-				<a href="{% url 'auth:resend' %}">Request another!</a>
-			</p>
-		</div>
+	<div class="col-md-6">
+		<form action="" method="post">
+			{% csrf_token %}
+			{% bs_field form.username 'user' %}
+			{% bs_field form.email 'envelope' %}
+			{% bs_field form.password 'lock' %}
+			<span id="password_help" class="help-block">
+				Your password must:
+				<ol>
+					<li>Be at least 8 characters long</li>
+					<li>Contain at least 2 of: Upper-case letters, lower-case letters, numbers, or punctuation</li>
+					<li>Not contain your username</li>
+				</ol>
+			</span>
+			{% bs_field form.password_confirm 'lock' %}
+			{% bs_field form.captcha %}
+			<button type="submit" class="btn btn-success">Register!</button>
+		</form>
+	</div>
+	<div class="col-md-6">
+		<p>Already have an account? <a href="{% url 'auth:login' %}">Login here &raquo;</a></p>
+		<p>
+		Didn't get your activation email?
+		<a href="{% url 'auth:resend' %}">Request another!</a>
+		</p>
 	</div>
 </div>
 {% endblock content %}
