@@ -24,8 +24,8 @@ Add Account sub-menu, and choosing {% prosody_proto %} (Jabber).
 <p>
 To configure your account, set your options as so:
 <ol>
-	<li>Jabber ID: {{ user.username|default:"<em>Your username</em>" }}@{% prosody_domain %}</li>
-	<li>Password: <em>Your password</em></li>
+	<li>Jabber ID: <span class="text-danger">{{ user.username|default:"<em>Your username</em>" }}</span>@{% prosody_domain %}</li>
+	<li>Password: <em class="text-danger">Your password</em></li>
 </ol>
 </p>
 <p>
