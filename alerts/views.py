@@ -4,6 +4,8 @@ from django.contrib import messages
 # Create your views here.
 
 def test(request):
+    messages.set_level(request, messages.DEBUG)
+
     messages.debug(request, 'This is a debug alert')
     messages.info(request, 'This is an info alert')
     messages.success(request, 'This is a success alert')
