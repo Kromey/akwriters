@@ -35,13 +35,13 @@
 					{% if message.level == DEFAULT_MESSAGE_LEVELS.DEBUG %}
 						{% octicon 'bug' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
-						{% glyphicon 'info-sign' %}
+						{% glyphicon 'comment' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-						{% glyphicon 'ok-sign' %}
+						{% glyphicon 'thumbs-up' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
-						{% glyphicon 'exclamation-sign' %}
+						{% glyphicon 'eye-open' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-						{% glyphicon 'alert' %}
+						{% glyphicon 'fire' %}
 					{% else %}
 						{% glyphicon 'question-sign' %}
 					{% endif %}
