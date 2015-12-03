@@ -33,7 +33,7 @@
 				{% for message in messages %}
 				<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
 					{% if message.level == DEFAULT_MESSAGE_LEVELS.DEBUG %}
-						{% glyphicon 'fire' %}
+						{% octicon 'bug' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
 						{% glyphicon 'info-sign' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
