@@ -33,15 +33,15 @@
 				{% for message in messages %}
 				<div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
 					{% if message.level == DEFAULT_MESSAGE_LEVELS.DEBUG %}
-						{% octicon 'bug' %}
+						{% octicon 'bug' 'Debug:' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
 						{% glyphicon 'comment' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-						{% glyphicon 'thumbs-up' %}
+						{% glyphicon 'thumbs-up' 'Success:' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
-						{% glyphicon 'eye-open' %}
+						{% glyphicon 'eye-open' 'Warning:' %}
 					{% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-						{% glyphicon 'fire' %}
+						{% glyphicon 'fire' 'ERROR:' %}
 					{% else %}
 						{% glyphicon 'question-sign' %}
 					{% endif %}
