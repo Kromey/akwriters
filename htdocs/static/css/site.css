@@ -19,6 +19,24 @@ body {
 	padding-top: 50px;
 }
 
+div#alert-container {
+	position: fixed;
+	right: 0px;
+	z-index: 1;
+	padding: 3px;
+}
+
+#alert-container .alert {
+	margin: 0;
+	position: relative;
+}
+
+#alert-container .alert-dismissible .close {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+}
+
 #site_content {
 	background-color: #FFFFFF;
 }
