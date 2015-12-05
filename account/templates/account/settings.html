@@ -10,10 +10,28 @@ Your Account <small>{{ user.username }}</small>
 {% endblock header %}
 
 {% block content %}
-<h3>Change Password</h3>
-{% bs_field passform.old_password 'lock' %}
-{% bs_field passform.new_password 'lock' %}
-{% bs_field passform.new_password_confirm 'lock' %}
-
-<h3>Change Email</h3>
+<div class="row">
+	<div class="col-sm-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Change Password</h3>
+			</div>
+			<div class="panel-body">
+				{% bs_field passform.old_password 'lock' %}
+				{% bs_field passform.new_password 'lock' %}
+				{% bs_field passform.new_password_confirm 'lock' %}
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Change Email</h3>
+			</div>
+			<div class="panel-body">
+				...coming soon?
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}
