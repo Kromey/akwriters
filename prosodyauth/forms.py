@@ -14,6 +14,7 @@ from helpers.forms import PlaceholderForm
 class LoginForm(PlaceholderForm):
     username = forms.CharField(min_length=3, max_length=30)
     password = fields.PassField(min_length=8)
+    next_url = forms.CharField(widget=forms.HiddenInput, required=False)
 
     def clean_username(self):
         """Normalize the username field by stripping '@domain' part
