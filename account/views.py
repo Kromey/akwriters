@@ -4,12 +4,11 @@ from django.utils.decorators import method_decorator
 
 
 from account.forms import PasswordChangeForm
-from prosodyauth.decorators import login_required
+from prosodyauth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-class AccountSettingsView(View):
-    @method_decorator(login_required)
+class AccountSettingsView(LoginRequiredMixin, View):
     def get(self, request):
         form = PasswordChangeForm()
 
