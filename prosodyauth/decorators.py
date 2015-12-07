@@ -14,7 +14,7 @@ def login_required(view_func):
 
         # Fell through, that means user was not authenticated
         messages.error(request, 'You must be logged in to access this page')
-        return login(request)
+        return login(request, request.path)
 
     return wrapped_view
 
