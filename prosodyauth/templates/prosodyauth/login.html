@@ -12,6 +12,7 @@ Login to FairbanksNano
 			{% csrf_token %}
 			{% bs_field form.username 'user' %}
 			{% bs_field form.password 'lock' %}
+			{{ form.next_url }}
 			<button type="submit" class="btn btn-success">Login!</button>
 		</form>
 	</div>

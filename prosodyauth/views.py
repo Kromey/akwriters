@@ -23,7 +23,7 @@ backend = ProsodyBackend()
 
 # Create your views here.
 
-def login(request):
+def login(request, next_url=None):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -36,14 +36,14 @@ def login(request):
                     utils.login(request, user)
                     messages.success(request, 'Login successful')
 
-                    redirect_url = request.GET.get('next', 'chat:index')
+                    redirect_url = form.cleaned_data['next_url'] or 'chat:index'
                     return redirect(redirect_url)
                 else:
                     messages.error(request, 'User is inactive')
             else:
                 messages.error(request, 'Invalid credentials')
     else:
-        form = LoginForm()
+        form = LoginForm(initial={'next_url': next_url})
 
     return render(request, 'prosodyauth/login.html', {'form': form})
 
