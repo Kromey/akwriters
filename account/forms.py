@@ -14,13 +14,6 @@ class PasswordChangeForm(PlaceholderForm):
     new_password_confirm = fields.PassField(label='confirm password')
     username = forms.CharField(widget=forms.HiddenInput, required=False)
 
-    def render_password(self, render_value=True):
-        for field_name in self.fields:
-            field = self.fields.get(field_name)
-            if field:
-                if type(field.widget) == forms.PasswordInput:
-                    field.widget.render_value = render_value
-
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('new_password')
