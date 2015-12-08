@@ -27,11 +27,26 @@ class ProsodyQuerySet(models.QuerySet):
 
         return super().get(**kwargs)
 
-class ProsodyAccountsManager(models.Manager):
+class ProsodyStoreBase(models.Manager):
+    """Base class for Managers intended to access a Prosody store
+
+    By overriding self.prosody_store, child classes of this one can easily
+    implement custom access to a Prosody data store without having to fuss with
+    any of the particulars.
+    """
+    prosody_store = None
+
     def get_queryset(self):
-        return super().get_queryset().filter(store='accounts')
+        return super().get_queryset().filter(store=self.prosody_store)
+
+    def update_or_create(self, *args, **kwargs):
+        return super().update_or_create(store=self.prosody_store, *args, **kwargs)
+
+class ProsodyAccountsManager(ProsodyStoreBase):
+    """Custom Manager to access the Prosody 'accounts' data store"""
+    prosody_store = 'accounts'
 
 class ProsodyRosterManager(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(store='roster')
+    """Custom Manager to access the Prosody 'roster' data store"""
+    prosody_store = 'roster'
 
