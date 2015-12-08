@@ -6,6 +6,9 @@ from django.contrib import messages
 
 from account.forms import PasswordChangeForm
 from prosodyauth.mixins import LoginRequiredMixin
+from prosodyauth.models import Prosody
+from prosodyauth import authenticate
+
 
 # Create your views here.
 
@@ -29,7 +32,20 @@ class AccountSettingsView(LoginRequiredMixin, View):
 
         messages.debug(request, post_data)
         if form.is_valid():
-            messages.warning(request, 'You have entered a valid password, but I didn\'t check if it was correct!')
+            # Verify that it is this user's password
+            account_store = Prosody.accounts.filter(user=request.user.username)
+            account_data = dict()
+            for item in account_store:
+                account_data[item.key] = item.value
+
+            # "Fix" the key that doesn't match our kwargs later
+            account_data['iterations'] = account_data['iteration_count']
+            del account_data['iteration_count']
+
+            if authenticate.verify_password(password=form.cleaned_data['old_password'], **account_data):
+                messages.success(request, 'Hooray! You entered your password!')
+            else:
+                messages.error(request, 'Boo! Hiss! Wrong password!')
 
         self._pass_form_data = post_data
 
