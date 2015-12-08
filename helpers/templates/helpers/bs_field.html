@@ -5,10 +5,8 @@
 	<div class="input-group">
 		{% if icon %}
 			<div class="input-group-addon">{% glyphicon icon %}</div>
-			<label class="input-group-addon sr-only" for="{{ field.id_for_label }}">{{ field.label }}</label>
-		{% else %}
-			<label class="input-group-addon" for="{{ field.id_for_label }}">{{ field.label }}</label>
 		{% endif %}
+		<label class="input-group-addon{% if icon %} sr-only{% endif %}" for="{{ field.id_for_label }}">{{ field.label }}</label>
 		{{ widget }}
 	</div>
 	{% if field.errors %}<span class="help-block">{{ field.errors }}</span>{% endif %}
