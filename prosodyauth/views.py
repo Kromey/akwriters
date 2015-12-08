@@ -111,8 +111,13 @@ def activate(request, token):
     user = activate.user
 
     with transaction.atomic():
+        # Activate the user
         user.is_active = True
-        user.set_password(salted_pass=activate.password, salt=activate.token, iterations=activate.iterations)
+        # Set their password and password data
+        user.password = activate.password
+        user.salt = activate.salt
+        user.iterations = activate.iterations
+        # Save it all
         user.save()
 
         #Now let's add the bot to the user's roster
