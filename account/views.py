@@ -43,9 +43,16 @@ class AccountSettingsView(LoginRequiredMixin, View):
             del account_data['iteration_count']
 
             if authenticate.verify_password(password=form.cleaned_data['old_password'], **account_data):
-                messages.success(request, 'Hooray! You entered your password!')
+                # Everything checks out, change the user's password
+                user = request.user
+
+                # A new salt will be generated and the password hashed
+                user.password = form.cleaned_data['new_password']
+                user.save()
+
+                messages.success(request, 'Your password has been changed.')
             else:
-                messages.error(request, 'Boo! Hiss! Wrong password!')
+                messages.error(request, 'You did not enter your correct password.')
 
         self._pass_form_data = post_data
 
