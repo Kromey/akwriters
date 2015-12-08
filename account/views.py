@@ -27,7 +27,7 @@ class AccountSettingsView(LoginRequiredMixin, View):
         else:
             messages.error(request, 'You have incorrectly entered a password')
 
-        self._pass_form_data = request.POST
+        self._pass_form_data = post_data
         return self._render_settings(request)
 
     def _render_settings(self, request):
