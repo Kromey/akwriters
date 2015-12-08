@@ -10,6 +10,8 @@ from prosodyauth.mixins import LoginRequiredMixin
 # Create your views here.
 
 class AccountSettingsView(LoginRequiredMixin, View):
+    _pass_form_data = None
+
     def get(self, request):
         return self._render_settings(request)
 
@@ -25,9 +27,10 @@ class AccountSettingsView(LoginRequiredMixin, View):
         else:
             messages.error(request, 'You have incorrectly entered a password')
 
+        self._pass_form_data = request.POST
         return self._render_settings(request)
 
     def _render_settings(self, request):
-        form = PasswordChangeForm()
+        form = PasswordChangeForm(self._pass_form_data)
 
         return render(request, 'account/settings.html', {'passform': form})
