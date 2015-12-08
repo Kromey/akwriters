@@ -16,6 +16,12 @@ class AccountSettingsView(LoginRequiredMixin, View):
         return self._render_settings(request)
 
     def post(self, request):
+        # TODO: Will need some kind of switch to determine what we're doing
+        self._change_password(request)
+
+        return self._render_settings(request)
+
+    def _change_password(self, request):
         # Ensure the logged-in user's username is here; needed for validation
         post_data = request.POST.copy()
         post_data['username'] = request.user.username
@@ -23,12 +29,9 @@ class AccountSettingsView(LoginRequiredMixin, View):
 
         messages.debug(request, post_data)
         if form.is_valid():
-            messages.success(request, 'You have correctly entered a password')
-        else:
-            messages.error(request, 'You have incorrectly entered a password')
+            messages.warning(request, 'You have entered a valid password, but I didn\'t check if it was correct!')
 
         self._pass_form_data = post_data
-        return self._render_settings(request)
 
     def _render_settings(self, request):
         form = PasswordChangeForm(self._pass_form_data)
