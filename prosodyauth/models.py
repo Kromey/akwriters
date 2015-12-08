@@ -150,6 +150,11 @@ class User(models.Model):
     date_joined = models.DateTimeField(auto_now_add=True)
     timezone = models.CharField(max_length=30, null=True)
 
+    # Pseudo-fields to enable model-esque behavior for setting the password
+    password = None
+    salt = None
+    iterations = settings.SCRAM_ITERATIONS
+
     _lastlog_data = None
 
     @property
@@ -194,25 +199,42 @@ class User(models.Model):
         #This is not an anonymous user
         return False
 
-    def set_password(self, password=None, salt=None, salted_pass=None, iterations=settings.SCRAM_ITERATIONS):
-        if salted_pass is None:
-            if salt is None:
+    def save(self, *args, **kwargs):
+        """Save the User, conditionally also saving the password.
+
+        The password is stored separately in Prosody's database table, and we
+        have to conform to its conventions if we expect users to be able to log
+        in. If self.password is supplied, we will update said password; if
+        self.salt is also supplied, we assume it's already salted, otherwise we
+        produce some random salt and then salt the password ourselves. The
+        iteration count for the SCRAM digest is specified via self.iterations,
+        and defaults to settings.SCARM_ITERATIONS.
+        """
+        super().save(*args, **kwargs)
+
+        if self.password is not None:
+            if self.salt is None:
                 #No salt provided, make some
-                salt = authenticate.make_salt()
+                self.salt = authenticate.make_salt()
 
-            #Salt the password
-            salted_pass = authenticate.salt_password(password, salt, iterations)
+                #Salt the password
+                self.password = authenticate.salt_password(self.password, self.salt, self.iterations)
 
-        #Generate our keys
-        #I believe the standard only requires us to store one of these, but
-        # Prosody stores both and I don't know why -- so we will too.
-        stored_key, server_key = authenticate.compute_keys(salted_pass)
+            #Generate our keys
+            #I believe the standard only requires us to store one of these, but
+            # Prosody stores both and I don't know why -- so we will too.
+            stored_key, server_key = authenticate.compute_keys(self.password)
 
-        #And now we get to stash all of our values into Prosody's table
-        Prosody.accounts.update_or_create(user=self.username, key='iteration_count', defaults={'value': iterations})
-        Prosody.accounts.update_or_create(user=self.username, key='salt', defaults={'value': salt})
-        Prosody.accounts.update_or_create(user=self.username, key='stored_key', defaults={'value': stored_key})
-        Prosody.accounts.update_or_create(user=self.username, key='server_key', defaults={'value': server_key})
+            #And now we get to stash all of our values into Prosody's table
+            Prosody.accounts.update_or_create(user=self.username, key='iteration_count', defaults={'value': self.iterations})
+            Prosody.accounts.update_or_create(user=self.username, key='salt', defaults={'value': self.salt})
+            Prosody.accounts.update_or_create(user=self.username, key='stored_key', defaults={'value': stored_key})
+            Prosody.accounts.update_or_create(user=self.username, key='server_key', defaults={'value': server_key})
+
+            # We're done, blank out everything
+            self.password = None
+            self.salt = None
+            self.iterations = settings.SCRAM_ITERATIONS
 
     def __str__(self):
         return self.username
