@@ -12,7 +12,7 @@ class PasswordChangeForm(PlaceholderForm):
     old_password = fields.PassField(min_length=8, label='current password')
     new_password = fields.PassField(min_length=8, label='new password')
     new_password_confirm = fields.PassField(label='confirm password')
-    username = forms.CharField(widget=forms.HiddenInput, required=False)
+    username = forms.CharField(widget=forms.HiddenInput)
 
     def clean(self):
         cleaned_data = super().clean()
