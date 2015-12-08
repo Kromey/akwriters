@@ -30,7 +30,6 @@ class AccountSettingsView(LoginRequiredMixin, View):
         post_data['username'] = request.user.username
         form = PasswordChangeForm(post_data)
 
-        messages.debug(request, post_data)
         if form.is_valid():
             # Verify that it is this user's password
             account_store = Prosody.accounts.filter(user=request.user.username)
