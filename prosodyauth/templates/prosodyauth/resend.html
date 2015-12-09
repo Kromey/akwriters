@@ -9,13 +9,19 @@ Resend Activation Email
 <div class="row">
 	<div class="large-6 columns">
 		<div class="signup-panel">
-			<form action="" method="post">
-				{% csrf_token %}
-				<p>Enter the username or email you signed up with:</p>
-				{% fi_field form.user 'torso-female' %}
-				<button type="submit" class="button">Resend Email</button>
-			</form>
 		</div>
+	</div>
+	<div class="col-md-6">
+		<form action="{% url 'auth:resend' %}" method="post">
+			{% csrf_token %}
+			<p>Enter the username or email you signed up with:</p>
+			{% bs_field form.user 'user' %}
+			<button type="submit" class="btn btn-success">Resend Email</button>
+		</form>
+	</div>
+	<div class="col-md-6">
+		<p>Need an account? <a href="{% url 'auth:register' %}">Register here &raquo;</a></p>
+		<p>Already activated? <a href="{% url 'auth:login' %}">Login here &raquo;</a></p>
 	</div>
 </div>
 {% endblock content %}
