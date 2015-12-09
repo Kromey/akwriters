@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 
 
-from account.forms import PasswordChangeForm
+from account.forms import PasswordChangeForm, EmailChangeForm
 from prosodyauth.mixins import LoginRequiredMixin
 from prosodyauth.models import Prosody
 from prosodyauth import authenticate
@@ -14,6 +14,7 @@ from prosodyauth import authenticate
 
 class AccountSettingsView(LoginRequiredMixin, View):
     _pass_form = None
+    _email_form = None
 
     def get(self, request):
         return self._render_settings(request)
@@ -21,6 +22,8 @@ class AccountSettingsView(LoginRequiredMixin, View):
     def post(self, request):
         if request.GET['panel'] == 'password':
             self._change_password(request)
+        elif request.GET['panel'] == 'email':
+            self._change_email(request)
         else:
             messages.error(request, 'Invalid submission, please try again.')
 
@@ -55,7 +58,21 @@ class AccountSettingsView(LoginRequiredMixin, View):
 
         self._pass_form = form
 
-    def _render_settings(self, request):
-        form = self._pass_form or PasswordChangeForm()
+    def _change_email(self, request):
+        form = EmailChangeForm(request.POST)
 
-        return render(request, 'account/settings.html', {'passform': form})
+        if form.is_valid():
+            messages.success(request, 'Valid form')
+
+        self._email_form = form
+
+    def _render_settings(self, request):
+        pass_form = self._pass_form or PasswordChangeForm()
+        email_form = self._email_form or EmailChangeForm()
+
+        context = {
+                'pass_form': pass_form,
+                'email_form': email_form,
+                }
+
+        return render(request, 'account/settings.html', context)

@@ -31,3 +31,13 @@ class PasswordChangeForm(PlaceholderForm):
         elif password and not authenticate.password_is_compliant(password, self._username):
             self.add_error('new_password', ValidationError('Password does not meet requirements', code='invalid'))
 
+class EmailChangeForm(PlaceholderForm):
+    email = forms.EmailField(label='new email address')
+    email_confirm = forms.EmailField(label='confirm email address')
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        if cleaned_data.get('email') != cleaned_data.get('email_confirm'):
+            self.add_error('email_confirm', ValidationError('Emails do not match', code='invalid'))
+
