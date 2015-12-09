@@ -13,7 +13,7 @@ from prosodyauth import authenticate
 # Create your views here.
 
 class AccountSettingsView(LoginRequiredMixin, View):
-    _pass_form_data = None
+    _pass_form = None
 
     def get(self, request):
         return self._render_settings(request)
@@ -25,12 +25,10 @@ class AccountSettingsView(LoginRequiredMixin, View):
         return self._render_settings(request)
 
     def _change_password(self, request):
-        # Ensure the logged-in user's username is here; needed for validation
-        post_data = request.POST.copy()
-        post_data['username'] = request.user.username
-        form = PasswordChangeForm(post_data)
+        form = PasswordChangeForm(request.POST)
 
-        if form.is_valid():
+        # Validate the form, remembering to supply the user's username
+        if form.is_valid(request.user.username):
             # Verify that it is this user's password
             account_store = Prosody.accounts.filter(user=request.user.username)
             account_data = dict()
@@ -53,9 +51,9 @@ class AccountSettingsView(LoginRequiredMixin, View):
             else:
                 messages.error(request, 'You did not enter your correct password.')
 
-        self._pass_form_data = post_data
+        self._pass_form = form
 
     def _render_settings(self, request):
-        form = PasswordChangeForm(self._pass_form_data)
+        form = self._pass_form or PasswordChangeForm()
 
         return render(request, 'account/settings.html', {'passform': form})

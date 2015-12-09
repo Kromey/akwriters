@@ -12,7 +12,14 @@ class PasswordChangeForm(PlaceholderForm):
     old_password = fields.PassField(min_length=8, label='current password')
     new_password = fields.PassField(min_length=8, label='new password')
     new_password_confirm = fields.PassField(label='confirm password')
-    username = forms.CharField(widget=forms.HiddenInput)
+
+    # Used for validation
+    _username = None
+
+    def is_valid(self, username, *args, **kwargs):
+        """Validation of this form requires the user's username be supplied."""
+        self._username = username
+        super().is_valid(*args, **kwargs)
 
     def clean(self):
         cleaned_data = super().clean()
@@ -21,6 +28,6 @@ class PasswordChangeForm(PlaceholderForm):
 
         if password and password != confirm:
             self.add_error('new_password_confirm', ValidationError('Confirmation must match password', code='invalid'))
-        elif password and not authenticate.password_is_compliant(password, cleaned_data.get('username')):
+        elif password and not authenticate.password_is_compliant(password, self._username):
             self.add_error('new_password', ValidationError('Password does not meet requirements', code='invalid'))
 
