@@ -17,7 +17,7 @@ Your Account <small>{{ user.username }}</small>
 				<h3 class="panel-title">Change Password</h3>
 			</div>
 			<div class="panel-body">
-				<form action="{% url 'account:settings' %}" method="post">
+				<form action="{% url 'account:settings' %}?panel=password" method="post">
 					{% csrf_token %}
 					{% bs_field passform.old_password 'lock' %}
 					{% bs_field passform.new_password 'lock' %}

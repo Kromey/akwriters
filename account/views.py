@@ -19,8 +19,10 @@ class AccountSettingsView(LoginRequiredMixin, View):
         return self._render_settings(request)
 
     def post(self, request):
-        # TODO: Will need some kind of switch to determine what we're doing
-        self._change_password(request)
+        if request.GET['panel'] == 'password':
+            self._change_password(request)
+        else:
+            messages.error(request, 'Invalid submission, please try again.')
 
         return self._render_settings(request)
 
