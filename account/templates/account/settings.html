@@ -12,41 +12,10 @@ Your Account <small>{{ user.username }}</small>
 {% block content %}
 <div class="row">
 	<div class="col-sm-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Change Password</h3>
-			</div>
-			<div class="panel-body">
-				<form action="{% url 'account:settings' %}?panel=password" method="post">
-					{% csrf_token %}
-					{% bs_field pass_form.old_password 'lock' %}
-					{% bs_field pass_form.new_password 'lock' %}
-					{% bs_field pass_form.new_password_confirm 'lock' %}
-					<button type="submit" class="btn btn-success pull-right">Change Password</button>
-				</form>
-			</div>
-		</div>
+		{% include 'account/panel-password.html' %}
 	</div>
 	<div class="col-sm-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Change Email</h3>
-			</div>
-			<div class="panel-body">
-				<form action="{% url 'account:settings' %}?panel=email" method="post">
-					{% csrf_token %}
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon">Current:</span>
-							<input type="text" class="form-control" disabled readonly value="{{ user.email }}">
-						</div>
-					</div>
-					{% bs_field email_form.email 'envelope' %}
-					{% bs_field email_form.email_confirm 'envelope' %}
-					<button type="submit" class="btn btn-success pull-right">Change Email</button>
-				</form>
-			</div>
-		</div>
+		{% include 'account/panel-email.html' %}
 	</div>
 </div>
 {% endblock content %}
