@@ -62,7 +62,9 @@ class AccountSettingsView(LoginRequiredMixin, View):
         form = EmailChangeForm(request.POST)
 
         if form.is_valid():
-            messages.success(request, 'Valid form')
+            # TODO: Send confirmation to old address, validation email to new
+            request.user.email = form.cleaned_data['email']
+            messages.success(request, 'Your email address has been updated')
 
         self._email_form = form
 
