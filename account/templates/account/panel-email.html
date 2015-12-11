@@ -1,0 +1,19 @@
+{% extends 'panel-base.html' %}
+{% load form_extras %}
+
+{% block paneltitle %}Change Email{% endblock %}
+
+{% block panelbody %}
+<form action="{% url 'account:settings' %}?panel=email" method="post">
+	{% csrf_token %}
+	<div class="form-group">
+		<div class="input-group">
+			<span class="input-group-addon">Current:</span>
+			<input type="text" class="form-control" disabled readonly value="{{ user.email }}">
+		</div>
+	</div>
+	{% bs_field email_form.email 'envelope' %}
+	{% bs_field email_form.email_confirm 'envelope' %}
+	<button type="submit" class="btn btn-success pull-right">Change Email</button>
+</form>
+{% endblock %}
