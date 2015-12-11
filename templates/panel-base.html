@@ -1,0 +1,9 @@
+{# Base template for a generic Bootstrap panel with heading and body blocks #}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">{% block paneltitle %}{% endblock %}</h3>
+	</div>
+	<div class="panel-body">
+		{% block panelbody %}{% endblock %}
+	</div>
+</div>
