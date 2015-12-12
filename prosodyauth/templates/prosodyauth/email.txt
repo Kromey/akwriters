@@ -1,6 +1,6 @@
 Hi {{ username }},
 
-Thank you for registering on FairbanksNano.org!
+Thank you for registering on Alaska Writers!
 
 Just one more step: Visit this address to activate your account:
 {{ activation_url }}

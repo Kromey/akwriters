@@ -95,7 +95,7 @@ USE_TZ = True
 
 # Custom settings
 PROSODY_DEFAULT_DOMAIN = 'fairbanksnano.org'
-EMAIL_SENDER = 'FairbanksNano <prosody@fairbanksnano.org>'
+EMAIL_SENDER = 'Alaska Writers <prosody@fairbanksnano.org>'
 
 #Number of iterations for SCRAM password hashing
 SCRAM_ITERATIONS = 8192

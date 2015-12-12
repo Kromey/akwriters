@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>FairbanksNano Chat</title>
+	<title>Alaska Writers Chat</title>
 	<link rel="shortcut icon" href= "{% static 'candy/res/img/favicon.png' %}" type="image/gif" />
 	<link rel="stylesheet" type="text/css" href= "{% static 'candy/res/default.css' %}" />
 
@@ -17,7 +17,7 @@
 			$('#username').val('{{ user.username|default:"USERNAME" }}@fairbanksnano.org');
 
 			var header = document.createElement('div');
-			header.appendChild(document.createTextNode('FairbanksNano Chat'));
+			header.appendChild(document.createTextNode('Alaska Writers Chat'));
 			var modal = $('#chat-modal').get(0);
 			modal.insertBefore(header, modal.firstChild);
 
@@ -49,7 +49,7 @@
 
 			//Add a customized header to the Candy login window
 			var header = document.createElement('div');
-			header.appendChild(document.createTextNode('FairbanksNano Chat'));
+			header.appendChild(document.createTextNode('Alaska Writers Chat'));
 			var modal = $('#chat-modal').get(0);
 			modal.insertBefore(header, modal.firstChild);
 
