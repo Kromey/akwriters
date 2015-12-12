@@ -10,6 +10,10 @@ def prosody_domain():
     return settings.PROSODY_DEFAULT_DOMAIN
 
 @register.simple_tag
+def chat_domain():
+    return prosody_domain()
+
+@register.simple_tag
 def prosody_proto():
     # Shift it upward a bit so it sits on the same line as the text
     style = 'margin-top: -4px; margin-right: 2px;'
