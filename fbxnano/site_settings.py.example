@@ -21,7 +21,7 @@ SECRET_KEY = ''
 #CONTACT_EMAIL = 'you@example.com'
 
 # Dev domain
-PROSODY_DEFAULT_DOMAIN = 'dev.fairbanksnano.org'
+PROSODY_DEFAULT_DOMAIN = 'dev.akwriters.org'
 
 # Database configuration
 #DATABASES = {

@@ -24,7 +24,7 @@ DEBUG = False
 
 TEMPLATE_DEBUG = False
 
-ALLOWED_HOSTS = ['fairbanksnano.org']
+ALLOWED_HOSTS = ['akwriters.org']
 
 
 # Project templates
@@ -94,8 +94,8 @@ USE_TZ = True
 
 
 # Custom settings
-PROSODY_DEFAULT_DOMAIN = 'fairbanksnano.org'
-EMAIL_SENDER = 'Alaska Writers <prosody@fairbanksnano.org>'
+PROSODY_DEFAULT_DOMAIN = 'akwriters.org'
+EMAIL_SENDER = 'Alaska Writers <prosody@akwriters.org>'
 
 #Number of iterations for SCRAM password hashing
 SCRAM_ITERATIONS = 8192
@@ -103,7 +103,7 @@ SCRAM_ITERATIONS = 8192
 # Bot automatically added to new users' rosters
 THE_BOT = {
     'name': 'Annika',
-    'jid': 'annika@fairbanksnano.org',
+    'jid': 'annika@akwriters.org',
 }
 
 # Override default message tags to fit with Bootstrap
@@ -117,12 +117,12 @@ MESSAGE_TAGS = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '//static.fairbanksnano.org/'
+STATIC_URL = '//static.akwriters.org/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "htdocs/static"),
 )
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
-STATIC_ROOT = '/var/www/fairbanksnano.org/static'
+STATIC_ROOT = '/var/www/akwriters.org/static'
 
 #This should be the very last line, always, so we can override anything in
 #settings.py with site- or environment-specific values.

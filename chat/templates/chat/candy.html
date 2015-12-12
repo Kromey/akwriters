@@ -1,6 +1,8 @@
-{% load static from staticfiles %}<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+	{% load static from staticfiles %}
+	{% load chat_extras %}
 	<meta charset="utf-8">
 	<title>Alaska Writers Chat</title>
 	<link rel="shortcut icon" href= "{% static 'candy/res/img/favicon.png' %}" type="image/gif" />
@@ -14,7 +16,7 @@
 	<script type="text/javascript">
 		function configureLoginPanel()
 		{
-			$('#username').val('{{ user.username|default:"USERNAME" }}@fairbanksnano.org');
+			$('#username').val('{{ user.username|default:"USERNAME" }}@{% chat_domain %}');
 
 			var header = document.createElement('div');
 			header.appendChild(document.createTextNode('Alaska Writers Chat'));
@@ -25,7 +27,7 @@
 
 			$('#username').blur(function(event){
 				username = $('#username').val().split('@')[0];
-				$('#username').val(username + "@fairbanksnano.org");
+				$('#username').val(username + "@{% chat_domain %}");
 				return true;
 			});
 		}
@@ -37,7 +39,7 @@
 			Candy.init('/http-bind/', {
 				core: {
 					debug: false,
-					autojoin: ['nano@conf.fairbanksnano.org']
+					autojoin: ['nano@conf.{% chat_domain %}']
 				},
 				view: {
 					assets: '{% static "candy/res/" %}',
@@ -54,7 +56,7 @@
 			modal.insertBefore(header, modal.firstChild);
 
 			//Give the user a bit of a hint for their username
-			$('#username').val('{{ user.username|default:"USERNAME" }}@fairbanksnano.org');
+			$('#username').val('{{ user.username|default:"USERNAME" }}@{% chat_domain %}');
 		});
 	</script>
 </head>
