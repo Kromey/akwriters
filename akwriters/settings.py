@@ -1,5 +1,5 @@
 """
-Django settings for fbxnano project.
+Django settings for akwriters project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -61,9 +61,9 @@ MIDDLEWARE_CLASSES = (
     'prosodyauth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'fbxnano.urls'
+ROOT_URLCONF = 'akwriters.urls'
 
-WSGI_APPLICATION = 'fbxnano.wsgi.application'
+WSGI_APPLICATION = 'akwriters.wsgi.application'
 
 
 # Authentication settings

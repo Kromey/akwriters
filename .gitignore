@@ -1,5 +1,5 @@
 # Don't track local/site settings (it's a secret)
-/fbxnano/site_settings.py
+/akwriters/site_settings.py
 
 # Ignore maintenance mode flag
 /htdocs/maintenance_mode

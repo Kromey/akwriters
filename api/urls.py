@@ -7,7 +7,7 @@ from .views import StatusView
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'fbxnano.views.home', name='home'),
+    # url(r'^$', 'akwriters.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url('^status$', StatusView.as_view(), name='status'),
