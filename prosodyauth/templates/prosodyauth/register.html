@@ -12,7 +12,7 @@ Register
 			{% csrf_token %}
 			{% bs_field form.username 'user' %}
 			{% bs_field form.email 'envelope' %}
-			{% bs_field form.password 'lock' %}
+			{% bs_field form.password 'key' icon_type='octicon' %}
 			<span id="password_help" class="help-block">
 				Your password must:
 				<ol>
@@ -21,7 +21,7 @@ Register
 					<li>Not contain your username</li>
 				</ol>
 			</span>
-			{% bs_field form.password_confirm 'lock' %}
+			{% bs_field form.password_confirm 'key' icon_type='octicon' %}
 			{% bs_field form.captcha %}
 			<button type="submit" class="btn btn-success">Register!</button>
 		</form>
