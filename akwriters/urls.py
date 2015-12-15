@@ -15,5 +15,6 @@ urlpatterns = patterns('',
     url(r'^auth/', include('prosodyauth.urls', namespace='auth')),
     url(r'^chat/', include('chat.urls', namespace='chat')),
     url(r'^contact/', include('contact.urls', namespace='contact')),
+    url(r'^favicon/', include('favicon.urls', namespace='favicon')),
     url(r'^policies/', include('policies.urls', namespace='policies')),
 )
