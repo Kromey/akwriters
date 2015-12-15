@@ -66,6 +66,9 @@ ROOT_URLCONF = 'akwriters.urls'
 
 WSGI_APPLICATION = 'akwriters.wsgi.application'
 
+# Nothing on our site should be allowed in any frames, not even our own
+X_FRAME_OPTIONS = 'DENY'
+
 
 # Authentication settings
 LOGIN_URL = 'login'
