@@ -36,4 +36,4 @@ def manifest(request):
     return JsonResponse(manifest_data)
 
 def browserconfig(request):
-    pass
+    return render(request, 'favicon/browserconfig.xml', content_type='application/xml')
