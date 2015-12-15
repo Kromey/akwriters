@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'api',
     'chat',
     'contact',
+    'favicon',
     'helpers',
     'policies',
     'prosodyauth',
