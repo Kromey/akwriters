@@ -3,6 +3,8 @@
 
 # Ignore maintenance mode flag
 /htdocs/maintenance_mode
+# Ignore collected staticfiles
+/htdocs/static
 
 # Ignore the vassal file/symlink
 /vassal.ini
