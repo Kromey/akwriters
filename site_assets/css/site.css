@@ -54,3 +54,8 @@ footer {
 span.octicon {
 	font-size: 115%;
 }
+
+.chat-protocol {
+	margin-top: -4px;
+	margin-right: 2px;
+}
