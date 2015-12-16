@@ -5,12 +5,12 @@
 	{% load chat_extras %}
 	<meta charset="utf-8">
 	<title>Alaska Writers Chat</title>
-	<link rel="shortcut icon" href= "{% static 'candy/res/img/favicon.png' %}" type="image/gif" />
-	<link rel="stylesheet" type="text/css" href= "{% static 'candy/res/default.css' %}" />
+	<link rel="shortcut icon" href="{% static 'candy/res/img/favicon.png' %}" type="image/gif" />
+	<link rel="stylesheet" type="text/css" href="{% static 'candy/res/default.css' %}" />
 
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script type="text/javascript" src= "{% static 'candy/js/libs.min.js' %}"></script>
-	<script type="text/javascript" src= "{% static 'candy/js/candy.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'candy/js/libs.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'candy/js/candy.min.js' %}"></script>
 	{% comment %}
 	{# This doesn't work as expected, the event only seems to fire the very first time the Login window appears #}
 	<script type="text/javascript">
@@ -34,33 +34,9 @@
 		$(Candy).on('candy:core.login', function(){ setTimeout(configureLoginPanel, 100); })
 	</script>
 	{% endcomment %}
-	<script type="text/javascript">
-		$(document).ready(function() {
-			Candy.init('/http-bind/', {
-				core: {
-					debug: false,
-					autojoin: ['nano@conf.{% chat_domain %}']
-				},
-				view: {
-					assets: '{% static "candy/res/" %}',
-					enableXHTML: true
-				}
-			});
-
-			Candy.Core.connect();
-
-			//Add a customized header to the Candy login window
-			var header = document.createElement('div');
-			header.appendChild(document.createTextNode('Alaska Writers Chat'));
-			var modal = $('#chat-modal').get(0);
-			modal.insertBefore(header, modal.firstChild);
-
-			//Give the user a bit of a hint for their username
-			$('#username').val('{{ user.username|default:"USERNAME" }}@{% chat_domain %}');
-		});
-	</script>
+	<script src="{% static 'chat/start-candy.js' %}"></script>
 </head>
 <body>
-	<div id="candy"></div>
+<div id="candy" data-username="{{ user.username|default:'USERNAME' }}" data-domain="{% chat_domain %}" data-candy-assets="{% static 'candy/res/' %}"></div>
 </body>
 </html>
