@@ -18,7 +18,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="{% url 'chat:annika' %}">Meet Annika</a></li>
 						<li class="dropdown-header">Chat Now!</li>
-						<li><a href="#" onclick="launchCandy();return false;">{% glyphicon 'new-window' %} Launch Web Chat</a></li>
+						<li><a href="#" data-popup-uri="{% url 'chat:candy' %}">{% glyphicon 'new-window' %} Launch Web Chat</a></li>
 						<li class="dropdown-header">Chat Your Way!</li>
 						<li><a href="{% url 'chat:index' %}">General Instructions</a></li>
 						<li><a href="{% url 'chat:pidgin' %}">Set Up Pidgin</a></li>
