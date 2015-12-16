@@ -62,6 +62,8 @@ MIDDLEWARE_CLASSES = (
     'prosodyauth.middleware.AuthenticationMiddleware',
 )
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 ROOT_URLCONF = 'akwriters.urls'
 
 WSGI_APPLICATION = 'akwriters.wsgi.application'
@@ -77,6 +79,12 @@ LOGOUT_URL = 'logout'
 AUTHENTICATION_BACKENDS = (
     'backends.prosody.ProsodyBackend',
 )
+
+SESSION_COOKIE_NAME = 'author'
+SESSION_COOKIE_HTTPONLY = True
+
+CSRF_COOKIE_NAME = 'synopsis'
+CSRF_COOKIE_HTTPONLY = True
 
 
 # Database
