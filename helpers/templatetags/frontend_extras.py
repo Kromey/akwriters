@@ -1,5 +1,6 @@
 from django import template
 from django.template.loader import render_to_string
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -14,7 +15,7 @@ def glyphicon(icon, label=None):
     if label:
         html = html + _make_accessible_label(label)
 
-    return html
+    return mark_safe(html)
 
 
 @register.simple_tag
@@ -23,7 +24,7 @@ def octicon(icon, label=None):
     if label:
         html = html + _make_accessible_label(label)
 
-    return html
+    return mark_safe(html)
 
 
 def _make_span_icon(family, icon):

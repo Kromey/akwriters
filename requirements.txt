@@ -1,4 +1,4 @@
-Django==1.7.1
+Django==1.9.8
 django-simplecaptcha==1.0.0
 passlib==1.6.2
 psycopg2==2.5.4
