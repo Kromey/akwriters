@@ -1,7 +1,7 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.views.generic import TemplateView
 
-urlpatterns = patterns('',
+urlpatterns = [
     # Examples:
     # url(r'^$', 'akwriters.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
@@ -17,4 +17,4 @@ urlpatterns = patterns('',
     url(r'^contact/', include('contact.urls', namespace='contact')),
     url(r'^favicon/', include('favicon.urls', namespace='favicon')),
     url(r'^policies/', include('policies.urls', namespace='policies')),
-)
+]
