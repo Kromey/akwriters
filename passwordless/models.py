@@ -1,4 +1,9 @@
+from datetime import timedelta
+import uuid
+
+
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -50,4 +55,33 @@ class AnonymousUser:
 
     def __str__(self):
         return "Anonymous User"
+
+
+def make_token():
+    """
+    Generate a random token suitable for activation/confirmation via email
+
+    A hex-encoded random UUID has plenty of entropy to be secure enough for our
+    needs.
+    """
+    return uuid.uuid4().hex
+
+
+class AuthToken(models.Model):
+    """
+    OTP Token for passwordless authentication
+    """
+    user = models.OneToOneField(User, primary_key=True)
+    token = models.CharField(max_length=40, default=make_token)
+    date_sent = models.DateTimeField(default=timezone.now)
+
+    _expiration_hours = 24
+
+    @property
+    def expiration_date(self):
+        return self.date_sent + timedelta(hours=self._expiration_hours)
+
+    @property
+    def is_valid(self):
+        return self.expiration_date >= timezone.now()
 
