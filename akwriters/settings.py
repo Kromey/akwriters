@@ -70,7 +70,7 @@ INSTALLED_APPS = (
     'favicon',
     'helpers',
     'policies',
-    'prosodyauth',
+    'passwordless',
 )
 
 MIDDLEWARE_CLASSES = (
