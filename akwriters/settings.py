@@ -57,12 +57,12 @@ TEMPLATES = [
 
 INSTALLED_APPS = (
     #'django.contrib.admin',
-    #'django.contrib.auth',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account',
+    #'account',
     'alerts',
     'api',
     'chat',
@@ -82,7 +82,7 @@ MIDDLEWARE_CLASSES = (
     #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'prosodyauth.middleware.AuthenticationMiddleware',
+    #'prosodyauth.middleware.AuthenticationMiddleware',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
@@ -100,7 +100,7 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 AUTHENTICATION_BACKENDS = (
-    'backends.prosody.ProsodyBackend',
+    #'backends.prosody.ProsodyBackend',
 )
 
 SESSION_COOKIE_NAME = 'author'
