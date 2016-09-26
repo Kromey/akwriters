@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.views.generic.edit import FormView
+
+
+from . import forms
 
 # Create your views here.
 def login(request):
@@ -7,9 +11,12 @@ def login(request):
 def logout(request):
     return render(request, 'passwordless/logout.html')
 
-def register(request):
-    return render(request, 'passwordless/register.html')
-
 def authn(request, token):
     return render(request, 'passwordless/authn.html')
+
+
+class RegisterView(FormView):
+    template_name = 'passwordless/register.html'
+    form_class = forms.RegistrationForm
+    success_url = '/'
 

@@ -6,5 +6,8 @@ Register
 {% endblock header %}
 
 {% block content %}
-Register
+<form action="" method="post">{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Register" />
+</form>
 {% endblock content %}
