@@ -64,6 +64,8 @@ class BootstrapFormMixin(object):
                 field.widget.attrs.update(
                         { 'class': field.widget.attrs.get('class', '') + ' form-control' }
                         )
+                bf = self[field_name]
+                bf.label_tag = self.style_label_tag(bf.label_tag)
 
         return self._html_output(
             normal_row=_bootstrap_formgroup,
@@ -71,4 +73,14 @@ class BootstrapFormMixin(object):
             row_ender='</div>',
             help_text_html=' <span class="helptext">%s</span>',
             errors_on_separate_row=True)
+
+    def style_label_tag(self, label_tag):
+        def inner(contents=None, attrs=None, label_suffix=None):
+            attrs = attrs or {}
+            if 'class' in attrs:
+                attrs['class'] += ' input-group-addon'
+            else:
+                attrs['class'] = 'input-group-addon'
+            return label_tag(contents, attrs, label_suffix)
+        return inner
 
