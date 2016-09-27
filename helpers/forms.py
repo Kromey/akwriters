@@ -43,3 +43,32 @@ class PlaceholderFormMixin(object):
                             )
 
 
+_bootstrap_formgroup = """
+<div class="form-group %(css_classes)s">
+	<div class="input-group">
+		%(label)s
+		%(field)s%(help_text)s
+	</div>
+</div>
+"""
+
+class BootstrapFormMixin(object):
+    """
+    A form mixin to generate Bootstrap form-groups
+    """
+    def as_formgroup(self):
+        "Returns this form rendered as Bootstrap form-groups."
+        for field_name in self.fields:
+            field = self.fields.get(field_name)
+            if field:
+                field.widget.attrs.update(
+                        { 'class': field.widget.attrs.get('class', '') + ' form-control' }
+                        )
+
+        return self._html_output(
+            normal_row=_bootstrap_formgroup,
+            error_row='%s',
+            row_ender='</div>',
+            help_text_html=' <span class="helptext">%s</span>',
+            errors_on_separate_row=True)
+
