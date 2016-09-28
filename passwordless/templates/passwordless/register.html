@@ -8,8 +8,11 @@ Register
 {% block content %}
 <div class="row">
 	<div class="col-md-6">
-		<form action="" method="post">{% csrf_token %}
-			{{ form.as_inputgroup }}
+		<form action="" method="post">
+			{% csrf_token %}
+			{% bs_field form.username 'user' %}
+			{% bs_field form.email 'envelope' %}
+			{% bs_field form.captcha %}
 			<button type="submit" class="btn btn-success">Register!</button>
 		</form>
 	</div>
