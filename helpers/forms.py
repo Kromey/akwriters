@@ -54,10 +54,10 @@ _bootstrap_formgroup = """
 
 class BootstrapFormMixin(object):
     """
-    A form mixin to generate Bootstrap form-groups
+    A form mixin to generate Bootstrap input-groups
     """
-    def as_formgroup(self):
-        "Returns this form rendered as Bootstrap form-groups."
+    def as_inputgroup(self):
+        "Returns this form rendered as Bootstrap input-groups."
         for field_name in self.fields:
             field = self.fields.get(field_name)
             if field:
