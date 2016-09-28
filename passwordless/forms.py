@@ -4,7 +4,7 @@ from django import forms
 from simplecaptcha import captcha
 
 
-from helpers.forms import PlaceholderFormMixin, BootstrapFormMixin
+from helpers.forms import PlaceholderFormMixin
 
 
 @captcha
