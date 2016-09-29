@@ -9,10 +9,14 @@ class PasswordlessBackend(object):
         try:
             auth = models.AuthToken.objects.get(token=token)
             user = auth.user
+            valid = auth.is_valid
 
             auth.delete()
 
-            return auth.user
+            if valid:
+                return auth.user
+            else:
+                return None
         except ObjectDoesNotExist:
             return None
 
