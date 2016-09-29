@@ -1,15 +1,14 @@
 from django.shortcuts import render
+from django.views import View
 from django.views.generic.edit import FormView
 
 
 from . import forms
+from . import models
 
 # Create your views here.
 def logout(request):
     return render(request, 'passwordless/logout.html')
-
-def authn(request, token):
-    return render(request, 'passwordless/authn.html')
 
 
 class LoginView(FormView):
@@ -36,4 +35,12 @@ class RegisterView(LoginView):
         form.create_user()
 
         return super().form_valid(form)
+
+
+class AuthnView(View):
+    def get(self, request, token):
+        auth = models.AuthToken.objects.get(token=token)
+        user = auth.user
+
+        return render(request, 'passwordless/authn.html', {'auth_user':user, 'token':auth.token})
 
