@@ -1,5 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.shortcuts import render,redirect
 from django.views import View
@@ -10,10 +10,6 @@ from . import forms
 from . import models
 
 # Create your views here.
-def logout(request):
-    return render(request, 'passwordless/logout.html')
-
-
 class LoginView(FormView):
     template_name = 'passwordless/login.html'
     form_class = forms.LoginForm
@@ -52,4 +48,10 @@ class AuthnView(View):
                 return redirect('chat:index')
             else:
                 return render(request, 'passwordless/invalid.html')
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('index')
 
