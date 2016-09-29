@@ -48,7 +48,7 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
         email_html = render_to_string('passwordless/email.html', context)
 
         #And, finally, send the email
-        send_mail('Activate your account', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
+        send_mail('AKWriters: Log in now!', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
 
         messages.success(self.request, 'An email has been sent with instructions for logging in.')
 
