@@ -19,6 +19,7 @@ class User(models.Model):
     is_active = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(null=True)
 
     @property
     def is_authenticated(self):
@@ -43,6 +44,7 @@ class AnonymousUser:
     is_active = False
     is_superuser = False
     date_joined = None
+    last_login = None
 
     @property
     def is_authenticated(self):

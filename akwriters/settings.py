@@ -78,8 +78,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    #'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #'prosodyauth.middleware.AuthenticationMiddleware',
@@ -100,7 +100,7 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 AUTHENTICATION_BACKENDS = (
-    #'backends.prosody.ProsodyBackend',
+    'passwordless.backend.PasswordlessBackend',
 )
 
 SESSION_COOKIE_NAME = 'author'
