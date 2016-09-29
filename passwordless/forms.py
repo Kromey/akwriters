@@ -26,12 +26,9 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
         username = self.cleaned_data.get('username')
 
         try:
-            User.objects.get(username__iexact=username)
+            User.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
         except User.DoesNotExist:
-            try:
-                User.objects.get(email__iexact=username)
-            except User.DoesNotExist:
-                raise forms.ValidationError('User could not be found')
+            raise forms.ValidationError('User could not be found')
 
         return username
 
