@@ -23,14 +23,12 @@ class LoginView(FormView):
         return super().form_valid(form)
 
 
-class RegisterView(FormView):
+class RegisterView(LoginView):
     template_name = 'passwordless/register.html'
     form_class = forms.RegistrationForm
-    success_url = '/'
 
     def form_valid(self, form):
         form.create_user()
-        form.send_email()
 
         return super().form_valid(form)
 
