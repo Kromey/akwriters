@@ -17,6 +17,11 @@ class LoginView(FormView):
     form_class = forms.LoginForm
     success_url = '/'
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+
     def form_valid(self, form):
         form.send_email()
 

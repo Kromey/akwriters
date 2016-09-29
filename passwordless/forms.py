@@ -1,6 +1,7 @@
 from django import forms
 from django.db.models import Q
 from django.conf import settings
+from django.contrib import messages
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
@@ -16,6 +17,10 @@ from helpers.forms import PlaceholderFormMixin
 @captcha
 class LoginForm(PlaceholderFormMixin, forms.Form):
     username = forms.CharField(min_length=3, max_length=30, label="username or email")
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request')
+        super().__init__(*args, **kwargs)
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -38,7 +43,7 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
         auth.save()
 
         #Build the URL for account authentication
-        authn_url = reverse('auth:authn', args=(auth.token,))
+        authn_url = self.request.build_absolute_uri(reverse('auth:authn', args=(auth.token,)))
         #Build the context for our email templates
         context = {'username': user.username, 'authn_url': authn_url}
         #Now parse our plaintext and HTMLy templates
@@ -47,6 +52,8 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
 
         #And, finally, send the email
         send_mail('Activate your account', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
+
+        messages.success(self.request, 'An email has been sent with instructions for logging in.')
 
 
 class RegistrationForm(LoginForm):
