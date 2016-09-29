@@ -1,0 +1,7 @@
+Hi {{ username }},
+
+You (or someone) requested an email to log you into the Alaska Writers website.
+This is that email!
+
+To log in, simply use this link:
+{{ authn_url }}

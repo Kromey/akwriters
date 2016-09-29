@@ -1,4 +1,5 @@
 from django import forms
+from django.db.models import Q
 
 
 from passwordless.models import User
@@ -22,6 +23,21 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
                 User.objects.get(email__iexact=username)
             except User.DoesNotExist:
                 raise forms.ValidationError('User could not be found')
+
+    def send_email(self):
+        username = self.cleaned_data['username']
+        user = User.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
+
+        #Build the URL for account authentication
+        authn_url = request.build_absolute_uri(reverse('auth:authn', args=('{tokengohere}',)))
+        #Build the context for our email templates
+        context = {'username': user.username, 'authn_url': authn_url}
+        #Now parse our plaintext and HTMLy templates
+        email_text = render_to_string('prosodyauth/email.txt', context)
+        email_html = render_to_string('prosodyauth/email.html', context)
+
+        #And, finally, send the email
+        send_mail('Activate your account', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
 
 
 class RegistrationForm(LoginForm):
@@ -49,4 +65,11 @@ class RegistrationForm(LoginForm):
             raise forms.ValidationError('That email is already in use', code='invalid')
 
         return email
+
+    def create_user(self):
+        username = self.cleaned_data['username']
+        email = self.cleaned_data['email']
+
+        user = User(username=username, email=email)
+        user.save()
 
