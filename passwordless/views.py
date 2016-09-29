@@ -41,6 +41,14 @@ class AuthnView(View):
         user = authenticate(token=token)
         if user is not None:
             login(request, user)
+
+            if not user.is_active:
+                # Activate the user
+                user.is_active = True
+                user.save()
+
+                messages.success(request, 'Your account is now active on this site')
+
             return redirect('chat:index')
         else:
             if request.user.is_authenticated:
