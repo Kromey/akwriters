@@ -8,6 +8,9 @@ class PasswordlessBackend(object):
     def authenticate(self, token=None):
         try:
             auth = models.AuthToken.objects.get(token=token)
+            user = auth.user
+
+            auth.delete()
 
             return auth.user
         except ObjectDoesNotExist:
