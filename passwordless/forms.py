@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 
 
-from passwordless.models import User
+from passwordless.models import User, AuthToken
 from simplecaptcha import captcha
 
 
@@ -34,8 +34,11 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
         username = self.cleaned_data['username']
         user = User.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
 
+        auth = AuthToken(user=user)
+        auth.save()
+
         #Build the URL for account authentication
-        authn_url = reverse('auth:authn', args=('tokengohere',))
+        authn_url = reverse('auth:authn', args=(auth.token,))
         #Build the context for our email templates
         context = {'username': user.username, 'authn_url': authn_url}
         #Now parse our plaintext and HTMLy templates
