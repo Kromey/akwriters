@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from django.views import View
 from django.views.generic.edit import FormView
@@ -39,8 +40,11 @@ class RegisterView(LoginView):
 
 class AuthnView(View):
     def get(self, request, token):
-        auth = models.AuthToken.objects.get(token=token)
-        user = auth.user
+        try:
+            auth = models.AuthToken.objects.get(token=token)
+            user = auth.user
+        except ObjectDoesNotExist:
+            return render(request, 'passwordless/invalid.html')
 
         return render(request, 'passwordless/authn.html', {'auth_user':user, 'token':auth.token})
 
