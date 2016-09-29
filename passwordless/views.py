@@ -1,5 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate,login
+from django.contrib import messages
 from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic.edit import FormView
@@ -46,5 +47,9 @@ class AuthnView(View):
             login(request, user)
             return redirect('chat:index')
         else:
-            return render(request, 'passwordless/invalid.html')
+            if request.user.is_authenticated:
+                messages.info(request, 'You are already authenticated on this site')
+                return redirect('chat:index')
+            else:
+                return render(request, 'passwordless/invalid.html')
 
