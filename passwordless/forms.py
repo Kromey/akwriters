@@ -1,5 +1,9 @@
 from django import forms
 from django.db.models import Q
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 
 
 from passwordless.models import User
@@ -24,17 +28,19 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
             except User.DoesNotExist:
                 raise forms.ValidationError('User could not be found')
 
+        return username
+
     def send_email(self):
         username = self.cleaned_data['username']
         user = User.objects.get(Q(username__iexact=username) | Q(email__iexact=username))
 
         #Build the URL for account authentication
-        authn_url = request.build_absolute_uri(reverse('auth:authn', args=('{tokengohere}',)))
+        authn_url = reverse('auth:authn', args=('tokengohere',))
         #Build the context for our email templates
         context = {'username': user.username, 'authn_url': authn_url}
         #Now parse our plaintext and HTMLy templates
-        email_text = render_to_string('prosodyauth/email.txt', context)
-        email_html = render_to_string('prosodyauth/email.html', context)
+        email_text = render_to_string('passwordless/email.txt', context)
+        email_html = render_to_string('passwordless/email.html', context)
 
         #And, finally, send the email
         send_mail('Activate your account', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
