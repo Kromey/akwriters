@@ -9,9 +9,19 @@ from helpers.forms import PlaceholderFormMixin
 
 
 @captcha
-class RegistrationForm(PlaceholderFormMixin, forms.Form):
-    username = forms.CharField(min_length=3, max_length=30)
+class LoginForm(PlaceholderFormMixin, forms.Form):
+    username = forms.CharField(min_length=3, max_length=30, label="username or email")
+
+
+class RegistrationForm(LoginForm):
     email = forms.EmailField()
+
+    field_order = ['username','email']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].label = 'username'
+        self.fields['username'].widget.attrs['placeholder'] = 'username'
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
