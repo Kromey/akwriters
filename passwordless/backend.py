@@ -5,11 +5,11 @@ from . import models
 
 
 class PasswordlessBackend(object):
-    def authenticate(self, token=None):
+    def authenticate(self, token=None, session_key=None):
         try:
             auth = models.AuthToken.objects.get(token=token)
             user = auth.user
-            valid = auth.is_valid
+            valid = auth.is_valid and auth.session_key == session_key
 
             auth.delete()
 

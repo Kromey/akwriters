@@ -39,6 +39,8 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
         auth = AuthToken(user=user)
         auth.save()
 
+        self.request.session['passwordless_session_key'] = auth.session_key
+
         #Build the URL for account authentication
         authn_url = self.request.build_absolute_uri(reverse('auth:authn', args=(auth.token,)))
         #Build the context for our email templates

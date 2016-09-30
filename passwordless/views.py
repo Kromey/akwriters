@@ -38,7 +38,9 @@ class RegisterView(LoginView):
 
 class AuthnView(View):
     def get(self, request, token):
-        user = authenticate(token=token)
+        session_key = request.session.pop('passwordless_session_key', None)
+
+        user = authenticate(token=token, session_key=session_key)
         if user is not None:
             login(request, user)
 
@@ -55,6 +57,10 @@ class AuthnView(View):
                 messages.info(request, 'You are already authenticated on this site')
                 return redirect('chat:index')
             else:
+                # Put the session key back, just in case user used wrong email
+                if session_key is not None:
+                    request.session['passwordless_session_key'] = session_key
+
                 return render(request, 'passwordless/invalid.html')
 
 
