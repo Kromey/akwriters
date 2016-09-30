@@ -77,7 +77,7 @@ class AuthToken(models.Model):
     token = models.CharField(max_length=40, default=make_token)
     date_sent = models.DateTimeField(default=timezone.now)
 
-    _expiration_hours = 24
+    _expiration_hours = 1
 
     @property
     def expiration_date(self):
