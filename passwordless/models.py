@@ -74,7 +74,8 @@ class AuthToken(models.Model):
     OTP Token for passwordless authentication
     """
     user = models.OneToOneField(User, primary_key=True)
-    token = models.CharField(max_length=40, default=make_token)
+    token = models.CharField(max_length=40, default=make_token, unique=True)
+    session_key = models.CharField(max_length=40, default=make_token)
     date_sent = models.DateTimeField(default=timezone.now)
 
     _expiration_hours = 1
