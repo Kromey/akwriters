@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.utils import timezone
 
 
 from passwordless.models import User, AuthToken
@@ -68,6 +69,8 @@ class RegistrationForm(LoginForm):
     def clean_username(self):
         username = self.cleaned_data.get('username')
 
+        self._purge_unvalidated_users()
+
         if User.objects.filter(username__iexact=username).count() > 0:
             raise forms.ValidationError('That username is already taken', code='invalid')
 
@@ -80,6 +83,10 @@ class RegistrationForm(LoginForm):
             raise forms.ValidationError('That email is already in use', code='invalid')
 
         return email
+
+    def _purge_unvalidated_users(self):
+        # Delete inactive User objects without an unexpired authtoken
+        User.objects.filter(is_active=False).exclude(authtoken__date_expires__gte = timezone.now()).delete()
 
     def create_user(self):
         username = self.cleaned_data['username']
