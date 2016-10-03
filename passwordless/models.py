@@ -69,22 +69,23 @@ def make_token():
     return uuid.uuid4().hex
 
 
+def expiration_date():
+    """
+    AuthToken objects expire 1 hour after creation by default
+    """
+    return timezone.now() + timedelta(hours=1)
+
 class AuthToken(models.Model):
     """
     OTP Token for passwordless authentication
     """
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     token = models.CharField(max_length=40, default=make_token, unique=True)
     session_key = models.CharField(max_length=40, default=make_token)
     date_sent = models.DateTimeField(default=timezone.now)
-
-    _expiration_hours = 1
-
-    @property
-    def expiration_date(self):
-        return self.date_sent + timedelta(hours=self._expiration_hours)
+    date_expires = models.DateTimeField(default=expiration_date)
 
     @property
     def is_valid(self):
-        return self.expiration_date >= timezone.now()
+        return self.date_expires >= timezone.now()
 
