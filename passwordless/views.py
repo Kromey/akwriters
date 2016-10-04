@@ -1,6 +1,7 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic.edit import FormView
@@ -69,4 +70,12 @@ class LogoutView(View):
         logout(request)
         messages.success(request, 'You are now logged out of the site')
         return redirect('index')
+
+
+class ApiAuthView(View):
+    def post(self, request):
+        with open('/tmp/django.log', 'w') as f:
+            f.write(request.body.decode('utf8'))
+
+        return HttpResponse('true', content_type='text/plain')
 
