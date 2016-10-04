@@ -100,7 +100,7 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 AUTHENTICATION_BACKENDS = (
-    'passwordless.backend.PasswordlessBackend',
+    'passwordless.backend.SessionTokenBackend',
 )
 
 SESSION_COOKIE_NAME = 'author'

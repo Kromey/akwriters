@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from . import models
 
 
-class PasswordlessBackend(object):
+class SessionTokenBackend(object):
     def authenticate(self, token=None, session_key=None):
         try:
             auth = models.AuthToken.objects.get(token=token)
