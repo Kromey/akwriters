@@ -5,7 +5,7 @@ from . import models
 
 
 class SessionTokenBackend(object):
-    def authenticate(self, token=None, session_key=None):
+    def authenticate(self, token, session_key):
         try:
             auth = models.AuthToken.objects.get(token=token)
             user = auth.user
