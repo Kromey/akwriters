@@ -4,7 +4,7 @@ import json
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseForbidden
 from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic.edit import FormView
@@ -78,9 +78,10 @@ class LogoutView(View):
 class ApiAuthView(View):
     def post(self, request):
         req = json.loads(request.body.decode('utf8'))
-        with open('/tmp/django.log', 'w') as f:
-            f.write("Username: {}".format(req['username']))
-            f.write("Password: {}".format(req['password']))
+        user = authenticate(token=req['password'], username=req['username'])
 
-        return HttpResponse('true', content_type='text/plain')
+        if user is not None:
+            return HttpResponse('true', content_type='text/plain')
+        else:
+            return HttpResponseForbidden('false', content_type='text/plain')
 
