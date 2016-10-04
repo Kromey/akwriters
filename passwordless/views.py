@@ -1,3 +1,6 @@
+import json
+
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
@@ -74,8 +77,10 @@ class LogoutView(View):
 
 class ApiAuthView(View):
     def post(self, request):
+        req = json.loads(request.body.decode('utf8'))
         with open('/tmp/django.log', 'w') as f:
-            f.write(request.body.decode('utf8'))
+            f.write("Username: {}".format(req['username']))
+            f.write("Password: {}".format(req['password']))
 
         return HttpResponse('true', content_type='text/plain')
 
