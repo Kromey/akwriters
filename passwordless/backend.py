@@ -6,7 +6,18 @@ from . import models
 from . import utils
 
 
-class TokenBackend(object):
+class PasswordlessBackendBase(object):
+    def get_user(self, user_id):
+        try:
+            return models.User.objects.get(pk=user_id)
+        except ObjectDoesNotExist:
+            return None
+
+    def has_perm(self, user_obj, perm, obj=None):
+        return user_obj.is_active and user_obj.is_superuser
+
+
+class TokenBackend(PasswordlessBackendBase):
     def authenticate(self, token, session_key=None, username=None):
         if session_key is None and username is None:
             # Django's authentication framework uses inspection before actually
@@ -33,17 +44,8 @@ class TokenBackend(object):
         except ObjectDoesNotExist:
             return None
 
-    def get_user(self, user_id):
-        try:
-            return models.User.objects.get(pk=user_id)
-        except ObjectDoesNotExist:
-            return None
 
-    def has_perm(self, user_obj, perm, obj=None):
-        return user_obj.is_active and user_obj.is_superuser
-
-
-class AppPasswordBackend(object):
+class AppPasswordBackend(PasswordlessBackendBase):
     def authenticate(self, username, password):
         try:
             password = utils.normalize_app_password(password)
@@ -55,13 +57,4 @@ class AppPasswordBackend(object):
             return None
         except ObjectDoesNotExist:
             return None
-
-    def get_user(self, user_id):
-        try:
-            return models.User.objects.get(pk=user_id)
-        except ObjectDoesNotExist:
-            return None
-
-    def has_perm(self, user_obj, perm, obj=None):
-        return user_obj.is_active and user_obj.is_superuser
 
