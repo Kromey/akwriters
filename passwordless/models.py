@@ -89,3 +89,13 @@ class AuthToken(models.Model):
     def is_valid(self):
         return self.date_expires >= timezone.now()
 
+
+class AppPassword(models.Model):
+    """
+    Generated application passwords
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    password = models.CharField(max_length=80)
+    created_on = models.DateTimeField(default=timezone.now)
+    last_used = models.DateTimeField(null=True)
+
