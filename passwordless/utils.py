@@ -3,7 +3,6 @@ import random
 import uuid
 
 
-from django.contrib.auth.hashers import make_password,is_password_usable
 from django.utils import timezone
 from datetime import timedelta
 
@@ -40,5 +39,5 @@ def new_app_password(size=6):
         if j < size:
             words[j] = line.strip()
 
-    return words
+    return ' '.join(words)
 
