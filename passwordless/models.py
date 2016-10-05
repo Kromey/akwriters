@@ -1,6 +1,3 @@
-import re
-
-
 from django.contrib.auth.hashers import make_password,is_password_usable
 from django.db import models
 from django.utils import timezone
@@ -86,13 +83,12 @@ class AppPassword(models.Model):
     created_on = models.DateTimeField(default=timezone.now)
     last_used = models.DateTimeField(null=True)
 
-    _re = re.compile(r'[^a-z]')
 
     def save(self, *args, **kwargs):
         if self.password and not is_password_usable(self.password):
             # We have a password that's not already hashed, so let's do that
             # First we normalize it
-            password = self._normalize_password(self.password)
+            password = utils.normalize_app_password(self.password)
             # Then we hash it
             password = make_password(password)
 
@@ -100,7 +96,4 @@ class AppPassword(models.Model):
             self.password = password
 
         return super().save(*args, **kwargs)
-
-    def _normalize_password(self, password):
-        return self._re.sub('', password.lower())
 

@@ -1,5 +1,6 @@
 import os
 import random
+import re
 import uuid
 
 
@@ -40,4 +41,16 @@ def new_app_password(size=6):
             words[j] = line.strip()
 
     return ' '.join(words)
+
+
+_re = re.compile(r'[^a-z]')
+def normalize_app_password(password):
+    """
+    Normalize the App Password
+
+    Do this before hashing, saving, or validating an app password; in this case,
+    normalization means lower-casing the string and removing any non-alphabetic
+    characters.
+    """
+    return _re.sub('', password.lower())
 
