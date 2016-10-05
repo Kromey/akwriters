@@ -20,10 +20,10 @@ class Migration(migrations.Migration):
             name='AuthToken',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('token', models.CharField(default=passwordless.models.make_token, max_length=40, unique=True)),
-                ('session_key', models.CharField(default=passwordless.models.make_token, max_length=40)),
+                ('token', models.CharField(default=passwordless.utils.make_token, max_length=40, unique=True)),
+                ('session_key', models.CharField(default=passwordless.utils.make_token, max_length=40)),
                 ('date_sent', models.DateTimeField(default=django.utils.timezone.now)),
-                ('date_expires', models.DateTimeField(default=passwordless.models.expiration_date)),
+                ('date_expires', models.DateTimeField(default=passwordless.utils.expiration_date)),
             ],
         ),
         migrations.CreateModel(
