@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
 
@@ -13,5 +14,5 @@ urlpatterns = [
     url(r'^pidgin$', TemplateView.as_view(template_name='chat/pidgin.html'), name='pidgin'),
     url(r'^adium$', TemplateView.as_view(template_name='chat/adium.html'), name='adium'),
     url(r'^annika$', TemplateView.as_view(template_name='chat/annika.html'), name='annika'),
-    url(r'^candy$', views.CandyView.as_view(), name='candy'),
+    url(r'^candy$', login_required(views.CandyView.as_view()), name='candy'),
 ]

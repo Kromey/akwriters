@@ -96,8 +96,8 @@ X_FRAME_OPTIONS = 'DENY'
 
 
 # Authentication settings
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
+LOGIN_URL = '/auth/login'
+LOGOUT_URL = '/auth/logout'
 
 AUTHENTICATION_BACKENDS = (
     'passwordless.backend.TokenBackend',
