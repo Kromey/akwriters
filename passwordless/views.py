@@ -83,5 +83,9 @@ class ApiAuthView(View):
         if user is not None:
             return HttpResponse('true', content_type='text/plain')
         else:
-            return HttpResponseForbidden('false', content_type='text/plain')
+            user = authenticate(username=req['username'], password=req['password'])
+            if user is not None:
+                return HttpResponse('true', content_type='text/plain')
+            else:
+                return HttpResponseForbidden('false', content_type='text/plain')
 
