@@ -37,6 +37,6 @@
 	<script src="{% static 'chat/start-candy.js' %}"></script>
 </head>
 <body>
-<div id="candy" data-username="{{ user.username|default:'USERNAME' }}" data-domain="{% chat_domain %}" data-candy-assets="{% static 'candy/res/' %}"></div>
+<div id="candy" data-username="{{ user.username|default:'USERNAME' }}" data-domain="{% chat_domain %}" data-otp="{{ otp }}" data-candy-assets="{% static 'candy/res/' %}"></div>
 </body>
 </html>
