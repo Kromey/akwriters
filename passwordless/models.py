@@ -1,9 +1,8 @@
-from datetime import timedelta
-import uuid
-
-
 from django.db import models
 from django.utils import timezone
+
+
+from . import utils
 
 # Create your models here.
 
@@ -59,31 +58,15 @@ class AnonymousUser:
         return "Anonymous User"
 
 
-def make_token():
-    """
-    Generate a random token suitable for activation/confirmation via email
-
-    A hex-encoded random UUID has plenty of entropy to be secure enough for our
-    needs.
-    """
-    return uuid.uuid4().hex
-
-
-def expiration_date():
-    """
-    AuthToken objects expire 1 hour after creation by default
-    """
-    return timezone.now() + timedelta(hours=1)
-
 class AuthToken(models.Model):
     """
     OTP Token for passwordless authentication
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    token = models.CharField(max_length=40, default=make_token, unique=True)
-    session_key = models.CharField(max_length=40, default=make_token)
+    token = models.CharField(max_length=40, default=utils.make_token, unique=True)
+    session_key = models.CharField(max_length=40, default=utils.make_token)
     date_sent = models.DateTimeField(default=timezone.now)
-    date_expires = models.DateTimeField(default=expiration_date)
+    date_expires = models.DateTimeField(default=utils.expiration_date)
 
     @property
     def is_valid(self):
