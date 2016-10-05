@@ -1,7 +1,9 @@
+from django.contrib.auth.hashers import check_password
 from django.core.exceptions import ObjectDoesNotExist
 
 
 from . import models
+from . import utils
 
 
 class TokenBackend(object):
@@ -28,6 +30,29 @@ class TokenBackend(object):
                 return user
             else:
                 return None
+        except ObjectDoesNotExist:
+            return None
+
+    def get_user(self, user_id):
+        try:
+            return models.User.objects.get(pk=user_id)
+        except ObjectDoesNotExist:
+            return None
+
+    def has_perm(self, user_obj, perm, obj=None):
+        return user_obj.is_active and user_obj.is_superuser
+
+
+class AppPasswordBackend(object):
+    def authenticate(self, username, password):
+        try:
+            password = utils.normalize_app_password(password)
+
+            for ap in models.AppPassword.objects.filter(user__username__iexact=username):
+                if check_password(password, ap.password):
+                    return ap.user
+
+            return None
         except ObjectDoesNotExist:
             return None
 

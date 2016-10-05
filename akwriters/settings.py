@@ -101,6 +101,7 @@ LOGOUT_URL = '/auth/logout'
 
 AUTHENTICATION_BACKENDS = (
     'passwordless.backend.TokenBackend',
+    'passwordless.backend.AppPasswordBackend',
 )
 
 SESSION_COOKIE_NAME = 'author'
