@@ -3,6 +3,7 @@ import json
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.http import HttpResponse,HttpResponseForbidden
 from django.shortcuts import render,redirect
@@ -91,7 +92,7 @@ class ApiAuthView(View):
                 return HttpResponseForbidden('false', content_type='text/plain')
 
 
-class AppPasswordView(ListView):
+class AppPasswordView(LoginRequiredMixin, ListView):
     model = models.AppPassword
     context_object_name = 'password_list'
 
