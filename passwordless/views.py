@@ -96,3 +96,6 @@ class AppPasswordView(LoginRequiredMixin, ListView):
     model = models.AppPassword
     context_object_name = 'password_list'
 
+    def get_queryset(self):
+        return self.request.user.apppassword_set.all()
+
