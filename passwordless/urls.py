@@ -13,5 +13,5 @@ urlpatterns = [
     url(r'^register', views.RegisterView.as_view(), name='register'),
     url(r'^n/(?P<token>[0-9a-zA-Z]+)$', views.AuthnView.as_view(), name='authn'),
     url(r'^api/json$', csrf_exempt(views.ApiAuthView.as_view()), name='api_json'),
-    url(r'^app_passwords$', views.AppPasswordView.as_view(), name='app_passwords'),
+    url(r'^apppasswords$', views.AppPasswordListView.as_view(), name='apppasswords'),
 ]

@@ -92,7 +92,7 @@ class ApiAuthView(View):
                 return HttpResponseForbidden('false', content_type='text/plain')
 
 
-class AppPasswordView(LoginRequiredMixin, ListView):
+class AppPasswordListView(LoginRequiredMixin, ListView):
     model = models.AppPassword
     context_object_name = 'password_list'
 
