@@ -89,3 +89,8 @@ class ApiAuthView(View):
             else:
                 return HttpResponseForbidden('false', content_type='text/plain')
 
+
+class AppPasswordView(View):
+    def get(self, request):
+        return render(request, 'passwordless/app_passwords.html')
+
