@@ -8,6 +8,7 @@ from django.http import HttpResponse,HttpResponseForbidden
 from django.shortcuts import render,redirect
 from django.views import View
 from django.views.generic.edit import FormView
+from django.views.generic.list import ListView
 
 
 from . import forms
@@ -90,7 +91,6 @@ class ApiAuthView(View):
                 return HttpResponseForbidden('false', content_type='text/plain')
 
 
-class AppPasswordView(View):
-    def get(self, request):
-        return render(request, 'passwordless/app_passwords.html')
+class AppPasswordView(ListView):
+    model = models.AppPassword
 
