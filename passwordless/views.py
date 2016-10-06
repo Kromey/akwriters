@@ -93,4 +93,5 @@ class ApiAuthView(View):
 
 class AppPasswordView(ListView):
     model = models.AppPassword
+    context_object_name = 'password_list'
 
