@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.http import HttpResponse,HttpResponseForbidden
 from django.shortcuts import render,redirect
 from django.views import View
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView,CreateView
 from django.views.generic.list import ListView
 
 
@@ -98,4 +98,9 @@ class AppPasswordListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return self.request.user.apppassword_set.all()
+
+
+class AppPasswordCreateView(LoginRequiredMixin, CreateView):
+    model = models.AppPassword
+    fields = ['name']
 
