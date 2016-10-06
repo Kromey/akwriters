@@ -79,6 +79,7 @@ class AppPassword(models.Model):
     Generated application passwords
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=30)
     password = models.CharField(max_length=80, default=utils.new_app_password)
     created_on = models.DateTimeField(default=timezone.now)
     last_used = models.DateTimeField(null=True)
