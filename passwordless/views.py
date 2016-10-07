@@ -116,5 +116,9 @@ class AppPasswordCreateView(LoginRequiredMixin, View):
         password = ap.password # Have to retrieve this before we save
         ap.save()
 
-        return render(request, 'passwordless/apppassword_new.html', context={'password':password,'name':ap.name})
+        if request.is_ajax():
+            template = 'passwordless/apppassword_new_content.html'
+        else:
+            template = 'passwordless/apppassword_new.html'
+        return render(request, template, context={'password':password,'name':ap.name})
 
