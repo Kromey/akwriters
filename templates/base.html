@@ -80,5 +80,6 @@
 {# Bootstrap JS at bottom so that it doesn't block page loading #}
 <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/popup.js' %}"></script>
+{% block extrascripts %}{% endblock %}
 </body>
 </html>
