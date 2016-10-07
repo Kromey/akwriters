@@ -43,12 +43,15 @@ def _make_accessible_label(label):
 def simple_time(value):
     today = timezone.now()
     yesterday = today - timedelta(days=1)
+    tomorrow = today + timedelta(days=1)
 
     try:
         if today.year == value.year and today.month == value.month and today.day == value.day:
             return time(value, 'g:i A')
         if yesterday.year == value.year and yesterday.month == value.month and yesterday.day == value.day:
             return 'Yesterday'
+        if tomorrow.year == value.year and tomorrow.month == value.month and tomorrow.day == value.day:
+            return 'Tomorrow'
         else:
             return date(value, 'M j, Y')
     except (AttributeError, TypeError):
