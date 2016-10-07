@@ -1,11 +1,14 @@
 $(function() {
-	var clipboard = new Clipboard('#password');
+	var clipboard = new Clipboard('#copy_password');
 
 	clipboard.on('success', function(e) {
-		console.info('Action:', e.action);
-		console.info('Text:', e.text);
-		console.info('Trigger:', e.trigger);
+		$('#password_copied').slideDown();
 
 		e.clearSelection();
 	});
+	clipboard.on('error', function(e) {
+		$('#password_error').slideDown();
+	});
+
+	$('#password').focus(function() { $(this).select(); } );
 });
