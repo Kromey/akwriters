@@ -17,7 +17,7 @@ $(function() {
 	});
 
 	$('#new_password_form').submit(function(event) {
-		$('#generate_modal').modal();
+		$('#generate_modal').modal({keyboard:false,backdrop:'static'});
 		event.preventDefault();
 	});
 	$('#generate_modal').on('show.bs.modal', function(event) {
@@ -34,6 +34,20 @@ $(function() {
 			$('#password_results').show();
 			$('#password_generating').hide();
 			$('#password_done_btn').removeClass('disabled');
+
+			$('#password').focus(function() { $(this).select(); } );
 		});
 	});
+
+	var clipboard = new Clipboard('#copy_password');
+
+	clipboard.on('success', function(e) {
+		$('#password_copied').slideDown();
+
+		e.clearSelection();
+	});
+	clipboard.on('error', function(e) {
+		$('#password_error').slideDown();
+	});
+	$('#password').focus(function() { $(this).select(); } );
 });
