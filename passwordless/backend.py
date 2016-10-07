@@ -1,5 +1,6 @@
 from django.contrib.auth.hashers import check_password
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
 
 
 from . import models
@@ -52,6 +53,9 @@ class AppPasswordBackend(PasswordlessBackendBase):
 
             for ap in models.AppPassword.objects.filter(user__username__iexact=username):
                 if check_password(password, ap.password):
+                    # This is the one, record last_used
+                    ap.last_used = timezone.now()
+                    ap.save()
                     return ap.user
 
             return None
