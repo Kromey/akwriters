@@ -109,3 +109,12 @@ class AppPasswordRevokeView(LoginRequiredMixin, View):
 
         return redirect('auth:apppasswords')
 
+
+class AppPasswordCreateView(LoginRequiredMixin, View):
+    def post(self, request):
+        ap = models.AppPassword(user=request.user, name=request.POST['new_password_name'])
+        password = ap.password # Have to retrieve this before we save
+        ap.save()
+
+        return render(request, 'passwordless/apppassword_new.html', context={'password':password,'name':ap.name})
+
