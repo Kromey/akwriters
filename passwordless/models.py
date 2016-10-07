@@ -84,6 +84,8 @@ class AppPassword(models.Model):
     created_on = models.DateTimeField(default=timezone.now)
     last_used = models.DateTimeField(null=True)
 
+    class Meta:
+        ordering = ['created_on']
 
     def save(self, *args, **kwargs):
         if self.password and not is_password_usable(self.password):
