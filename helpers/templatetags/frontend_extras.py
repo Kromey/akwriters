@@ -1,6 +1,11 @@
+from datetime import timedelta
+
+
 from django import template
 from django.template.loader import render_to_string
+from django.template.defaultfilters import date,time
 from django.utils.safestring import mark_safe
+from django.utils import timezone
 
 register = template.Library()
 
@@ -32,4 +37,20 @@ def _make_span_icon(family, icon):
 
 def _make_accessible_label(label):
     return _accessible_label.format(label=label)
+
+
+@register.filter(expects_localtime=True, is_safe=False)
+def simple_time(value):
+    today = timezone.now()
+    yesterday = today - timedelta(days=1)
+
+    try:
+        if today.year == value.year and today.month == value.month and today.day == value.day:
+            return time(value, 'g:i A')
+        if yesterday.year == value.year and yesterday.month == value.month and yesterday.day == value.day:
+            return 'Yesterday'
+        else:
+            return date(value, 'M j, Y')
+    except (AttributeError, TypeError):
+        return ''
 
