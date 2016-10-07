@@ -14,5 +14,20 @@ $(function() {
 		var pass_id = button.data('password-id'); // Extract info from data-* attributes
 		
 		$('#password-id').val(pass_id);
-	})
+	});
+
+	$('#generate_modal').on('show.bs.modal', function(event) {
+		$('#password_results').hide();
+		$('#password_generating').show();
+	});
+	$('#generate_modal').on('shown.bs.modal', function(event) {
+		var form = $('#new_password_form')
+
+		$.post(form.attr('action'), form.serialize(), function(data) {
+			$('#password_results').html(data);
+
+			$('#password_results').show();
+			$('#password_generating').hide();
+		});
+	});
 });
