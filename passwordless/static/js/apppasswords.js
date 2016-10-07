@@ -19,6 +19,7 @@ $(function() {
 	$('#generate_modal').on('show.bs.modal', function(event) {
 		$('#password_results').hide();
 		$('#password_generating').show();
+			$('#password_done_btn').addClass('disabled');
 	});
 	$('#generate_modal').on('shown.bs.modal', function(event) {
 		var form = $('#new_password_form')
@@ -28,6 +29,7 @@ $(function() {
 
 			$('#password_results').show();
 			$('#password_generating').hide();
+			$('#password_done_btn').removeClass('disabled');
 		});
 	});
 });
