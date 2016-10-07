@@ -16,6 +16,10 @@ $(function() {
 		$('#password-id').val(pass_id);
 	});
 
+	$('#new_password_form').submit(function(event) {
+		$('#generate_modal').modal();
+		event.preventDefault();
+	});
 	$('#generate_modal').on('show.bs.modal', function(event) {
 		$('#password_results').hide();
 		$('#password_generating').show();
