@@ -11,12 +11,12 @@ $(document).ready(function() {
 	Candy.init('/http-bind/', {
 		core: {
 			debug: false,
-	autojoin: ['nano@conf.'+domain]
-		},
-	view: {
-		assets: assets,
-	enableXHTML: true
-	}
+			autojoin: ['nano@conf.'+domain]
+			},
+		view: {
+			assets: assets,
+			enableXHTML: true
+			}
 	});
 
 	//Connect
