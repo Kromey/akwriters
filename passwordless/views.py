@@ -100,7 +100,12 @@ class AppPasswordListView(LoginRequiredMixin, ListView):
         return self.request.user.apppassword_set.all()
 
 
-class AppPasswordCreateView(LoginRequiredMixin, CreateView):
-    model = models.AppPassword
-    fields = ['name']
+class AppPasswordRevokeView(LoginRequiredMixin, View):
+    def post(self, request):
+        try:
+            models.AppPassword.objects.get(user=request.user, pk=request.POST['password-id']).delete()
+        except models.AppPassword.DoesNotExist:
+            messages.error(request, 'Could not delete the requested password.')
+
+        return redirect('auth:apppasswords')
 
