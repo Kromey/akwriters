@@ -1,12 +1,5 @@
-{% extends 'chat/index.html' %}
 {% load static from staticfiles %}
 {% load chat_extras %}
-
-{% block header %}
-How to Set Up Pidgin
-{% endblock header %}
-
-{% block chatcontent %}
 <p>
 <a href="https://pidgin.im/" target="_blank">Pidgin</a> is our recommended chat
 client for Windows and Linux users.
@@ -38,16 +31,3 @@ identifies your own messages. I like to set it to "Me".
 Now click the Add button to finish and connect to the server.
 </p>
 
-<h3>Joining the Conversation</h3>
-<p>
-The first time you sign in, <a href="{% url 'chat:annika' %}">Annika</a> will
-ask to be your friend. Annika is our chat bot, and has a growing number of
-useful talents. You should accept her request, and then ask her for help
-(simply say "help" in a chat window with her) to start learning what she can do
-to help your writing.
-</p>
-<p>
-You can also jump straight into the group chat by simply asking Annika to invite
-you (i.e. type "invite me" in a chat window with her).
-</p>
-{% endblock chatcontent %}

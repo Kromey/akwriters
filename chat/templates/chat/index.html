@@ -1,28 +1,69 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load chat_extras %}
+{% load frontend_extras %}
 
 {% block header %}
-Join Our Chat Server!
+AKWriters Chat
 {% endblock header %}
 
 {% block content %}
-{% block chatcontent %}
-<p>
-To jump straight into the chat room, simply launch the In-Browser Chat app by
-clicking on the link above. To log in, your username is
-<em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
-</p>
-<p>
-You can also log into the chat server using any client that supports the
-{% prosody_proto %} (aka "Jabber") protocol, such as Pidgin or Adium, with the
-username and password you selected, and the domain <em>{% prosody_domain %}</em>.
-If you choose to go this route, detailed setup instructions for our recommended
-chat clients &mdash; Pidgin on Windows and Linux, or Adium on Mac &mdash; can be
-found on the pages linked above. If you choose to use a different client, and it
-doesn't ask for the "domain" separately, it probably expects to see your
-username (aka ID, JID, etc.) in the form
-<em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
-</p>
-{% endblock chatcontent %}
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="headingOne">
+			<h4 class="panel-title">
+				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					Welcome
+				</a>
+			</h4>
+		</div>
+		<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			<div class="panel-body">
+				{% include 'chat/general.html' %}
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="headingTwo">
+			<h4 class="panel-title">
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					Pidgin
+				</a>
+			</h4>
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			<div class="panel-body">
+				{% include 'chat/pidgin.html' %}
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="headingThree">
+			<h4 class="panel-title">
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+					Adium
+				</a>
+			</h4>
+		</div>
+		<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+			<div class="panel-body">
+				{% include 'chat/adium.html' %}
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading" role="tab" id="headingFour">
+			<h4 class="panel-title">
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+					{% octicon 'hubot' %} Annika
+				</a>
+			</h4>
+		</div>
+		<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+			<div class="panel-body">
+				{% include 'chat/annika.html' %}
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}
