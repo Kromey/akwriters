@@ -13,6 +13,8 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
+				<li><a href="{% url 'chat:index' %}">{% octicon 'comment-discussion' %} Chat</a></li>
+				{% comment %}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
 					<ul class="dropdown-menu">
@@ -25,27 +27,29 @@
 						<li><a href="{% url 'chat:adium' %}">Set Up Adium</a></li>
 					</ul>
 				</li>
+				{% endcomment %}
 				{# <li><a href="/profiles">Profiles</a></li> #}
-				<li><a href="{% url 'events' %}">Events</a></li>
-				<li><a href="{% url 'contact:contact' %}">Contact Us</a></li>
-				<li><a href="{% url 'links' %}">Links</a></li>
+				<li><a href="{% url 'events' %}">{% octicon 'calendar' %} Events</a></li>
+				<li><a href="{% url 'contact:contact' %}">{% octicon 'mail' %} Contact Us</a></li>
+				<li><a href="{% url 'links' %}">{% octicon 'link' %} Links</a></li>
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="http://nanowrimo.org/" target="_blank">{% glyphicon 'pencil' %} NaNoWriMo</a></li>
+				<li><a href="http://nanowrimo.org/" target="_blank">{% octicon 'pencil' %} NaNoWriMo</a></li>
 				{% if user.is_authenticated %}
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ user.username }} <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">{% octicon 'person' %} {{ user.username }} <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						{#<li><a href="{% url 'account:settings' %}">{% glyphicon 'cog' %} Account Settings</a></li>#}
 						<li><a href="{% url 'auth:apppasswords' %}">{% octicon 'shield' %} App Passwords</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="{% url 'auth:logout' %}">{% glyphicon 'log-out' %} Logout</a></li>
+						<li><a href="{% url 'auth:logout' %}">{% octicon 'sign-out' %} Logout</a></li>
 					</ul>
 				</li>
 				{% else %}
-				<li><a href="{% url 'auth:login' %}">{% glyphicon 'log-in' %} Login</a></li>
-				<li><a href="{% url 'auth:register' %}">{% glyphicon 'check' %} Register</a></li>
+				<li><a href="{% url 'auth:login' %}">{% octicon 'sign-in' %} Login</a></li>
+				<li><a href="{% url 'auth:register' %}">{% octicon 'person' %} Register</a></li>
 				{% endif %}
 			</ul>
 		</div>
