@@ -11,10 +11,17 @@ from contact.forms import ContactForm
 # Create your views here.
 
 def contact(request):
+    try:
+        username = request.user.username
+        email = request.user.email
+    except AttributeError:
+        username = ''
+        email = None
+
     form_init = {
-            'username': request.user.username,
+            'username': username,
             # 'ip_address': request.META.get('REMOTE_ADDR'),
-            'email': request.user.email,
+            'email': email,
             }
 
     if request.method == 'POST':
