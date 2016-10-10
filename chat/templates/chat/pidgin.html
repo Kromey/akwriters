@@ -12,17 +12,18 @@ and installed Pidgin, add a new account by opening the Accounts menu and
 selecting Manage Accounts, and then click the "Add..." button.
 </p>
 <div class="pull-right">
-	<img src="{% static 'img/pidgin_setup.png' %}" alt="Setup Pidgin" width="280" />
+	<img src="{% static 'chat/img/pidgin_setup.png' %}" alt="Setup Pidgin" class="img-responsive" />
 </div>
 <p>
 To configure your account, set your options as so:
+</p>
 <ol>
 	<li>Protocol: {% prosody_proto %}</li>
 	<li>Username: <span class="text-danger">{{ user.username|default:"<em>Your username</em>" }}</span></li>
 	<li>Domain: {% prosody_domain %}</li>
 	<li>Resource: <em class="text-danger">Optionally identify this location to yourself.</em></li>
+	<li>Password: <em class="text-danger">The <a class="text-danger" href="{% url 'auth:apppasswords' %}">App Password</a> you generated.</em></li>
 </ol>
-</p>
 <p>
 Under User Options, give yourself a Local alias; this only shows up to you, and
 identifies your own messages. I like to set it to "Me".

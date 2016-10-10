@@ -2,17 +2,25 @@
 {% load chat_extras %}
 <p>
 To jump straight into the chat room, simply launch the In-Browser Chat app by
-clicking on the link above. To log in, your username is
-<em>{{ user.username|default:"username" }}@{% prosody_domain %}</em>.
+clicking on the link above. You must be logged into the site, otherwise it will
+simply take you to the login page.
 </p>
 <p>
 You can also log into the chat server using any client that supports the
 {% prosody_proto %} (aka "Jabber") protocol, such as Pidgin or Adium, with the
-username and password you selected, and the domain <em>{% prosody_domain %}</em>.
-If you choose to go this route, detailed setup instructions for our recommended
-chat clients &mdash; Pidgin on Windows and Linux, or Adium on Mac &mdash; can be
-found on the pages linked above. If you choose to use a different client, and it
-doesn't ask for the "domain" separately, it probably expects to see your
-username (aka ID, JID, etc.) in the form
-<em>{{ user.username|lower|default:"username" }}@{% prosody_domain %}</em>.
+username you selected, and the domain <em>{% prosody_domain %}</em>.
+If you choose to go this route, you will need to generate an
+<a href="{% url 'auth:apppasswords' %}">"App Password"</a>.
+</p>
+<p>
+The sections below provide step-by-step instructions for our recommended
+chat clients, Pidgin (for Windows and Linux users) and Adium (for Mac users).
+For other clients, the sections below can still be a decent base
+to start from. Generally speaking, your username will be the one you chose when
+you signed up on this site, and the domain will be {% prosody_domain %} (like
+with Pidgin below); if the
+client you choose doesn't ask for the domain separately, or asks for a "Jabber
+ID" or "JID", use the format
+<em>{{ user.username|lower|default:'username' }}</em>@<em>{% prosody_domain %}</em>
+(as with Adium below).
 </p>
