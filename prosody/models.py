@@ -124,3 +124,18 @@ class Prosody(models.Model):
     def __str__(self):
         return "{}.{}.{}".format(self.user, self.store, self.key)
 
+
+class ProsodyRoster(Prosody):
+    objects = managers.ProsodyRosterManager.from_queryset(managers.ProsodyQuerySet)()
+
+    class Meta:
+        proxy = True
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.store = 'roster'
+
+    def save(self, *args, **kwargs):
+        self.store = 'roster'
+        super().save(*args, **kwargs)
+
