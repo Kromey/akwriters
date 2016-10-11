@@ -2,3 +2,4 @@ Django==1.10
 django-simplecaptcha==1.0.0
 passlib==1.6.2
 psycopg2==2.5.4
+pytz==2016.7
