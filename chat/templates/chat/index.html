@@ -10,56 +10,56 @@ AKWriters Chat
 {% block content %}
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingOne">
+		<div class="panel-heading" role="tab" id="heading-welcome">
 			<h4 class="panel-title">
-				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#welcome" aria-expanded="true" aria-controls="welcome">
 					Welcome
 				</a>
 			</h4>
 		</div>
-		<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+		<div id="welcome" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-welcome">
 			<div class="panel-body">
 				{% include 'chat/general.html' %}
 			</div>
 		</div>
 	</div>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingTwo">
+		<div class="panel-heading" role="tab" id="heading-pidgin">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#pidgin" aria-expanded="false" aria-controls="pidgin">
 					Pidgin
 				</a>
 			</h4>
 		</div>
-		<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+		<div id="pidgin" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-pidgin">
 			<div class="panel-body">
 				{% include 'chat/pidgin.html' %}
 			</div>
 		</div>
 	</div>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingThree">
+		<div class="panel-heading" role="tab" id="heading-adium">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#adium" aria-expanded="false" aria-controls="adium">
 					Adium
 				</a>
 			</h4>
 		</div>
-		<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+		<div id="adium" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-adium">
 			<div class="panel-body">
 				{% include 'chat/adium.html' %}
 			</div>
 		</div>
 	</div>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="headingFour">
+		<div class="panel-heading" role="tab" id="heading-annika">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#annika" aria-expanded="false" aria-controls="annika">
 					{% octicon 'hubot' %} Annika
 				</a>
 			</h4>
 		</div>
-		<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+		<div id="annika" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-annika">
 			<div class="panel-body">
 				{% include 'chat/annika.html' %}
 			</div>

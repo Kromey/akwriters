@@ -1,26 +1,29 @@
 {% load static from staticfiles %}
 {% load chat_extras %}
+{% load frontend_extras %}
+{% if user.is_authenticated %}
 <p>
-To jump straight into the chat room, simply launch the In-Browser Chat app by
-clicking on the link above. You must be logged into the site, otherwise it will
-simply take you to the login page.
+	<button type="button" class="btn btn-primary" data-popup-uri="{% url 'chat:candy' %}">{% glyphicon 'new-window' %} Launch Web Chat</button>
+	<span class="text-info">(Opens in a new window.)</span>
 </p>
+{% else %}
 <p>
-You can also log into the chat server using any client that supports the
-{% prosody_proto %} (aka "Jabber") protocol, such as Pidgin or Adium, with the
-username you selected, and the domain <em>{% prosody_domain %}</em>.
-If you choose to go this route, you will need to generate an
-<a href="{% url 'auth:apppasswords' %}">"App Password"</a>.
+To chat directly in your browser, you will first need to
+<a href="{% url 'auth:login' %}">log into the site</a>.
 </p>
+{% endif %}
 <p>
+If you would prefer to use an app that runs natively on your device, you can
+instead log into the chat server using any client that supports the
+{% prosody_proto %} (aka "Jabber") protocol.
 The sections below provide step-by-step instructions for our recommended
-chat clients, Pidgin (for Windows and Linux users) and Adium (for Mac users).
-For other clients, the sections below can still be a decent base
-to start from. Generally speaking, your username will be the one you chose when
-you signed up on this site, and the domain will be {% prosody_domain %} (like
-with Pidgin below); if the
-client you choose doesn't ask for the domain separately, or asks for a "Jabber
-ID" or "JID", use the format
-<em>{{ user.username|lower|default:'username' }}</em>@<em>{% prosody_domain %}</em>
-(as with Adium below).
+chat clients,
+<a href="#pidgin" data-toggle="collapse" aria-expanded="false" aria-controls="pidgin" data-parent="#accordion">Pidgin</a>
+(for Windows and Linux users) and
+<a href="#adium" data-toggle="collapse" aria-expanded="false" aria-controls="adium" data-parent="#accordion">Adium</a>
+(for Mac users).
+For other clients, use the section below that most closely matches what yours
+is asking for: username and domain follows Pidgin, while "Jabber ID" or "JID"
+follows Adium. You will also need to generate an
+<a href="{% url 'auth:apppasswords' %}">"App Password"</a> to use with your app.
 </p>
