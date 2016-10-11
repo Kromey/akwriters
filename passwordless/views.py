@@ -58,8 +58,15 @@ class AuthnView(View):
                 user.save()
 
                 # Now let's add the bot to the user's roster
-                data = '{{"name":"{}","ask":"subscribe","subscription":"none","groups":{{"Nano":true}}}}'.format(settings.THE_BOT['name'])
-                roster = ProsodyRoster(user=user.username, key=settings.THE_BOT['jid'], value=data)
+                data = {
+                        'name': settings.THE_BOT['name'],
+                        'ask': 'subscribe',
+                        'subscription': 'none',
+                        'groups': {'Nano': True },
+                }
+
+                roster = ProsodyRoster(user=user.username, key=settings.THE_BOT['jid'])
+                roster.encode(data)
                 roster.save()
 
                 messages.success(request, 'Your account is now active on this site')
