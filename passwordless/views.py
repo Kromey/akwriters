@@ -15,7 +15,7 @@ from django.views.generic.list import ListView
 
 from . import forms
 from . import models
-from prosody.models import Prosody
+from prosody.models import ProsodyRoster
 
 # Create your views here.
 class LoginView(FormView):
@@ -59,7 +59,7 @@ class AuthnView(View):
 
                 # Now let's add the bot to the user's roster
                 data = '{{"name":"{}","ask":"subscribe","subscription":"none","groups":{{"Nano":true}}}}'.format(settings.THE_BOT['name'])
-                roster = Prosody(user=user.username, store='roster', key=settings.THE_BOT['jid'], value=data)
+                roster = ProsodyRoster(user=user.username, key=settings.THE_BOT['jid'], value=data)
                 roster.save()
 
                 messages.success(request, 'Your account is now active on this site')
