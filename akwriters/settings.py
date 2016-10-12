@@ -8,6 +8,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
+from . import site_settings
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -17,14 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#Found in site_settings.py
+SECRET_KEY = site_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = site_settings.DEBUG
 
-TEMPLATE_DEBUG = False
-
-ALLOWED_HOSTS = ['akwriters.org']
+ALLOWED_HOSTS = site_settings.ALLOWED_HOSTS
 
 
 # Project templates
@@ -117,7 +117,7 @@ CSRF_COOKIE_SECURE = True
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-#Set in site_settings
+DATABASES = site_settings.DATABASES
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -134,17 +134,12 @@ USE_TZ = True
 
 
 # Custom settings
-PROSODY_DEFAULT_DOMAIN = 'akwriters.org'
-EMAIL_SENDER = 'Alaska Writers <prosody@akwriters.org>'
-
-#Number of iterations for SCRAM password hashing
-SCRAM_ITERATIONS = 8192
+CONTACT_EMAIL = site_settings.CONTACT_EMAIL
+PROSODY_DEFAULT_DOMAIN = site_settings.PROSODY_DEFAULT_DOMAIN
+EMAIL_SENDER = site_settings.EMAIL_SENDER
 
 # Bot automatically added to new users' rosters
-THE_BOT = {
-    'name': 'Annika',
-    'jid': 'annika@akwriters.org',
-}
+THE_BOT = site_settings.THE_BOT
 
 # Override default message tags to fit with Bootstrap
 from django.contrib.messages import constants as msg_constants
@@ -152,6 +147,7 @@ MESSAGE_TAGS = {
     msg_constants.ERROR: 'danger',
     msg_constants.DEBUG: 'warning',
     }
+MESSAGE_LEVEL = site_settings.MESSAGE_LEVEL
 
 
 # Static files (CSS, JavaScript, Images)
@@ -163,8 +159,4 @@ STATICFILES_DIRS = (
 )
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'htdocs/static')
-
-#This should be the very last line, always, so we can override anything in
-#settings.py with site- or environment-specific values.
-from .site_settings import *
 
