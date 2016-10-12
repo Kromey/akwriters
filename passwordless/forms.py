@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib import messages
 from django.template.loader import render_to_string
-from django.core.mail import send_mail,EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 
@@ -57,7 +57,6 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
         email_html = render_to_string('passwordless/email.html', context)
 
         #And, finally, send the email
-        #send_mail('AKWriters: Log in now!', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
         email = EmailMultiAlternatives(
                 'AKWriters: Log in now!',
                 email_text,
