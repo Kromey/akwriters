@@ -4,12 +4,25 @@
 Hi {{ username }},
 </p>
 <p>
-You (or someone) requested an email to log you into the Alaska Writers website.
-This is that email!
+You (or someone) requested an email to log you into the
+Alaska Writers website. This is that email!
 </p>
 <p>
 To log in, simply use this link:
-<a href="{{ authn_url }}">Log in now!</a>
+<a href="{{ authn_url }}">{{ authn_url }}</a>
+</p>
+<p>
+<strong>Important:</strong> This link will only work once, and will expire on
+{{ expires|date:'F jS, Y, P' }} if not used. For security purposes, this link
+will only work in the same browser and on the same device that you used to
+request it, which means you cannot for example request it from your laptop and
+then follow this link from your phone.
+</p>
+<p>
+If you did not initiate this request, you may disregard this email.
+</p>
+<p>
+<small>This message was sent on {{ sent|date:'F jS, Y, P' }} to {{ email }}.</small>
 </p>
 </body>
 </html>

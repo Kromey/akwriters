@@ -1,7 +1,17 @@
 Hi {{ username }},
 
-You (or someone) requested an email to log you into the Alaska Writers website.
-This is that email!
+You (or someone) requested an email to log you into the
+Alaska Writers website. This is that email!
 
 To log in, simply use this link:
 {{ authn_url }}
+
+IMPORTANT: This link will only work once, and will expire on
+{{ expires|date:'F jS, Y, P' }} if not used. For security purposes, this link
+will only work in the same browser and on the same device that you used to
+request it, which means you cannot for example request it from your laptop and
+then follow this link from your phone.
+
+If you did not initiate this request, you may disregard this email.
+
+This message was sent on {{ sent|date:'F jS, Y, P' }} to {{ email }}.

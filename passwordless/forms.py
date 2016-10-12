@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.conf import settings
 from django.contrib import messages
 from django.template.loader import render_to_string
-from django.core.mail import send_mail
+from django.core.mail import send_mail,EmailMultiAlternatives
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 
@@ -45,13 +45,28 @@ class LoginForm(PlaceholderFormMixin, forms.Form):
         #Build the URL for account authentication
         authn_url = self.request.build_absolute_uri(reverse('auth:authn', args=(auth.token,)))
         #Build the context for our email templates
-        context = {'username': user.username, 'authn_url': authn_url}
+        context = {
+                'username': user.username,
+                'email': user.email,
+                'authn_url': authn_url,
+                'sent': auth.date_sent,
+                'expires': auth.date_expires,
+        }
         #Now parse our plaintext and HTMLy templates
         email_text = render_to_string('passwordless/email.txt', context)
         email_html = render_to_string('passwordless/email.html', context)
 
         #And, finally, send the email
-        send_mail('AKWriters: Log in now!', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
+        #send_mail('AKWriters: Log in now!', email_text, settings.EMAIL_SENDER, [user.email], html_message=email_html)
+        email = EmailMultiAlternatives(
+                'AKWriters: Log in now!',
+                email_text,
+                settings.EMAIL_SENDER,
+                [user.email],
+                headers={'X-Entity-Ref-ID': auth.token},
+                )
+        email.attach_alternative(email_html, 'text/html')
+        email.send()
 
         messages.success(self.request, 'An email has been sent with instructions for logging in.')
 
