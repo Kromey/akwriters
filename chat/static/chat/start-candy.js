@@ -1,11 +1,11 @@
 $(document).ready(function() {
 	//Fetch our data elements
-	var username = $('#candy').data('username');
+	var jid = $('#candy').data('jid');
+	var nick = $('#candy').data('nick');
 	var domain = $('#candy').data('domain');
 	var otp = $('#candy').data('otp');
 	var assets = $('#candy').data('candy-assets');
 
-	var jid = username.toLowerCase() + '@' + domain.toLowerCase();
 
 	//Initialize Candy
 	Candy.init('/http-bind/', {
@@ -20,5 +20,5 @@ $(document).ready(function() {
 	});
 
 	//Connect
-	Candy.Core.connect(jid, otp, username);
+	Candy.Core.connect(jid, otp, nick);
 });
