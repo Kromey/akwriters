@@ -1,9 +1,10 @@
+from django.conf import settings
 from django.contrib.auth.hashers import make_password,is_password_usable
 from django.db import models
 from django.utils import timezone
 
 
-from prosody import utils as xmpp
+from prosody.utils import nodeprep
 
 
 from . import utils
@@ -35,8 +36,19 @@ class User(models.Model):
         #This is not an anonymous user
         return False
 
+    @property
+    def jid_domain(self):
+        return settings.JABBER_DOMAIN
+
+    @property
+    def jid(self):
+        return "{node}@{domain}".format(
+                node=self.jid_node,
+                domain=self.jid_domain,
+                )
+
     def save(self, *args, **kwargs):
-        self.jid_node = xmpp.nodeprep(self.username)
+        self.jid_node = nodeprep(self.username)
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -48,6 +60,9 @@ class AnonymousUser:
     An object to represent an anonymous/unauthenticated user
     """
     username = ''
+    jid_node = ''
+    jid_domain = ''
+    jid = ''
     email = None
     is_active = False
     is_superuser = False
