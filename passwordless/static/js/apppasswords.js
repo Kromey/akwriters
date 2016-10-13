@@ -49,4 +49,7 @@ $(function() {
 		$('#password_error').slideDown();
 	});
 	$('#password').focus(function() { $(this).select(); } );
+
+	// Turn on tooltips
+	$('[data-toggle="tooltip"]').tooltip();
 });
