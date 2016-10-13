@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.contrib import admin
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -18,4 +19,5 @@ urlpatterns = [
     url(r'^contact/', include('contact.urls', namespace='contact')),
     url(r'^favicon/', include('favicon.urls', namespace='favicon')),
     url(r'^policies/', include('policies.urls', namespace='policies')),
+    url(r'^admin/', admin.site.urls),
 ]

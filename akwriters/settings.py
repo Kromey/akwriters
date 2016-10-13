@@ -56,7 +56,7 @@ TEMPLATES = [
 # Application definition
 
 INSTALLED_APPS = (
-    #'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -99,6 +99,7 @@ X_FRAME_OPTIONS = 'DENY'
 # Authentication settings
 LOGIN_URL = '/auth/login'
 LOGOUT_URL = '/auth/logout'
+AUTH_USER_MODEL = 'passwordless.User'
 
 AUTHENTICATION_BACKENDS = (
     'passwordless.backend.TokenBackend',

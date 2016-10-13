@@ -26,6 +26,9 @@ class User(models.Model):
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(null=True)
 
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email',]
+
     @property
     def is_authenticated(self):
         #Used to tell authenticated Users from anonymous ones
@@ -37,6 +40,10 @@ class User(models.Model):
         return False
 
     @property
+    def is_staff(self):
+        return self.is_superuser
+
+    @property
     def jid_domain(self):
         return settings.JABBER_DOMAIN
 
@@ -46,6 +53,15 @@ class User(models.Model):
                 node=self.jid_node,
                 domain=self.jid_domain,
                 )
+
+    def get_username(self):
+        return self.username
+
+    def has_perm(self, perm, obj=None):
+        return self.is_superuser
+
+    def has_module_perms(self, app_label):
+        return self.is_superuser
 
     def save(self, *args, **kwargs):
         self.jid_node = nodeprep(self.username)
