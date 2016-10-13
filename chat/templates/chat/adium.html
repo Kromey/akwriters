@@ -9,7 +9,7 @@ client for Mac users.
 <p>
 Once you have <a href="https://adium.im/" target="_blank">downloaded</a>
 and installed Adium, add a new account by opening the File menu, going to the
-Add Account sub-menu, and choosing {% prosody_proto %} (Jabber).
+Add Account sub-menu, and choosing {% jabber_proto %} (Jabber).
 </p>
 <div class="pull-right">
 	<img src="{% static 'chat/img/adium_setup.png' %}" alt="Setup Adium" class="img-responsive" />
@@ -17,7 +17,7 @@ Add Account sub-menu, and choosing {% prosody_proto %} (Jabber).
 <p>
 To configure your account, set your options as so:
 <ol>
-	<li>Jabber ID: <span class="text-danger">{{ user.username|default:"<em>Your username</em>" }}</span>@{% prosody_domain %}</li>
+	<li>Jabber ID: <span class="text-danger">{{ user.jid_node|default:"<em>Your username</em>" }}</span>@{% jabber_domain %}</li>
 	<li>Password: <em class="text-danger">The <a class="text-danger" href="{% url 'auth:apppasswords' %}">App Password</a> you generated.</em></li>
 </ol>
 </p>

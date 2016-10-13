@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ['akwriters.org']
 #EMAIL_SENDER =
 
 # XMPP domain
-PROSODY_DEFAULT_DOMAIN = 'akwriters.org'
+JABBER_DOMAIN = 'akwriters.org'
 # Bot automatically added to new users' rosters
 THE_BOT = {
     'name': 'Annika',

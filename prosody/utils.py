@@ -10,7 +10,7 @@ from django.conf import settings
 
 
 def getProsodyDomain():
-    return settings.PROSODY_DEFAULT_DOMAIN
+    return settings.JABBER_DOMAIN
 
 
 ####

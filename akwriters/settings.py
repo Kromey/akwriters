@@ -135,7 +135,7 @@ USE_TZ = True
 
 # Custom settings
 CONTACT_EMAIL = site_settings.CONTACT_EMAIL
-PROSODY_DEFAULT_DOMAIN = site_settings.PROSODY_DEFAULT_DOMAIN
+JABBER_DOMAIN = site_settings.JABBER_DOMAIN
 EMAIL_SENDER = site_settings.EMAIL_SENDER
 
 # Bot automatically added to new users' rosters

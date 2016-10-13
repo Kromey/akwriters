@@ -7,15 +7,15 @@ register = template.Library()
 
 
 @register.simple_tag
-def prosody_domain():
-    return settings.PROSODY_DEFAULT_DOMAIN
+def jabber_domain():
+    return settings.JABBER_DOMAIN
 
 @register.simple_tag
 def chat_domain():
-    return prosody_domain()
+    return jabber_domain()
 
 @register.simple_tag
-def prosody_proto():
+def jabber_proto():
     # Set height and width for the image
     width = 16
     height = 16
