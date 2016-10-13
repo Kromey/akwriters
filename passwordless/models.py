@@ -3,6 +3,9 @@ from django.db import models
 from django.utils import timezone
 
 
+from prosody import utils as xmpp
+
+
 from . import utils
 
 # Create your models here.
@@ -15,6 +18,7 @@ class User(models.Model):
     """
 
     username = models.CharField(max_length=30, unique=True)
+    jid_node = models.CharField(max_length=30, null=True)
     email = models.EmailField(null=True)
     is_active = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -30,6 +34,10 @@ class User(models.Model):
     def is_anonymous(self):
         #This is not an anonymous user
         return False
+
+    def save(self, *args, **kwargs):
+        self.jid_node = xmpp.nodeprep(self.username)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
