@@ -10,6 +10,7 @@ from django.utils import timezone
 
 from passwordless.models import User, AuthToken
 from simplecaptcha import captcha
+from prosody.utils import nodeprep
 
 
 from helpers.forms import PlaceholderFormMixin
@@ -82,10 +83,14 @@ class RegistrationForm(LoginForm):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
+        try:
+            node = nodeprep(username)
+        except UnicodeError:
+            raise forms.ValidationError('Username contains invalid characters', code='invalid')
 
         self._purge_unvalidated_users()
 
-        if User.objects.filter(username__iexact=username).count() > 0:
+        if User.objects.filter(Q(username__iexact=username) | Q(jid_node__iexact=node)).count() > 0:
             raise forms.ValidationError('That username is already taken', code='invalid')
 
         return username
