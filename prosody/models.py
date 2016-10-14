@@ -116,13 +116,14 @@ class Prosody(models.Model):
             self.type = 'boolean'
 
     class Meta:
+        ordering = ['user','store','key',]
         #Prosody is hard-coded to use the prosody table, so that's what we use
         db_table = 'prosody'
         #Uniqueness is based on user,store,key (and host, but we're single-host)
         unique_together = (("user","store","key"),)
 
     def __str__(self):
-        return "{}.{}.{}".format(self.user, self.store, self.key)
+        return "/{}/{}/{}".format(self.user, self.store, self.key)
 
 
 class ProsodyRoster(Prosody):
