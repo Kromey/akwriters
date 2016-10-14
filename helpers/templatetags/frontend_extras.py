@@ -41,7 +41,8 @@ def _make_accessible_label(label):
 
 @register.filter(expects_localtime=True, is_safe=False)
 def simple_time(value):
-    today = timezone.now()
+    # timzone.now() is UTC, put it into localtime for tests
+    today = timezone.localtime(timezone.now())
     yesterday = today - timedelta(days=1)
     tomorrow = today + timedelta(days=1)
 
