@@ -92,14 +92,25 @@ span.day-label {
 	right: 1px;
 }
 div.calendar-day div.event {
-	background-color: lightgreen;
-	padding: 2px 5px;
-	border-top: 1px solid green;
-	border-bottom: 1px solid green;
-	margin-top: -1px;
+	margin-bottom: 1px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+}
+div.calendar-day div.event span.label {
+	color: inherit;
+}
+div.event-anc {
+	background-color: lightgreen;
+	color: black;
+}
+div.event-fbx {
+	background-color: purple;
+	color: white;
+}
+div.event-els {
+	background-color: yellowgreen;
+	color: black;
 }
 
 /* Override hard-coded Octicons font-size */
