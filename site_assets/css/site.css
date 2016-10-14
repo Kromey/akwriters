@@ -94,8 +94,9 @@ span.day-label {
 div.calendar-day div.event {
 	background-color: lightgreen;
 	padding: 2px 5px;
-	margin: 0 2px 1px;
-	border: 1px solid green;
+	border-top: 1px solid green;
+	border-bottom: 1px solid green;
+	margin-top: -1px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
