@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     'api',
     'chat',
     'contact',
+    'events',
     'favicon',
     'helpers',
     'policies',
