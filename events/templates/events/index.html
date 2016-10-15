@@ -12,12 +12,12 @@ Alaska Writers Events
 {# Note: May need to alter CSP to embed an iframe here #}
 <div class="calendar">
 	{% for week in dates %}
-	{% with firstday=forloop.first %}
+	{% with firstweek=forloop.first %}
 	<div class="calendar-week">
 		{% for adate in week %}
 		<div class="calendar-day{% if adate.month != today.month %} calendar-othermonth{% endif %}">
 			<div class="day-label">
-				{% if adate.day == 1 or firstday and forloop.first %}
+				{% if adate.day == 1 or firstweek and forloop.first %}
 				{{ adate|date:'M' }}
 				{% endif %}
 				{{ adate.day }}
