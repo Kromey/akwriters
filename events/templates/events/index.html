@@ -11,75 +11,26 @@ Alaska Writers Events
 {% block content %}
 {# Note: May need to alter CSP to embed an iframe here #}
 <div class="calendar">
+	{% for week in dates %}
+	{% with firstday=forloop.first %}
 	<div class="calendar-week">
-		<div class="calendar-day">
-			<span class="day-label">1</span>
+		{% for adate in week %}
+		<div class="calendar-day{% if adate.month != today.month %} calendar-othermonth{% endif %}">
+			<div class="day-label">
+				{% if adate.day == 1 or firstday and forloop.first %}
+				{{ adate|date:'M' }}
+				{% endif %}
+				{{ adate.day }}
+			</div>
+			{% if forloop.first %}
 			<div class="event event-anc"><span class="label">Foobar bad beef baz bax barrister</span></div>
 			<div class="event event-fbx"><span class="label">Foobar bad beef</span></div>
 			<div class="event event-els"><span class="label">Foobar bad beef</span></div>
+			{% endif %}
 		</div>
-		<div class="calendar-day"><span class="day-label">2</span></div>
-		<div class="calendar-day"><span class="day-label">3</span></div>
-		<div class="calendar-day"><span class="day-label">4</span></div>
-		<div class="calendar-day"><span class="day-label">5</span></div>
-		<div class="calendar-day"><span class="day-label">6</span></div>
-		<div class="calendar-day"><span class="day-label">7</span></div>
+		{% endfor %}
 	</div>
-	<div class="calendar-week">
-		<div class="calendar-day">
-			<span class="day-label">1</span>
-			<div class="event event-anc"><span class="label">Foobar bad beef baz bax barrister</span></div>
-			<div class="event event-fbx"><span class="label">Foobar bad beef</span></div>
-			<div class="event event-els"><span class="label">Foobar bad beef</span></div>
-		</div>
-		<div class="calendar-day"><span class="day-label">2</span></div>
-		<div class="calendar-day"><span class="day-label">3</span></div>
-		<div class="calendar-day"><span class="day-label">4</span></div>
-		<div class="calendar-day"><span class="day-label">5</span></div>
-		<div class="calendar-day"><span class="day-label">6</span></div>
-		<div class="calendar-day"><span class="day-label">7</span></div>
-	</div>
-	<div class="calendar-week">
-		<div class="calendar-day">
-			<span class="day-label">1</span>
-			<div class="event event-anc"><span class="label">Foobar bad beef baz bax barrister</span></div>
-			<div class="event event-fbx"><span class="label">Foobar bad beef</span></div>
-			<div class="event event-els"><span class="label">Foobar bad beef</span></div>
-		</div>
-		<div class="calendar-day"><span class="day-label">2</span></div>
-		<div class="calendar-day"><span class="day-label">3</span></div>
-		<div class="calendar-day"><span class="day-label">4</span></div>
-		<div class="calendar-day"><span class="day-label">5</span></div>
-		<div class="calendar-day"><span class="day-label">6</span></div>
-		<div class="calendar-day"><span class="day-label">7</span></div>
-	</div>
-	<div class="calendar-week">
-		<div class="calendar-day">
-			<span class="day-label">1</span>
-			<div class="event event-anc"><span class="label">Foobar bad beef baz bax barrister</span></div>
-			<div class="event event-fbx"><span class="label">Foobar bad beef</span></div>
-			<div class="event event-els"><span class="label">Foobar bad beef</span></div>
-		</div>
-		<div class="calendar-day"><span class="day-label">2</span></div>
-		<div class="calendar-day"><span class="day-label">3</span></div>
-		<div class="calendar-day"><span class="day-label">4</span></div>
-		<div class="calendar-day"><span class="day-label">5</span></div>
-		<div class="calendar-day"><span class="day-label">6</span></div>
-		<div class="calendar-day"><span class="day-label">7</span></div>
-	</div>
-	<div class="calendar-week">
-		<div class="calendar-day">
-			<span class="day-label">1</span>
-			<div class="event event-anc"><span class="label">Foobar bad beef baz bax barrister</span></div>
-			<div class="event event-fbx"><span class="label">Foobar bad beef</span></div>
-			<div class="event event-els"><span class="label">Foobar bad beef</span></div>
-		</div>
-		<div class="calendar-day"><span class="day-label">2</span></div>
-		<div class="calendar-day"><span class="day-label">3</span></div>
-		<div class="calendar-day"><span class="day-label">4</span></div>
-		<div class="calendar-day"><span class="day-label">5</span></div>
-		<div class="calendar-day"><span class="day-label">6</span></div>
-		<div class="calendar-day"><span class="day-label">7</span></div>
-	</div>
+	{% endwith %}
+	{% endfor %}
 </div>
 {% endblock content %}
