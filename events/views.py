@@ -28,7 +28,7 @@ class EventsView(TemplateView):
 
         events = {}
         for gcal in Calendar.objects.all():
-            url = 'https://www.googleapis.com/calendar/v3/calendars/{calendar}/events?timeMin={time_min}&key={api_key}'.format(
+            url = 'https://www.googleapis.com/calendar/v3/calendars/{calendar}/events?singleEvents=true&timeMin={time_min}&key={api_key}'.format(
                     calendar=parse.quote(gcal.remote_id),
                     time_min=parse.quote(time_min),
                     api_key=parse.quote(api_key),
