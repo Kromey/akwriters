@@ -11,6 +11,29 @@ Alaska Writers Events
 {% block content %}
 {# Note: May need to alter CSP to embed an iframe here #}
 <div class="calendar">
+	<div class="calendar-header">
+		<div class="calendar-day">
+			Sunday
+		</div>
+		<div class="calendar-day">
+			Monday
+		</div>
+		<div class="calendar-day">
+			Tuesday
+		</div>
+		<div class="calendar-day">
+			Wednesday
+		</div>
+		<div class="calendar-day">
+			Thursday
+		</div>
+		<div class="calendar-day">
+			Friday
+		</div>
+		<div class="calendar-day">
+			Saturday
+		</div>
+	</div>
 	{% for week in calendar %}
 	{% with firstweek=forloop.first %}
 	<div class="calendar-week">
@@ -18,7 +41,7 @@ Alaska Writers Events
 		<div class="calendar-day{% if adate.date.month != today.date.month %} calendar-othermonth{% endif %}">
 			<div class="day-label">
 				{% if adate.date.day == 1 or firstweek and forloop.first %}
-				{{ adate.date|date:'M' }}
+				{{ adate.date|date:'F' }}
 				{% endif %}
 				{{ adate.date.day }}
 			</div>

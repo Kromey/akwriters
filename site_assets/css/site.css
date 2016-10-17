@@ -85,6 +85,12 @@ div.calendar div.calendar-day {
 	margin-top: -1px;
 	position: relative;
 }
+div.calendar div.calendar-header div.calendar-day {
+	height: auto;
+	text-align: center;
+	font-weight: bold;
+	border: none;
+}
 div.calendar div.calendar-day.calendar-othermonth {
 	color: #aaa;
 }
@@ -107,11 +113,11 @@ div.event-anc {
 	color: black;
 }
 div.event-fbx {
-	background-color: purple;
+	background-color: darkorchid;
 	color: white;
 }
 div.event-els {
-	background-color: yellowgreen;
+	background-color: lightblue;
 	color: black;
 }
 

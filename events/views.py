@@ -34,7 +34,8 @@ class EventsView(TemplateView):
         api_key = settings.GCAL_API_KEY
 
         events = {}
-        for gcal in Calendar.objects.all():
+        gcals = Calendar.objects.all()
+        for gcal in gcals:
             url = 'https://www.googleapis.com/calendar/v3/calendars/{calendar}/events?singleEvents=true&timeMin={time_min}&timeMax={time_max}&key={api_key}'.format(
                     calendar=parse.quote(gcal.remote_id),
                     time_min=parse.quote(time_min),
@@ -68,6 +69,7 @@ class EventsView(TemplateView):
                     })
 
         context['calendar'] = cal
+        context['gcals'] = gcals
         context['today'] = today
 
         return context
