@@ -1,16 +1,13 @@
 $(function() {
-	$('.gcal-control input[type=checkbox]').change(function() {
-		target = $(this).val();
-		if($(this).is(':checked')) {
-			$(this).parent().removeClass('gcal-control-disabled');
+	$('.gcal-control').click(function() {
+		target = $(this).data('target');
+		if($(this).hasClass('gcal-control-disabled')) {
+			$(this).removeClass('gcal-control-disabled');
 			$('.event.'+target).slideDown();
 		} else {
-			$(this).parent().addClass('gcal-control-disabled');
+			$(this).addClass('gcal-control-disabled');
 			$('.event.'+target).slideUp();
 		}
 		$(this).blur();
 	});
-
-	// Fix FF being stupid
-	$('.gcal-control input').prop('checked', true);
 });

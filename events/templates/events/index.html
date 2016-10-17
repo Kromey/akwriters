@@ -13,9 +13,8 @@ Alaska Writers Events
 <div class="calendar">
 	<div class="calendar-controls">
 		{% for gcal in gcals %}
-		<div class="gcal-control {{ gcal.css_class }}">
-			<input id="gcal-{{ gcal.id }}" type="checkbox" value="{{ gcal.css_class }}" checked>
-			<label for="gcal-{{ gcal.id }}">{{ gcal.name }}</label>
+		<div class="gcal-control {{ gcal.css_class }}" data-target="{{ gcal.css_class }}">
+			{{ gcal.name }}
 		</div>
 		{% endfor %}
 	</div>
