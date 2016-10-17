@@ -134,6 +134,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+GCAL_API_KEY = site_settings.GCAL_API_KEY
+
 
 # Custom settings
 CONTACT_EMAIL = site_settings.CONTACT_EMAIL

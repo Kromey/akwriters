@@ -11,22 +11,20 @@ Alaska Writers Events
 {% block content %}
 {# Note: May need to alter CSP to embed an iframe here #}
 <div class="calendar">
-	{% for week in dates %}
+	{% for week in calendar %}
 	{% with firstweek=forloop.first %}
 	<div class="calendar-week">
 		{% for adate in week %}
-		<div class="calendar-day{% if adate.month != today.month %} calendar-othermonth{% endif %}">
+		<div class="calendar-day{% if adate.date.month != today.date.month %} calendar-othermonth{% endif %}">
 			<div class="day-label">
-				{% if adate.day == 1 or firstweek and forloop.first %}
-				{{ adate|date:'M' }}
+				{% if adate.date.day == 1 or firstweek and forloop.first %}
+				{{ adate.date|date:'M' }}
 				{% endif %}
-				{{ adate.day }}
+				{{ adate.date.day }}
 			</div>
-			{% if forloop.first %}
-			<div class="event event-anc"><span class="label">Foobar bad beef baz bax barrister</span></div>
-			<div class="event event-fbx"><span class="label">Foobar bad beef</span></div>
-			<div class="event event-els"><span class="label">Foobar bad beef</span></div>
-			{% endif %}
+			{% for event in adate.events %}
+			<div class="event event-fbx"><span class="label">{{ event.summary }}</span></div>
+			{% endfor %}
 		</div>
 		{% endfor %}
 	</div>
