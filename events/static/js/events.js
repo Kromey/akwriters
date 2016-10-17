@@ -9,4 +9,7 @@ $(function() {
 			$('.event.'+target).slideUp()
 		}
 	});
+
+	// Fix FF being stupid
+	$('.gcal-control input').prop('checked', true);
 });
