@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
 
 {% block title %}
 Alaska Writers Events
@@ -9,8 +10,15 @@ Alaska Writers Events
 {% endblock header %}
 
 {% block content %}
-{# Note: May need to alter CSP to embed an iframe here #}
 <div class="calendar">
+	<div class="calendar-controls">
+		{% for gcal in gcals %}
+		<div class="gcal-control {{ gcal.css_class }}">
+			<input id="gcal-{{ gcal.id }}" type="checkbox" value="{{ gcal.css_class }}" checked>
+			<label for="gcal-{{ gcal.id }}">{{ gcal.name }}</label>
+		</div>
+		{% endfor %}
+	</div>
 	<div class="calendar-header">
 		<div class="calendar-day">
 			Sunday
@@ -55,3 +63,7 @@ Alaska Writers Events
 	{% endfor %}
 </div>
 {% endblock content %}
+
+{% block extrascripts %}
+<script src="{% static 'js/events.js' %}"></script>
+{% endblock %}

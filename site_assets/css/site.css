@@ -72,6 +72,32 @@ footer {
 }
 
 /* Calendar styles */
+div.calendar-controls {
+	float: right;
+	margin-right: 2%;
+	margin-bottom: 20px;
+}
+div.calendar-controls div.gcal-control {
+	display: inline-block;
+	padding: 0 15px;
+	border: 1px solid darkgray;
+	border-radius: 13px;
+	line-height: 25px;
+}
+div.calendar-controls div.gcal-control.gcal-control-disabled {
+	background-color: transparent;
+	color: gray;
+}
+div.calendar-controls div.gcal-control input[type=checkbox] {
+	display: none;
+}
+div.calendar-controls div.gcal-control label {
+	margin: 0;
+	font-weight: normal;
+}
+div.calendar-header, div.calendar-week {
+	clear: both;
+}
 div.calendar div.calendar-day {
 	display: inline-block;
 	margin: 0px;
