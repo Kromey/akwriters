@@ -23,14 +23,22 @@ class EventsView(TemplateView):
         today = timezone.localtime(timezone.now())
         dates = calendar.Calendar(6).monthdatescalendar(today.year, today.month)
 
-        time_min = dates[0][0].isoformat() + 'T00:00:00Z'
+        # Set boundary dates at 1w before and after our current view
+        # 1w is probably overkill, but handles timezones and long events
+        time_min = dates[0][0] - datetime.timedelta(weeks=1)
+        time_min = time_min.isoformat() + 'T00:00:00Z'
+        time_max = dates[-1][-1] + datetime.timedelta(weeks=1)
+        time_max = time_max.isoformat() + 'T00:00:00Z'
+
+        # This needs to use an API key from Google
         api_key = settings.GCAL_API_KEY
 
         events = {}
         for gcal in Calendar.objects.all():
-            url = 'https://www.googleapis.com/calendar/v3/calendars/{calendar}/events?singleEvents=true&timeMin={time_min}&key={api_key}'.format(
+            url = 'https://www.googleapis.com/calendar/v3/calendars/{calendar}/events?singleEvents=true&timeMin={time_min}&timeMax={time_max}&key={api_key}'.format(
                     calendar=parse.quote(gcal.remote_id),
                     time_min=parse.quote(time_min),
+                    time_max=parse.quote(time_max),
                     api_key=parse.quote(api_key),
                     )
 
