@@ -83,6 +83,7 @@ div.calendar-controls div.gcal-control {
 	border: 1px solid darkgray;
 	border-radius: 13px;
 	line-height: 25px;
+	transition: background-color 1s, color 1s, border-color 1s;
 }
 div.calendar-controls div.gcal-control.gcal-control-disabled {
 	background-color: transparent;
@@ -94,6 +95,7 @@ div.calendar-controls div.gcal-control input[type=checkbox] {
 div.calendar-controls div.gcal-control label {
 	margin: 0;
 	font-weight: normal;
+	cursor: pointer;
 }
 div.calendar-header, div.calendar-week {
 	clear: both;

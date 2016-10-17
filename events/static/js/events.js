@@ -3,11 +3,10 @@ $(function() {
 		target = $(this).val()
 		if($(this).is(':checked')) {
 			$(this).parent().removeClass('gcal-control-disabled')
-			$('.'+target).show()
+			$('.event.'+target).slideDown()
 		} else {
 			$(this).parent().addClass('gcal-control-disabled')
-			$('.'+target).hide()
-			$(this).parent().show()
+			$('.event.'+target).slideUp()
 		}
 	});
 });
