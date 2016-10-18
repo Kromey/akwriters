@@ -14,7 +14,8 @@ $(function() {
 	$('#event-modal').on('show.bs.modal', function(event) {
 		var trigger = $(event.relatedTarget);
 
-		$('#event-modal-label').html(trigger.data('summary'));
+		$('#event-title').html(trigger.data('summary'));
+		$('#event-date').html(trigger.data('date'));
 		$('#event-modal-when').html(trigger.data('time'));
 		$('#event-modal-where').html(trigger.data('where'));
 	});

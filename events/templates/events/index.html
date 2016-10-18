@@ -67,6 +67,8 @@ Alaska Writers Events
 				data-date="{{ event.start_date|date:'D, j M' }}"
 				{% if event.start_time %}
 				data-time="{{ event.start_time|date:'P' }} until {{ event.end_time|date:'P' }}"
+				{% else %}
+				data-time="All Day"
 				{% endif %}
 				data-where="{{ event.location }}"
 				data-target="#event-modal"
@@ -87,7 +89,7 @@ Alaska Writers Events
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="event-modal-label">Event Details</h4>
+				<h4 class="modal-title" id="event-modal-label"><span id="event-title">Event Details</span> &mdash; <span id="event-date">1/23/4567</span></h4>
 			</div>
 			<div class="modal-body">
 				<div class="row">
