@@ -179,6 +179,12 @@ div#event-modal div#event-desc:empty {
 #event-where:not(:empty)::before {
 	content: "at ";
 }
+#event-modal .modal-body {
+	white-space: pre-line;
+}
+.modal-body:empty~.modal-footer {
+	border-top: none;
+}
 
 /* Override hard-coded Octicons font-size */
 span.octicon {
