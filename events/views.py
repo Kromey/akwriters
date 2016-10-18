@@ -82,6 +82,8 @@ class EventsView(TemplateView):
         context['calendar'] = cal
         context['gcals'] = gcals
         context['current_month'] = current_month
+        context['last_month'] = current_month - datetime.timedelta(days=1)
+        context['next_month'] = current_month + datetime.timedelta(days=32)
         context['today'] = today
 
         return context

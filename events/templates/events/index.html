@@ -22,9 +22,9 @@ Alaska Writers Events
 	</div>
 	<div class="calendar-header">
 		<div class="month-header text-center">
-			<div class="month-control prev-month">{% octicon 'chevron-left' %}</div>
+			<a class="month-control prev-month" href="{% url 'events:index' year=last_month|date:'Y' month=last_month|date:'m' %}">{% octicon 'chevron-left' %}</a>
 			<h3>{{ current_month|date:'F Y' }}</h3>
-			<div class="month-control next-month">{% octicon 'chevron-right' %}</div>
+			<a class="month-control next-month" href="{% url 'events:index' year=next_month|date:'Y' month=next_month|date:'m' %}">{% octicon 'chevron-right' %}</a>
 		</div>
 		<div class="calendar-day">
 			Sunday
