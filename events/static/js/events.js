@@ -16,9 +16,9 @@ $(function() {
 
 		$('#event-title').html(trigger.data('summary'));
 		$('#event-date').html(trigger.data('date'));
-		$('#event-modal-when').html(trigger.data('time'));
-		$('#event-modal-where').html(trigger.data('where'));
-		$('#event-modal-desc').html(trigger.data('details'));
+		$('#event-when').html(trigger.data('time'));
+		$('#event-where').html(trigger.data('where'));
+		$('#event-desc').html(trigger.data('details'));
 	});
 
 	//Not the standard method Bootstrap's docs recommend, but we'll need
