@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load frontend_extras %}
 {% load static from staticfiles %}
 
 {% block title %}
@@ -20,6 +21,11 @@ Alaska Writers Events
 		{% endfor %}
 	</div>
 	<div class="calendar-header">
+		<div class="month-header text-center">
+			<div class="month-control prev-month">{% octicon 'chevron-left' %}</div>
+			<h3>October 2016</h3>
+			<div class="month-control next-month">{% octicon 'chevron-right' %}</div>
+		</div>
 		<div class="calendar-day">
 			Sunday
 		</div>

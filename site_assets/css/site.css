@@ -100,6 +100,16 @@ div.calendar-controls div.gcal-control.gcal-control-disabled {
 	background-color: transparent;
 	color: gray;
 }
+div.calendar-header div.month-control {
+	display: inline-block;
+	padding-left: 8px;
+	font-size: 125%;
+	cursor: pointer;
+}
+div.calendar-header h3 {
+	display: inline-block;
+	margin: 0 0 15px;
+}
 div.calendar-header, div.calendar-week {
 	clear: both;
 }
