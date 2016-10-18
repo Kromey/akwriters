@@ -28,7 +28,7 @@
 						aria-expanded="false">{% octicon 'person' %} {{ user.username }} <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						{% if user.is_superuser %}
-						<li><a href="{% url 'admin:index' %}">{% octicon 'beaker' %} Admin</a></li>
+						<li><a href="{% url 'admin:index' %}">{% octicon 'database' %} Admin</a></li>
 						{% endif %}
 						{#<li><a href="{% url 'account:settings' %}">{% glyphicon 'cog' %} Account Settings</a></li>#}
 						<li>
