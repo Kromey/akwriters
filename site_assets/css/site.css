@@ -132,8 +132,11 @@ div.calendar div.calendar-header div.calendar-day {
 	font-weight: bold;
 	border: none;
 }
-div.calendar div.calendar-day.calendar-othermonth {
+div.calendar-week div.calendar-day {
 	color: #aaa;
+}
+div.calendar-week div.calendar-day.calendar-currentmonth {
+	color: #000;
 }
 div.day-label {
 	text-align: right;

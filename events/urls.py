@@ -9,4 +9,5 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url('^$', views.EventsView.as_view(), name='index'),
+    url('^(?P<year>[\d]{4})(?P<month>[\d]{2})$', views.EventsView.as_view(), name='index'),
 ]

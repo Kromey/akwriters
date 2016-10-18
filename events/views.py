@@ -17,11 +17,22 @@ from .models import Calendar
 class EventsView(TemplateView):
     template_name = 'events/index.html'
 
+    year = None
+    month = None
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         today = timezone.localtime(timezone.now())
-        dates = calendar.Calendar(6).monthdatescalendar(today.year, today.month)
+        try:
+            self.year = int(self.kwargs['year'])
+            self.month = int(self.kwargs['month'])
+        except KeyError:
+            self.year = today.year
+            self.month = today.month
+
+        current_month = datetime.date(self.year, self.month, 1)
+        dates = calendar.Calendar(6).monthdatescalendar(current_month.year, current_month.month)
 
         # Set boundary dates at 1w before and after our current view
         # 1w is probably overkill, but handles timezones and long events
@@ -70,6 +81,7 @@ class EventsView(TemplateView):
 
         context['calendar'] = cal
         context['gcals'] = gcals
+        context['current_month'] = current_month
         context['today'] = today
 
         return context

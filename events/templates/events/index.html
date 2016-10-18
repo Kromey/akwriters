@@ -23,7 +23,7 @@ Alaska Writers Events
 	<div class="calendar-header">
 		<div class="month-header text-center">
 			<div class="month-control prev-month">{% octicon 'chevron-left' %}</div>
-			<h3>October 2016</h3>
+			<h3>{{ current_month|date:'F Y' }}</h3>
 			<div class="month-control next-month">{% octicon 'chevron-right' %}</div>
 		</div>
 		<div class="calendar-day">
@@ -52,7 +52,7 @@ Alaska Writers Events
 	{% with firstweek=forloop.first %}
 	<div class="calendar-week">
 		{% for adate in week %}
-		<div class="calendar-day{% if adate.date.month != today.date.month %} calendar-othermonth{% endif %}">
+		<div class="calendar-day{% if adate.date.month == current_month.month %} calendar-currentmonth{% endif %}">
 			<div class="day-label">
 				{% if adate.date.day == 1 or firstweek and forloop.first %}
 				{{ adate.date|date:'F' }}
