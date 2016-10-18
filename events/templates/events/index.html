@@ -65,8 +65,8 @@ Alaska Writers Events
 				data-toggle="modal"
 				data-summary="{{ event.summary|escape }}"
 				data-date="{{ event.start_date|date:'D, j M' }}"
-				{% if event.start_time %}
-				data-time="{{ event.start_time|date:'P' }} until {{ event.end_time|date:'P' }}"
+				{% if event.start_time or event.end_time %}
+				data-time="{{ event.start_time|date:'P'|capfirst }} until {{ event.end_time|date:'P'|capfirst }}"
 				{% else %}
 				data-time="All Day"
 				{% endif %}
