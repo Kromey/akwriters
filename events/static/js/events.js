@@ -21,5 +21,5 @@ $(function() {
 
 	//Not the standard method Bootstrap's docs recommend, but we'll need
 	//the data-toggle attribute for the details modal.
-	$('.event').tooltip();
+	$('.event,.month-control').tooltip();
 });
