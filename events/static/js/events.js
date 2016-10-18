@@ -11,6 +11,14 @@ $(function() {
 		$(this).blur();
 	});
 
+	$('#event-modal').on('show.bs.modal', function(event) {
+		var trigger = $(event.relatedTarget);
+
+		$('#event-modal-label').html(trigger.data('summary'));
+		$('#event-modal-when').html(trigger.data('when'));
+		$('#event-modal-where').html(trigger.data('where'));
+	});
+
 	//Not the standard method Bootstrap's docs recommend, but we'll need
 	//the data-toggle attribute for the details modal.
 	$('.event').tooltip();

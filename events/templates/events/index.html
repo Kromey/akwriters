@@ -53,7 +53,15 @@ Alaska Writers Events
 				{{ adate.date.day }}
 			</div>
 			{% for event in adate.events %}
-			<div class="event {{ event.css_class }}" data-container="body" title="{{ event.summary }}">
+			<div
+				class="event {{ event.css_class }}"
+				data-toggle="modal"
+				data-summary="{{ event.summary }}"
+				data-when="{{ event.start.dateTime }}"
+				data-where="{{ event.location }}"
+				data-target="#event-modal"
+				data-container="body"
+				title="{{ event.summary }}">
 				<span class="label">{{ event.summary }}</span>
 			</div>
 			{% endfor %}
@@ -63,6 +71,34 @@ Alaska Writers Events
 	{% endwith %}
 	{% endfor %}
 </div>
+
+<div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="#event-modal-label">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="event-modal-label">Event Details</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-sm-4 text-right">When</div>
+					<div class="col-sm-8" id="event-modal-when">foobar</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 text-right">Location</div>
+					<div class="col-sm-8" id="event-modal-where">foobar</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 text-right">Details</div>
+					<div class="col-sm-8" id="event-modal-desc">foobar</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock content %}
 
 {% block extrascripts %}

@@ -126,6 +126,7 @@ div.calendar-day div.event {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	cursor: pointer;
 }
 div.calendar-day div.event span.label {
 	color: inherit;
