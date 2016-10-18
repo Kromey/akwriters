@@ -165,6 +165,20 @@ div.event-els {
 	background-color: lightblue;
 	color: black;
 }
+div#event-modal .modal-subheader {
+	border-bottom: 1px solid #e5e5e5;
+	padding: 15px;
+}
+div#event-modal div#event-desc:empty {
+	display: none;
+}
+#event-where {
+	display: inline-block;
+	margin: 0;
+}
+#event-where:not(:empty)::before {
+	content: "at ";
+}
 
 /* Override hard-coded Octicons font-size */
 span.octicon {
