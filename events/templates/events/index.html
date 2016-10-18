@@ -12,6 +12,7 @@ Alaska Writers Events
 {% block content %}
 <div class="calendar">
 	<div class="calendar-controls">
+		<div class="label">Toggle Calendars:</div>
 		{% for gcal in gcals %}
 		<div class="gcal-control {{ gcal.css_class }}" data-target="{{ gcal.css_class }}">
 			{{ gcal.name }}
