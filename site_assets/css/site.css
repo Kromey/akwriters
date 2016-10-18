@@ -83,7 +83,7 @@ div.calendar-controls div.gcal-control {
 	border: 1px solid darkgray;
 	border-radius: 13px;
 	line-height: 25px;
-	transition: background-color 1s, color 1s, border-color 1s;
+	transition: background-color 500ms, color 500ms, border-color 500ms;
 	margin: 0;
 	cursor: pointer;
 }
