@@ -60,14 +60,25 @@ class EventsView(TemplateView):
             for event in gdata['items']:
                 event['css_class'] = gcal.css_class
                 try:
-                    date = dateparse.parse_datetime(event['start']['dateTime']).date().isoformat()
+                    startdate = dateparse.parse_datetime(event['start']['dateTime'])
+                    enddate = dateparse.parse_datetime(event['end']['dateTime'])
+
+                    event['start_time'] = startdate.time()
+                    event['end_time'] = enddate.time()
+
+                    startdate = startdate.date()
+                    enddate = enddate.date()
                 except KeyError:
-                    date = dateparse.parse_date(event['start']['date']).isoformat()
+                    startdate = dateparse.parse_date(event['start']['date'])
+                    enddate = dateparse.parse_date(event['end']['date'])
+
+                event['start_date'] = startdate
+                event['end_date'] = enddate
 
                 try:
-                    events[date].append(event)
+                    events[startdate.isoformat()].append(event)
                 except KeyError:
-                    events[date] = [event,]
+                    events[startdate.isoformat()] = [event,]
 
         cal = []
         for week in dates:

@@ -64,7 +64,10 @@ Alaska Writers Events
 				class="event {{ event.css_class }}"
 				data-toggle="modal"
 				data-summary="{{ event.summary }}"
-				data-when="{{ event.start.dateTime }}"
+				data-date="{{ event.start_date|date:'D, j M' }}"
+				{% if event.start_time %}
+				data-time="{{ event.start_time|date:'P' }} until {{ event.end_time|date:'P' }}"
+				{% endif %}
 				data-where="{{ event.location }}"
 				data-target="#event-modal"
 				data-container="body"
