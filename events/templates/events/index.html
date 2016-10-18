@@ -53,7 +53,9 @@ Alaska Writers Events
 				{{ adate.date.day }}
 			</div>
 			{% for event in adate.events %}
-			<div class="event {{ event.css_class }}"><span class="label">{{ event.summary }}</span></div>
+			<div class="event {{ event.css_class }}" data-container="body" title="{{ event.summary }}">
+				<span class="label">{{ event.summary }}</span>
+			</div>
 			{% endfor %}
 		</div>
 		{% endfor %}
