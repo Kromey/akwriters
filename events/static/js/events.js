@@ -19,6 +19,7 @@ $(function() {
 		$('#event-when').html(trigger.data('time'));
 		$('#event-where').html(trigger.data('where'));
 		$('#event-desc').html(trigger.data('details'));
+		$('#event-link').attr('href', trigger.data('href'));
 
 		trigger.tooltip('hide');
 	});

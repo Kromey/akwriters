@@ -72,6 +72,7 @@ Alaska Writers Events
 				{% endif %}
 				data-where="{{ event.location|escape }}"
 				data-details="{{ event.description|escape }}"
+				data-href="{{ event.htmlLink }}"
 				data-target="#event-modal"
 				data-container="body"
 				title="{{ event.summary }}">
@@ -100,6 +101,7 @@ Alaska Writers Events
 				We'll do some stuff. Writing or whatever.
 			</div>
 			<div class="modal-footer">
+				<a id="event-link" class="btn btn-primary" href="#" target="_blank">{% octicon 'calendar' %} Google</a>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div><!-- /.modal-content -->
