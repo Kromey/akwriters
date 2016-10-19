@@ -47,15 +47,7 @@ class EventsView(TemplateView):
         events = {}
         gcals = Calendar.objects.all()
         for gcal in gcals:
-            url = 'https://www.googleapis.com/calendar/v3/calendars/{calendar}/events?singleEvents=true&timeMin={time_min}&timeMax={time_max}&key={api_key}'.format(
-                    calendar=parse.quote(gcal.remote_id),
-                    time_min=parse.quote(time_min),
-                    time_max=parse.quote(time_max),
-                    api_key=parse.quote(api_key),
-                    )
-
-            rawdata = request.urlopen(url).read()
-            gdata = json.loads(rawdata.decode('utf8'))
+            gdata = gcal.json_data(time_min, time_max)
 
             for event in gdata['items']:
                 event['css_class'] = gcal.css_class
