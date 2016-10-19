@@ -19,6 +19,8 @@ $(function() {
 		$('#event-when').html(trigger.data('time'));
 		$('#event-where').html(trigger.data('where'));
 		$('#event-desc').html(trigger.data('details'));
+
+		trigger.tooltip('hide');
 	});
 
 	//Not the standard method Bootstrap's docs recommend, but we'll need
