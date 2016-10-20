@@ -11,5 +11,5 @@ class CalendarAdmin(admin.ModelAdmin):
 
 @admin.register(MonthCache)
 class MonthCacheAdmin(admin.ModelAdmin):
-    list_display = ('calendar','month','data_cached_on')
+    list_display = ('calendar','month','data_cached_on','is_cache_stale')
 
