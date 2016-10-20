@@ -24,6 +24,10 @@ SECRET_KEY = site_settings.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = site_settings.DEBUG
 
+ADMINS = site_settings.ADMINS
+SERVER_EMAIL = site_settings.SERVER_EMAIL
+EMAIL_SUBJECT_PREFIX = '[AKWriters] '
+
 ALLOWED_HOSTS = site_settings.ALLOWED_HOSTS
 
 
@@ -84,7 +88,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'prosodyauth.middleware.AuthenticationMiddleware',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'

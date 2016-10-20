@@ -10,6 +10,9 @@ database settings.
 # Debug settings
 DEBUG = False
 
+ADMINS = []
+#SERVER_EMAIL = 
+
 from django.contrib.messages import constants as message_constants
 MESSAGE_LEVEL = message_constants.INFO
 
