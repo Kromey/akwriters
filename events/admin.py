@@ -12,4 +12,8 @@ class CalendarAdmin(admin.ModelAdmin):
 @admin.register(MonthCache)
 class MonthCacheAdmin(admin.ModelAdmin):
     list_display = ('calendar','month','data_cached_on','is_cache_stale')
+    readonly_fields = [field.name for field in MonthCache._meta.get_fields()]
+
+    def has_add_permission(self, request, obj=None):
+        return False
 
