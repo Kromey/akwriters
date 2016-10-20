@@ -3,14 +3,22 @@ import calendar
 
 
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,RedirectView
 from django.utils import dateparse,timezone
 
 
-from .models import Calendar
+from .models import Calendar,MonthCache
 
 
 # Create your views here.
+class PurgeEventCacheView(RedirectView):
+    pattern_name = 'events:index'
+
+    def get(self, request, *args, **kwargs):
+        MonthCache.objects.all().delete()
+        return super().get(request, *args, **kwargs)
+
+
 class EventsView(TemplateView):
     template_name = 'events/index.html'
 
