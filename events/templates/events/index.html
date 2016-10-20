@@ -52,7 +52,7 @@ Alaska Writers Events
 	{% with firstweek=forloop.first %}
 	<div class="calendar-week">
 		{% for adate in week %}
-		<div class="calendar-day{% if adate.date.month == current_month.month %} calendar-currentmonth{% endif %}">
+		<div class="calendar-day{% if adate.date.month == current_month.month %} calendar-currentmonth{% endif %}{% if adate.date == today %} calendar-today{% endif %}">
 			<div class="day-label">
 				{% if adate.date.day == 1 or firstweek and forloop.first %}
 				{{ adate.date|date:'F' }}

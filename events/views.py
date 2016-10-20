@@ -20,7 +20,7 @@ class EventsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        today = timezone.localtime(timezone.now())
+        today = timezone.localtime(timezone.now()).date()
         try:
             self.year = int(self.kwargs['year'])
             self.month = int(self.kwargs['month'])

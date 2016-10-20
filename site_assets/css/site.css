@@ -126,6 +126,9 @@ div.calendar div.calendar-day {
 	margin-top: -1px;
 	position: relative;
 }
+div.calendar div.calendar-today {
+	background-color: lightcyan;
+}
 div.calendar div.calendar-header div.calendar-day {
 	height: auto;
 	text-align: center;
