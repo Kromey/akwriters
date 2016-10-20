@@ -30,6 +30,7 @@
 						{% if user.is_superuser %}
 						<li><a href="{% url 'admin:index' %}">{% octicon 'database' %} Admin</a></li>
 						<li><a href="{% url 'events:purge' %}">{% octicon 'zap' %} Clear Event Cache</a></li>
+						<li role="separator" class="divider"></li>
 						{% endif %}
 						{#<li><a href="{% url 'account:settings' %}">{% glyphicon 'cog' %} Account Settings</a></li>#}
 						<li>
