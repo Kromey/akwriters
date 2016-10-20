@@ -20,6 +20,10 @@ ALLOWED_HOSTS = ['akwriters.org']
 #CONTACT_EMAIL =
 #EMAIL_SENDER =
 
+# Google API settings
+#GCAL_API_KEY = 
+GAPI_CACHE_EXPIRES = 60
+
 # XMPP domain
 JABBER_DOMAIN = 'akwriters.org'
 # Bot automatically added to new users' rosters
