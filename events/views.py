@@ -1,10 +1,7 @@
 import datetime
 import calendar
-import json
-from urllib import request,parse
 
 
-from django.conf import settings
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.utils import dateparse,timezone
@@ -34,20 +31,10 @@ class EventsView(TemplateView):
         current_month = datetime.date(self.year, self.month, 1)
         dates = calendar.Calendar(6).monthdatescalendar(current_month.year, current_month.month)
 
-        # Set boundary dates at 1w before and after our current view
-        # 1w is probably overkill, but handles timezones and long events
-        time_min = dates[0][0] - datetime.timedelta(weeks=1)
-        time_min = time_min.isoformat() + 'T00:00:00Z'
-        time_max = dates[-1][-1] + datetime.timedelta(weeks=1)
-        time_max = time_max.isoformat() + 'T00:00:00Z'
-
-        # This needs to use an API key from Google
-        api_key = settings.GCAL_API_KEY
-
         events = {}
         gcals = Calendar.objects.all()
         for gcal in gcals:
-            gdata = gcal.json_data(time_min, time_max)
+            gdata = gcal.get_events(current_month)
 
             for event in gdata['items']:
                 event['css_class'] = gcal.css_class
