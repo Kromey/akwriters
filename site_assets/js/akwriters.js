@@ -9,6 +9,11 @@ $(function() {
 		return false;
 	});
 
+	$('div.alert button.close').click(function(event) {
+		$(this).blur();
+		$(this).parent().slideUp();
+	});
+
 	//Calculate the % width of all progress bars
 	$('div[role=progressbar]').width(function() {
 		var vmin = parseFloat($(this).attr('aria-valuemin'));
