@@ -71,6 +71,7 @@ class AuthnView(View):
 
                 messages.success(request, 'Your account is now active on this site')
 
+            messages.warning(request, 'You are now logged in, and will remain logged in until you use the Logout link in the menu under your username, even if you close your browser.')
             return redirect('chat:index')
         else:
             if request.user.is_authenticated:
