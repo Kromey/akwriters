@@ -126,6 +126,18 @@ div.calendar div.calendar-day {
 	margin-top: -1px;
 	position: relative;
 }
+div.calendar-day div.more-events {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background-color: white;
+	color: darkgray;
+	text-align: center;
+	display: none;
+}
+div.calendar-day div.more-events:nth-child(n+6) {
+	display: block;
+}
 div.calendar div.calendar-today {
 	background-color: lightcyan;
 }
