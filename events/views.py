@@ -8,6 +8,7 @@ from django.utils import dateparse,timezone
 
 
 from .models import Calendar,MonthCache
+from . import utils
 
 
 # Create your views here.
@@ -72,9 +73,12 @@ class EventsView(TemplateView):
             cal.append([])
             for date in week:
                 isodate = date.isoformat()
+                date_events = events.get(isodate, [])
+                date_events.sort(key=utils.event_key)
+
                 cal[-1].append({
                     'date': date,
-                    'events': events.get(isodate, [])
+                    'events': date_events,
                     })
 
         context['calendar'] = cal
