@@ -1,13 +1,28 @@
 $(function() {
 	$('.gcal-control').click(function() {
-		target = $(this).data('target');
-		if($(this).hasClass('gcal-control-disabled')) {
+		var target = $(this).data('target');
+		var showing = $(this).hasClass('gcal-control-disabled');
+
+		var duration = 500;
+
+		if(showing) {
 			$(this).removeClass('gcal-control-disabled');
-			$('.event.'+target).slideDown(500);
+			$('.event.'+target).slideDown(duration);
+			var visible_events = '.event:visible';
 		} else {
 			$(this).addClass('gcal-control-disabled');
-			$('.event.'+target).slideUp(500);
+			$('.event.'+target).slideUp(duration);
+			var visible_events = '.event:not(.'+target+'):visible';
 		}
+
+		$('div.calendar-day').each(function(){
+			if($(this).children(visible_events).length > 3) {
+				$(this).children('.more-events').children('span').fadeIn(duration)
+			} else {
+				$(this).children('.more-events').children('span').fadeOut(duration)
+			}
+		});
+
 		$(this).blur();
 	});
 

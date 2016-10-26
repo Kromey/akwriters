@@ -128,6 +128,7 @@ div.calendar div.calendar-day {
 }
 div.calendar-day div.more-events {
 	position: absolute;
+	height: 18px;
 	bottom: 0px;
 	width: 100%;
 	background-color: white;
