@@ -184,6 +184,12 @@ div.event-els {
 	background-color: lightblue;
 	color: black;
 }
+div.modal-backdrop+div.modal-backdrop {
+	z-index: 1045;
+}
+div#date-modal {
+	z-index: 1043;
+}
 div#date-modal .modal-body {
 	padding: 0;
 }
