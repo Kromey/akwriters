@@ -50,6 +50,10 @@ footer {
 	text-align: center;
 }
 
+[data-toggle=modal] {
+	cursor: pointer;
+}
+
 /* Magical pure-CSS loading animation */
 .loader {
 	border: 5px solid #f3f3f3;
@@ -135,7 +139,6 @@ div.calendar-day div.more-events {
 	color: darkgray;
 	text-align: center;
 	display: none;
-	cursor: pointer;
 }
 div.calendar-day div.more-events:nth-child(n+6) {
 	display: block;
@@ -165,7 +168,6 @@ div.event {
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	cursor: pointer;
 }
 div.event span.label {
 	color: inherit;

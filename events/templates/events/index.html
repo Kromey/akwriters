@@ -52,8 +52,16 @@ Alaska Writers Events
 	{% with firstweek=forloop.first %}
 	<div class="calendar-week">
 		{% for adate in week %}
-		<div class="calendar-day{% if adate.date.month == current_month.month %} calendar-currentmonth{% endif %}{% if adate.date == today %} calendar-today{% endif %}">
-			<div class="day-label">
+		<div
+			class="calendar-day{% if adate.date.month == current_month.month %} calendar-currentmonth{% endif %}{% if adate.date == today %} calendar-today{% endif %}"
+			data-date="{{ adate.date|date:'F jS'}}">
+			<div
+				{% if adate.events %}
+				data-toggle="modal"
+				data-container="body"
+				data-target="#date-modal"
+				{% endif %}
+				class="day-label">
 				{% if adate.date.day == 1 or firstweek and forloop.first %}
 				{{ adate.date|date:'F' }}
 				{% endif %}
@@ -81,7 +89,6 @@ Alaska Writers Events
 			{% endfor %}
 			<div
 				class="more-events"
-				data-date="{{ adate.date|date:'F jS'}}"
 				data-toggle="modal"
 				data-container="body"
 				data-target="#date-modal"><span>More</span></div>

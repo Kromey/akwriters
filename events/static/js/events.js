@@ -45,7 +45,7 @@ $(function() {
 		var trigger = $(event.relatedTarget);
 		var day = trigger.parent();
 
-		$('#date-date').html(trigger.data('date'));
+		$('#date-date').html(day.data('date'));
 		$('#date-events').html(day.children('div.event').clone());
 
 		$('#date-events .event').show();
