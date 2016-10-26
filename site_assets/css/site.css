@@ -193,6 +193,11 @@ div#date-modal {
 div#date-modal .modal-body {
 	padding: 0;
 }
+div#date-modal span.label {
+	font-size: 115%;
+	font-weight: normal;
+	line-height: initial;
+}
 div#event-modal .modal-subheader {
 	border-bottom: 1px solid #e5e5e5;
 	padding: 15px;
