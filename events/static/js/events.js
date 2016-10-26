@@ -49,8 +49,6 @@ $(function() {
 		$('#date-events').html(day.children('div.event').clone());
 		// Re-enable tooltips on the cloned events
 		$('#date-events').children('.event').tooltip();
-
-		$('#date-events .event').show();
 	});
 
 	//Not the standard method Bootstrap's docs recommend, but we'll need
