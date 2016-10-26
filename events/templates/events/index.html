@@ -84,7 +84,10 @@ Alaska Writers Events
 				data-target="#event-modal"
 				data-container="body"
 				title="{{ event.summary }}">
-				<span class="label">{{ event.summary }}</span>
+				<span class="label">
+					{{ event.start_time|date:'g:ia'|cut:':00'|cut:'.m.' }}
+					{{ event.summary }}
+				</span>
 			</div>
 			{% endfor %}
 			<div
