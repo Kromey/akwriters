@@ -17,9 +17,12 @@ $(function() {
 
 		$('div.calendar-day').each(function(){
 			if($(this).children(visible_events).length > 3) {
-				$(this).children('.more-events').children('span').fadeIn(duration)
+				$(this).children('.more-events').show();
+				$(this).children('.more-events').children('span').fadeIn(duration);
 			} else {
-				$(this).children('.more-events').children('span').fadeOut(duration)
+				$(this).children('.more-events').children('span').fadeOut(duration, function(){
+					$(this).parent().hide();
+				});
 			}
 		});
 
