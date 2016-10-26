@@ -135,6 +135,7 @@ div.calendar-day div.more-events {
 	color: darkgray;
 	text-align: center;
 	display: none;
+	cursor: pointer;
 }
 div.calendar-day div.more-events:nth-child(n+6) {
 	display: block;
@@ -159,14 +160,14 @@ div.day-label {
 	padding: 1px 2px 0 0;
 	margin: 0;
 }
-div.calendar-day div.event {
+div.event {
 	margin-bottom: 1px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	cursor: pointer;
 }
-div.calendar-day div.event span.label {
+div.event span.label {
 	color: inherit;
 }
 div.event-anc {
@@ -180,6 +181,9 @@ div.event-fbx {
 div.event-els {
 	background-color: lightblue;
 	color: black;
+}
+div#date-modal .modal-body {
+	padding: 0;
 }
 div#event-modal .modal-subheader {
 	border-bottom: 1px solid #e5e5e5;

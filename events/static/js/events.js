@@ -38,6 +38,15 @@ $(function() {
 
 		trigger.tooltip('hide');
 	});
+	$('#date-modal').on('show.bs.modal', function(event) {
+		var trigger = $(event.relatedTarget);
+		var day = trigger.parent();
+
+		$('#date-date').html(trigger.data('date'));
+		$('#date-events').html(day.children('div.event').clone());
+
+		$('#date-events .event').show();
+	});
 
 	//Not the standard method Bootstrap's docs recommend, but we'll need
 	//the data-toggle attribute for the details modal.

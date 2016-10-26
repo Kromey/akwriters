@@ -79,13 +79,35 @@ Alaska Writers Events
 				<span class="label">{{ event.summary }}</span>
 			</div>
 			{% endfor %}
-			<div class="more-events"><span>More</span></div>
+			<div
+				class="more-events"
+				data-date="{{ adate.date|date:'F jS'}}"
+				data-toggle="modal"
+				data-container="body"
+				data-target="#date-modal"><span>More</span></div>
 		</div>
 		{% endfor %}
 	</div>
 	{% endwith %}
 	{% endfor %}
 </div>
+
+<div class="modal fade" id="date-modal" tabindex="-1" role="dialog" aria-labelledby="#date-modal-label">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title text-center" id="date-modal-label"><span id="date-title">Events for</span> <span id="date-date">1/23/4567</span></h4>
+			</div>
+			<div class="modal-body text-center" id="date-events">
+				There's some stuff happening today. Maybe.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-labelledby="#event-modal-label">
 	<div class="modal-dialog" role="document">
