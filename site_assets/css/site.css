@@ -137,7 +137,9 @@ div.calendar-day div.more-events {
 	width: 100%;
 	background-color: white;
 	color: darkgray;
-	text-align: center;
+	text-align: right;
+	font-style: italic;
+	padding-right: 8px;
 	display: none;
 }
 div.calendar-day div.more-events:nth-child(n+7) {

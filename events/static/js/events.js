@@ -22,9 +22,26 @@ $(function() {
 				$(this).children('.more-events').slideUp(duration);
 			}
 		});
+		count_extra_events(visible_events);
 
 		$(this).blur();
 	});
+
+	var count_extra_events = function(filter) {
+		$('div.calendar-day').each(function(){
+			var events = $(this).children(filter).length;
+			events -= 3;
+
+			var duration = 200;
+			var span = $(this).children('.more-events').children('span');
+
+			span.fadeOut(duration, function() {
+				$(this).html('+'+events);
+				$(this).fadeIn(duration);
+			});
+		});
+	};
+	count_extra_events('.event');
 
 	$('#event-modal').on('show.bs.modal', function(event) {
 		var trigger = $(event.relatedTarget);
