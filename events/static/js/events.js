@@ -16,13 +16,10 @@ $(function() {
 		}
 
 		$('div.calendar-day').each(function(){
-			if($(this).children(visible_events).length > 3) {
-				$(this).children('.more-events').show();
-				$(this).children('.more-events').children('span').fadeIn(duration);
+			if($(this).children(visible_events).length > 4) {
+				$(this).children('.more-events').slideDown(duration);
 			} else {
-				$(this).children('.more-events').children('span').fadeOut(duration, function(){
-					$(this).parent().hide();
-				});
+				$(this).children('.more-events').slideUp(duration);
 			}
 		});
 

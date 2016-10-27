@@ -123,7 +123,7 @@ div.calendar div.calendar-day {
 	border: 1px solid black;
 	border-collapse: collapse;
 	width: 14.2%;
-	height: 104px;
+	height: 108px;
 	overflow: hidden;
 	float: left;
 	margin-left: -1px;
@@ -132,7 +132,7 @@ div.calendar div.calendar-day {
 }
 div.calendar-day div.more-events {
 	position: absolute;
-	height: 18px;
+	height: 22px;
 	bottom: 0px;
 	width: 100%;
 	background-color: white;
@@ -140,7 +140,7 @@ div.calendar-day div.more-events {
 	text-align: center;
 	display: none;
 }
-div.calendar-day div.more-events:nth-child(n+6) {
+div.calendar-day div.more-events:nth-child(n+7) {
 	display: block;
 }
 div.calendar div.calendar-today {
