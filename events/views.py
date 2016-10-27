@@ -12,12 +12,15 @@ from . import utils
 
 
 # Create your views here.
-class PurgeEventCacheView(RedirectView):
-    pattern_name = 'events:index'
+class CalendarCssView(TemplateView):
+    template_name = 'events/calendars.css'
+    content_type = 'text/css'
 
-    def get(self, request, *args, **kwargs):
-        MonthCache.objects.all().delete()
-        return super().get(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['calendars'] = Calendar.objects.all()
+
+        return context
 
 
 class EventsView(TemplateView):

@@ -1,0 +1,6 @@
+{% for cal in calendars %}
+div.{{ cal.css_class }} {
+	background-color: {{ cal.style_bgcolor }};
+	color: {{ cal.style_textcolor }};
+}
+{% endfor %}

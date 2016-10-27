@@ -2,6 +2,10 @@
 {% load frontend_extras %}
 {% load static from staticfiles %}
 
+{% block extrahead %}
+<link rel="stylesheet" href="{% url 'events:calendars_css' %}">
+{% endblock %}
+
 {% block title %}
 Alaska Writers Events
 {% endblock title %}

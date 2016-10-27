@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.views.generic import TemplateView
 
 
 from . import views
@@ -10,5 +11,5 @@ urlpatterns = [
 
     url('^$', views.EventsView.as_view(), name='index'),
     url('^(?P<year>[\d]{4})(?P<month>[\d]{2})$', views.EventsView.as_view(), name='index'),
-    #url('^purge$', views.PurgeEventCacheView.as_view(), name='purge'),
+    url('^calendars.css$', views.CalendarCssView.as_view(), name='calendars_css'),
 ]

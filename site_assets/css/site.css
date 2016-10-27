@@ -187,18 +187,6 @@ div.event {
 div.event span.label {
 	color: inherit;
 }
-div.event-anc {
-	background-color: lightgreen;
-	color: black;
-}
-div.event-fbx {
-	background-color: darkorchid;
-	color: white;
-}
-div.event-els {
-	background-color: lightblue;
-	color: black;
-}
 div.modal-backdrop+div.modal-backdrop {
 	z-index: 1045;
 }
