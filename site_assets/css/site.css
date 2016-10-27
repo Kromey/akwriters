@@ -94,7 +94,7 @@ div.calendar-controls div.gcal-control {
 	display: inline-block;
 	padding: 0 15px;
 	border: 1px solid darkgray;
-	border-radius: 13px;
+	border-radius: 15px;
 	line-height: 25px;
 	transition: background-color 500ms, color 500ms, border-color 500ms;
 	margin: 0;
@@ -164,7 +164,8 @@ div.day-label {
 	margin: 0;
 }
 div.event {
-	margin-bottom: 1px;
+	margin: 0 2px 1px;
+	border-radius: 8px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -198,12 +199,23 @@ div#date-modal span.label {
 	font-weight: normal;
 	line-height: initial;
 }
+.date-events-container {
+	padding: 3px 15px;
+}
 .date-events-container::before {
 	display: block;
 	content: attr(data-name);
 	text-align: center;
 }
-.date-events-container:empty::before {
+div.date-events-container .event {
+	border-radius: 15px;
+	padding: 3px 10px;
+	margin-bottom: 5px;
+}
+div.date-events-container .event:last-child {
+	margin-bottom: 0;
+}
+.date-events-container:empty {
 	display: none;
 }
 div#event-modal .modal-subheader {
