@@ -46,9 +46,12 @@ $(function() {
 		var day = trigger.parent();
 
 		$('#date-date').html(day.data('date'));
-		$('#date-events').html(day.children('div.event').clone());
-		// Re-enable tooltips on the cloned events
-		$('#date-events').children('.event').tooltip();
+		$('#date-events').children('.date-events-container').each(function() {
+			$(this).html(day.children('div.'+$(this).data('class')).clone());
+			$(this).children().show();
+			// Re-enable tooltips on the cloned events
+			$(this).children().tooltip();
+		});
 	});
 
 	//Not the standard method Bootstrap's docs recommend, but we'll need

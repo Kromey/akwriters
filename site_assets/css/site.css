@@ -198,6 +198,14 @@ div#date-modal span.label {
 	font-weight: normal;
 	line-height: initial;
 }
+.date-events-container::before {
+	display: block;
+	content: attr(data-name);
+	text-align: center;
+}
+.date-events-container:empty::before {
+	display: none;
+}
 div#event-modal .modal-subheader {
 	border-bottom: 1px solid #e5e5e5;
 	padding: 15px;

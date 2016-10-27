@@ -109,8 +109,10 @@ Alaska Writers Events
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title text-center" id="date-modal-label"><span id="date-title">Events for</span> <span id="date-date">1/23/4567</span></h4>
 			</div>
-			<div class="modal-body text-center" id="date-events">
-				There's some stuff happening today. Maybe.
+			<div class="modal-body" id="date-events">
+				{% for gcal in gcals %}
+				<div class="date-events-container" data-class="{{ gcal.css_class }}" data-name="{{ gcal.name }}"></div>
+				{% endfor %}
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
