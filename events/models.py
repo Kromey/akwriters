@@ -6,12 +6,18 @@ from urllib import request,parse
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.utils.text import slugify
 
 # Create your models here.
 class Calendar(models.Model):
     name = models.CharField(max_length=30, unique=True)
     remote_id = models.CharField(max_length=60)
-    css_class = models.CharField(max_length=10)
+    style_bgcolor = models.CharField(max_length=20, default='white')
+    style_textcolor = models.CharField(max_length=20, default='black')
+
+    @property
+    def css_class(self):
+        return 'event-' + slugify(self.name)
 
     def get_events(self, month):
         cache, created = MonthCache.objects.get_or_create(calendar=self, month=month)
