@@ -158,9 +158,21 @@ div.calendar-week div.calendar-day {
 div.calendar-week div.calendar-day.calendar-currentmonth {
 	color: #000;
 }
+div:not(.calendar-week)+div.calendar-week div.calendar-day:first-child {
+	border-top-left-radius: 10px;
+}
+div:not(.calendar-week)+div.calendar-week div.calendar-day:last-child {
+	border-top-right-radius: 10px;
+}
+div.calendar-week:last-child div.calendar-day:first-child {
+	border-bottom-left-radius: 10px;
+}
+div.calendar-week:last-child div.calendar-day:last-child {
+	border-bottom-right-radius: 10px;
+}
 div.day-label {
 	text-align: right;
-	padding: 1px 2px 0 0;
+	padding: 1px 5px 0 0;
 	margin: 0;
 }
 div.event {
