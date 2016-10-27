@@ -32,7 +32,7 @@ $(function() {
 			var events = $(this).children(filter).length;
 			events -= 3;
 
-			var duration = 200;
+			var duration = 300;
 			var span = $(this).children('.more-events').children('span');
 
 			span.fadeOut(duration, function() {
