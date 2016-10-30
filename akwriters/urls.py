@@ -18,5 +18,6 @@ urlpatterns = [
     url(r'^contact/', include('contact.urls', namespace='contact')),
     url(r'^favicon/', include('favicon.urls', namespace='favicon')),
     url(r'^policies/', include('policies.urls', namespace='policies')),
+    url(r'^tools/', include('tools.urls', namespace='tools')),
     url(r'^admin/', admin.site.urls),
 ]
