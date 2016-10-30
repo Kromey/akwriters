@@ -28,13 +28,13 @@ Create Character
 </form>
 {% if character.id %}
 <div class="character-notes">
-	{% for notes in character.characternotesanswer_set.all %}
+	{% for note in notes %}
 	<div class="character-note">
 		<div class="character-note-question">
-			{{ notes.question.question }}
+			{{ note.question }}
 		</div>
 		<div class="character-note-answer">
-			{{ notes.answer }}
+			[answer]
 		</div>
 	</div>
 	{% endfor %}

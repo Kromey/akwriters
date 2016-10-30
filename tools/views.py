@@ -5,7 +5,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView
 
 
-from .models import Character
+from .models import Character,CharacterNotes
 
 
 # Create your views here.
@@ -35,6 +35,12 @@ class CharacterFormMixin(object):
             pass
 
         return kwargs
+
+    def get_context_data(self):
+        context = super().get_context_data()
+        context['notes'] = CharacterNotes.objects.filter(is_active=True)
+
+        return context
 
 
 class CharacterCreateView(CharacterFormMixin, LoginRequiredMixin, CreateView):
