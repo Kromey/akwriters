@@ -54,6 +54,14 @@ footer {
 	cursor: pointer;
 }
 
+/* Form styles */
+form.form-label-col-2 div.input-group {
+	width: 100%;
+}
+form.form-label-col-2 div.input-group label {
+	width: 16.66666667%;
+}
+
 /* Magical pure-CSS loading animation */
 .loader {
 	border: 5px solid #f3f3f3;

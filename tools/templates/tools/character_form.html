@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
-{% load frontend_extras %}
+{% load form_extras %}
 
 {% block header %}
 Create Character
 {% endblock header %}
 
 {% block content %}
-<form action="" method="post">
+<div class="alert alert-danger">{{ form.non_field_errors }}</div>
+<form action="" method="post" class="form-label-col-2">
 	{% csrf_token %}
-	{{ form.as_p }}
-	<button type="submit">Create</button>
+	{% bs_field form.name %}
+	{{ form.name.errors }}
+	{% bs_field form.age %}
+	{{ form.age.errors }}
+	{% bs_field form.appearance %}
+	{{ form.appearance.errors }}
+	<button class="btn btn-success" type="submit">Create</button>
+	{{ form.owner.errors }}
 </form>
 {% endblock content %}
