@@ -20,7 +20,7 @@ class CharacterListView(LoginRequiredMixin, ListView):
 
 class CharacterFormMixin(object):
     model = Character
-    success_url = '/tools/characters'
+    success_url = '/tools/characters/view/{id}'
     fields = ['owner','name','age','appearance',]
 
     def get_form_kwargs(self):
