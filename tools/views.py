@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView,UpdateView
 
 
 from .models import Character
@@ -19,6 +19,24 @@ class CharacterListView(LoginRequiredMixin, ListView):
 
 
 class CharacterCreateView(LoginRequiredMixin, CreateView):
+    model = Character
+    success_url = '/tools/characters'
+    fields = ['owner','name','age','appearance',]
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+
+        try:
+            data = kwargs['data'].copy()
+            data['owner'] = self.request.user.id
+            kwargs['data'] = data
+        except KeyError:
+            pass
+
+        return kwargs
+
+
+class CharacterEditView(LoginRequiredMixin, UpdateView):
     model = Character
     success_url = '/tools/characters'
     fields = ['owner','name','age','appearance',]
