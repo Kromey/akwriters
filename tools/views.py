@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 
 
@@ -33,4 +34,13 @@ class CharacterCreateView(LoginRequiredMixin, CreateView):
             pass
 
         return kwargs
+
+
+class CharacterDetailView(LoginRequiredMixin, DetailView):
+    model = Character
+    context_object_name = 'character'
+
+    def get_queryset(self):
+        q = super().get_queryset()
+        return q.filter(owner=self.request.user)
 

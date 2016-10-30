@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load frontend_extras %}
+
+{% block header %}
+{{ character.name }}
+{% endblock header %}
+
+{% block content %}
+<div>
+	Age: {{ character.age|default:'-' }}
+</div>
+<div>
+	Appearance: {{ character.appearance|default:'-' }}
+</div>
+{% endblock content %}
