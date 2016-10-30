@@ -18,7 +18,7 @@ class CharacterListView(LoginRequiredMixin, ListView):
         return q.filter(owner=self.request.user)
 
 
-class CharacterCreateView(LoginRequiredMixin, CreateView):
+class CharacterFormMixin(object):
     model = Character
     success_url = '/tools/characters'
     fields = ['owner','name','age','appearance',]
@@ -36,22 +36,12 @@ class CharacterCreateView(LoginRequiredMixin, CreateView):
         return kwargs
 
 
-class CharacterEditView(LoginRequiredMixin, UpdateView):
-    model = Character
-    success_url = '/tools/characters'
-    fields = ['owner','name','age','appearance',]
+class CharacterCreateView(CharacterFormMixin, LoginRequiredMixin, CreateView):
+    pass
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
 
-        try:
-            data = kwargs['data'].copy()
-            data['owner'] = self.request.user.id
-            kwargs['data'] = data
-        except KeyError:
-            pass
-
-        return kwargs
+class CharacterEditView(CharacterFormMixin, LoginRequiredMixin, UpdateView):
+    pass
 
 
 class CharacterDetailView(LoginRequiredMixin, DetailView):
