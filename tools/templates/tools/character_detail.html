@@ -13,4 +13,16 @@
 <div>
 	Appearance: {{ character.appearance|default:'-' }}
 </div>
+<div class="character-notes">
+	{% for notes in character.characternotesanswer_set.all %}
+	<div class="character-note">
+		<div class="character-note-question">
+			{{ notes.question.question }}
+		</div>
+		<div class="character-note-answer">
+			{{ notes.answer }}
+		</div>
+	</div>
+	{% endfor %}
+</div>
 {% endblock content %}
