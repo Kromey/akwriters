@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 {% load form_extras %}
+{% load tools_extras %}
 
 {% block header %}
 Create Character
@@ -34,7 +35,7 @@ Create Character
 			{{ note.question }}
 		</div>
 		<div class="character-note-answer">
-			[answer]
+			<textarea class="form-control" id="note-{{ note.id }}-answer">{% note_response note character %}</textarea>
 		</div>
 	</div>
 	{% endfor %}
