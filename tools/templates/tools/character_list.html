@@ -7,6 +7,7 @@ Your Characters
 {% endblock header %}
 
 {% block content %}
+<a class="btn btn-default" href="{% url 'tools:character_create' %}">New Character</a>
 <ul>
 	{% for character in characters %}
 	<li>{{ character.name }}</li>
