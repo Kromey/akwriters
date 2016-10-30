@@ -22,8 +22,15 @@ class CharacterCreateView(LoginRequiredMixin, CreateView):
     success_url = '/tools/characters'
     fields = ['owner','name','age','appearance',]
 
-    def form_valid(self, form):
-        form.instance.owner = self.request.user
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
 
-        return super().form_valid(form)
+        try:
+            data = kwargs['data'].copy()
+            data['owner'] = self.request.user.id
+            kwargs['data'] = data
+        except KeyError:
+            pass
+
+        return kwargs
 
