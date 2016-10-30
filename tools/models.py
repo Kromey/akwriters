@@ -31,4 +31,5 @@ class AnswerBase(models.Model):
 
 class CharacterNotesAnswer(AnswerBase):
     character = models.ForeignKey(Character)
+    question = models.ForeignKey(CharacterNotes)
 
