@@ -17,6 +17,27 @@ Create Character
 	{% bs_field form.appearance %}
 	{{ form.appearance.errors }}
 	<button class="btn btn-success" type="submit">Save</button>
+	{% if character.id %}
+	<a class="btn btn-default" href="{% url 'tools:character_detail' pk=character.id %}">
+	{% else %}
+	<a class="btn btn-default" href="{% url 'tools:character_list' %}">
+	{% endif %}
+		Cancel
+	</a>
 	{{ form.owner.errors }}
 </form>
+{% if character.id %}
+<div class="character-notes">
+	{% for notes in character.characternotesanswer_set.all %}
+	<div class="character-note">
+		<div class="character-note-question">
+			{{ notes.question.question }}
+		</div>
+		<div class="character-note-answer">
+			{{ notes.answer }}
+		</div>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
 {% endblock content %}

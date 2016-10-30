@@ -22,6 +22,7 @@ class CharacterFormMixin(object):
     model = Character
     success_url = '/tools/characters/view/{id}'
     fields = ['owner','name','age','appearance',]
+    context_object_name = 'character'
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
