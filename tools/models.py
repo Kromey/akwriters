@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.utils.text import Truncator
 
 
 # Create your models here.
@@ -9,6 +10,9 @@ class Character(models.Model):
     age = models.SmallIntegerField(null=True)
     appearance = models.TextField(blank=True)
 
+    def __str__(self):
+        return '{} ({})'.format(self.name, self.owner)
+
 
 class QuestionBase(models.Model):
     question = models.TextField()
@@ -16,6 +20,10 @@ class QuestionBase(models.Model):
 
     class Meta:
         abstract = True
+
+    def __str__(self):
+        q = Truncator(self.question).words(5)
+        return q
 
 
 class CharacterNotes(QuestionBase):
@@ -27,6 +35,10 @@ class AnswerBase(models.Model):
 
     class Meta:
         abstract = True
+
+    def __str__(self):
+        a = Truncator(self.answer).words(5)
+        return a
 
 
 class CharacterNotesAnswer(AnswerBase):
