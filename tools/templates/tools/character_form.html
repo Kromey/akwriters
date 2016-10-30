@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load frontend_extras %}
+
+{% block header %}
+Create Character
+{% endblock header %}
+
+{% block content %}
+<form action="" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Create</button>
+</form>
+{% endblock content %}

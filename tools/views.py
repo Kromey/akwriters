@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView
 
 
 from .models import Character
@@ -14,4 +15,15 @@ class CharacterListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         q = super().get_queryset()
         return q.filter(owner=self.request.user)
+
+
+class CharacterCreateView(LoginRequiredMixin, CreateView):
+    model = Character
+    success_url = '/tools/characters'
+    fields = ['owner','name','age','appearance',]
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+
+        return super().form_valid(form)
 
