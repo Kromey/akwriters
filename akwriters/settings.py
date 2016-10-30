@@ -77,6 +77,7 @@ INSTALLED_APPS = (
     'helpers',
     'policies',
     'passwordless',
+    'tools',
 )
 
 MIDDLEWARE_CLASSES = (
