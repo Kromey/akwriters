@@ -62,6 +62,17 @@ form.form-label-col-2 div.input-group label {
 	width: 16.66666667%;
 }
 
+/* Character notes */
+div.character-notes {
+	padding: 15px 0;
+}
+div.character-note {
+	padding: 10px 0;
+}
+div.character-notes div.character-note-question {
+	font-weight: bold;
+}
+
 /* Magical pure-CSS loading animation */
 .loader {
 	border: 5px solid #f3f3f3;

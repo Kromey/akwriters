@@ -7,12 +7,13 @@
 {% endblock header %}
 
 {% block content %}
-<a class="btn btn-default" href="{% url 'tools:character_edit' pk=character.id %}">Edit</a>
+<a class="btn btn-default btn-sm" href="{% url 'tools:character_edit' pk=character.id %}">Edit</a>
+<a class="btn btn-default btn-sm" href="{% url 'tools:character_list' %}">Back</a>
 <div>
-	Age: {{ character.age|default:'-' }}
+	<strong>Age:</strong> {{ character.age|default:'-' }}
 </div>
 <div>
-	Appearance: {{ character.appearance|default:'-' }}
+	<strong>Appearance:</strong> {{ character.appearance|default:'-' }}
 </div>
 <div class="character-notes">
 	{% for notes in character.characternotesanswer_set.all %}

@@ -7,10 +7,10 @@ Your Characters
 {% endblock header %}
 
 {% block content %}
-<a class="btn btn-default" href="{% url 'tools:character_create' %}">New Character</a>
 <ul>
 	{% for character in characters %}
 	<li><a href="{% url 'tools:character_detail' pk=character.id %}">{{ character.name }}</a></li>
 	{% endfor %}
 </ul>
+<a class="btn btn-default btn-sm" href="{% url 'tools:character_create' %}">New Character</a>
 {% endblock content %}

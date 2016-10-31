@@ -8,7 +8,9 @@ Create Character
 {% endblock header %}
 
 {% block content %}
+{% if form.non_field_errors %}
 <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+{% endif %}
 <form action="" method="post" class="form-label-col-2">
 	{% csrf_token %}
 	{% bs_field form.name %}
@@ -25,7 +27,6 @@ Create Character
 	{% endif %}
 		Cancel
 	</a>
-	{{ form.owner.errors }}
 </form>
 {% if character.id %}
 <form action="{% url 'tools:character_notes' pk=character.id %}" method="post">
@@ -46,6 +47,13 @@ Create Character
 		{% endfor %}
 	</div>
 	<button class="btn btn-success" type="submit">Save</button>
+	{% if character.id %}
+	<a class="btn btn-default" href="{% url 'tools:character_detail' pk=character.id %}">
+	{% else %}
+	<a class="btn btn-default" href="{% url 'tools:character_list' %}">
+	{% endif %}
+		Cancel
+	</a>
 </form>
 {% endif %}
 {% endblock content %}
