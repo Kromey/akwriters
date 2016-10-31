@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^characters/new$', views.CharacterCreateView.as_view(), name='character_create'),
     url(r'^characters/view/(?P<pk>[\d]+)$', views.CharacterDetailView.as_view(), name='character_detail'),
     url(r'^characters/edit/(?P<pk>[\d]+)$', views.CharacterEditView.as_view(), name='character_edit'),
+    url(r'^characters/notes/(?P<pk>[\d]+)$', views.CharacterNotesView.as_view(), name='character_notes'),
 ]

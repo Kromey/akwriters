@@ -28,17 +28,21 @@ Create Character
 	{{ form.owner.errors }}
 </form>
 {% if character.id %}
-<div class="character-notes">
-	{% for note in notes %}
-	<div class="character-note">
-		<div class="character-note-question">
-			{{ note.question }}
+<form action="{% url 'tools:character_notes' pk=character.id %}" method="post">
+	{% csrf_token %}
+	<div class="character-notes">
+		{% for note in notes %}
+		<div class="character-note">
+			<div class="character-note-question">
+				{{ note.question }}
+			</div>
+			<div class="character-note-answer">
+				<textarea class="form-control" id="note-{{ note.id }}-answer">{% note_response note character %}</textarea>
+			</div>
 		</div>
-		<div class="character-note-answer">
-			<textarea class="form-control" id="note-{{ note.id }}-answer">{% note_response note character %}</textarea>
-		</div>
+		{% endfor %}
 	</div>
-	{% endfor %}
-</div>
+	<button class="btn btn-success" type="submit">Save</button>
+</form>
 {% endif %}
 {% endblock content %}

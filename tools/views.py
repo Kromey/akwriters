@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
-from django.views.generic import ListView
+from django.shortcuts import render,redirect
+from django.views.generic import ListView,View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView
 
@@ -58,4 +58,25 @@ class CharacterDetailView(LoginRequiredMixin, DetailView):
     def get_queryset(self):
         q = super().get_queryset()
         return q.filter(owner=self.request.user)
+
+
+class CharacterNotesView(LoginRequiredMixin, View):
+    def post(self, request, pk):
+        character = Character.objects.get(owner=request.user, pk=pk)
+
+        for field in request.POST:
+            if not field.startswith('note-'):
+                continue
+
+            text = request.POST[field]
+
+            if not text:
+                continue
+
+            question = CharacterNotes.objects.get(field.split('-')[1])
+            answer, created = CharacterNotesAnswer.objects.get_or_create(character=character, question=question)
+            answer.answer = text
+            answer.save()
+
+        return redirect('tools:character_detail', pk=character.id)
 
