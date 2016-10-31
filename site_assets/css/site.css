@@ -50,6 +50,10 @@ footer {
 	text-align: center;
 }
 
+div#passwordless-faq {
+	padding-top: 15px;
+}
+
 [data-toggle=modal], [data-toggle=collapse] {
 	cursor: pointer;
 }
