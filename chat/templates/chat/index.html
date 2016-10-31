@@ -10,11 +10,9 @@ AKWriters Chat
 {% block content %}
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="heading-welcome">
+		<div class="panel-heading" role="tab" id="heading-welcome" data-toggle="collapse" data-parent="#accordion" data-target="#welcome" aria-expanded="false" aria-controls="welcome">
 			<h4 class="panel-title">
-				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#welcome" aria-expanded="true" aria-controls="welcome">
-					Welcome
-				</a>
+				Welcome
 			</h4>
 		</div>
 		<div id="welcome" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-welcome">
@@ -24,11 +22,9 @@ AKWriters Chat
 		</div>
 	</div>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="heading-pidgin">
+		<div class="panel-heading" role="tab" id="heading-pidgin" data-toggle="collapse" data-parent="#accordion" data-target="#pidgin" aria-expanded="false" aria-controls="pidgin">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#pidgin" aria-expanded="false" aria-controls="pidgin">
-					Pidgin
-				</a>
+				Pidgin
 			</h4>
 		</div>
 		<div id="pidgin" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-pidgin">
@@ -38,11 +34,9 @@ AKWriters Chat
 		</div>
 	</div>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="heading-adium">
+		<div class="panel-heading" role="tab" id="heading-adium" data-toggle="collapse" data-parent="#accordion" data-target="#adium" aria-expanded="false" aria-controls="adium">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#adium" aria-expanded="false" aria-controls="adium">
-					Adium
-				</a>
+				Adium
 			</h4>
 		</div>
 		<div id="adium" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-adium">
@@ -52,11 +46,9 @@ AKWriters Chat
 		</div>
 	</div>
 	<div class="panel panel-default">
-		<div class="panel-heading" role="tab" id="heading-annika">
+		<div class="panel-heading" role="tab" id="heading-annika" data-toggle="collapse" data-parent="#accordion" data-target="#annika" aria-expanded="false" aria-controls="annika">
 			<h4 class="panel-title">
-				<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#annika" aria-expanded="false" aria-controls="annika">
-					{% octicon 'hubot' %} Annika
-				</a>
+				{% octicon 'hubot' %} Annika
 			</h4>
 		</div>
 		<div id="annika" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-annika">
