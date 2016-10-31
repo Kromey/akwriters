@@ -37,7 +37,10 @@ Create Character
 				{{ note.question }}
 			</div>
 			<div class="character-note-answer">
-				<textarea class="form-control" id="note-{{ note.id }}-answer">{% note_response note character %}</textarea>
+				<textarea
+					class="form-control"
+					name="note-{{ note.id }}-answer"
+					id="note-{{ note.id }}-answer">{% note_response note character %}</textarea>
 			</div>
 		</div>
 		{% endfor %}

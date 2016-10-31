@@ -5,7 +5,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView
 
 
-from .models import Character,CharacterNotes
+from .models import Character,CharacterNotes,CharacterNotesAnswer
 
 
 # Create your views here.
@@ -73,7 +73,7 @@ class CharacterNotesView(LoginRequiredMixin, View):
             if not text:
                 continue
 
-            question = CharacterNotes.objects.get(field.split('-')[1])
+            question = CharacterNotes.objects.get(pk=field.split('-')[1])
             answer, created = CharacterNotesAnswer.objects.get_or_create(character=character, question=question)
             answer.answer = text
             answer.save()
