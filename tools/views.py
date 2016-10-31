@@ -70,13 +70,17 @@ class CharacterNotesView(LoginRequiredMixin, View):
 
             text = request.POST[field]
 
-            if not text:
-                continue
-
+            note_id = field.split('-')[1]
             question = CharacterNotes.objects.get(pk=field.split('-')[1])
-            answer, created = CharacterNotesAnswer.objects.get_or_create(character=character, question=question)
-            answer.answer = text
-            answer.save()
+
+            if text:
+                answer, created = CharacterNotesAnswer.objects.get_or_create(character=character, question=question)
+                answer.answer = text
+                answer.save()
+            else:
+                CharacterNotesAnswer.objects.filter(
+                        character=character,
+                        question=question).delete()
 
         return redirect('tools:character_detail', pk=character.id)
 
