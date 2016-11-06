@@ -67,8 +67,11 @@ form.form-label-col-2 div.input-group label {
 }
 
 /* Character notes */
+div.character-controls {
+	float: right;
+}
 div.character-notes {
-	padding: 15px 0;
+	padding: 0;
 }
 div.character-note {
 	padding: 10px 0;
