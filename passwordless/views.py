@@ -8,6 +8,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.http import HttpResponse,HttpResponseForbidden
 from django.shortcuts import render,redirect
+from django.utils.safestring import mark_safe
 from django.views import View
 from django.views.generic.edit import FormView,CreateView
 from django.views.generic.list import ListView
@@ -82,7 +83,18 @@ class AuthnView(View):
                 if session_key is not None:
                     request.session['passwordless_session_key'] = session_key
 
-                return render(request, 'passwordless/invalid.html')
+                msg = """
+<strong>The link you have followed is invalid.</strong> It may have expired,
+been previously used, or you opened this link in a different browser or on a
+different device than you were using when you requested it. The log in links
+emailed to you are only valid for a single use within one hour of being
+requested, and must be used in the same browser you were using when you
+requested it.
+<br>
+<strong>Please try logging in again.</strong>
+"""
+                messages.error(request, mark_safe(msg))
+                return redirect('auth:login')
 
 
 class LogoutView(View):
