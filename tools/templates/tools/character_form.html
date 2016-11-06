@@ -8,52 +8,70 @@ Create Character
 {% endblock header %}
 
 {% block content %}
-{% if form.non_field_errors %}
-<div class="alert alert-danger">{{ form.non_field_errors }}</div>
-{% endif %}
-<form action="" method="post" class="form-label-col-2">
-	{% csrf_token %}
-	{% bs_field form.name %}
-	{{ form.name.errors }}
-	{% bs_field form.age %}
-	{{ form.age.errors }}
-	{% bs_field form.appearance %}
-	{{ form.appearance.errors }}
-	<button class="btn btn-success" type="submit">Save</button>
-	{% if character.id %}
-	<a class="btn btn-default" href="{% url 'tools:character_detail' pk=character.id %}">
-	{% else %}
-	<a class="btn btn-default" href="{% url 'tools:character_list' %}">
-	{% endif %}
-		Cancel
-	</a>
-</form>
-{% if character.id %}
-<form action="{% url 'tools:character_notes' pk=character.id %}" method="post">
-	{% csrf_token %}
-	<div class="character-notes">
-		{% for note in notes %}
-		<div class="character-note">
-			<div class="character-note-question">
-				{{ note.question }}
-			</div>
-			<div class="character-note-answer">
-				<textarea
-					class="form-control"
-					name="note-{{ note.id }}-answer"
-					id="note-{{ note.id }}-answer">{% note_response note character %}</textarea>
-			</div>
-		</div>
-		{% endfor %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Basic Info</h3>
 	</div>
-	<button class="btn btn-success" type="submit">Save</button>
-	{% if character.id %}
-	<a class="btn btn-default" href="{% url 'tools:character_detail' pk=character.id %}">
-	{% else %}
-	<a class="btn btn-default" href="{% url 'tools:character_list' %}">
-	{% endif %}
-		Cancel
-	</a>
-</form>
+	<div class="panel-body">
+		{% if form.non_field_errors %}
+		<div class="alert alert-danger">{{ form.non_field_errors }}</div>
+		{% endif %}
+		<form action="" method="post" class="form-label-col-2">
+			{% csrf_token %}
+			{% bs_field form.name %}
+			{{ form.name.errors }}
+			{% bs_field form.age %}
+			{{ form.age.errors }}
+			{% bs_field form.appearance %}
+			{{ form.appearance.errors }}
+			<button class="btn btn-success" type="submit">Save</button>
+			{% if character.id %}
+			<a class="btn btn-default" href="{% url 'tools:character_detail' pk=character.id %}">
+				{% else %}
+				<a class="btn btn-default" href="{% url 'tools:character_list' %}">
+					{% endif %}
+					Cancel
+				</a>
+			</form>
+		</div>
+	</div>
+{% if character.id %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Worksheet</h3>
+	</div>
+	<div class="panel-body">
+		<form action="{% url 'tools:character_notes' pk=character.id %}" method="post">
+			<button class="btn btn-success" type="submit">Save</button>
+			<a
+				class="btn btn-default"
+				href="{% if character.id %}{% url 'tools:character_detail' pk=character.id %}{% else %}{% url 'tools:character_list' %}{% endif %}">
+				Cancel
+			</a>
+			{% csrf_token %}
+			<div class="character-notes">
+				{% for note in notes %}
+				<div class="character-note">
+					<div class="character-note-question">
+						{{ note.question }}
+					</div>
+					<div class="character-note-answer">
+						<textarea
+							class="form-control"
+							name="note-{{ note.id }}-answer"
+							id="note-{{ note.id }}-answer">{% note_response note character %}</textarea>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<button class="btn btn-success" type="submit">Save</button>
+			<a
+				class="btn btn-default"
+				href="{% if character.id %}{% url 'tools:character_detail' pk=character.id %}{% else %}{% url 'tools:character_list' %}{% endif %}">
+				Cancel
+			</a>
+		</form>
+	</div>
+</div>
 {% endif %}
 {% endblock content %}
