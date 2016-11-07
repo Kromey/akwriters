@@ -20,6 +20,9 @@ $(document).ready(function() {
 			}
 	});
 
+	//Emphasis plugin
+	CandyShop.Emphasis.init();
+
 	//Connect
 	Candy.Core.connect(jid, otp, nick);
 });
