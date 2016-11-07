@@ -11,29 +11,6 @@
 	<script type="text/javascript" src="{% static 'jquery/jquery-2.1.4.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'candy/js/libs.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'candy/js/candy.min.js' %}"></script>
-	{% comment %}
-	{# This doesn't work as expected, the event only seems to fire the very first time the Login window appears #}
-	<script type="text/javascript">
-		function configureLoginPanel()
-		{
-			$('#username').val('{{ user.username|default:"USERNAME" }}@{% chat_domain %}');
-
-			var header = document.createElement('div');
-			header.appendChild(document.createTextNode('Alaska Writers Chat'));
-			var modal = $('#chat-modal').get(0);
-			modal.insertBefore(header, modal.firstChild);
-
-			$('#password').focus();
-
-			$('#username').blur(function(event){
-				username = $('#username').val().split('@')[0];
-				$('#username').val(username + "@{% chat_domain %}");
-				return true;
-			});
-		}
-		$(Candy).on('candy:core.login', function(){ setTimeout(configureLoginPanel, 100); })
-	</script>
-	{% endcomment %}
 	<script src="{% static 'chat/start-candy.js' %}"></script>
 </head>
 <body>
