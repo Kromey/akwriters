@@ -24,6 +24,8 @@ $(document).ready(function() {
 	CandyShop.Emphasis.init();
 	//NotifyMe plugin
 	CandyShop.NotifyMe.init({nameIdentifier: ''});
+	//Notifications plugin
+	CandyShop.Notifications.init({notifyNormalMessage: true});
 	//Add /me formatting (note: should be after most plugins)
 	CandyShop.MeDoes.init();
 
