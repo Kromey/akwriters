@@ -15,7 +15,8 @@ $(document).ready(function() {
 			},
 		view: {
 			assets: assets,
-			enableXHTML: true
+			enableXHTML: true,
+			updateWindowOnAllMessages: true
 			}
 	});
 
