@@ -22,6 +22,8 @@ $(document).ready(function() {
 
 	//Emphasis plugin
 	CandyShop.Emphasis.init();
+	//Add /me formatting (note: should be after most plugins)
+	CandyShop.MeDoes.init();
 
 	//Connect
 	Candy.Core.connect(jid, otp, nick);
