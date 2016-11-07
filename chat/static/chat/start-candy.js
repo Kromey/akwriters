@@ -11,7 +11,8 @@ $(document).ready(function() {
 	Candy.init('/http-bind/', {
 		core: {
 			debug: false,
-			autojoin: ['nano@conf.'+domain]
+			autojoin: ['nano@conf.'+domain],
+			resource: 'Candy-' + nick + '-' + Math.floor(Math.random() * 1000000)
 			},
 		view: {
 			assets: assets,
