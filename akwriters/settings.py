@@ -78,6 +78,7 @@ INSTALLED_APPS = (
     'policies',
     'passwordless',
     'tools',
+    'forum',
 )
 
 MIDDLEWARE_CLASSES = (
