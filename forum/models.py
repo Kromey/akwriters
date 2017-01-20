@@ -21,6 +21,9 @@ class Board(models.Model):
 
         return super().save(*args, **kwargs)
 
+    class Meta(object):
+        ordering = ('slug',)
+
 
 class Topic(models.Model):
     board = models.ForeignKey(
