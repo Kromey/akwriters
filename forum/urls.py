@@ -9,5 +9,6 @@ urlpatterns = [
     # url(r'^$', 'akwriters.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url('^$', views.BoardView.as_view(), name='index'),
+    url('^$', views.IndexView.as_view(), name='index'),
+    url('^board/(?P<slug>[-\w]+)$', views.BoardView.as_view(), name='board'),
 ]
