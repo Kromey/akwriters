@@ -15,7 +15,5 @@ AKWriters Forum
 {% endblock header %}
 
 {% block content %}
-{% for board in board_list %}
-{{ board.title }}: {{ board.description }}<br>
-{% endfor %}
+{% include 'forum/board_block.html' with boards=board_list only %}
 {% endblock %}
