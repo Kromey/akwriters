@@ -11,5 +11,9 @@
 {% endblock header %}
 
 {% block content %}
-
+<ul>
+	{% for topic in board.topic_set.all %}
+	<li>Topic: {{ topic.post_set.first.subject }}</li>
+	{% endfor %}
+</ul>
 {% endblock %}
