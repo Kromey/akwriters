@@ -3,13 +3,13 @@
 {% load static from staticfiles %}
 
 {% block title %}
-AKWriters Forum
+{{ board.title }}
 {% endblock title %}
 
 {% block header %}
-AKWriters Forum
+{{ board.title }}
 {% endblock header %}
 
 {% block content %}
-{% include 'forum/board_block.html' with boards=board_list only %}
+
 {% endblock %}
