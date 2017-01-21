@@ -31,6 +31,14 @@ class Topic(models.Model):
             on_delete=models.CASCADE,
             )
 
+    @property
+    def op(self):
+        return self.post_set.first()
+
+    @property
+    def title(self):
+        return self.op.subject
+
 
 class Post(models.Model):
     user = models.ForeignKey(
