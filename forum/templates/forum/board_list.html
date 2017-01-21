@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load frontend_extras %}
+{% load static from staticfiles %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% url 'events:calendars_css' %}">
+{% endblock %}
+
+{% block title %}
+AKWriters Forum
+{% endblock title %}
+
+{% block header %}
+AKWriters Forum
+{% endblock header %}
+
+{% block content %}
+{% for board in board_list %}
+{{ board.title }}: {{ board.description }}<br>
+{% endfor %}
+{% endblock %}

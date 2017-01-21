@@ -19,5 +19,6 @@ urlpatterns = [
     url(r'^favicon/', include('favicon.urls', namespace='favicon')),
     url(r'^policies/', include('policies.urls', namespace='policies')),
     url(r'^tools/', include('tools.urls', namespace='tools')),
+    url(r'^forum/', include('forum.urls', namespace='forum')),
     url(r'^admin/', admin.site.urls),
 ]
