@@ -39,6 +39,10 @@ class Topic(models.Model):
     def title(self):
         return self.op.subject
 
+    @property
+    def user(self):
+        return self.op.user
+
 
 class Post(models.Model):
     user = models.ForeignKey(

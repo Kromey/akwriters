@@ -13,7 +13,9 @@
 {% block content %}
 <ul>
 	{% for topic in board.topic_set.all %}
-	<li>Topic: {{ topic.title }}</li>
+	<li>{{ topic.title }}<br>
+	Started {date} by {{ topic.user.username }}
+	</li>
 	{% endfor %}
 </ul>
 {% endblock %}
