@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load frontend_extras %}
+{% load static from staticfiles %}
+
+{% block title %}
+{{ post.subject }} - {{ post.topic.title }}
+{% endblock title %}
+
+{% block header %}
+{{ post.subject }} - {{ post.topic.title }}
+{% endblock header %}
+
+{% block content %}
+<div class="post">{{ post.body }}</div>
+
+<ul>
+	{% for apost in post.topic.post_set.all %}
+	<li>{{ apost.subject }}<br>
+	Posted {date} by {{ apost.user.username }}
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}
