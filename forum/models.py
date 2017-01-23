@@ -43,6 +43,10 @@ class Topic(models.Model):
     def user(self):
         return self.op.user
 
+    @property
+    def post_count(self):
+        return self.op.reply_count + 1
+
 
 class Post(models.Model):
     user = models.ForeignKey(
@@ -57,6 +61,10 @@ class Post(models.Model):
     body = models.TextField()
     left = models.PositiveIntegerField(default=0)
     right = models.PositiveIntegerField(default=0)
+
+    @property
+    def reply_count(self):
+        return int((self.right - self.left - 1) / 2)
 
     class Meta(object):
         ordering = ('left',)

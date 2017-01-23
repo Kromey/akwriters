@@ -14,7 +14,7 @@
 <ul>
 	{% for topic in board.topic_set.all %}
 	<li>{{ topic.title }}<br>
-	Started {date} by {{ topic.user.username }}
+	Started {date} by {{ topic.user.username }} ({{ topic.post_count }} post{{ topic.post_count|pluralize }})
 	</li>
 	{% endfor %}
 </ul>
