@@ -10,6 +10,7 @@ class Board(models.Model):
             blank=True,
             null=True,
             default=None,
+            related_name='sub_boards',
             )
     title = models.CharField(max_length=25)
     slug = models.SlugField(blank=True, max_length=25)
@@ -29,11 +30,12 @@ class Topic(models.Model):
     board = models.ForeignKey(
             Board,
             on_delete=models.CASCADE,
+            related_name='topics',
             )
 
     @property
     def op(self):
-        return self.post_set.first()
+        return self.posts.first()
 
     @property
     def title(self):
@@ -76,6 +78,7 @@ class Post(models.Model):
     topic = models.ForeignKey(
             Topic,
             on_delete=models.CASCADE,
+            related_name='posts',
             )
     subject = models.CharField(max_length=128)
     body = models.TextField()

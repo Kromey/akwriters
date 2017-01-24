@@ -14,7 +14,7 @@
 <div class="post">{{ post.body }}</div>
 
 <ul>
-	{% for apost in post.topic.post_set.all %}
+	{% for apost in post.topic.posts.all %}
 	{% if apost.pk == post.pk %}
 	<li>{% octicon 'arrow-right' %} {{ apost.subject }}<br>
 	{% else %}

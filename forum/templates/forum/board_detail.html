@@ -12,7 +12,7 @@
 
 {% block content %}
 <ul>
-	{% for topic in board.topic_set.all %}
+	{% for topic in board.topics.all %}
 	<li><a href="{% url 'forum:post' board=topic.board.slug pk=topic.op.pk %}">{{ topic.title }}</a><br>
 	Started {date} by {{ topic.user.username }} ({{ topic.post_count }} post{{ topic.post_count|pluralize }})
 	</li>
