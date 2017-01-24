@@ -3,11 +3,14 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 
+from helpers.templatetags.frontend_extras import octicon
+
+
 register = template.Library()
 
 
 @register.simple_tag
-def make_tree(posts):
+def make_tree(posts, current_post=None):
     levels = []
     depth = 0
     html = '<ul>'
@@ -21,7 +24,13 @@ def make_tree(posts):
         except IndexError:
             pass
 
-        html += '<li><a href="{url}">{title}</a> by {user} on {date}'.format(
+        if post == current_post:
+            line = '<li>{icon}{title} by {user} on {date}'
+        else:
+            line = '<li><a href="{url}">{title}</a> by {user} on {date}'
+
+        html += line.format(
+                icon=octicon('arrow-right'),
                 url=reverse('forum:post', kwargs={
                     'board':post.topic.board.slug,
                     'pk':post.pk
