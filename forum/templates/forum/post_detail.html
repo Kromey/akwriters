@@ -17,18 +17,4 @@
 <hr>
 
 {% make_tree post.topic.posts.all post %}
-
-{% comment %}
-<ul>
-	{% for apost in post.topic.posts.all %}
-	{% if apost.pk == post.pk %}
-	<li>{% octicon 'arrow-right' %} {{ apost.subject }}<br>
-	{% else %}
-	<li><a href="{% url 'forum:post' board=apost.topic.board.slug pk=apost.pk %}">{{ apost.subject }}</a><br>
-	{% endif %}
-	Posted {date} by {{ apost.user.username }}
-	</li>
-	{% endfor %}
-</ul>
-{% endcomment %}
 {% endblock %}
