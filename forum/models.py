@@ -52,14 +52,14 @@ class Topic(models.Model):
     @transaction.atomic
     def insert_post(self, post, reply_to):
         # We need to lock the topic tree, to prevent race conditions
-        if Post.objects.select_for_update().filter(topic=self):
+        if self.posts.select_for_update():
             pass
 
         # Make sure nobody else has updated this in the meantime
         reply_to.refresh_from_db()
         # Make room for our post
-        Post.objects.filter(topic=self).filter(left__gt = reply_to.left).update(left = models.F('left') + 2)
-        Post.objects.filter(topic=self).filter(right__gt = reply_to.left).update(right = models.F('right') + 2)
+        self.posts.filter(left__gt = reply_to.left).update(left = models.F('left') + 2)
+        self.posts.filter(right__gt = reply_to.left).update(right = models.F('right') + 2)
 
         # Now fit ourselves right into place
         post.left = reply_to.left + 1
