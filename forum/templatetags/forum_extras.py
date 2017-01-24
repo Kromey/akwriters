@@ -9,27 +9,28 @@ register = template.Library()
 def make_tree(posts):
     levels = []
     depth = 0
-
-    print('<ul>')
+    html = '<ul>'
 
     for post in posts:
         try:
             while levels[-1] < post.left:
-                print('</ul></li>')
+                html += '</ul></li>'
                 levels.pop()
                 depth -= 1
         except IndexError:
             pass
 
-        print('  ' * depth, '<li>', post.subject)
+        html += '  ' * depth + '<li>' + post.subject
 
         if post.right - post.left > 1:
-            print('<ul>')
+            html += '<ul>'
             levels.append(post.right)
             depth = len(levels)
         else:
-            print('</li>')
+            html += '</li>'
 
-    print('</ul></li>' * depth)
-    print('</ul>')
+    html += '</ul></li>' * depth
+    html += '</ul>'
+
+    return mark_safe(html)
 

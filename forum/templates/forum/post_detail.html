@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load frontend_extras %}
+{% load forum_extras %}
 {% load static from staticfiles %}
 
 {% block title %}
@@ -13,6 +14,11 @@
 {% block content %}
 <div class="post">{{ post.body }}</div>
 
+<hr>
+
+{% make_tree post.topic.posts.all %}
+
+{% comment %}
 <ul>
 	{% for apost in post.topic.posts.all %}
 	{% if apost.pk == post.pk %}
@@ -24,4 +30,5 @@
 	</li>
 	{% endfor %}
 </ul>
+{% endcomment %}
 {% endblock %}
