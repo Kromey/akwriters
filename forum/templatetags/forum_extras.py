@@ -1,4 +1,5 @@
 from django import template
+from django.urls import reverse
 from django.utils.safestring import mark_safe
 
 
@@ -20,7 +21,15 @@ def make_tree(posts):
         except IndexError:
             pass
 
-        html += '  ' * depth + '<li>' + post.subject
+        html += '<li><a href="{url}">{title}</a> by {user} on {date}'.format(
+                url=reverse('forum:post', kwargs={
+                    'board':post.topic.board.slug,
+                    'pk':post.pk
+                    }),
+                title=post.subject,
+                user=post.user.username,
+                date='[date]',
+                )
 
         if post.right - post.left > 1:
             html += '<ul>'
