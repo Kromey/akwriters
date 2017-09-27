@@ -3,6 +3,10 @@
 {% load forum_extras %}
 {% load static from staticfiles %}
 
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/forum.css' %}">
+{% endblock extrahead %}
+
 {% block title %}
 {{ post.subject }} - {{ post.topic.title }}
 {% endblock title %}
