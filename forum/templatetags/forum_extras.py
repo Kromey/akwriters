@@ -13,21 +13,21 @@ register = template.Library()
 def make_tree(posts, current_post=None):
     levels = []
     depth = 0
-    html = '<ul>'
+    html = '<div class="post-tree">'
 
     for post in posts:
         try:
             while levels[-1] < post.left:
-                html += '</ul></li>'
+                html += '</div>'
                 levels.pop()
                 depth -= 1
         except IndexError:
             pass
 
         if post == current_post:
-            line = '<li>{icon}{title} by {user} on {date}'
+            line = '<div>{icon}{title} by {user} on {date}'
         else:
-            line = '<li><a href="{url}">{title}</a> by {user} on {date}'
+            line = '<div><a href="{url}">{title}</a> by {user} on {date}'
 
         html += line.format(
                 icon=octicon('arrow-right'),
@@ -41,14 +41,14 @@ def make_tree(posts, current_post=None):
                 )
 
         if post.right - post.left > 1:
-            html += '<ul>'
+            #html += '<ul>'
             levels.append(post.right)
             depth = len(levels)
         else:
-            html += '</li>'
+            html += '</div>'
 
-    html += '</ul></li>' * depth
-    html += '</ul>'
+    html += '</div>' * depth
+    html += '</div>'
 
     return mark_safe(html)
 
