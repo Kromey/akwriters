@@ -1,7 +1,16 @@
 .post-list div {
 	border-bottom: 1px solid #eee;
-	margin-bottom: 10px;
 	padding-left: 3px;
+	padding-bottom: 3px;
+	margin-bottom: 3px;
+	color: #666;
+}
+.post-list div:first-child {
+	border-top: 1px solid #eee;
+	padding-top: 3px;
+}
+.post-list .post-subject {
+	display: block;
 }
 
 .post-tree div div {

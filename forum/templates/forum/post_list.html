@@ -10,7 +10,7 @@ Most Recent Posts
 <div class="post-list">
 	{% for post in recent_posts %}
 	<div>
-		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.pk %}" class="post-subject">{{ post.subject }}</a><br>
+		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.pk %}" class="post-subject">{{ post.subject }}</a>
 		Posted {date} in
 		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.topic.op.pk %}">{{ post.topic.title }}</a>
 		on
