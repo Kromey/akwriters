@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/forum.css' %}">
+{% endblock extrahead %}
+
+{% block title %}
+AKWriters Forum
+{% endblock title %}
+
+{% block header %}
+AKWriters Forum
+{% endblock header %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-10">{% block forum_content %}{% endblock forum_content %}</div>
+	<div class="col-md-2">
+		{% include 'forum/board_block.html' with boards=board_list only %}
+	</div>
+</div>
+{% endblock %}

@@ -6,17 +6,27 @@ from forum.models import Board,Post
 
 
 # Create your views here.
-class IndexView(ListView):
-    queryset = Board.objects.filter(parent=None)
-    context_object_name = 'board_list'
+
+class ForumViewMixin:
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['board_list'] = Board.objects.filter(parent=None)
+
+        return context
 
 
-class BoardView(DetailView):
+class IndexView(ForumViewMixin, ListView):
+    queryset = Post.objects.select_related('topic', 'topic__board', 'user').order_by('-pk')[:10]
+    context_object_name = 'recent_posts'
+
+
+class BoardView(ForumViewMixin, DetailView):
     model = Board
     context_object_name = 'board'
 
 
-class PostView(DetailView):
+class PostView(ForumViewMixin, DetailView):
     model = Post
     context_object_name = 'post'
 

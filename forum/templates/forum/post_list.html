@@ -1,0 +1,22 @@
+{% extends 'forum/base.html' %}
+{% load frontend_extras %}
+{% load static from staticfiles %}
+
+{% block title %}
+Most Recent Posts — AKWriters Forum
+{% endblock title %}
+
+{% block header %}
+Most Recent Posts — AKWriters Forum
+{% endblock header %}
+
+{% block forum_content %}
+<ul>
+	{% for post in recent_posts %}
+	<li>
+		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.topic.op.pk %}">{{ post.subject }}</a><br>
+		Posted {date} in {{ post.topic.title }} on {{ post.topic.board.title }} by {{ post.user.username }}
+	</li>
+	{% endfor %}
+</ul>
+{% endblock %}
