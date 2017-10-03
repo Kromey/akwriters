@@ -1,7 +1,7 @@
 <ul class="board_list">
 	{% for board in boards %}
-	<li><a href="{% url 'forum:board' slug=board.slug %}">{{ board.title }}</a>: {{ board.description }}
-	{% if board.sub_boards %}
+	<li><a href="{% url 'forum:board' slug=board.slug %}">{{ board.title }}</a>{{ board.description }}
+	{% if board.sub_boards.count %}
 		{% include 'forum/board_block.html' with boards=board.sub_boards.all only %}
 	{% endif %}</li>
 	{% endfor %}

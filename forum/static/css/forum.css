@@ -4,3 +4,21 @@
 	padding-left: 2px;
 	border-radius: 5px;
 }
+
+.board_list {
+	list-style: none;
+	padding-left: 0;
+	color: #666;
+}
+.board_list li {
+	display: block;
+	background-color: #cceeff;
+	padding-left: 3px;
+}
+.board_list li li {
+	margin-left: 10px;
+}
+.board_list a {
+	display: block;
+}
+

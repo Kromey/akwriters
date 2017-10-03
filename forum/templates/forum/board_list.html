@@ -2,6 +2,10 @@
 {% load frontend_extras %}
 {% load static from staticfiles %}
 
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/forum.css' %}">
+{% endblock extrahead %}
+
 {% block title %}
 AKWriters Forum
 {% endblock title %}
