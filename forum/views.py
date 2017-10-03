@@ -17,7 +17,7 @@ class ForumViewMixin:
 
 
 class IndexView(ForumViewMixin, ListView):
-    queryset = Post.objects.select_related('topic', 'topic__board', 'user').order_by('-pk')[:10]
+    queryset = Post.objects.select_related('topic', 'topic__board', 'user').order_by('-pk')[:5]
     context_object_name = 'recent_posts'
 
 
