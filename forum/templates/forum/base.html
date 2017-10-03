@@ -6,17 +6,16 @@
 {% endblock extrahead %}
 
 {% block title %}
-AKWriters Forum
+{% block header %}
+{% block forum_title %}{% endblock %} — AKWriters Forum
+{% endblock header %}
 {% endblock title %}
 
-{% block header %}
-AKWriters Forum
-{% endblock header %}
 
 {% block content %}
 <div class="row">
-	<div class="col-md-10">{% block forum_content %}{% endblock forum_content %}</div>
-	<div class="col-md-2">
+	<div class="col-md-9 col-md-push-3">{% block forum_content %}{% endblock forum_content %}</div>
+	<div class="col-md-3 col-md-pull-9">
 		{% include 'forum/board_block.html' with boards=board_list only %}
 	</div>
 </div>
