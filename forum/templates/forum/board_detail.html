@@ -14,7 +14,7 @@ Viewing {{ board.title }}
 	{% for topic in topics %}
 	<div>
 		<a href="{% url 'forum:post' board=board.slug pk=topic.op.pk %}" class="post-subject">{{ topic.title }}</a>
-		Started {date} by {{ topic.user.username }} ({{ topic.post_count }} post{{ topic.post_count|pluralize }})
+		Started {{ topic.date }} by {{ topic.user.username }} ({{ topic.post_count }} post{{ topic.post_count|pluralize }})
 	</div>
 	{% empty %}
 	<div class="warning-text text-center">Looks like there's nothing here yet! Ready to start the conversation?</div>

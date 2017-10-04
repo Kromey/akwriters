@@ -1,5 +1,6 @@
 from django import template
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.safestring import mark_safe
 
 
@@ -37,7 +38,7 @@ def make_tree(posts, current_post=None):
                     }),
                 title=post.subject,
                 user=post.user.username,
-                date='[date]',
+                date=timezone.localtime(post.date),
                 )
 
         if post.right - post.left > 1:
