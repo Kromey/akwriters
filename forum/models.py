@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models,transaction
 from django.template.defaultfilters import slugify
+from django.utils import timezone
 
 
 class Board(models.Model):
@@ -40,6 +41,10 @@ class Topic(models.Model):
     @property
     def title(self):
         return self.op.subject
+
+    @property
+    def date(self):
+        return self.op.date
 
     @property
     def user(self):
@@ -84,6 +89,7 @@ class Post(models.Model):
     body = models.TextField()
     left = models.PositiveIntegerField(default=0)
     right = models.PositiveIntegerField(default=0)
+    date = models.DateTimeField(default=timezone.now)
 
     @property
     def reply_count(self):
