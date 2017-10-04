@@ -1,21 +1,11 @@
-{% extends 'base.html' %}
-{% load frontend_extras %}
+{% extends 'forum/base.html' %}
 {% load forum_extras %}
-{% load static from staticfiles %}
 
-{% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/forum.css' %}">
-{% endblock extrahead %}
+{% block forum_title %}
+{{ post.subject }} ({{ post.topic.title }})
+{% endblock %}
 
-{% block title %}
-{{ post.subject }} - {{ post.topic.title }}
-{% endblock title %}
-
-{% block header %}
-{{ post.subject }} - {{ post.topic.title }}
-{% endblock header %}
-
-{% block content %}
+{% block forum_content %}
 <div class="post">{{ post.body }}</div>
 
 <hr>

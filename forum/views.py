@@ -25,6 +25,13 @@ class BoardView(ForumViewMixin, DetailView):
     model = Board
     context_object_name = 'board'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['topics'] = self.object.topics.order_by('-pk')[:10]
+
+        return context
+
 
 class PostView(ForumViewMixin, DetailView):
     model = Post
