@@ -6,6 +6,12 @@
 	top: 0;
 	margin-top: -3px;
 }
+.board-dropdown .dropdown-menu>li>a {
+	color: #777;
+}
+.board-dropdown .dropdown-menu>li>a:hover {
+	color: #333;
+}
 
 .post-list div {
 	border-bottom: 1px solid #cceeff;
@@ -21,6 +27,13 @@
 }
 .post-list .post-subject {
 	display: block;
+}
+div.post-list .btn {
+	color: #777;
+	margin-top: -5px;
+}
+div.post-list .btn:hover {
+	color: #333;
 }
 
 .post-wrapper {
