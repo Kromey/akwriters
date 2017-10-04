@@ -1,21 +1,14 @@
-{% extends 'base.html' %}
-{% load static from staticfiles %}
-
-{% block extrahead %}
-<link rel="stylesheet" href="{% static 'css/forum.css' %}">
-{% endblock extrahead %}
-
-{% block title %}
-{% block header %}
-{% block forum_title %}{% endblock %} — AKWriters Forum
-{% endblock header %}
-{% endblock title %}
+{% extends 'forum/base_skeleton.html' %}
 
 
 {% block content %}
 <div class="row">
-	<div class="col-md-9 col-md-push-3">{% block forum_content %}{% endblock forum_content %}</div>
-	<div class="col-md-3 col-md-pull-9">
+	<div class="col-md-9 col-md-push-3">
+		<h2>{% block forum_title %}{% endblock forum_title %}</h2>
+		{% block forum_content %}{% endblock forum_content %}
+	</div>
+	<div class="col-md-3 col-md-pull-9 board-sidebar">
+		<h3>Boards</h3>
 		{% include 'forum/board_block.html' with boards=board_list only %}
 	</div>
 </div>

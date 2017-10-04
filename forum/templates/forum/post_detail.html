@@ -1,9 +1,7 @@
 {% extends 'forum/base.html' %}
 {% load forum_extras %}
 
-{% block forum_title %}
-{{ post.subject }} ({{ post.topic.title }})
-{% endblock %}
+{% block forum_title %}{{ post.subject }} ({{ post.topic.title }}){% endblock %}
 
 {% block forum_content %}
 <div class="post">{{ post.body }}</div>

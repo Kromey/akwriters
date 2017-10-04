@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/forum.css' %}">
+{% endblock extrahead %}
+
+{% block header_frame %}{% endblock %}
+{% block title %}{% block forum_title %}{% endblock forum_title %} — AKWriters Forum{% endblock title %}
