@@ -1,6 +1,10 @@
 .dropdown-submenu {
 	position: relative;
 }
+.dropdown-submenu .caret {
+	float: right;
+	margin-top: 8px;
+}
 .dropdown-submenu .dropdown-menu {
 	left: 100%;
 	top: 0;

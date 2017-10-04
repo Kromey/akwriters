@@ -3,10 +3,28 @@ ul.errorlist {
 	list-style: none;
 }
 
-nav.navbar.navbar-fixed-top, footer {
+nav.navbar, footer {
 	background-color: #CCEEFF;
 	background-image: none;
 	border-color: #BBDDEE;
+	margin-bottom: 0;
+}
+nav.navbar.navbar-subnav {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	margin-top: -1px;
+}
+nav.navbar .dropdown-menu {
+	background-color: #CCEEFF;
+}
+nav.navbar .dropdown-menu li a:hover {
+	background-color: #BBDDEE;
+	background-image: none;
+}
+nav.navbar .navbar-nav>.dropdown.open>a,
+nav.navbar .navbar-nav>.dropdown.open>a:hover {
+	background-color: #bde;
+	background-image: none;
 }
 
 html {
@@ -16,7 +34,6 @@ html {
 }
 
 body {
-	padding-top: 50px;
 }
 
 div#alert-container {
