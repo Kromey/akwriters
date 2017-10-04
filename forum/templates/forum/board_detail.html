@@ -10,6 +10,7 @@ Viewing {{ board.title }}
 {% endblock %}
 
 {% block forum_content %}
+<h3 class="board-description">{{ board.description }}</h3>
 <div class="post-list">
 	{% for topic in topics %}
 	<div>

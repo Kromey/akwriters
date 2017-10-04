@@ -13,6 +13,12 @@
 	color: #333;
 }
 
+.board-description {
+	color: #666;
+	margin-top: 0;
+	margin-left: 15px;
+}
+
 .post-list div {
 	border-bottom: 1px solid #cceeff;
 	border-radius: 5px;
