@@ -4,11 +4,13 @@
 
 {% block forum_title %}{{ post.subject }} ({{ post.topic.title }}){% endblock %}
 
+{% block context_navs %}
+<li><a href="#">{% octicon 'mail-reply' %} Reply</a></li>
+{% endblock %}
+
 {% block forum_content %}
 <div class="post-wrapper clearfix">
 	<div class="post">{{ post.body }}</div>
-
-	<button type="button" class="btn btn-xs btn-default pull-right" id="post-reply">{% octicon 'mail-reply' %} Reply</button>
 </div>
 
 {% make_tree post.topic.posts.all post %}

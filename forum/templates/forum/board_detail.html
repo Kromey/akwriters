@@ -1,7 +1,12 @@
 {% extends 'forum/base.html' %}
+{% load frontend_extras %}
 
 {% block forum_title %}
 Viewing {{ board.title }}
+{% endblock %}
+
+{% block context_navs %}
+<li><a href="#">{% octicon 'diff-added' %} New</a></li>
 {% endblock %}
 
 {% block forum_content %}

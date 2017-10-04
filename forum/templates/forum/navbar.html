@@ -22,11 +22,9 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				{% if user.is_authenticated %}
-				<li>My Posts</li>
-				<li>New Replies <span class="badge">12</span></li>
-				<li>{% octicon 'email-reply' %} Reply</li>
-				{% endif %}
+				<li><a href="#">My Posts</a></li>
+				<li><a href="#">New Replies <span class="badge">12</span></a></li>
+				{% block context_navs %}{% endblock %}
 			</ul>
 		</div>
 	</div>
