@@ -2,13 +2,21 @@
 {% load forum_extras %}
 {% load frontend_extras %}
 
-{% block forum_title %}{{ post.subject }} ({{ post.topic.title }}){% endblock %}
+{% block forum_title %}{{ post.subject }}{% endblock %}
 
 {% block context_navs %}
 <li><a href="#">{% octicon 'mail-reply' %} Reply</a></li>
 {% endblock %}
 
 {% block forum_content %}
+<div class="post-breadcrumbs">
+	<ol class="breadcrumb">
+		{% for ancestor in post.ancestors %}
+		<li><a href="{{ ancestor.get_absolute_url }}" class="{{ ancestor.css }}">{{ ancestor.subject }}{{ ancestor.title }}</a></li>
+		{% endfor %}
+		<li class="active">{{ post.subject }}</li>
+	</ol>
+</div>
 <div class="post-wrapper clearfix">
 	<div class="post">{{ post.body }}</div>
 </div>
