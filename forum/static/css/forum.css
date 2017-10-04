@@ -1,21 +1,38 @@
+.dropdown-submenu {
+	position: relative;
+}
+.dropdown-submenu .dropdown-menu {
+	left: 100%;
+	top: 0;
+	margin-top: -3px;
+}
+
 .post-list div {
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #cceeff;
+	border-radius: 5px;
 	padding-left: 3px;
 	padding-bottom: 3px;
 	margin-bottom: 3px;
 	color: #666;
 }
 .post-list div:first-child {
-	border-top: 1px solid #eee;
+	border-top: 1px solid #cceeff;
 	padding-top: 3px;
 }
 .post-list .post-subject {
 	display: block;
 }
 
+.post-wrapper {
+	border-bottom: 1px solid #cceeff;
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+	border-radius: 5px;
+}
+
 .post-tree div div {
 	margin-left: 10px;
-	border-left: 2px solid #eee;
+	border-left: 2px solid #cceeff;
 	padding-left: 2px;
 	border-radius: 5px;
 }

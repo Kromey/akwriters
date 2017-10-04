@@ -2,6 +2,7 @@
 
 
 {% block content %}
+{% comment %}
 <div class="row">
 	<div class="col-md-9 col-md-push-3">
 		<h2>{% block forum_title %}{% endblock forum_title %}</h2>
@@ -12,4 +13,8 @@
 		{% include 'forum/board_block.html' with boards=board_list only %}
 	</div>
 </div>
+{% endcomment %}
+{% include 'forum/navbar.html' with boards=board_list %}
+<h2>{% block forum_title %}{% endblock forum_title %}</h2>
+{% block forum_content %}{% endblock forum_content %}
 {% endblock %}
