@@ -14,7 +14,7 @@ Viewing {{ board.title }}
 <div class="post-list">
 	{% for topic in topics %}
 	<div>
-		<a href="{% url 'forum:post' board=board.slug pk=topic.op.pk %}" class="label label-primary">{{ topic.title }}</a>
+		<a href="{% url 'forum:post' board=board.slug pk=topic.op.pk %}" class="{{ topic.css }}">{{ topic.title }}</a>
 		<br>
 		Started {{ topic.date }} by {{ topic.user.username }} ({{ topic.post_count }} post{{ topic.post_count|pluralize }})
 	</div>

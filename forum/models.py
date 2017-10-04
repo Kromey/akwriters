@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models,transaction
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -22,6 +23,13 @@ class Board(models.Model):
             self.slug = slugify(self.title)
 
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('forum:board', args=(self.slug,))
+
+    @property
+    def css(self):
+        return 'btn btn-xs btn-default'
 
     class Meta(object):
         ordering = ('slug',)
@@ -53,6 +61,13 @@ class Topic(models.Model):
     @property
     def post_count(self):
         return self.op.reply_count + 1
+
+    @property
+    def css(self):
+        return self.op.css
+
+    def get_absolute_url(self):
+        return self.op.get_absolute_url()
 
     @transaction.atomic
     def insert_post(self, post, reply_to):
@@ -94,6 +109,24 @@ class Post(models.Model):
     @property
     def reply_count(self):
         return int((self.right - self.left - 1) / 2)
+
+    @property
+    def ancestors(self):
+        ancestors = [self.topic.board]
+        for post in Post.objects.filter(topic=self.topic).filter(left__lt=self.left).filter(right__gt=self.right).order_by('left'):
+            ancestors.append(post)
+
+        return ancestors
+
+    @property
+    def css(self):
+        if self == self.topic.op:
+            return 'label label-primary'
+        else:
+            return 'label label-info'
+
+    def get_absolute_url(self):
+        return reverse('forum:post', args=(self.topic.board.slug, self.pk))
 
     class Meta(object):
         ordering = ('left',)

@@ -8,12 +8,12 @@ Most Recent Posts
 <div class="post-list">
 	{% for post in recent_posts %}
 	<div>
-		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.pk %}" class="label label-info">{{ post.subject }}</a>
+		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.pk %}" class="{{ post.css }}">{{ post.subject }}</a>
 		<br>
 		Posted {{ post.date }} in
-		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.topic.op.pk %}" class="label label-primary">{{ post.topic.title }}</a>
+		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.topic.op.pk %}" class="{{ post.topic.css }}">{{ post.topic.title }}</a>
 		on
-		<a href="{% url 'forum:board' slug=post.topic.board.slug %}" class="btn btn-xs btn-default">{{ post.topic.board.title }}</a>
+		<a href="{% url 'forum:board' slug=post.topic.board.slug %}" class="{{ post.topic.board.css }}">{{ post.topic.board.title }}</a>
 		by {{ post.user.username }}
 	</div>
 	{% endfor %}
