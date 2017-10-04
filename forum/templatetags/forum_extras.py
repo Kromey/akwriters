@@ -15,6 +15,7 @@ def make_tree(posts, current_post=None):
     levels = []
     depth = 0
     html = '<div class="post-tree">'
+    label = 'primary'
 
     for post in posts:
         try:
@@ -26,9 +27,9 @@ def make_tree(posts, current_post=None):
             pass
 
         if post == current_post:
-            line = '<div>{icon}{title} by {user} on {date}'
+            line = '<div><span class="label label-default">{icon}{title}</span> by {user} on {date}'
         else:
-            line = '<div><a href="{url}">{title}</a> by {user} on {date}'
+            line = '<div><a href="{url}" class="label label-{label}">{title}</a> by {user} on {date}'
 
         html += line.format(
                 icon=octicon('arrow-right'),
@@ -36,6 +37,7 @@ def make_tree(posts, current_post=None):
                     'board':post.topic.board.slug,
                     'pk':post.pk
                     }),
+                label=label,
                 title=post.subject,
                 user=post.user.username,
                 date=timezone.localtime(post.date),
@@ -47,6 +49,8 @@ def make_tree(posts, current_post=None):
             depth = len(levels)
         else:
             html += '</div>'
+
+        label = 'info'
 
     html += '</div>' * depth
     html += '</div>'
