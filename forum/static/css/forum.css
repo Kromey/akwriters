@@ -1,14 +1,23 @@
-.dropdown-submenu {
-	position: relative;
-}
-.dropdown-submenu .caret {
+li.dropdown-submenu .caret {
 	float: right;
 	margin-top: 8px;
 }
-.dropdown-submenu .dropdown-menu {
-	left: 100%;
-	top: 0;
-	margin-top: -3px;
+li.dropdown-submenu .dropdown-menu {
+	position: initial;
+	border: none;
+	padding: 0;
+	margin-top: 0;
+	min-width: 0;
+	width: 100%;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+li.dropdown-submenu .dropdown-menu a {
+	padding-left: 30px;
+}
+li.dropdown-submenu.submenu-open .caret {
+	border-top: none;
+	border-bottom: 4px dashed;
 }
 .board-dropdown .dropdown-menu>li>a {
 	color: #777;

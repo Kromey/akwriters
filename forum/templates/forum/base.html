@@ -19,7 +19,9 @@
 				<li class="dropdown board-dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Boards <span class="caret"></span></a>
+					<ul class="dropdown-menu">
 						{% include 'forum/board_block.html' with boards=board_list only %}
+					</ul>
 				</li>
 			</ul>
 

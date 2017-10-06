@@ -1,12 +1,12 @@
-<ul class="dropdown-menu">
 	{% for board in boards %}
 	{% if board.sub_boards.count %}
 	<li class="dropdown-submenu">
 		<a role="button" class="dropdown-toggle">{{ board.title }} <span class="caret"></span></a>
-	{% include 'forum/board_block.html' with boards=board.sub_boards.all only %}
+		<ul class="dropdown-menu">
+			{% include 'forum/board_block.html' with boards=board.sub_boards.all only %}
+		</ul>
 	{% else %}
 	<li>
 		<a href="{% url 'forum:board' slug=board.slug %}">{{ board.title }}</a>
 	{% endif %}</li>
 	{% endfor %}
-</ul>
