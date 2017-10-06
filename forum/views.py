@@ -11,7 +11,7 @@ class ForumViewMixin:
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['board_list'] = Board.objects.filter(parent=None)
+        context['board_list'] = Board.objects.exclude(parent=None).select_related('parent').order_by('parent__slug', 'slug')
 
         return context
 

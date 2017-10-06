@@ -1,12 +1,16 @@
-	{% for board in boards %}
-	{% if board.sub_boards.count %}
-	<li class="dropdown-submenu">
-		<a role="button" class="dropdown-toggle">{{ board.title }} <span class="caret"></span></a>
-		<ul class="dropdown-menu">
-			{% include 'forum/board_block.html' with boards=board.sub_boards.all only %}
-		</ul>
-	{% else %}
-	<li>
-		<a href="{% url 'forum:board' slug=board.slug %}">{{ board.title }}</a>
-	{% endif %}</li>
-	{% endfor %}
+{% for board in boards %}
+{% ifchanged board.parent %}
+{% if not forloop.first %}
+	</ul>
+</li>
+{% endif %}
+<li class="dropdown-submenu">
+	<a role="button" class="dropdown-toggle">{{ board.parent.title }} <span class="caret"></span></a>
+	<ul class="dropdown-menu">
+		{% endifchanged %}
+		<li>
+			<a href="{% url 'forum:board' slug=board.slug %}">{{ board.title }}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</li>
