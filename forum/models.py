@@ -5,14 +5,15 @@ from django.urls import reverse
 from django.utils import timezone
 
 
+class BoardCategory(models.Model):
+    title = models.CharField(max_length=25)
+
+
 class Board(models.Model):
-    parent = models.ForeignKey(
-            'self',
-            on_delete=models.CASCADE,
-            blank=True,
-            null=True,
-            default=None,
-            related_name='sub_boards',
+    category = models.ForeignKey(
+            BoardCategory,
+            on_delete=models.PROTECT,
+            related_name='boards',
             )
     title = models.CharField(max_length=25)
     slug = models.SlugField(blank=True, max_length=25)

@@ -1,11 +1,11 @@
 {% for board in boards %}
-{% ifchanged board.parent %}
+{% ifchanged board.category %}
 {% if not forloop.first %}
 	</ul>
 </li>
 {% endif %}
 <li class="dropdown-submenu">
-	<a role="button" class="dropdown-toggle">{{ board.parent.title }} <span class="caret"></span></a>
+	<a role="button" class="dropdown-toggle">{{ board.category.title }} <span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		{% endifchanged %}
 		<li>
