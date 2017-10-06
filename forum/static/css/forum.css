@@ -1,6 +1,7 @@
 li.dropdown-submenu .caret {
-	float: right;
-	margin-top: 8px;
+	position: absolute;
+	right: 10px;
+	top: 40%;
 }
 li.dropdown-submenu .dropdown-menu {
 	position: initial;
@@ -21,6 +22,7 @@ li.dropdown-submenu.submenu-open .caret {
 }
 .board-dropdown .dropdown-menu>li>a {
 	color: #777;
+	position: relative;
 }
 .board-dropdown .dropdown-menu>li>a:hover {
 	color: #333;
