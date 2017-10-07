@@ -1,7 +1,11 @@
 {% extends 'forum/base.html' %}
 
 {% block forum_title %}
+{% if post %}
+Replying to {{ post.subject }}
+{% else %}
 New thread on {{ board.title }}
+{% endif %}
 {% endblock %}
 
 {% block forum_content %}
