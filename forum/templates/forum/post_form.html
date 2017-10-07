@@ -17,4 +17,65 @@ New thread on {{ board.title }}
 		<button type="submit" class="btn btn-success">Submit</button>
 	</div>
 </form>
+
+<div class="modal fade" id="MarkdownHelp" tabindex="-1" role="dialog" aria-labelledby="MarkdownHelpLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="MarkdownHelpLabel">Formatting Help</h4>
+			</div>
+			<div class="modal-body">
+				We use a slightly-customized version of Markdown to format your
+				posts. See below for the basics, or check the
+				<a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">official Markdown page</a>
+				for more that you can do.
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>You type...</th>
+							<th>...you see</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>*italics*</td>
+							<td><em>italics</em></td>
+						</tr>
+						<tr>
+							<td>**bold**</td>
+							<td><strong>bold</strong></td>
+						</tr>
+						<tr>
+							<td>[AKWriters!](https://akwriters.org)</td>
+							<td><a href="https://akwriters.org">AKWriters!</a></td>
+						</tr>
+						<tr>
+							<td>
+								* item 1<br>
+								* item 2<br>
+								* item 3<br>
+							</td>
+							<td>
+								<ul>
+									<li>item 1</li>
+									<li>item 2</li>
+									<li>item 3</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<td>&gt; quoted text</td>
+							<td><blockquote>quoted text</blockquote></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}
