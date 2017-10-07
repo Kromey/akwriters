@@ -3,3 +3,5 @@ django-simplecaptcha==1.0.0
 passlib==1.6.2
 psycopg2==2.5.4
 pytz==2016.7
+bleach==2.1.1
+Markdown==2.6.9
