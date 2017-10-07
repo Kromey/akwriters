@@ -35,6 +35,9 @@ class Board(models.Model):
     def css(self):
         return 'btn btn-xs btn-default'
 
+    def __str__(self):
+        return self.title
+
     class Meta(object):
         ordering = ('slug',)
 
@@ -72,6 +75,9 @@ class Topic(models.Model):
 
     def get_absolute_url(self):
         return self.op.get_absolute_url()
+
+    def __str__(self):
+        return self.title
 
     @transaction.atomic
     def insert_post(self, post, reply_to):
@@ -131,6 +137,9 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('forum:post', args=(self.topic.board.slug, self.pk))
+
+    def __str__(self):
+        return self.subject
 
     def save(self, *args, **kwargs):
         if self.right <= self.left:
