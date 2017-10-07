@@ -5,6 +5,25 @@ from django.urls import reverse
 from django.utils import timezone
 
 
+from .markdown import MarkdownText
+
+
+class MarkdownField(models.TextField):
+    def from_db_value(self, value, expression, connection, context):
+        return MarkdownText(value)
+
+    def to_python(self, value):
+        return MarkdownText(value)
+
+    def get_prep_value(self, value):
+        if value is None:
+            return None
+        return str(value)
+
+    def get_internal_type(self):
+        return 'TextField'
+
+
 class BoardCategory(models.Model):
     title = models.CharField(max_length=25)
 
@@ -111,7 +130,7 @@ class Post(models.Model):
             related_name='posts',
             )
     subject = models.CharField(max_length=128)
-    body = models.TextField(help_text='We use a slightly-customized version of <a data-toggle="modal" data-target="#MarkdownHelp">Markdown</a> for formatting.')
+    body = MarkdownField(help_text='We use a slightly-customized version of <a data-toggle="modal" data-target="#MarkdownHelp">Markdown</a> for formatting.')
     left = models.PositiveIntegerField(default=0)
     right = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
