@@ -111,7 +111,7 @@ class Post(models.Model):
             related_name='posts',
             )
     subject = models.CharField(max_length=128)
-    body = models.TextField()
+    body = models.TextField(help_text='We use a slightly-customized version of Markdown for formatting.')
     left = models.PositiveIntegerField(default=0)
     right = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
