@@ -1,8 +1,10 @@
 from django.views.generic import DetailView,ListView
+from django.views.generic.edit import CreateView
 from django.shortcuts import get_object_or_404,render
 
 
-from forum.models import Board,Post
+from forum.forms import PostForm
+from forum.models import Board,Post,Topic
 
 
 # Create your views here.
@@ -40,4 +42,27 @@ class PostView(ForumViewMixin, DetailView):
     def get_queryset(self):
         self.board = get_object_or_404(Board, slug=self.kwargs['board'])
         return Post.objects.filter(topic__board=self.board)
+
+
+class TopicCreateView(ForumViewMixin, CreateView):
+    form_class = PostForm
+    template_name = 'forum/post_form.html'
+
+    def dispatch(self, *args, **kwargs):
+        self.board = get_object_or_404(Board, slug=self.kwargs['board'])
+        return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['board'] = self.board
+
+        return context
+
+    def form_valid(self, form):
+        topic = Topic(board=self.board)
+        topic.save()
+        form.instance.topic = topic
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 

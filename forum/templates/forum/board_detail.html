@@ -6,7 +6,7 @@ Viewing {{ board.title }}
 {% endblock %}
 
 {% block context_navs %}
-<li><a href="#">{% octicon 'diff-added' %} New</a></li>
+<li><a href="{% url 'forum:new-topic' board=board.slug %}">{% octicon 'diff-added' %} New</a></li>
 {% endblock %}
 
 {% block forum_content %}

@@ -12,4 +12,6 @@ urlpatterns = [
     url('^$', views.IndexView.as_view(), name='index'),
     url('^(?P<slug>[-\w]+)/$', views.BoardView.as_view(), name='board'),
     url('^(?P<board>[-\w]+)/post-(?P<pk>[0-9]+)$', views.PostView.as_view(), name='post'),
+
+    url('^(?P<board>[-\w]+)/new$', views.TopicCreateView.as_view(), name='new-topic'),
 ]
