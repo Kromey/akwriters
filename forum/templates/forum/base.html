@@ -26,8 +26,12 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
+				{% if user.is_authenticated %}
 				<li><a href="#">My Posts</a></li>
 				<li><a href="#">New Replies <span class="badge">12</span></a></li>
+				{% else %}
+				<p class="navbar-text">Login to join the conversation</p>
+				{% endif %}
 				{% block context_navs %}{% endblock %}
 			</ul>
 		</div>

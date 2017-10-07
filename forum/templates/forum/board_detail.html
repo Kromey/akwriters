@@ -6,7 +6,9 @@ Viewing {{ board.title }}
 {% endblock %}
 
 {% block context_navs %}
+{% if user.is_authenticated %}
 <li><a href="{% url 'forum:new-topic' board=board.slug %}">{% octicon 'diff-added' %} New</a></li>
+{% endif %}
 {% endblock %}
 
 {% block forum_content %}
