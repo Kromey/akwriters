@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView,ListView
 from django.views.generic.edit import CreateView
 from django.shortcuts import get_object_or_404,render
@@ -44,7 +45,7 @@ class PostView(ForumViewMixin, DetailView):
         return Post.objects.filter(topic__board=self.board)
 
 
-class TopicCreateView(ForumViewMixin, CreateView):
+class ForumPostMixin(LoginRequiredMixin, ForumViewMixin):
     form_class = PostForm
     template_name = 'forum/post_form.html'
 
@@ -60,9 +61,39 @@ class TopicCreateView(ForumViewMixin, CreateView):
         return context
 
     def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+
+class TopicCreateView(ForumPostMixin, CreateView):
+    form_class = PostForm
+    template_name = 'forum/post_form.html'
+
+    def form_valid(self, form):
         topic = Topic(board=self.board)
         topic.save()
         form.instance.topic = topic
-        form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class ReplyCreateView(ForumPostMixin, CreateView):
+    form_class = PostForm
+    template_name = 'forum/post_form.html'
+
+    def dispatch(self, *args, **kwargs):
+        self.reply_to = get_object_or_404(Post, pk=self.kwargs['post'])
+        return super().dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['post'] = self.reply_to
+
+        return context
+
+    def form_valid(self, form):
+        form.instance.topic = self.reply_to.topic
+        resp = super().form_valid(form)
+        self.reply_to.topic.insert_post(self.object, self.reply_to)
+        return resp
 

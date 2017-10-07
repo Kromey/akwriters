@@ -5,7 +5,7 @@
 {% block forum_title %}{{ post.subject }}{% endblock %}
 
 {% block context_navs %}
-<li><a href="#">{% octicon 'mail-reply' %} Reply</a></li>
+<li><a href="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}">{% octicon 'mail-reply' %} Reply</a></li>
 {% endblock %}
 
 {% block forum_content %}

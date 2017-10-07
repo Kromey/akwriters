@@ -14,4 +14,5 @@ urlpatterns = [
     url('^(?P<board>[-\w]+)/post-(?P<pk>[0-9]+)$', views.PostView.as_view(), name='post'),
 
     url('^(?P<board>[-\w]+)/new$', views.TopicCreateView.as_view(), name='new-topic'),
+    url('^(?P<board>[-\w]+)/post-(?P<post>[0-9]+)/reply$', views.ReplyCreateView.as_view(), name='new-reply'),
 ]
