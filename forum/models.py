@@ -129,6 +129,11 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse('forum:post', args=(self.topic.board.slug, self.pk))
 
+    def save(self, *args, **kwargs):
+        if self.right <= self.left:
+            self.right = self.left + 1
+        return super().save(*args, **kwargs)
+
     class Meta(object):
         ordering = ('left',)
 
