@@ -9,6 +9,10 @@ class PostForm(ModelForm):
         model = Post
         fields = ('subject','body')
         widgets = {
-                'body': Textarea(attrs={'data-provide':'markdown'}),
+                'body': Textarea(
+                    attrs={
+                        'data-provide':'markdown',
+                        'data-hidden-buttons':'cmdHeading',
+                        }),
                 }
 
