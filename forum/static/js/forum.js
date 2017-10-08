@@ -7,10 +7,13 @@ $(function(){
 	});
 
 	$('textarea[data-provide=markdown]').markdown({
-		onPreview: function (e, previewContainer) {
-			$.ajax({ method: "POST", url: "/forum/preview", data: $('#post-form').serialize() })
-			.then(function (result) {
+		onPreview: function(e, previewContainer) {
+			$.post("/forum/preview", $('#post-form').serialize())
+			.done(function(result) {
 				previewContainer.html(result);
+			})
+			.fail(function() {
+				previewContainer.text('Oops! Something went wrong; preview is not available at the moment. Sorry. :-(');
 			});
 
 			return "Formatting...";
