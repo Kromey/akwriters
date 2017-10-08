@@ -14,6 +14,7 @@ class PostForm(ModelForm):
                     attrs={
                         'data-provide':'markdown',
                         'data-hidden-buttons':'cmdHeading',
+                        'data-iconlibrary':'octicons',
                         }),
                 }
 
