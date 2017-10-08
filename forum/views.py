@@ -1,10 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DetailView,ListView
+from django.http import HttpResponse
+from django.views.generic import DetailView,ListView,View
 from django.views.generic.edit import CreateView
 from django.shortcuts import get_object_or_404,render
 
 
 from forum.forms import PostForm
+from forum.markdown import MarkdownText
 from forum.models import Board,Post,Topic
 
 
@@ -96,4 +98,11 @@ class ReplyCreateView(ForumPostMixin, CreateView):
         resp = super().form_valid(form)
         self.reply_to.topic.insert_post(self.object, self.reply_to)
         return resp
+
+
+class PreviewView(View):
+    def post(self, request):
+        md = request.POST.get('body', '')
+
+        return HttpResponse(MarkdownText(md).html)
 
