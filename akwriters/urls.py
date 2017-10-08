@@ -9,7 +9,6 @@ urlpatterns = [
 
     url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^events/', include('events.urls', namespace='events')),
-    url(r'^links$', TemplateView.as_view(template_name='links.html'), name='links'),
     #url(r'^account/', include('account.urls', namespace='account')),
     url(r'^alerts/', include('alerts.urls', namespace='alerts')),
     url(r'^api/', include('api.urls', namespace='api')),

@@ -16,6 +16,10 @@ Register
 		</div>
 	</div>
 	<button type="submit" class="btn btn-success">Register!</button>
+
+	<div>
+		Already have an account? <a href="{% url 'auth:login' %}">Login here!</a>
+	</div>
 	{% include 'passwordless/passwordless.html' %}
 </form>
 {% endblock content %}

@@ -13,12 +13,24 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li><a href="{% url 'chat:index' %}">{% octicon 'comment-discussion' %} Chat</a></li>
-				<li><a href="{% url 'forum:index' %}">{% octicon 'book' %} Forum</a></li>
-				{# <li><a href="/profiles">Profiles</a></li> #}
-				<li><a href="{% url 'events:index' %}">{% octicon 'calendar' %} Events</a></li>
-				<li><a href="{% url 'contact:contact' %}">{% octicon 'mail' %} Contact Us</a></li>
-				<li><a href="{% url 'links' %}">{% octicon 'link' %} Links</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">{% octicon 'organization' %} Community <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="{% url 'chat:index' %}">{% octicon 'comment-discussion' %} Chat</a></li>
+						<li><a href="{% url 'forum:index' %}">{% octicon 'book' %} Forum</a></li>
+						{# <li><a href="/profiles">Profiles</a></li> #}
+						<li><a href="{% url 'events:index' %}">{% octicon 'calendar' %} Events</a></li>
+						<li><a href="{% url 'contact:contact' %}">{% octicon 'mail' %} Contact Us</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">{% octicon 'link' %} Links <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						{% include 'links.html' %}
+					</ul>
+				</li>
 				{% if user.is_authenticated %}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -31,7 +43,6 @@
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="http://nanowrimo.org/" target="_blank">{% octicon 'pencil' %} NaNoWriMo</a></li>
 				{% if user.is_authenticated %}
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -52,7 +63,6 @@
 				</li>
 				{% else %}
 				<li><a href="{% url 'auth:login' %}">{% octicon 'sign-in' %} Login</a></li>
-				<li><a href="{% url 'auth:register' %}">{% octicon 'person' %} Register</a></li>
 				{% endif %}
 			</ul>
 		</div>
