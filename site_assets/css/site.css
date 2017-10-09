@@ -79,9 +79,12 @@ blockquote {
 	font-size: initial;
 	padding: 2px 10px;
 }
-
 .modal-body blockquote, .modal-body table.table {
 	margin-bottom: 0;
+}
+
+.panel-resources img {
+	border-radius: 5px;
 }
 
 /* Form styles */

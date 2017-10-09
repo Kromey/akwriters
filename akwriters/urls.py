@@ -8,6 +8,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url('^resources$', TemplateView.as_view(template_name='resources.html'), name='resources'),
     url(r'^events/', include('events.urls', namespace='events')),
     #url(r'^account/', include('account.urls', namespace='account')),
     url(r'^alerts/', include('alerts.urls', namespace='alerts')),
