@@ -11,14 +11,6 @@
 {% endblock %}
 
 {% block forum_content %}
-<div class="post-breadcrumbs">
-	<ol class="breadcrumb">
-		{% for ancestor in post.ancestors %}
-		<li><a href="{{ ancestor.get_absolute_url }}" class="{{ ancestor.css }}">{{ ancestor.subject }}{{ ancestor.title }}</a></li>
-		{% endfor %}
-		<li class="active"><span class="label label-default">{{ post.subject }}</span></li>
-	</ol>
-</div>
 <div class="post-meta">
 	Posted {{ post.date|date:'F jS, Y, \a\t f a' }} by {{ post.user.username }}.
 </div>

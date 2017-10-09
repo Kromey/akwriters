@@ -28,6 +28,11 @@ li.dropdown-submenu.submenu-open .caret {
 	color: #333;
 }
 
+.post-breadcrumbs .breadcrumb {
+	background-color: transparent;
+	padding: 3px 15px 0;
+}
+
 .board-description {
 	color: #666;
 	margin-top: 0;
