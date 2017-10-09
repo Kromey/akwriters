@@ -67,10 +67,9 @@ div.post-list .btn:hover {
 }
 
 .post-meta {
-	text-align: right;
-	padding: 3px;
 	font-style: italic;
 	color: #666;
+	margin: -12px 0 10px;
 }
 .post-wrapper {
 	border: 1px solid #cceeff;
@@ -79,6 +78,9 @@ div.post-list .btn:hover {
 	margin-bottom: 8px;
 	border-radius: 5px;
 	background-color: #e6f7ff;
+}
+.post-wrapper h2 {
+	margin-top: 0;
 }
 .post-wrapper p:last-child {
 	margin-bottom: 0;

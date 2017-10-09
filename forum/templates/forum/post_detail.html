@@ -1,5 +1,4 @@
 {% extends 'forum/base.html' %}
-{% load forum_extras %}
 {% load frontend_extras %}
 
 {% block forum_title %}{{ post.subject }}{% endblock %}
@@ -14,9 +13,5 @@
 <div class="post-meta">
 	Posted {{ post.date|date:'F jS, Y, \a\t f a' }} by <span class="author">{{ post.user.username }}</span>.
 </div>
-<div class="post-wrapper clearfix">
-	<div class="post">{{ post.body.html }}</div>
-</div>
-
-{% make_tree post.topic.posts.all post %}
+<div class="post">{{ post.body.html }}</div>
 {% endblock %}
