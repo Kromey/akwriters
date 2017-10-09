@@ -19,6 +19,9 @@
 		<li class="active">{{ post.subject }}</li>
 	</ol>
 </div>
+<div class="post-meta">
+	Posted {{ post.date }} by {{ post.user.username }}.
+</div>
 <div class="post-wrapper clearfix">
 	<div class="post">{{ post.body.html }}</div>
 </div>

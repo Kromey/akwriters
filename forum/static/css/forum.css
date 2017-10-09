@@ -57,11 +57,21 @@ div.post-list .btn:hover {
 	color: #333;
 }
 
+.post-meta {
+	text-align: right;
+	padding: 3px;
+	font-style: italic;
+	color: #666;
+}
 .post-wrapper {
-	border-bottom: 1px solid #cceeff;
-	padding-bottom: 8px;
+	border: 1px solid #cceeff;
+	box-shadow: 0 0 15px #cceeff;
+	padding: 5px 8px;
 	margin-bottom: 8px;
 	border-radius: 5px;
+}
+.post-wrapper p:last-child {
+	margin-bottom: 0;
 }
 
 .post-tree div div {
