@@ -28,6 +28,10 @@ li.dropdown-submenu.submenu-open .caret {
 	color: #333;
 }
 
+.author {
+	font-weight: bold;
+}
+
 .post-breadcrumbs .breadcrumb {
 	background-color: transparent;
 	padding: 3px 15px 0;
@@ -74,6 +78,7 @@ div.post-list .btn:hover {
 	padding: 5px 8px;
 	margin-bottom: 8px;
 	border-radius: 5px;
+	background-color: #e6f7ff;
 }
 .post-wrapper p:last-child {
 	margin-bottom: 0;
