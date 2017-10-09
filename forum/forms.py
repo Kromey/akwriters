@@ -15,6 +15,7 @@ class PostForm(ModelForm):
                         'data-provide':'markdown',
                         'data-hidden-buttons':'cmdHeading',
                         'data-iconlibrary':'octicons',
+                        'data-resize': 'vertical',
                         }),
                 }
 
