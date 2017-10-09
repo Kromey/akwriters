@@ -52,7 +52,7 @@ class Board(models.Model):
 
     @property
     def css(self):
-        return 'btn btn-xs btn-default'
+        return 'label label-primary'
 
     def __str__(self):
         return self.title
@@ -150,7 +150,7 @@ class Post(models.Model):
     @property
     def css(self):
         if self == self.topic.op:
-            return 'label label-primary'
+            return 'label label-success'
         else:
             return 'label label-info'
 

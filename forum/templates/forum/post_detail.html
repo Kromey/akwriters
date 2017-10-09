@@ -16,7 +16,7 @@
 		{% for ancestor in post.ancestors %}
 		<li><a href="{{ ancestor.get_absolute_url }}" class="{{ ancestor.css }}">{{ ancestor.subject }}{{ ancestor.title }}</a></li>
 		{% endfor %}
-		<li class="active">{{ post.subject }}</li>
+		<li class="active"><span class="label label-default">{{ post.subject }}</span></li>
 	</ol>
 </div>
 <div class="post-meta">
