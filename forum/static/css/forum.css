@@ -86,9 +86,15 @@ div.post-list .btn:hover {
 	margin-bottom: 0;
 }
 
+.post-tree {
+	margin: 20px 10px 0;
+}
 .post-tree div div {
-	margin-left: 10px;
-	padding-left: 2px;
+	border-left: 2px solid #cef;
+	border-bottom-left-radius: 7px;
+	padding-left: 8px;
+	margin-left: 3px;
+	padding-top: 2px;
 }
 
 .board_list {
