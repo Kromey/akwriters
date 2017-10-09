@@ -26,9 +26,9 @@ def make_tree(posts, current_post=None):
             pass
 
         if post == current_post:
-            line = '<div><span class="label label-default">{icon}{title}</span> by {user} on {date}'
+            line = '<div><span class="label label-default">{icon}{title}</span> by {user} on {date:%b. %d at %I:%M %p}'
         else:
-            line = '<div><a href="{url}" class="{css}">{title}</a> by {user} on {date}'
+            line = '<div><a href="{url}" class="{css}">{title}</a> by {user} on {date:%b. %d at %I:%M %p}'
 
         html += line.format(
                 icon=octicon('arrow-right'),

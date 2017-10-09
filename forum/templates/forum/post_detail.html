@@ -20,7 +20,7 @@
 	</ol>
 </div>
 <div class="post-meta">
-	Posted {{ post.date }} by {{ post.user.username }}.
+	Posted {{ post.date|date:'F jS, Y, \a\t f a' }} by {{ post.user.username }}.
 </div>
 <div class="post-wrapper clearfix">
 	<div class="post">{{ post.body.html }}</div>
