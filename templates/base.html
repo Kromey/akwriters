@@ -10,7 +10,7 @@
 {% load static from staticfiles %}
 {% load frontend_extras %}
 
-<title>{% block title %}Alaska Writers{% endblock %}</title>
+<title>{% block title %}AKWriters{% endblock %}</title>
 
 <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-theme.min.css' %}">
@@ -55,14 +55,14 @@
 <div class="container">
 	<div id="site_content">
 		<div class="row">
-			{% block header_frame %}<h2>{% block header %}Welcome to Alaska Writers{% endblock header %}</h2>{% endblock header_frame %}
+			{% block header_frame %}<h2>{% block header %}Welcome to AKWriters{% endblock header %}</h2>{% endblock header_frame %}
 			{% block content %}{% endblock content %}
 		</div>
 	</div>
 </div>
 
 <footer>
-	&copy; 2015-{% now 'Y' %} Alaska Writers. Site by Travis Veazey
+	&copy; 2015-{% now 'Y' %} AKWriters. Site by Travis Veazey
 	<a href="https://github.com/Kromey/akwriters" target="_blank">{% octicon 'octoface' %}</a>.
 	Icons by <a href="http://glyphicons.com/" target="_blank">Glyphicons</a>
 	and <a href="https://octicons.github.com/" target="_blank">GitHub</a>.
