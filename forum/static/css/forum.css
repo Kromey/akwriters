@@ -73,7 +73,7 @@ div.post-list .btn:hover {
 }
 .post-wrapper {
 	border: 1px solid #cceeff;
-	box-shadow: 0 0 15px #cceeff;
+	box-shadow: 0 0 15px 3px #cceeff;
 	padding: 5px 8px;
 	margin-bottom: 8px;
 	border-radius: 5px;
