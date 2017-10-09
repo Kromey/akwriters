@@ -12,7 +12,7 @@
 
 {% block forum_content %}
 <div class="post-meta">
-	Posted {{ post.date|date:'F jS, Y, \a\t f a' }} by {{ post.user.username }}.
+	Posted {{ post.date|date:'F jS, Y, \a\t f a' }} by <span class="author">{{ post.user.username }}</span>.
 </div>
 <div class="post-wrapper clearfix">
 	<div class="post">{{ post.body.html }}</div>

@@ -14,7 +14,7 @@ Most Recent Posts
 		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.topic.op.pk %}" class="{{ post.topic.css }}">{{ post.topic.title }}</a>
 		on
 		<a href="{% url 'forum:board' slug=post.topic.board.slug %}" class="{{ post.topic.board.css }}">{{ post.topic.board.title }}</a>
-		by {{ post.user.username }}
+		by <span class="author">{{ post.user.username }}</span>
 	</div>
 	{% endfor %}
 </div>
