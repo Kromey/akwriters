@@ -6,6 +6,10 @@ $(function(){
 		e.preventDefault();
 	});
 
+	$('#show-source, #hide-source').click(function(){
+		$('.post, .post-source').slideToggle();
+	});
+
 	$('textarea[data-provide=markdown]').markdown({
 		onPreview: function(e, previewContainer) {
 			$.post("/forum/preview", $('#post-form').serialize())

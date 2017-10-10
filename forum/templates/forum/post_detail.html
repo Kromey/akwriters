@@ -13,5 +13,12 @@
 <div class="post-meta">
 	Posted {{ post.date|date:'F jS, Y, \a\t f a' }} by <span class="author">{{ post.user.username }}</span>.
 </div>
-<div class="post">{{ post.body.html }}</div>
+<div class="post">
+	{{ post.body.html }}
+	<button class="btn btn-default btn-xs" id="show-source">Show Source</button>
+</div>
+<div class="post-source">
+	{{ post.body.markdown }}
+	<button class="btn btn-default btn-xs" id="hide-source">Hide Source</button>
+</div>
 {% endblock %}

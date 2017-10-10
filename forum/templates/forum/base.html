@@ -50,7 +50,7 @@
 </div>
 {% endif %}
 
-<div class="forum-wrapper{% if post %} post-wrapper{% endif %}">
+<div class="forum-wrapper clearfix{% if post %} post-wrapper{% endif %}">
 	<h2>{% block forum_title %}{% endblock forum_title %}</h2>
 	{% block forum_content %}{% endblock forum_content %}
 </div>

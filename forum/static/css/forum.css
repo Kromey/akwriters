@@ -96,6 +96,13 @@ div.post-list .btn:hover {
 	margin-left: 3px;
 	padding-top: 2px;
 }
+.post-source {
+	display: none;
+	white-space: pre-line;
+}
+#show-source, #hide-source {
+	float: right;
+}
 
 .board_list {
 	list-style: none;
