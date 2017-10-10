@@ -3,6 +3,7 @@ from django.utils.safestring import mark_safe
 import markdown
 from markdown.extensions import Extension
 from markdown.extensions.toc import TocExtension
+from markdown.inlinepatterns import SimpleTagPattern
 
 
 class EscapeHtmlExtension(Extension):
@@ -13,12 +14,24 @@ class EscapeHtmlExtension(Extension):
         del md.inlinePatterns['html']
 
 
+class StrikethroughExtension(Extension):
+    def extendMarkdown(self, md, md_globals):
+        md.inlinePatterns.add('strikethrough', SimpleTagPattern(r'(~{2})(.+?)\2', 'del'), '_end')
+
+
+class SuperscriptExtension(Extension):
+    def extendMarkdown(self, md, md_globals):
+        md.inlinePatterns.add('superscript', SimpleTagPattern(r'(\^)(.+?)\b', 'sup'), '_end')
+
+
 converter = markdown.Markdown(
         output_format='html5',
         extensions=[
             'markdown.extensions.extra',
             'markdown.extensions.smarty',
             TocExtension(baselevel=2),
+            StrikethroughExtension(),
+            SuperscriptExtension(),
             EscapeHtmlExtension(),
             ],
         )
