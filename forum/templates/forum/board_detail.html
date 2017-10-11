@@ -17,7 +17,7 @@
 	{% for topic in topics %}
 	<div>
 		<a href="{% url 'forum:post' board=board.slug pk=topic.op.pk %}" class="{{ topic.css }}">{{ topic.title }}</a>
-		Started {{ topic.date }} by <span class="author">{{ topic.user.username }}</span>
+		Started {{ topic.date|date:'P N j Y' }} by <span class="author">{{ topic.user.username }}</span>
 		({{ topic.post_count }} post{{ topic.post_count|pluralize }})
 	</div>
 	{% empty %}
