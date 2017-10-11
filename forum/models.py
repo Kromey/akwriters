@@ -3,6 +3,7 @@ from django.db import models,transaction
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.safestring import mark_safe
 
 
 from .markdown import MarkdownText
@@ -130,7 +131,7 @@ class Post(models.Model):
             related_name='posts',
             )
     subject = models.CharField(max_length=128)
-    body = MarkdownField(help_text='We use a slightly-customized version of <a data-toggle="modal" data-target="#MarkdownHelp">Markdown</a> for formatting.')
+    body = MarkdownField(help_text='We use a slightly-customized version of <a data-toggle="modal" data-target="#MarkdownHelp">Markdown</a> for formatting.', blank=True)
     left = models.PositiveIntegerField(default=0)
     right = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
@@ -153,6 +154,12 @@ class Post(models.Model):
             return 'label label-success'
         else:
             return 'label label-info'
+
+    @property
+    def nt(self):
+        if len(self.body.markdown) == 0:
+            return mark_safe('<span title="No Text" class="post-nt">(nt)</span>')
+        return ''
 
     def get_absolute_url(self):
         return reverse('forum:post', args=(self.topic.board.slug, self.pk))

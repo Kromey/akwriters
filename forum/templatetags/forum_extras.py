@@ -41,9 +41,10 @@ def make_tree(posts, current_post=None):
                 title=post.subject,
                 )
 
-        line = '<div>{label} - <span class="author">{user}</span> {date}'
+        line = '<div>{label}{nt} - <span class="author">{user}</span> {date}'
         html += line.format(
                 label=label,
+                nt=post.nt,
                 user=post.user.username,
                 date=date(timezone.localtime(post.date), 'P M j \'y'),
                 )

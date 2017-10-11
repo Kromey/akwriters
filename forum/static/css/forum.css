@@ -60,6 +60,12 @@ li.dropdown-submenu.submenu-open .caret {
 	color: #666;
 }
 
+.post-nt {
+	font-weight: bold;
+	font-size: 75%;
+	margin-left: 2px;
+}
+
 .post-meta {
 	font-style: italic;
 	color: #666;

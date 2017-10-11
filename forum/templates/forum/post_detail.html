@@ -13,6 +13,7 @@
 <div class="post-meta">
 	Posted by <span class="author">{{ post.user.username }}</span> at {{ post.date|date:'P l, F jS, Y' }}
 </div>
+{% if not post.nt %}
 <div class="post">
 	{{ post.body.html }}
 	<button class="btn btn-default btn-xs" id="show-source">Show Source</button>
@@ -21,6 +22,7 @@
 <div class="post-source">{{ post.body.markdown }}
 	<button class="btn btn-default btn-xs" id="hide-source">Hide Source</button>
 </div>
+{% endif %}
 
 <div class="post-reply">
 	{% if user.is_authenticated %}
