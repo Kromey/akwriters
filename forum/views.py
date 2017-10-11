@@ -1,4 +1,8 @@
+import shlex
+
+
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from django.http import HttpResponse
 from django.views.generic import DetailView,ListView,View
 from django.views.generic.edit import CreateView
@@ -63,6 +67,17 @@ class SearchView(ForumViewMixin, ListView):
     model = Post
     context_object_name = 'posts'
 
+    def _split_query_string(self, query_string):
+        try:
+            return shlex.split(query_string)
+        except ValueError:
+            # Users may not be careful about always closing quotes
+            return query_string.split(' ')
+
+    def _build_filter(self, search_terms):
+        for term in search_terms:
+            yield Q(body__icontains=term) | Q(subject__icontains=term)
+
     def get_queryset(self):
         qs = super().get_queryset()
         q = self.request.GET.get('q', None)
@@ -71,7 +86,9 @@ class SearchView(ForumViewMixin, ListView):
             # No query, no results
             qs = qs.filter(subject=None)
         else:
-            qs = qs.filter(body__icontains=q)
+            split_q = self._split_query_string(q)
+
+            qs = qs.filter(*self._build_filter(split_q))
 
         return qs.order_by('-date')
 
