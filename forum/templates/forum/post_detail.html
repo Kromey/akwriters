@@ -23,15 +23,20 @@
 </div>
 
 <div class="post-reply">
+	{% if user.is_authenticated %}
 	<button class="btn btn-sm btn-success" id="reply">{% octicon 'reply' %} Reply</button>
-<form action="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}" method="POST" id="post-form">
-	{% csrf_token %}
-	{{ form.as_p }}
-	<div class="text-right">
-		<button class="btn btn-default" id="reply-cancel">Cancel</button>
-		<button type="submit" class="btn btn-success">Submit</button>
-	</div>
-</form>
+	<form action="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}" method="POST" id="post-form">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<div class="text-right">
+			<button class="btn btn-default" id="reply-cancel">Cancel</button>
+			<button type="submit" class="btn btn-success">Submit</button>
+		</div>
+	</form>
+	{% else %}
+	{#Stubbing this out for when post-login redirection is implemented#}
+	{#<a class="btn btn-sm btn-success" href="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}">{% octicon 'reply' %} Reply</a>#}
+	{% endif %}
 </div>
 
 {% include 'forum/markdown_help.html' %}
