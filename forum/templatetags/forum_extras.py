@@ -45,7 +45,7 @@ def make_tree(posts, current_post=None):
         html += line.format(
                 label=label,
                 user=post.user.username,
-                date=date(post.date, 'P M j \'y'),
+                date=date(timezone.localtime(post.date), 'P M j \'y'),
                 )
 
         if post.right - post.left > 1:
