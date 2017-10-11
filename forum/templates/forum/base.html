@@ -31,9 +31,16 @@
 				{#<li><a href="#">My Posts</a></li>#}
 				{#<li><a href="#">New Replies <span class="badge">12</span></a></li>#}
 				{% else %}
-				<p class="navbar-text">Login to join the conversation</p>
+				<li class="navbar-text">Login to join the conversation</li>
 				{% endif %}
 				{% block context_navs %}{% endblock %}
+				<li>
+					<form action="{% url 'forum:search' %}" method="get" class="navbar-form" id="post-search" tabindex="-1">
+						<div class="form-group">
+							<input type="text" name="q" placeholder="Search" value="{{ search_query }}">
+						</div>
+					</form>
+				</li>
 			</ul>
 		</div>
 	</div>

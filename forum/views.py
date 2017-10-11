@@ -23,7 +23,12 @@ class ForumViewMixin:
 
 class IndexView(ForumViewMixin, ListView):
     queryset = Post.objects.select_related('topic', 'topic__board', 'user').order_by('-pk')[:5]
-    context_object_name = 'recent_posts'
+    context_object_name = 'posts'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Most Recent Posts'
+        return context
 
 
 class BoardView(ForumViewMixin, DetailView):
@@ -52,6 +57,29 @@ class PostView(ForumViewMixin, DetailView):
     def get_queryset(self):
         self.board = get_object_or_404(Board, slug=self.kwargs['board'])
         return Post.objects.filter(topic__board=self.board)
+
+
+class SearchView(ForumViewMixin, ListView):
+    model = Post
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        q = self.request.GET.get('q', None)
+
+        if not q:
+            # No query, no results
+            qs = qs.filter(subject=None)
+        else:
+            qs = qs.filter(body__icontains=q)
+
+        return qs.order_by('-date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Search Results'
+        context['search_query'] = self.request.GET.get('q', '')
+        return context
 
 
 class ForumPostMixin(LoginRequiredMixin, ForumViewMixin):

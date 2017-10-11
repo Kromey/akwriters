@@ -1,17 +1,19 @@
 {% extends 'forum/base.html' %}
 
-{% block forum_title %}
-Most Recent Posts
-{% endblock %}
+{% block forum_title %}{{ title }}{% endblock %}
 
 {% block forum_content %}
 <div class="post-list">
-	{% for post in recent_posts %}
+	{% for post in posts %}
 	<div>
 		<a href="{% url 'forum:board' slug=post.topic.board.slug %}" class="{{ post.topic.board.css }}">{{ post.topic.board.title }}</a>
 		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.pk %}" class="{{ post.css }}">{{ post.subject }}</a>
 		by <span class="author">{{ post.user.username }}</span>
 		({{ post.date|date:'P N j' }})
+	</div>
+	{% empty %}
+	<div class="text-center">
+		<em>Sorry, no posts found.</em>
 	</div>
 	{% endfor %}
 </div>
