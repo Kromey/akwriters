@@ -5,7 +5,7 @@
 
 {% block context_navs %}
 {% if user.is_authenticated %}
-<li><a href="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}">{% octicon 'reply' %} Reply</a></li>
+<li><a href="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}" id="toolbar-reply">{% octicon 'reply' %} Reply</a></li>
 {% endif %}
 {% endblock %}
 
@@ -20,5 +20,17 @@
 {# We need to be careful about newlines here because we preserve them #}
 <div class="post-source">{{ post.body.markdown }}
 	<button class="btn btn-default btn-xs" id="hide-source">Hide Source</button>
+</div>
+
+<div class="post-reply">
+	<button class="btn btn-sm btn-success" id="reply">{% octicon 'reply' %} Reply</button>
+<form action="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}" method="POST" id="post-form">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<div class="text-right">
+		<button class="btn btn-default" id="reply-cancel">Cancel</button>
+		<button type="submit" class="btn btn-success">Submit</button>
+	</div>
+</form>
 </div>
 {% endblock %}

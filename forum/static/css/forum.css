@@ -88,6 +88,13 @@ li.dropdown-submenu.submenu-open .caret {
 	float: right;
 }
 
+.post-reply {
+	clear: both;
+}
+.post-reply form {
+	display: none;
+}
+
 .board_list {
 	list-style: none;
 	padding-left: 0;

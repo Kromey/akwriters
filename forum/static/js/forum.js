@@ -10,6 +10,17 @@ $(function(){
 		$('.post, .post-source').slideToggle();
 	});
 
+	$('#toolbar-reply').click(function(e){
+		$('#post-form').show();
+		$('#reply').hide();
+
+		e.stopPropagation();
+		e.preventDefault();
+	});
+	$('#reply, #reply-cancel').click(function(){
+		$('#post-form, #reply').toggle();
+	});
+
 	$('textarea[data-provide=markdown]').markdown({
 		onPreview: function(e, previewContainer) {
 			$.post("/forum/preview", $('#post-form').serialize())
