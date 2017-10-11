@@ -43,26 +43,10 @@ li.dropdown-submenu.submenu-open .caret {
 }
 
 .post-list div {
-	border-bottom: 1px solid #cceeff;
-	border-radius: 5px;
-	padding-left: 3px;
-	padding-bottom: 3px;
-	margin-bottom: 3px;
+	border-top: 2px solid #cceeff;
+	border-top-left-radius: 7px;
+	padding: 5px 3px;
 	color: #666;
-}
-.post-list div:first-child {
-	border-top: 1px solid #cceeff;
-	padding-top: 3px;
-}
-.post-list .post-subject {
-	display: block;
-}
-div.post-list .btn {
-	color: #777;
-	margin-top: -5px;
-}
-div.post-list .btn:hover {
-	color: #333;
 }
 
 .post-meta {
