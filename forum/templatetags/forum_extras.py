@@ -1,4 +1,5 @@
 from django import template
+from django.template.defaultfilters import date
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.safestring import mark_safe
@@ -26,11 +27,11 @@ def make_tree(posts, current_post=None):
             pass
 
         if post == current_post:
-            line = '<div><span class="label label-default">{icon}{title}</span> by <span class="author">{user}</span> on {date:%b. %d at %I:%M %p}'
+            label = '<span class="label label-default">{icon}{title}</span>'
         else:
-            line = '<div><a href="{url}" class="{css}">{title}</a> by <span class="author">{user}</span> on {date:%b. %d at %I:%M %p}'
+            label = '<a href="{url}" class="{css}">{title}</a>'
 
-        html += line.format(
+        label = label.format(
                 icon=octicon('arrow-right'),
                 url=reverse('forum:post', kwargs={
                     'board':post.topic.board.slug,
@@ -38,8 +39,13 @@ def make_tree(posts, current_post=None):
                     }),
                 css=post.css,
                 title=post.subject,
+                )
+
+        line = '<div>{label} - <span class="author">{user}</span> {date}'
+        html += line.format(
+                label=label,
                 user=post.user.username,
-                date=timezone.localtime(post.date),
+                date=date(post.date, 'P M j \'y'),
                 )
 
         if post.right - post.left > 1:
