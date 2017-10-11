@@ -26,7 +26,7 @@ class ForumViewMixin:
 
 
 class IndexView(ForumViewMixin, ListView):
-    queryset = Post.objects.select_related('topic', 'topic__board', 'user').order_by('-pk')[:5]
+    queryset = Post.objects.select_related('topic', 'topic__board', 'user').order_by('-date')[:10]
     context_object_name = 'posts'
 
     def get_context_data(self, **kwargs):
