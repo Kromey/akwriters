@@ -125,6 +125,18 @@ class Post(models.Model):
             settings.AUTH_USER_MODEL,
             on_delete=models.CASCADE,
             )
+    op = models.ForeignKey(
+            'self',
+            null=True, default=None,
+            on_delete=models.PROTECT,
+            related_name='posts',
+            )
+    board = models.ForeignKey(
+            Board,
+            null=True, default=None,
+            on_delete=models.PROTECT,
+            related_name='posts',
+            )
     topic = models.ForeignKey(
             Topic,
             on_delete=models.CASCADE,
