@@ -62,5 +62,5 @@
 	{% block forum_content %}{% endblock forum_content %}
 </div>
 
-{% if post %}{% make_tree post.topic.posts.all post %}{% endif %}
+{% if post %}{% make_tree post.op.posts.all post %}{% endif %}
 {% endblock %}

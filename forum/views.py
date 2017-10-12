@@ -2,7 +2,7 @@ import shlex
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
+from django.db.models import Q,F,Count
 from django.http import HttpResponse
 from django.views.generic import DetailView,ListView,View
 from django.views.generic.edit import CreateView
@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404,render
 
 from forum.forms import PostForm
 from forum.markdown import MarkdownText
-from forum.models import Board,Post,Topic
+from forum.models import Board,Post
 
 
 # Create your views here.
@@ -26,7 +26,7 @@ class ForumViewMixin:
 
 
 class IndexView(ForumViewMixin, ListView):
-    queryset = Post.objects.select_related('topic', 'topic__board', 'user').order_by('-date')[:10]
+    queryset = Post.objects.select_related('op', 'board', 'user').order_by('-date')[:10]
     context_object_name = 'posts'
 
     def get_context_data(self, **kwargs):
@@ -42,7 +42,7 @@ class BoardView(ForumViewMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['topics'] = self.object.topics.order_by('-pk')[:10]
+        context['topics'] = self.object.posts.filter(op_id=F('id')).annotate(post_count=Count('posts')).order_by('-pk')[:10]
 
         return context
 
@@ -60,7 +60,7 @@ class PostView(ForumViewMixin, DetailView):
 
     def get_queryset(self):
         self.board = get_object_or_404(Board, slug=self.kwargs['board'])
-        return Post.objects.filter(topic__board=self.board)
+        return Post.objects.filter(board=self.board)
 
 
 class SearchView(ForumViewMixin, ListView):
@@ -116,6 +116,7 @@ class ForumPostMixin(LoginRequiredMixin, ForumViewMixin):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        form.instance.board = self.board
         return super().form_valid(form)
 
 
@@ -124,9 +125,6 @@ class TopicCreateView(ForumPostMixin, CreateView):
     template_name = 'forum/post_form.html'
 
     def form_valid(self, form):
-        topic = Topic(board=self.board)
-        topic.save()
-        form.instance.topic = topic
         return super().form_valid(form)
 
 
@@ -146,9 +144,8 @@ class ReplyCreateView(ForumPostMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        form.instance.topic = self.reply_to.topic
         resp = super().form_valid(form)
-        self.reply_to.topic.insert_post(self.object, self.reply_to)
+        self.reply_to.add_reply(self.object)
         return resp
 
 

@@ -62,64 +62,6 @@ class Board(models.Model):
         ordering = ('slug',)
 
 
-class Topic(models.Model):
-    board = models.ForeignKey(
-            Board,
-            on_delete=models.CASCADE,
-            related_name='topics',
-            )
-
-    @property
-    def op(self):
-        return self.posts.first()
-
-    @property
-    def title(self):
-        return self.op.subject
-
-    @property
-    def date(self):
-        return self.op.date
-
-    @property
-    def user(self):
-        return self.op.user
-
-    @property
-    def post_count(self):
-        return self.op.reply_count + 1
-
-    @property
-    def css(self):
-        return self.op.css
-
-    def get_absolute_url(self):
-        return self.op.get_absolute_url()
-
-    def __str__(self):
-        return self.title
-
-    @transaction.atomic
-    def insert_post(self, post, reply_to):
-        # We need to lock the topic tree, to prevent race conditions
-        if self.posts.select_for_update():
-            pass
-
-        # Make sure nobody else has updated this in the meantime
-        reply_to.refresh_from_db()
-        # Make room for our post
-        self.posts.filter(left__gt = reply_to.left).update(left = models.F('left') + 2)
-        self.posts.filter(right__gt = reply_to.left).update(right = models.F('right') + 2)
-
-        # Now fit ourselves right into place
-        post.left = reply_to.left + 1
-        post.right = post.left + 1
-        # Let's just make sure we have the topic set right
-        post.topic = self
-
-        post.save()
-
-
 class Post(models.Model):
     user = models.ForeignKey(
             settings.AUTH_USER_MODEL,
@@ -133,13 +75,7 @@ class Post(models.Model):
             )
     board = models.ForeignKey(
             Board,
-            null=True, default=None,
             on_delete=models.PROTECT,
-            related_name='posts',
-            )
-    topic = models.ForeignKey(
-            Topic,
-            on_delete=models.CASCADE,
             related_name='posts',
             )
     subject = models.CharField(max_length=128)
@@ -154,15 +90,15 @@ class Post(models.Model):
 
     @property
     def ancestors(self):
-        ancestors = [self.topic.board]
-        for post in Post.objects.filter(topic=self.topic).filter(left__lt=self.left).filter(right__gt=self.right).order_by('left'):
+        ancestors = [self.board]
+        for post in Post.objects.filter(op_id=self.op_id).filter(left__lt=self.left).filter(right__gt=self.right).order_by('left'):
             ancestors.append(post)
 
         return ancestors
 
     @property
     def css(self):
-        if self == self.topic.op:
+        if self.id == self.op_id:
             return 'label label-success'
         else:
             return 'label label-info'
@@ -174,7 +110,7 @@ class Post(models.Model):
         return ''
 
     def get_absolute_url(self):
-        return reverse('forum:post', args=(self.topic.board.slug, self.pk))
+        return reverse('forum:post', args=(self.board.slug, self.pk))
 
     def __str__(self):
         return self.subject
@@ -182,7 +118,32 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         if self.right <= self.left:
             self.right = self.left + 1
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+
+        if not self.op_id and self.id:
+            self.op_id = self.id
+            super().save(*args, **kwargs)
+
+    @transaction.atomic
+    def add_reply(self, post):
+        # We need to lock the topic tree, to prevent race conditions
+        if Post.objects.filter(op_id=self.op_id).select_for_update():
+            pass
+
+        # Make sure nobody else has updated this in the meantime
+        self.refresh_from_db()
+        # Make room for our post
+        Post.objects.filter(op_id=self.op_id).filter(left__gt = self.left).update(left = models.F('left') + 2)
+        Post.objects.filter(op_id=self.op_id).filter(right__gt = self.left).update(right = models.F('right') + 2)
+
+        # Now fit ourselves right into place
+        post.left = self.left + 1
+        post.right = post.left + 1
+        # Let's just make sure we have the topic set right
+        post.op = self
+        post.board = self.board
+
+        post.save()
 
     class Meta(object):
         ordering = ('left',)

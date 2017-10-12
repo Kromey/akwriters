@@ -34,7 +34,7 @@ def make_tree(posts, current_post=None):
         label = label.format(
                 icon=octicon('arrow-right'),
                 url=reverse('forum:post', kwargs={
-                    'board':post.topic.board.slug,
+                    'board':post.board.slug,
                     'pk':post.pk
                     }),
                 css=post.css,

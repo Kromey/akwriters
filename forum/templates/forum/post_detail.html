@@ -5,7 +5,7 @@
 
 {% block context_navs %}
 {% if user.is_authenticated %}
-<li><a href="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}" id="toolbar-reply">{% octicon 'reply' %} Reply</a></li>
+<li><a href="{% url 'forum:new-reply' board=post.board.slug post=post.pk %}" id="toolbar-reply">{% octicon 'reply' %} Reply</a></li>
 {% endif %}
 {% endblock %}
 
@@ -31,7 +31,7 @@
 <div class="post-reply">
 	{% if user.is_authenticated %}
 	<button class="btn btn-sm btn-success" id="reply">{% octicon 'reply' %} Reply</button>
-	<form action="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}" method="POST" id="post-form">
+	<form action="{% url 'forum:new-reply' board=post.board.slug post=post.pk %}" method="POST" id="post-form">
 		{% csrf_token %}
 		{{ form.as_p }}
 		<div class="text-right">
@@ -41,7 +41,7 @@
 	</form>
 	{% else %}
 	{#Stubbing this out for when post-login redirection is implemented#}
-	{#<a class="btn btn-sm btn-success" href="{% url 'forum:new-reply' board=post.topic.board.slug post=post.pk %}">{% octicon 'reply' %} Reply</a>#}
+	{#<a class="btn btn-sm btn-success" href="{% url 'forum:new-reply' board=post.board.slug post=post.pk %}">{% octicon 'reply' %} Reply</a>#}
 	{% endif %}
 </div>
 

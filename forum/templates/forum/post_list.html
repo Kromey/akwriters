@@ -6,8 +6,8 @@
 <div class="post-list">
 	{% for post in posts %}
 	<div>
-		<a href="{% url 'forum:board' slug=post.topic.board.slug %}" class="{{ post.topic.board.css }}">{{ post.topic.board.title }}</a>
-		<a href="{% url 'forum:post' board=post.topic.board.slug pk=post.pk %}" class="{{ post.css }}">{{ post.subject }}</a>{{ post.nt }}
+		<a href="{% url 'forum:board' slug=post.board.slug %}" class="{{ post.board.css }}">{{ post.board.title }}</a>
+		<a href="{% url 'forum:post' board=post.board.slug pk=post.pk %}" class="{{ post.css }}">{{ post.subject }}</a>{{ post.nt }}
 		by <span class="author">{{ post.user.username }}</span>
 		({{ post.date|date:'P N j' }})
 	</div>
