@@ -38,13 +38,38 @@ class IndexView(ForumViewMixin, ListView):
 class BoardView(ForumViewMixin, DetailView):
     model = Board
     context_object_name = 'board'
+    topics_per_page = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['topics'] = self.object.posts.filter(op_id=F('id')).annotate(post_count=Count('posts')).order_by('-pk')[:10]
+        self.page = self._get_page()
+
+        qs = self.object.posts.filter(op_id=F('id')).annotate(post_count=Count('posts')).order_by('-date')
+        context['topics'] = self._paginate_queryset(qs)
+
+        # Don't forget that internally page is 0-indexed, but it's 1-indexed out front
+        if self.page > 0:
+            context['prev_page'] = self.page
+        if self.page < self._get_last_page():
+            context['next_page'] = self.page + 2
 
         return context
+
+    def _get_page(self):
+        page = self.kwargs.get('page') or 1
+        return int(page) - 1
+
+    def _paginate_queryset(self, qs):
+        start = self.page * self.topics_per_page
+        stop = start + self.topics_per_page
+
+        self.total_topics = qs.count()
+
+        return qs[start:stop]
+
+    def _get_last_page(self):
+        return int(self.total_topics / self.topics_per_page)
 
 
 class PostView(ForumViewMixin, DetailView):

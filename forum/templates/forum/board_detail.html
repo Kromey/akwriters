@@ -23,5 +23,21 @@
 	{% empty %}
 	<div class="warning-text text-center">Looks like there's nothing here yet! Ready to start the conversation?</div>
 	{% endfor %}
+
+	<nav class="clearfix">
+		<ul class="pager">
+			{% if prev_page %}
+			<li class="previous"><a href="{% url 'forum:board' slug=board.slug page=prev_page %}"><span class="aria-hidden">&larr;</span> Previous</a></li>
+			{% else %}
+			<li class="previous disabled"><span><span class="aria-hidden">&larr;</span> Previous</span></li>
+			{% endif %}
+
+			{% if next_page %}
+			<li class="next"><a href="{% url 'forum:board' slug=board.slug page=next_page %}">Next <span class="aria-hidden">&rarr;</span></a></li>
+			{% else %}
+			<li class="next disabled"><span>Next <span class="aria-hidden">&rarr;</span></span></li>
+			{% endif %}
+		</ul>
+	</nav>
 </div>
 {% endblock %}
