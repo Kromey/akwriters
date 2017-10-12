@@ -140,8 +140,8 @@ class Post(models.Model):
         post.left = self.left + 1
         post.right = post.left + 1
         # Let's just make sure we have the topic set right
-        post.op = self
-        post.board = self.board
+        post.op_id = self.op_id
+        post.board_id = self.board_id
 
         post.save()
 
