@@ -22,6 +22,10 @@
 <div class="post-source">{{ post.body.markdown }}
 	<button class="btn btn-default btn-xs" id="hide-source">Hide Source</button>
 </div>
+{% else %}
+<div class="text-info text-center">
+	<em>No text was supplied with this post.</em>
+</div>
 {% endif %}
 
 <div class="post-reply">
