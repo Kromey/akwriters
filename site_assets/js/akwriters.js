@@ -24,5 +24,24 @@ $(function() {
 		width = width * 100;
 		return width+"%";
 	});
+
+	//Make textareas auto-grow to fit their content
+	$('textarea').each(function()
+	{
+		$(this).focus(function() {
+			var minHeight = $(this).css('min-height');
+			if(parseInt(minHeight) <= 0)
+			{
+				minHeight = $(this).height();
+				$(this).css('min-height', minHeight);
+			}
+
+			$(this).on('input', function (e) {
+				$(this).css('height', minHeight);
+				var newHeight = $(this)[0].scrollHeight+5;
+				$(this).css('height', newHeight);
+			});
+		});
+	});
 });
 
