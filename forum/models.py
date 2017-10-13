@@ -79,7 +79,7 @@ class Post(models.Model):
             related_name='posts',
             )
     subject = models.CharField(max_length=128)
-    body = MarkdownField(help_text='We use a slightly-customized version of <a data-toggle="modal" data-target="#MarkdownHelp">Markdown</a> for formatting.', blank=True)
+    body = MarkdownField(help_text='<a data-toggle="modal" data-target="#MarkdownHelp"><span class="octicon octicon-markdown"></span> Markdown</a> will be used to format your post.', blank=True)
     left = models.PositiveIntegerField(default=0)
     right = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
