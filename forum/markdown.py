@@ -24,6 +24,11 @@ class SuperscriptExtension(Extension):
         md.inlinePatterns.add('superscript', SimpleTagPattern(r'(\^)(.+?)\b', 'sup'), '_end')
 
 
+class HighlightExtension(Extension):
+    def extendMarkdown(self, md, md_globals):
+        md.inlinePatterns.add('highlight', SimpleTagPattern(r'(={2})(.+?)\2', 'mark'), '_end')
+
+
 converter = markdown.Markdown(
         output_format='html5',
         extensions=[
@@ -32,6 +37,7 @@ converter = markdown.Markdown(
             TocExtension(baselevel=2),
             StrikethroughExtension(),
             SuperscriptExtension(),
+            HighlightExtension(),
             EscapeHtmlExtension(),
             ],
         )
