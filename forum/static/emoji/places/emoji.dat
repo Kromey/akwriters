@@ -1,0 +1,106 @@
+graphics/emojis/house.png house, building, home
+graphics/emojis/house_with_garden.png house_with_garden, building, home, plant, nature
+graphics/emojis/school.png school, building, student, education, learn, teach
+graphics/emojis/office.png office, building, unit, bureau, work
+graphics/emojis/post_office.png post_office, building, email, communication
+graphics/emojis/hospital.png hospital, building, health, surgery, doctor
+graphics/emojis/bank.png bank, building, money, sales, cash, business, enterprise
+graphics/emojis/convenience_store.png convenience_store, building, shopping, groceries
+graphics/emojis/love_hotel.png love_hotel, building, like, affection, dating
+graphics/emojis/hotel.png hotel, building, whotel, accomodation, checkin
+graphics/emojis/wedding.png wedding, building, love, like, affection, couple, marriage, bride, groom, church, heart
+graphics/emojis/church.png church, building, religion, christ
+graphics/emojis/department_store.png department_store, building, shopping, mall
+graphics/emojis/european_post_office.png european_post_office, building, email
+graphics/emojis/city_sunrise.png city_sunrise, photo, good morning, dawn
+graphics/emojis/city_sunset.png city_sunset, photo, evening, sky, buildings
+graphics/emojis/japanese_castle.png japanese_castle, photo, building, asia
+graphics/emojis/european_castle.png european_castle, building, royalty, history
+graphics/emojis/tent.png tent, camping, photo, camp, outdoors
+graphics/emojis/factory.png factory, building, industry, pollution, smoke
+graphics/emojis/tokyo_tower.png tokyo_tower, photo, japanese, asia
+graphics/emojis/japan.png japan, nation, country, japanese, asia, island
+graphics/emojis/mount_fuji.png mount_fuji, photo, mountain, nature, japanese
+graphics/emojis/sunrise_over_mountains.png sunrise_over_mountains, view, vacation, photo
+graphics/emojis/sunrise.png sunrise, morning, view, vacation, photo
+graphics/emojis/stars.png stars, night, photo, falling, sky, bright
+graphics/emojis/statue_of_liberty.png statue_of_liberty, american, newyork, monument, head
+graphics/emojis/bridge_at_night.png bridge_at_night, photo, sanfrancisco
+graphics/emojis/carousel_horse.png carousel_horse, photo, carnival, ride
+graphics/emojis/rainbow.png rainbow, nature, happy, unicorn, photo, sky, spring, color
+graphics/emojis/ferris_wheel.png ferris_wheel, photo, carnival, londoneye
+graphics/emojis/fountain.png fountain, photo, summer, water, fresh
+graphics/emojis/roller_coaster.png roller_coaster, carnival, playground, photo, ride, fun
+graphics/emojis/ship.png ship, vehicle, transportation, titanic, deploy, cruise
+graphics/emojis/speedboat.png speedboat, vehicle, ship, transportation, summer
+graphics/emojis/boat.png boat, vehicle, ship, summer, transportation, water, sailing, sailboat
+graphics/emojis/sailboat.png sailboat, vehicle
+graphics/emojis/rowboat.png rowboat, vehicle, sports, hobby, water, ship
+graphics/emojis/anchor.png anchor, ship, ferry, sea, boat
+graphics/emojis/rocket.png rocket, launch, ship, staffmode, 
+graphics/emojis/airplane.png airplane, vehicle, transportation, flight, fly
+graphics/emojis/helicopter.png helicopter, vehicle, transportation, fly
+graphics/emojis/steam_locomotive.png steam_locomotive, vehicle, transportation, train
+graphics/emojis/tram.png tram, vehicle, transportation
+graphics/emojis/mountain_railway.png mountain_railway, vehicle, transportation
+graphics/emojis/bike.png bike, vehicle, sports, bicycle, exercise, hipster
+graphics/emojis/aerial_tramway.png aerial_tramway, vehicle, transportation, ski
+graphics/emojis/suspension_railway.png suspension_railway, vehicle, transportation
+graphics/emojis/mountain_cableway.png mountain_cableway, vehicle, transportation, ski
+graphics/emojis/tractor.png tractor, vehicle, car, farming, agriculture
+graphics/emojis/blue_car.png blue_car, vehicle, transportation
+graphics/emojis/oncoming_automobile.png oncoming_automobile, vehicle, car, transportation
+graphics/emojis/car.png car, vehicle, car, red, transportation
+graphics/emojis/red_car.png red_car, vehicle
+graphics/emojis/taxi.png taxi, vehicle, car, uber, cars, transportation
+graphics/emojis/oncoming_taxi.png oncoming_taxi, vehicle, car, cars, uber
+graphics/emojis/articulated_lorry.png articulated_lorry, vehicle, cars, transportation, express
+graphics/emojis/bus.png bus, vehicle, car, transportation
+graphics/emojis/oncoming_bus.png oncoming_bus, vehicle, transportation
+graphics/emojis/rotating_light.png rotating_light, police, ambulance, 911, emergency, alert, error, pinged, law, legal
+graphics/emojis/police_car.png police_car, vehicle, cars, transportation, law, legal, enforcement
+graphics/emojis/oncoming_police_car.png oncoming_police_car, vehicle, law, legal, enforcement, 911
+graphics/emojis/fire_engine.png fire_engine, vehicle, transportation, cars
+graphics/emojis/ambulance.png ambulance, vehicle, health, 911, hospital
+graphics/emojis/minibus.png minibus, vehicle, car, transportation
+graphics/emojis/truck.png truck, vehicle, cars, transportation
+graphics/emojis/train.png train, vehicle, transportation, carriage, public, travel
+graphics/emojis/station.png station, transportation, vehicle, public
+graphics/emojis/train2.png train2, vehicle, transportation
+graphics/emojis/bullettrain_front.png bullettrain_front, vehicle, transportation, speed, fast, public, travel
+graphics/emojis/bullettrain_side.png bullettrain_side, vehicle, transportation
+graphics/emojis/light_rail.png light_rail, vehicle, transportation
+graphics/emojis/monorail.png monorail, vehicle, transportation
+graphics/emojis/railway_car.png railway_car, vehicle, transportation
+graphics/emojis/trolleybus.png trolleybus, vehicle, bart, transportation
+graphics/emojis/ticket.png ticket, event, concert, pass
+graphics/emojis/fuelpump.png fuelpump, gas station, petroleum
+graphics/emojis/vertical_traffic_light.png vertical_traffic_light, transportation, driving
+graphics/emojis/traffic_light.png traffic_light, stoplight, transportation, signal
+graphics/emojis/warning.png warning, exclamation, wip, alert, error, problem, issue
+graphics/emojis/construction.png construction, wip, progress, caution, warning
+graphics/emojis/beginner.png beginner, badge, shield
+graphics/emojis/atm.png atm, money, sales, cash, blue-square, payment, bank
+graphics/emojis/slot_machine.png slot_machine, bet, gamble, vegas, fruit machine, luck, casino
+graphics/emojis/busstop.png busstop, transportation, wait
+graphics/emojis/barber.png barber, hair, salon, style
+graphics/emojis/hotsprings.png hotsprings, bath, warm, relax
+graphics/emojis/checkered_flag.png checkered_flag, contest, finishline, rase, gokart
+graphics/emojis/crossed_flags.png crossed_flags, japanese, nation, country, border
+graphics/emojis/izakaya_lantern.png izakaya_lantern, light, paper, halloween, spooky
+graphics/emojis/moyai.png moyai, stone, easter island, beach, statue
+graphics/emojis/circus_tent.png circus_tent, festival, carnival, party
+graphics/emojis/performing_arts.png performing_arts, acting, theater, drama
+graphics/emojis/round_pushpin.png round_pushpin, stationery, location, map, here
+graphics/emojis/triangular_flag_on_post.png triangular_flag_on_post, mark, milestone, place
+graphics/emojis/jp.png jp, japan, nippon, nihon, japanese, nation, flag, country, banner
+graphics/emojis/kr.png kr, korea, hanguk, nation, flag, country, banner
+graphics/emojis/cn.png cn, china, prc, chinese, flag, country, nation, banner
+graphics/emojis/us.png us, usa, america, united states, nation, flag, american, country, banner
+graphics/emojis/fr.png fr, france, banner, flag, nation, french, country
+graphics/emojis/es.png es, spain, espana, flag, nation, country, banner
+graphics/emojis/it.png it, italy, italia, flag, nation, country, banner
+graphics/emojis/ru.png ru, russia, russian, nation, flag, country, banner
+graphics/emojis/gb.png gb, great britain, united kingdom, banner, nation, flag, british, 
+graphics/emojis/uk.png uk, great britain, united kingdom
+graphics/emojis/de.png de, germany, deutschland, german, nation, flag, country, banner

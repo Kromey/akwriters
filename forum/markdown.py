@@ -3,7 +3,8 @@ from django.utils.safestring import mark_safe
 import markdown
 from markdown.extensions import Extension
 from markdown.extensions.toc import TocExtension
-from markdown.inlinepatterns import SimpleTagPattern
+from markdown.inlinepatterns import Pattern,SimpleTagPattern
+from markdown.util import etree
 
 
 class EscapeHtmlExtension(Extension):
@@ -12,6 +13,25 @@ class EscapeHtmlExtension(Extension):
         # https://pythonhosted.org/Markdown/release-2.6.html#safe_mode-deprecated
         del md.preprocessors['html_block']
         del md.inlinePatterns['html']
+
+
+class EmojiExtension(Extension):
+    pattern = r':(?P<emoji>[-+\w]+):'
+
+    def extendMarkdown(self, md, md_globals):
+        emoji = Emoji(self.pattern)
+        md.inlinePatterns.add('emoji', emoji, '_begin')
+
+class Emoji(Pattern):
+    def handleMatch(self, m):
+        emoji = m.group('emoji').strip().lower()
+
+        img = etree.Element('img')
+        img.set('src', '/static/emoji/people/{emoji}.png'.format(emoji=emoji))
+        img.set('class', 'emoji')
+        img.set('title', ':{emoji}:'.format(emoji=emoji))
+
+        return img
 
 
 class StrikethroughExtension(Extension):
@@ -39,6 +59,7 @@ converter = markdown.Markdown(
             SuperscriptExtension(),
             HighlightExtension(),
             EscapeHtmlExtension(),
+            EmojiExtension(),
             ],
         )
 linker = bleach.linkifier.Linker(callbacks=[])

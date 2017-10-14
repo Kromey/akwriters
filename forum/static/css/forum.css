@@ -105,6 +105,17 @@ li.dropdown-submenu.submenu-open .caret {
 	float: right;
 }
 
+img.emoji {
+	width: 16px;
+	height: 16px;
+	transition-property: width,height;
+	transition-duration: 0.25s;
+}
+img.emoji:hover {
+	width: 32px;
+	height: 32px;
+}
+
 .post-reply {
 	clear: both;
 }

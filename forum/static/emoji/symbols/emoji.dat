@@ -1,0 +1,202 @@
+graphics/emojis/one.png one, 1, blue-square, numbers
+graphics/emojis/two.png two, 2, numbers, prime, blue-square
+graphics/emojis/three.png three, 3, numbers, prime, blue-square
+graphics/emojis/four.png four, 4, numbers, blue-square
+graphics/emojis/five.png five, 5, numbers, blue-square, prime
+graphics/emojis/six.png six, 6, numbers, blue-square
+graphics/emojis/seven.png seven, 7, numbers, blue-square, prime
+graphics/emojis/eight.png eight, 8, blue-square, numbers
+graphics/emojis/nine.png nine, 9, blue-square, numbers
+graphics/emojis/keycap_ten.png keycap_ten, 10, numbers, blue-square
+graphics/emojis/1234.png 1234, numbers, blue-square
+graphics/emojis/zero.png zero, 0, numbers, blue-square, null
+graphics/emojis/hash.png hash, symbol, blue-square, twitter
+graphics/emojis/symbols.png symbols, blue-square, music, note, ampersand, percent, glyphs, characters
+graphics/emojis/arrow_backward.png arrow_backward, left, blue-square, direction
+graphics/emojis/arrow_down.png arrow_down, blue-square, direction, bottom
+graphics/emojis/arrow_forward.png arrow_forward, right, blue-square, direction
+graphics/emojis/arrow_left.png arrow_left, blue-square, previous, back
+graphics/emojis/capital_abcd.png capital_abcd, alphabet, words, blue-square
+graphics/emojis/abcd.png abcd, blue-square, alphabet
+graphics/emojis/abc.png abc, blue-square, alphabet
+graphics/emojis/arrow_lower_left.png arrow_lower_left, blue-square, direction
+graphics/emojis/arrow_lower_right.png arrow_lower_right, blue-square, direction
+graphics/emojis/arrow_right.png arrow_right, blue-square, next
+graphics/emojis/arrow_up.png arrow_up, blue-square, continue, top, direction
+graphics/emojis/arrow_upper_left.png arrow_upper_left, blue-square, point, direction
+graphics/emojis/arrow_upper_right.png arrow_upper_right, blue-square, point, direction
+graphics/emojis/arrow_double_down.png arrow_double_down, blue-square, direction, bottom
+graphics/emojis/arrow_double_up.png arrow_double_up, blue-square, direction, top
+graphics/emojis/arrow_down_small.png arrow_down_small, blue-square, direction, bottom
+graphics/emojis/arrow_heading_down.png arrow_heading_down, blue-square, direction, bottom
+graphics/emojis/arrow_heading_up.png arrow_heading_up, blue-square, direction, top
+graphics/emojis/leftwards_arrow_with_hook.png leftwards_arrow_with_hook, back, return, blue-square, undo
+graphics/emojis/arrow_right_hook.png arrow_right_hook, blue-square, return, rotade, direction
+graphics/emojis/left_right_arrow.png left_right_arrow, shape, direction
+graphics/emojis/arrow_up_down.png arrow_up_down, blue-square, direction, way
+graphics/emojis/arrow_up_small.png arrow_up_small, blue-square, triangle, direction, point, forward, top
+graphics/emojis/arrows_clockwise.png arrows_clockwise, sync, cycle, round, repeat
+graphics/emojis/arrows_counterclockwise.png arrows_counterclockwise, blue-square, sync, cycle
+graphics/emojis/rewind.png rewind, play, blue-square
+graphics/emojis/fast_forward.png fast_forward, blue-square, play, speed, continue
+graphics/emojis/information_source.png information_source, blue-square, alphabet, letter
+graphics/emojis/ok.png ok, good, agree, yes, blue-square
+graphics/emojis/twisted_rightwards_arrows.png twisted_rightwards_arrows, blue-square, shuffle, music, random
+graphics/emojis/repeat.png repeat, loop, record
+graphics/emojis/repeat_one.png repeat_one, blue-square, loop
+graphics/emojis/new.png new, blue-square, words, start
+graphics/emojis/top.png top, words, blue-square
+graphics/emojis/up.png up, blue-square, above, high
+graphics/emojis/cool.png cool, words, blue-square
+graphics/emojis/free.png free, blue-square, words
+graphics/emojis/ng.png ng, blue-square, words, shape, icon
+graphics/emojis/cinema.png cinema, movie, blue-square, record, film
+graphics/emojis/koko.png koko, blue-square, here, katakana, japanese, destination
+graphics/emojis/signal_strength.png signal_strength, blue-square, reception, phone, internet, connection, wifi, bluetooth
+graphics/emojis/u5272.png u5272, wari, cut, divide, chinese, kanji, pink-square
+graphics/emojis/u5408.png u5408, japanese, chinese, join, kanji, red-square
+graphics/emojis/u55b6.png u55b6, ying, japanese, opening hours, orange-square
+graphics/emojis/u6307.png u6307, zh
+graphics/emojis/u6708.png u6708, yu
+graphics/emojis/u6709.png u6709, y
+graphics/emojis/u6e80.png u6e80, mitsuru, full, chinese, japanese, red-square, kanji
+graphics/emojis/u7121.png u7121, w
+graphics/emojis/u7533.png u7533, sh
+graphics/emojis/u7a7a.png u7a7a, k
+graphics/emojis/u7981.png u7981, j
+graphics/emojis/sa.png sa, japanese, blue-square, katakana
+graphics/emojis/restroom.png restroom, blue-square, toilet, refresh, wc, gender
+graphics/emojis/mens.png mens, toilet, restroom, wc, blue-square, gender, male
+graphics/emojis/womens.png womens, purple-square, woman, female, toilet, loo, restroom, gender
+graphics/emojis/baby_symbol.png baby_symbol, orange-square, child
+graphics/emojis/no_smoking.png no_smoking, cigarette, blue-square, smell, smoke
+graphics/emojis/parking.png parking, cars, blue-square, alphabet, letter
+graphics/emojis/wheelchair.png wheelchair, blue-square, disabled, a11y, accessibility
+graphics/emojis/metro.png metro, transportation, blue-square, mrt, underground, tube
+graphics/emojis/baggage_claim.png baggage_claim, blue-square, airport, transport
+graphics/emojis/accept.png accept, ok, good, chinese, kanji, agree, yes, orange-circle
+graphics/emojis/wc.png wc, toilet, restroom, blue-square
+graphics/emojis/potable_water.png potable_water, blue-square, liquid, restroom, cleaning, faucet
+graphics/emojis/put_litter_in_its_place.png put_litter_in_its_place, blue-square, sign, human, info
+graphics/emojis/secret.png secret, privacy, chinese, sshh, kanji, red-circle
+graphics/emojis/congratulations.png congratulations, chinese, kanji, japanese, red-circle
+graphics/emojis/m.png m, alphabet, blue-circle, letter
+graphics/emojis/passport_control.png passport_control, custom, blue-square
+graphics/emojis/left_luggage.png left_luggage, blue-square, travel
+graphics/emojis/customs.png customs, passport, border, blue-square
+graphics/emojis/ideograph_advantage.png ideograph_advantage, chinese, kanji, obtain, get, circle
+graphics/emojis/cl.png cl, alphabet, words, red-square
+graphics/emojis/sos.png sos, help, red-square, words, emergency, 911
+graphics/emojis/id.png id, purple-square, words
+graphics/emojis/no_entry_sign.png no_entry_sign, forbid, stop, limit, denied, disallow, circle
+graphics/emojis/underage.png underage, 18, drink, pub, night, minor, circle
+graphics/emojis/no_mobile_phones.png no_mobile_phones, iphone, mute, circle
+graphics/emojis/do_not_litter.png do_not_litter, trash, bin, garbage, circle
+graphics/emojis/non-potable_water.png non-potable_water, drink, faucet, tap, circle
+graphics/emojis/no_bicycles.png no_bicycles, cyclist, prohibited, circle
+graphics/emojis/no_pedestrians.png no_pedestrians, rules, crossing, walking, circle
+graphics/emojis/children_crossing.png children_crossing, school, warning, danger, sign, driving, yellow-diamond
+graphics/emojis/no_entry.png no_entry, limit, security, privacy, bad, denied, stop, circle
+graphics/emojis/eight_spoked_asterisk.png eight_spoked_asterisk, star, sparkle, green-square
+graphics/emojis/sparkle.png sparkle, stars, green-square, awesome, good, fireworks
+graphics/emojis/eight_pointed_black_star.png eight_pointed_black_star, orange-square, shape, polygon
+graphics/emojis/heart_decoration.png heart_decoration, heart, purple-square, love, like
+graphics/emojis/vs.png vs, words, orange-square
+graphics/emojis/vibration_mode.png vibration_mode, orange-square, phone
+graphics/emojis/mobile_phone_off.png mobile_phone_off, mute, orange-square, silence, quiet
+graphics/emojis/chart.png chart, yen, green-square, graph, presentation, stats
+graphics/emojis/currency_exchange.png currency_exchange, money, sales, dollar, travel
+graphics/emojis/aries.png aries, zodiac, sign, purple-square, astrology
+graphics/emojis/taurus.png taurus, zodiac, purple-square, sign, astrology
+graphics/emojis/gemini.png gemini, zodiac, sign, purple-square, astrology
+graphics/emojis/cancer.png cancer, zodiac, sign, purple-square, astrology
+graphics/emojis/leo.png leo, zodiac, sign, purple-square, astrology
+graphics/emojis/virgo.png virgo, zodiac, sign, purple-square, astrology
+graphics/emojis/libra.png libra, zodiac, sign, purple-square, astrology
+graphics/emojis/scorpius.png scorpius, zodiac, sign, purple-square, astrology, scorpio
+graphics/emojis/sagittarius.png sagittarius, zodiac, sign, purple-square, astrology
+graphics/emojis/capricorn.png capricorn, zodiac, sign, purple-square, astrology
+graphics/emojis/aquarius.png aquarius, zodiac, sign, purple-square, astrology
+graphics/emojis/pisces.png pisces, zodiac, purple-square, sign, astrology
+graphics/emojis/ophiuchus.png ophiuchus, zodiac, sign, purple-square, constellation, astrology
+graphics/emojis/six_pointed_star.png six_pointed_star, purple-square, religion, jewish, hexagram
+graphics/emojis/negative_squared_cross_mark.png negative_squared_cross_mark, x, green-square, no, deny
+graphics/emojis/a.png a, red-square, alphabet, letter
+graphics/emojis/b.png b, red-square, alphabet, letter
+graphics/emojis/ab.png ab, red-square, alphabet
+graphics/emojis/o2.png o2, alphabet, red-square, letter
+graphics/emojis/diamond_shape_with_a_dot_inside.png diamond_shape_with_a_dot_inside, jewel, blue, gem, crystal, fancy
+graphics/emojis/recycle.png recycle, arrow, environment, garbage, trash
+graphics/emojis/end.png end, words, arrow
+graphics/emojis/back.png back, arrow, words, return
+graphics/emojis/on.png on, arrow, words
+graphics/emojis/soon.png soon, arrow, words
+graphics/emojis/clock1.png clock1, time, late, early, schedule
+graphics/emojis/clock130.png clock130, time, late, early, schedule
+graphics/emojis/clock10.png clock10, time, late, early, schedule
+graphics/emojis/clock1030.png clock1030, time, late, early, schedule
+graphics/emojis/clock11.png clock11, time, late, early, schedule
+graphics/emojis/clock1130.png clock1130, time, late, early, schedule
+graphics/emojis/clock12.png clock12, midnight, noon, time, late, early, schedule
+graphics/emojis/clock1230.png clock1230, time, late, early, schedule
+graphics/emojis/clock2.png clock2, time, late, early, schedule
+graphics/emojis/clock230.png clock230, time, late, early, schedule
+graphics/emojis/clock3.png clock3, time, late, early, schedule
+graphics/emojis/clock330.png clock330, time, late, early, schedule
+graphics/emojis/clock4.png clock4, time, late, early, schedule
+graphics/emojis/clock430.png clock430, time, late, early, schedule
+graphics/emojis/clock5.png clock5, time, late, early, schedule
+graphics/emojis/clock530.png clock530, time, late, early, schedule
+graphics/emojis/clock6.png clock6, time, late, early, schedule, dawn, dusk
+graphics/emojis/clock630.png clock630, time, late, early, schedule
+graphics/emojis/clock7.png clock7, time, late, early, schedule
+graphics/emojis/clock730.png clock730, time, late, early, schedule
+graphics/emojis/clock8.png clock8, time, late, early, schedule
+graphics/emojis/clock830.png clock830, time, late, early, schedule
+graphics/emojis/clock9.png clock9, time, late, early, schedule
+graphics/emojis/clock930.png clock930, time, late, early, schedule
+graphics/emojis/heavy_dollar_sign.png heavy_dollar_sign, money, sales, payment, currency
+graphics/emojis/copyright.png copyright, ip, license, circle, law, legal
+graphics/emojis/registered.png registered, alphabet, circle
+graphics/emojis/tm.png tm, trademark, brand, law, legal
+graphics/emojis/x.png x, no, delete, remove
+graphics/emojis/heavy_exclamation_mark.png heavy_exclamation_mark, shocked, surprised
+graphics/emojis/bangbang.png bangbang, exclamation, surprise
+graphics/emojis/interrobang.png interrobang, wat, punctuation, surprise
+graphics/emojis/o.png o, circle, round
+graphics/emojis/heavy_multiplication_x.png heavy_multiplication_x, math, calculation
+graphics/emojis/heavy_plus_sign.png heavy_plus_sign, math, calculation, addition, more, increase
+graphics/emojis/heavy_minus_sign.png heavy_minus_sign, math, calculation, subtract, less
+graphics/emojis/heavy_division_sign.png heavy_division_sign, divide, math, calculation
+graphics/emojis/white_flower.png white_flower, floral, japanese, spring
+graphics/emojis/100.png 100, score, perfect, numbers, century, exam, quiz, test, pass, hundred
+graphics/emojis/heavy_check_mark.png heavy_check_mark, ok, nike
+graphics/emojis/ballot_box_with_check.png ballot_box_with_check, ok, agree, confirm, black-square, vote, election
+graphics/emojis/radio_button.png radio_button, input, old, music, circle
+graphics/emojis/link.png link, rings, url
+graphics/emojis/curly_loop.png curly_loop, scribble, draw, shape, squiggle
+graphics/emojis/wavy_dash.png wavy_dash, draw, line, moustache, mustache, squiggle, scribble
+graphics/emojis/part_alternation_mark.png part_alternation_mark, graph, presentation, stats, business, economics, bad
+graphics/emojis/trident.png trident, weapon, spear
+graphics/emojis/black_small_square.png black_small_square, shape, icon
+graphics/emojis/white_small_square.png white_small_square, shape, icon
+graphics/emojis/black_medium_small_square.png black_medium_small_square, icon, shape, button
+graphics/emojis/white_medium_small_square.png white_medium_small_square, shape, stone, icon, button
+graphics/emojis/black_medium_square.png black_medium_square, shape, button, icon
+graphics/emojis/white_medium_square.png white_medium_square, shape, stone, icon
+graphics/emojis/black_square.png black_large_square, shape, icon, button
+graphics/emojis/white_large_square.png white_large_square, shape, icon, stone, button
+graphics/emojis/white_check_mark.png white_check_mark, green-square, ok, agree, vote, election
+graphics/emojis/black_square_button.png black_square_button, shape, input, frame
+graphics/emojis/white_square_button.png white_square_button, shape, input
+graphics/emojis/black_circle.png black_circle, shape, button, round
+graphics/emojis/white_circle.png white_circle, shape, round
+graphics/emojis/red_circle.png red_circle, shape, error, danger
+graphics/emojis/large_blue_circle.png large_blue_circle, shape, icon, button
+graphics/emojis/large_blue_diamond.png large_blue_diamond, shape, jewel, gem
+graphics/emojis/large_orange_diamond.png large_orange_diamond, shape, jewel, gem
+graphics/emojis/small_blue_diamond.png small_blue_diamond, shape, jewel, gem
+graphics/emojis/small_orange_diamond.png small_orange_diamond, shape, jewel, gem
+graphics/emojis/small_red_triangle.png small_red_triangle, shape, direction, up, top
+graphics/emojis/small_red_triangle_down.png small_red_triangle_down, shape, direction, bottom
+graphics/emojis/shipit.png shipit, squirrel, detective, animal, sherlock, inspector, custom_

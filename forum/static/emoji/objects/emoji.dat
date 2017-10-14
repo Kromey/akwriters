@@ -1,0 +1,260 @@
+graphics/emojis/bamboo.png bamboo, plant, nature, vegetable, panda
+graphics/emojis/gift_heart.png gift_heart, heart, love, valentines
+graphics/emojis/dolls.png dolls, japanese, toy, kimono
+graphics/emojis/school_satchel.png school_satchel, student, education, bag
+graphics/emojis/mortar_board.png mortar_board, edu, university, school, college, degree, graduation, cap, hat, legal, learn, education
+graphics/emojis/flags.png flags, fish, japanese, koinobori, carp, banner
+graphics/emojis/fireworks.png fireworks, photo, festival, carnival, congratulations
+graphics/emojis/sparkler.png sparkler, stars, night, shine
+graphics/emojis/wind_chime.png wind_chime, nature, ding, spring, bell
+graphics/emojis/rice_scene.png rice_scene, photo, japan, asia, tsukimi
+graphics/emojis/jack_o_lantern.png jack_o_lantern, halloween, light, pumpkin, creepy, fall
+graphics/emojis/ghost.png ghost, boom, halloween, spooky, scary
+graphics/emojis/santa.png santa, christmas, festival, man, male, xmas, father christmas
+graphics/emojis/christmas_tree.png christmas_tree, festival, vacation, december, xmas, celebration
+graphics/emojis/gift.png gift, present, birthday, christmas, xmas
+graphics/emojis/bell.png bell, sound, notification, christmas, xmas, chime
+graphics/emojis/no_bell.png no_bell, sound, volume, mute, quiet, silent
+graphics/emojis/tanabata_tree.png tanabata_tree, plant, nature, branch, summer
+graphics/emojis/tada.png tada, party, contulations, birthday, magic, circus
+graphics/emojis/confetti_ball.png confetti_ball, celebration, festival, party, birthday, circus
+graphics/emojis/balloon.png balloon, party, celebration, birthday, circus
+graphics/emojis/crystal_ball.png crystal_ball, disco, party, magic, circus, fortune_teller
+graphics/emojis/cd.png cd, technology, dvd, disk, disc, 90s
+graphics/emojis/dvd.png dvd, cd, disk, disc
+graphics/emojis/floppy_disk.png floppy_disk, oldschool, technology, save, 90s, 80s
+graphics/emojis/camera.png camera, gadgets, photo
+graphics/emojis/video_camera.png video_camera, film, record
+graphics/emojis/movie_camera.png movie_camera, film, record
+graphics/emojis/computer.png computer, tech, laptop, screen, display, monitor
+graphics/emojis/tv.png tv, television, technology, program, oldschool, show
+graphics/emojis/iphone.png iphone, technology, apple, gadgets, dial
+graphics/emojis/phone.png phone, technology, communication, dial, telephone
+graphics/emojis/telephone.png telephone, calling
+graphics/emojis/telephone_receiver.png telephone_receiver, technology, communication, dial
+graphics/emojis/pager.png pager, bbcall, oldschool, 90s
+graphics/emojis/fax.png fax, communication, technology
+graphics/emojis/minidisc.png minidisc, technology, record, data, disk, 90s
+graphics/emojis/vhs.png vhs, record, video, oldschool, 90s, 80s
+graphics/emojis/sound.png sound, loud, noise, volume, speaker, broadcast
+graphics/emojis/speaker.png speaker, sound, volume, silence, broadcast
+graphics/emojis/mute.png mute, sound, volume, silence, quiet
+graphics/emojis/loudspeaker.png loudspeaker, volume, sound
+graphics/emojis/mega.png mega, sound, speaker, volume
+graphics/emojis/hourglass.png hourglass, time, clock, oldschool, limit, exam, quiz, test
+graphics/emojis/hourglass_flowing_sand.png hourglass_flowing_sand, oldschool, time, countdown
+graphics/emojis/alarm_clock.png alarm_clock, time, wake
+graphics/emojis/watch.png watch, clock, time, accessories
+graphics/emojis/radio.png radio, communication, music, podcast, program
+graphics/emojis/satellite.png satellite, communication, future, radio, space
+graphics/emojis/loop.png loop, tape, cassette
+graphics/emojis/mag.png mag, magnifying, glass, search, zoom, find, detective
+graphics/emojis/mag_right.png mag_right, magnifying, glass, search, zoom, find, detective
+graphics/emojis/unlock.png unlock, privacy, security
+graphics/emojis/lock.png lock, security, password, padlock
+graphics/emojis/lock_with_ink_pen.png lock_with_ink_pen, security, secret
+graphics/emojis/closed_lock_with_key.png closed_lock_with_key, security, privacy
+graphics/emojis/key.png key, lock, door, password
+graphics/emojis/bulb.png bulb, light, electricity, idea
+graphics/emojis/flashlight.png flashlight, dark, camping, sight, night
+graphics/emojis/high_brightness.png high_brightness, sun, light
+graphics/emojis/low_brightness.png low_brightness, sun, afternoon, warm, summer
+graphics/emojis/electric_plug.png electric_plug, charger, power
+graphics/emojis/battery.png battery, power, energy, sustain
+graphics/emojis/calling.png calling, iphone, incoming
+graphics/emojis/email.png email, envelope, letter, postal, inbox, communication
+graphics/emojis/mailbox.png mailbox, email, inbox, communication
+graphics/emojis/postbox.png postbox, email, letter, envelope
+graphics/emojis/bath.png bath, clean, shower, bathroom
+graphics/emojis/bathtub.png bathtub, clean, shower, bathroom
+graphics/emojis/shower.png shower, water, clean, bathroom
+graphics/emojis/toilet.png toilet, restroom, wc, washroom, bathroom, potty
+graphics/emojis/wrench.png wrench, tools, diy, ikea, fix, maintainer
+graphics/emojis/nut_and_bolt.png nut_and_bolt, tools, handy, fix
+graphics/emojis/hammer.png hammer, tools, verdict, judge, done, law, legal, ruling, gavel
+graphics/emojis/seat.png seat, sit, airplane, transport, bus, flight, fly
+graphics/emojis/moneybag.png moneybag, dollar, payment, coins, sale
+graphics/emojis/yen.png yen, bill cash currency money, money, sales, japanese, dollar, currency
+graphics/emojis/dollar.png dollar, bill cash currency money, money, sales, bill, currency
+graphics/emojis/pound.png pound, bill cash currency money, british, sterling, money, sales, bills, uk, england, currency
+graphics/emojis/euro.png euro, bill cash currency money, money, sales, dollar, currency
+graphics/emojis/credit_card.png credit_card, money, sales, dollar, bill, payment, shopping
+graphics/emojis/money_with_wings.png money_with_wings, money, dollar, bills, payment, sale
+graphics/emojis/e-mail.png e-mail, mail, send, communication, inbox, email
+graphics/emojis/inbox_tray.png inbox_tray, email, documents
+graphics/emojis/outbox_tray.png outbox_tray, inbox, email
+graphics/emojis/envelope.png envelope, message
+graphics/emojis/incoming_envelope.png incoming_envelope, email, inbox
+graphics/emojis/postal_horn.png postal_horn, instrument, music
+graphics/emojis/mailbox_closed.png mailbox_closed, email, communication, inbox
+graphics/emojis/mailbox_with_mail.png mailbox_with_mail, email, inbox, communication
+graphics/emojis/mailbox_with_no_mail.png mailbox_with_no_mail, email, inbox
+graphics/emojis/package.png package, box, mail, gift, cardboard, moving
+graphics/emojis/door.png door, house, entry, exit
+graphics/emojis/smoking.png smoking, smoke, kills, tobacco, cigarette, joint
+graphics/emojis/bomb.png bomb, boom, explode, explosion, terrorism
+graphics/emojis/gun.png gun, violence, weapon, pistol, revolver
+graphics/emojis/hocho.png hocho, knife, blade, cutlery, kitchen, weapon
+graphics/emojis/pill.png pill, health, medicine, doctor, pharmacy, drug
+graphics/emojis/syringe.png syringe, health, hospital, drugs, blood, medicine, needle, doctor, nurse
+graphics/emojis/page_facing_up.png page_facing_up, documents, office, paper, information
+graphics/emojis/page_with_curl.png page_with_curl, documents, office, paper
+graphics/emojis/bookmark_tabs.png bookmark_tabs, favorite, save, order, tidy
+graphics/emojis/bar_chart.png bar_chart, graph, presentation, stats
+graphics/emojis/chart_with_upwards_trend.png chart_with_upwards_trend, graph, presenetation, stats, recovery, business, economics, money, sales, good, success
+graphics/emojis/chart_with_downwards_trend.png chart_with_downwards_trend, graph, presentation, stats, recession, business, economics, money, sales, bad, failure
+graphics/emojis/scroll.png scroll, documents, ancient, history, paper
+graphics/emojis/clipboard.png clipboard, stationery, documents
+graphics/emojis/calendar.png calendar, schedule, date, planning
+graphics/emojis/date.png date, calendar, schedule
+graphics/emojis/card_index.png card_index, business, stationery
+graphics/emojis/file_folder.png file_folder, documents, business, office
+graphics/emojis/open_file_folder.png open_file_folder, documents, load
+graphics/emojis/scissors.png scissors, stationery, cut
+graphics/emojis/pushpin.png pushpin, stationery, mark, here
+graphics/emojis/paperclip.png paperclip, documents, stationery
+graphics/emojis/black_nib.png black_nib, pen, stationery, writing, write
+graphics/emojis/pencil2.png pencil2, stationery, write, paper, writing, school, study
+graphics/emojis/straight_ruler.png straight_ruler, stationery, calculate, length, math, school, drawing, architect, sketch
+graphics/emojis/triangular_ruler.png triangular_ruler, stationery, math, architect, sketch
+graphics/emojis/closed_book.png closed_book, read, library, knowledge, textbook, learn
+graphics/emojis/green_book.png green_book, read, library, knowledge, study
+graphics/emojis/blue_book.png blue_book, read, library, knowledge, learn, study
+graphics/emojis/orange_book.png orange_book, read, library, knowledge, textbook, study
+graphics/emojis/notebook.png notebook, stationery, record, notes, paper, study
+graphics/emojis/notebook_with_decorative_cover.png notebook_with_decorative_cover, classroom, notes, record, paper, study
+graphics/emojis/ledger.png ledger, notes, paper
+graphics/emojis/books.png books, literature, library, study
+graphics/emojis/bookmark.png bookmark, favorite, label, save
+graphics/emojis/name_badge.png name_badge, fire, forbid
+graphics/emojis/microscope.png microscope, laboratory, experiment, zoomin, science, study
+graphics/emojis/telescope.png telescope, stars, space, zoom
+graphics/emojis/newspaper.png newspaper, press, headline
+graphics/emojis/football.png football, sport, sports, balls, 
+graphics/emojis/basketball.png basketball, sport, sports, balls, 
+graphics/emojis/soccer.png soccer, sport, sports, balls, football, fifa
+graphics/emojis/baseball.png baseball, sport, sports, balls, 
+graphics/emojis/tennis.png tennis, sport, sports, balls, green
+graphics/emojis/8ball.png 8ball, magic_ball, pool, hobby, game, luck, magic
+graphics/emojis/rugby_football.png rugby_football, sport, sports, team
+graphics/emojis/bowling.png bowling, sport, sports, fun, play
+graphics/emojis/golf.png golf, sport, sports, business, flag, hole, summer
+graphics/emojis/mountain_bicyclist.png mountain_bicyclist, sport, vehicle, transportation, sports, human, race, bike
+graphics/emojis/bicyclist.png bicyclist, sport, vehicle, sports, bike, exercise, hipster
+graphics/emojis/horse_racing.png horse_racing, sport, animal, betting, competition, gambling, luck
+graphics/emojis/snowboarder.png snowboarder, sport, sports, winter
+graphics/emojis/swimmer.png swimmer, sport, sports, exercise, human, athlete, water, summer
+graphics/emojis/surfer.png surfer, sport, sports, ocean, sea, summer, beach
+graphics/emojis/ski.png ski, sport, sports, winter, cold, snow
+graphics/emojis/spades.png spades, cards, suit, poker, suits, magic
+graphics/emojis/hearts.png hearts, heart, cards, suit, poker, magic, suits
+graphics/emojis/clubs.png clubs, cards, suit, poker, magic, suits
+graphics/emojis/diamonds.png diamonds, cards, suit, poker, magic, suits
+graphics/emojis/gem.png gem, jewelery, blue, ruby, diamond, jewelry
+graphics/emojis/ring.png ring, jewelery, wedding, propose, marriage, valentines, diamond, fashion, jewelry, gem
+graphics/emojis/trophy.png trophy, win, award, contest, place, ftw, ceremony
+graphics/emojis/musical_score.png musical_score, treble, clef
+graphics/emojis/musical_keyboard.png musical_keyboard, piano, instrument
+graphics/emojis/violin.png violin, music, instrument, orchestra, symphony
+graphics/emojis/space_invader.png space_invader, game, arcade, play
+graphics/emojis/video_game.png video_game, controller, play, console, 
+graphics/emojis/black_joker.png black_joker, poker, cards, game, play, magic
+graphics/emojis/flower_playing_cards.png flower_playing_cards, floral, game, sunset, red
+graphics/emojis/game_die.png game_die, dice, random, tabbletop, play, luck
+graphics/emojis/dart.png dart, game, play, bar
+graphics/emojis/mahjong.png mahjong, game, play, chinese, kanji
+graphics/emojis/clapper.png clapper, movie, film, record
+graphics/emojis/memo.png memo, write, documents, stationery, pencil, paper, writing, legal, exam, quiz, test, study
+graphics/emojis/pencil.png pencil, write
+graphics/emojis/book.png book, open_book, read, library, knowledge, literature, learn, study
+graphics/emojis/art.png art, design, paint, draw
+graphics/emojis/microphone.png microphone, sound, music, 
+graphics/emojis/headphones.png headphones, music, score, gadgets
+graphics/emojis/trumpet.png trumpet, music, brass
+graphics/emojis/saxophone.png saxophone, music, instrument, jazz, blues
+graphics/emojis/guitar.png guitar, music, instrument
+graphics/emojis/shoe.png shoe
+graphics/emojis/sandal.png sandal, shoes, fashion, flip flops
+graphics/emojis/high_heel.png high_heel, fashion, shoes, female, pumps, stiletto
+graphics/emojis/lipstick.png lipstick, female, girl, fashion, woman
+graphics/emojis/boot.png boot, shoes, fashion
+graphics/emojis/shirt.png shirt, fashion, cloth,formal
+graphics/emojis/tshirt.png tshirt, fashion, cloth, casual,tee
+graphics/emojis/necktie.png necktie, shirt, suitup, formal, fashion, cloth, business
+graphics/emojis/womans_clothes.png womans_clothes, fashion, shopping, female
+graphics/emojis/dress.png dress, clothes, fashion, shopping
+graphics/emojis/running_shirt_with_sash.png running_shirt_with_sash, play, pageant
+graphics/emojis/jeans.png jeans, fashion, shopping
+graphics/emojis/kimono.png kimono, dress, fashion, women, female, japanese
+graphics/emojis/bikini.png bikini, swimming, female, woman, girl, fashion, beach, summer
+graphics/emojis/ribbon.png ribbon, decoration, pink, girl, bowtie
+graphics/emojis/tophat.png tophat, magic, gentleman, classy, circus
+graphics/emojis/crown.png crown, king, kod, leader, royalty, lord
+graphics/emojis/womans_hat.png womans_hat, fashion, accessories, female, lady, spring
+graphics/emojis/mans_shoe.png mans_shoe, fashion, male
+graphics/emojis/closed_umbrella.png closed_umbrella, weather, rain, drizzle
+graphics/emojis/briefcase.png briefcase, business, documents, work, law, legal
+graphics/emojis/handbag.png handbag, fashion, accessory, accessories, shopping
+graphics/emojis/pouch.png pouch, bag, accessories, shopping
+graphics/emojis/purse.png purse, pocketbook, fashion, accessories, money, sales, shopping
+graphics/emojis/eyeglasses.png eyeglasses, fashion, accessories, eyesight, nerd, dork, geek
+graphics/emojis/fishing_pole_and_fish.png fishing_pole_and_fish, food, hobby, summer
+graphics/emojis/coffee.png coffee, drink, beverage, cafe, espresso
+graphics/emojis/tea.png tea, drink, bowl, breakfast, green, british
+graphics/emojis/sake.png sake, drink alcohol, wine, drink, drunk, beverage, japanese, alcohol, booze
+graphics/emojis/baby_bottle.png baby_bottle, food, container, milk
+graphics/emojis/beer.png beer, drink alcohol, relax, beverage, drink, drunk, party, pub, summer, alcohol, booze
+graphics/emojis/beers.png beers, drink alcohol, relax, beverage, drink, drunk, party, pub, summer, alcohol, booze
+graphics/emojis/cocktail.png cocktail, drink alcohol, drink, drunk, alcohol, beverage, booze
+graphics/emojis/tropical_drink.png tropical_drink, beverage, cocktail, summer, beach, alcohol, booze
+graphics/emojis/wine_glass.png wine_glass, drink alcohol, drink, beverage, drunk, alcohol, booze
+graphics/emojis/fork_and_knife.png fork_and_knife, cutlery, kitchen
+graphics/emojis/pizza.png pizza, food, italian dairy, party
+graphics/emojis/hamburger.png hamburger, food, american meat, meat, fast food, beef, cheeseburger, mcdonalds, burger king
+graphics/emojis/fries.png fries, food, american, chips, snack, fast food
+graphics/emojis/poultry_leg.png poultry_leg, food, meat, drumstick, bird, chicken, turkey
+graphics/emojis/meat_on_bone.png meat_on_bone, food, meat, good, drumstick
+graphics/emojis/spaghetti.png spaghetti, food, italian noodles, italian, noodle
+graphics/emojis/curry.png curry, food, indian, spicy, hot
+graphics/emojis/fried_shrimp.png fried_shrimp, food, seafood, animal, appetizer, summer
+graphics/emojis/bento.png bento, food, japanese, box
+graphics/emojis/sushi.png sushi, food, japanese, fish, rice
+graphics/emojis/fish_cake.png fish_cake, food, japanese seafood, naruto, japan, sea, beach
+graphics/emojis/rice_ball.png rice_ball, food, japanese
+graphics/emojis/rice_cracker.png rice_cracker, food, japanese
+graphics/emojis/rice.png rice, food, china, asian
+graphics/emojis/ramen.png ramen, food noodles, food, japanese, noodle, chipsticks
+graphics/emojis/stew.png stew, food, meat, soup
+graphics/emojis/oden.png oden, food, japanese
+graphics/emojis/dango.png dango, food, japanese, barbecue, meat
+graphics/emojis/egg.png egg, food,, food, breakfast, kitchen
+graphics/emojis/bread.png bread, food,, food, wheat, breakfast, toast
+graphics/emojis/doughnut.png doughnut, food, dessert, snack, sweet, donut
+graphics/emojis/custard.png custard, food, dessert
+graphics/emojis/icecream.png icecream, food, dessert, hot, summer
+graphics/emojis/ice_cream.png ice_cream, food, dessert, hot
+graphics/emojis/shaved_ice.png shaved_ice, food, dessert, hot, summer
+graphics/emojis/birthday.png birthday, party, cake, celebration
+graphics/emojis/cake.png cake, food, dessert
+graphics/emojis/cookie.png cookie, food, dessert, snack, oreo, chocolate, sweet
+graphics/emojis/chocolate_bar.png chocolate_bar, food, dessert, snack, sweet
+graphics/emojis/candy.png candy, food, dessert, snack, sweet
+graphics/emojis/lollipop.png lollipop, food, dessert, snack, candy, sweet
+graphics/emojis/honey_pot.png honey_pot, food, dessert, bees, sweet, kitchen
+graphics/emojis/apple.png apple, food, fruit, mac, school
+graphics/emojis/green_apple.png green_apple, food, fruit, nature
+graphics/emojis/tangerine.png tangerine, food, fruit, nature
+graphics/emojis/lemon.png lemon, food, fruit, nature
+graphics/emojis/cherries.png cherries, food, fruit
+graphics/emojis/grapes.png grapes, food, fruit, wine
+graphics/emojis/watermelon.png watermelon, food, fruit, picnic, summer
+graphics/emojis/strawberry.png strawberry, food, fruit, nature
+graphics/emojis/peach.png peach, food, fruit, nature
+graphics/emojis/melon.png melon, food, fruit, nature
+graphics/emojis/banana.png banana, food, fruit, monkey
+graphics/emojis/pear.png pear, food, fruit, nature
+graphics/emojis/pineapple.png pineapple, food, fruit, nature
+graphics/emojis/sweet_potato.png sweet_potato, food, vegetable, nature
+graphics/emojis/eggplant.png eggplant, food, vegetable, nature, aubergine
+graphics/emojis/tomato.png tomato, food, fruit, vegetable, nature
+graphics/emojis/corn.png corn, food, vegetable, plant
