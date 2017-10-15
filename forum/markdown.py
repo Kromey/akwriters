@@ -1,4 +1,10 @@
+from glob import glob
+import os
+import re
+
+
 import bleach
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.utils.safestring import mark_safe
 import markdown
 from markdown.extensions import Extension
@@ -23,15 +29,39 @@ class EmojiExtension(Extension):
         md.inlinePatterns.add('emoji', emoji, '_begin')
 
 class Emoji(Pattern):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        base_dir = os.path.dirname(__file__)
+        emoji_dir = os.path.join(base_dir, 'static/emoji')
+
+        self.emoji = {}
+        for dat in glob(emoji_dir + '/*/emoji.dat'):
+            category = os.path.basename(os.path.dirname(dat))
+            with open(dat, 'r') as fh:
+                for line in fh:
+                    filename, name, *aliases = re.split(r',?\s', line.strip())
+                    self.emoji[name] = (category, os.path.basename(filename))
+
     def handleMatch(self, m):
         emoji = m.group('emoji').strip().lower()
 
-        img = etree.Element('img')
-        img.set('src', '/static/emoji/people/{emoji}.png'.format(emoji=emoji))
-        img.set('class', 'emoji')
-        img.set('title', ':{emoji}:'.format(emoji=emoji))
+        try:
+            category, filename = self.emoji[emoji]
 
-        return img
+            src = static(os.path.join('emoji', category, filename))
+
+            elm = etree.Element('img')
+            elm.set('src', src)
+            elm.set('class', 'emoji')
+            elm.set('title', ':{emoji}:'.format(emoji=emoji))
+        except KeyError:
+            elm = etree.Element('span')
+            elm.text = emoji
+            elm.set('class', 'emoji emoji-unk')
+            elm.set('title', 'Unrecognized emoji code ":{emoji}:"'.format(emoji=emoji))
+
+        return elm
 
 
 class StrikethroughExtension(Extension):
