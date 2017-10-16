@@ -10,6 +10,7 @@ import markdown
 from markdown.extensions import Extension
 from markdown.extensions.toc import TocExtension
 from markdown.inlinepatterns import Pattern,SimpleTagPattern
+from markdown.preprocessors import Preprocessor
 from markdown.util import etree
 
 
@@ -26,7 +27,7 @@ class EmojiExtension(Extension):
 
     def extendMarkdown(self, md, md_globals):
         emoji = Emoji(self.pattern)
-        md.inlinePatterns.add('emoji', emoji, '_begin')
+        md.inlinePatterns.add('emoji', emoji, '_end')
 
 class Emoji(Pattern):
     def __init__(self, *args, **kwargs):
@@ -64,6 +65,69 @@ class Emoji(Pattern):
         return elm
 
 
+class EmoticonExtension(Extension):
+    def extendMarkdown(self, md, md_globals):
+        md.preprocessors.add('emoticon', Emoticon(), '_end')
+
+class Emoticon(Preprocessor):
+    pattern = re.compile(r'(?P<emoticon>[O0>]?[:;]\'?-?[\)\(\|DPpþOo@/\\3]|(<[\\/]?3){1,2}|[>Oo][\._][<Oo]|<\("\))')
+
+    emoticons = {
+            ':)': ':simple_smile:',
+            ':3': ':smile_cat:',
+            ':(': ':frowning:',
+            ':\')': ':joy:',
+            ':\'(': ':cry:',
+            ';)': ':wink:',
+            ':D': ':laughing:',
+            ':@': ':angry:',
+            '>:@': ':rage:',
+            '>:(': ':imp:',
+            '>:)': ':smiling_imp:',
+            'O:)': ':innocent:',
+            '0:)': ':innocent:',
+            ':|': ':expressionless:',
+            ':P': ':stuck_out_tongue:',
+            ':p': ':stuck_out_tongue:',
+            ':þ': ':stuck_out_tongue:',
+            ';P': ':stuck_out_tongue_winking_eye:',
+            ';p': ':stuck_out_tongue_winking_eye:',
+            ';þ': ':stuck_out_tongue_winking_eye:',
+            ':O': ':open_mouth:',
+            ':o': ':open_mouth:',
+            ':/': ':confused:',
+            ':\\': ':confused:',
+            '<3': ':heart:',
+            '<3<3': ':two_hearts:',
+            '</3': ':broken_heart:',
+            '<\\3': ':broken_heart:',
+            '>.<': ':confounded:',
+            'O_o': ':confused:',
+            'O_O': ':confused:',
+            'o_O': ':confused:',
+            'o_o': ':confused:',
+            '<(")': ':penguin:',
+            }
+
+    def run(self, lines):
+        new_lines = []
+        for line in lines:
+            new_lines.append(self.pattern.sub(self.handleMatch, line))
+
+        return new_lines
+
+    def handleMatch(self, m):
+        emoticon = m.group('emoticon')
+
+        try:
+            return self.emoticons[emoticon]
+        except KeyError:
+            try:
+                return self.emoticons[emoticon.replace('-', '')]
+            except KeyError:
+                return emoticon
+
+
 class StrikethroughExtension(Extension):
     def extendMarkdown(self, md, md_globals):
         md.inlinePatterns.add('strikethrough', SimpleTagPattern(r'(~{2})(.+?)\2', 'del'), '_end')
@@ -90,6 +154,7 @@ converter = markdown.Markdown(
             HighlightExtension(),
             EscapeHtmlExtension(),
             EmojiExtension(),
+            EmoticonExtension(),
             ],
         )
 linker = bleach.linkifier.Linker(callbacks=[])
