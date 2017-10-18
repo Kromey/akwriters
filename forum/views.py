@@ -76,6 +76,14 @@ class PostView(ForumViewMixin, DetailView):
     model = Post
     context_object_name = 'post'
 
+    def get_object(self, *args, **kwargs):
+        obj = super().get_object(*args, **kwargs)
+
+        if self.request.user.is_authenticated:
+            obj.readers.add(self.request.user)
+
+        return obj
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
