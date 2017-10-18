@@ -19,6 +19,7 @@
 		<a href="{% url 'forum:post' board=board.slug pk=topic.pk %}" class="{{ topic.css }}">{{ topic.subject }}</a>{{ topic.nt }}
 		Started {{ topic.date|date:'P N j Y' }} by <span class="author">{{ topic.user.username }}</span>
 		({{ topic.post_count }} post{{ topic.post_count|pluralize }})
+		{% if topic.unread_count %}<span class="post-unread">({{ topic.unread_count }} new!)</span>{% endif %}
 	</div>
 	{% empty %}
 	<div class="warning-text text-center">Looks like there's nothing here yet! Ready to start the conversation?</div>

@@ -45,8 +45,27 @@ class BoardView(ForumViewMixin, DetailView):
 
         self.page = self._get_page()
 
-        qs = self.object.posts.filter(op_id=F('id')).annotate(post_count=Count('posts')).order_by('-date')
-        context['topics'] = self._paginate_queryset(qs)
+        qs = self.object.posts.filter(op_id=F('id')).annotate(post_count=Count('posts', distinct=True)).order_by('-date')
+        topics = self._paginate_queryset(qs)
+
+        if self.request.user.is_authenticated:
+            # This "Sum" annotation, thanks to the Case we're using within it,
+            # has the same effect as a subquery using Count to determine how
+            # many posts within each topic the current user has actually read.
+            # As a convenience for our templates, we then use this and the post
+            # count (annotated above whether user is auth'd or not) to calculate
+            # the number of posts the user has not yet read in each.
+            topics = topics.annotate(
+                    read_count=Sum(
+                        Case(
+                            When(posts__readers=self.request.user, then=1),
+                            default=0,
+                            output_field=IntegerField(),
+                            )
+                        ),
+                    unread_count=F('post_count')-F('read_count'),
+                    )
+        context['topics'] = topics
 
         # Don't forget that internally page is 0-indexed, but it's 1-indexed out front
         if self.page > 0:
