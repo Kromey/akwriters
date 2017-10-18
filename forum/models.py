@@ -83,6 +83,10 @@ class Post(models.Model):
     left = models.PositiveIntegerField(default=0)
     right = models.PositiveIntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
+    readers = models.ManyToManyField(
+            settings.AUTH_USER_MODEL,
+            related_name='read_posts',
+            )
 
     @property
     def reply_count(self):
