@@ -46,6 +46,7 @@ class BoardView(ForumViewMixin, DetailView):
         self.page = self._get_page()
 
         qs = self.object.posts.filter(op_id=F('id')).annotate(post_count=Count('posts', distinct=True)).order_by('-date')
+        qs = qs.annotate(author=F('user__username'))
         topics = self._paginate_queryset(qs)
 
         if self.request.user.is_authenticated:
