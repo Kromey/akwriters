@@ -29,6 +29,23 @@ class IndexView(ForumViewMixin, ListView):
     queryset = Post.objects.select_related('op', 'board', 'user').order_by('-date')[:10]
     context_object_name = 'posts'
 
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        if self.request.user.is_authenticated:
+            # @see PostView.get_context_data()
+            qs = qs.annotate(
+                    unread=Min(
+                        Case(
+                            When(readers=self.request.user, then=0),
+                            default=1,
+                            output_field=IntegerField(),
+                            )
+                        )
+                    )
+
+        return qs
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Most Recent Posts'

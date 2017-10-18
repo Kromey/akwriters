@@ -8,6 +8,7 @@
 	<div>
 		<a href="{% url 'forum:board' slug=post.board.slug %}" class="{{ post.board.css }}">{{ post.board.title }}</a>
 		<a href="{% url 'forum:post' board=post.board.slug pk=post.pk %}" class="{{ post.css }}">{{ post.subject }}</a>{{ post.nt }}
+		{% if post.unread %}<span class="post-unread">New!</span>{% endif %}
 		by <span class="author">{{ post.user.username }}</span>
 		({{ post.date|date:'P N j' }})
 	</div>
