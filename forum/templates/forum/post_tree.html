@@ -1,0 +1,18 @@
+{% load frontend_extras %}
+{% load forum_extras %}
+<div class="post-tree">
+	{% for post in thread %}
+	{% for i in post|parents:parents %}
+	</div>
+	{% endfor %}
+	<div>
+	{% if post == current_post %}
+	<span class="label label-default">{% octicon 'arrow-right' %}{{ post.subject }}</span>{{ post.nt }}
+	{% else %}
+	<a href="{{ post.get_absolute_url }}" class="{{ post.css }}">{{ post.subject }}</a>{{ post.nt }}
+	{% endif %}
+	- <span class="author">{{ post.user.username }}</span> {{ post.date|date:"P M j 'y"}}
+	<br>
+	{% endfor %}
+	{% close_tree %}
+</div>

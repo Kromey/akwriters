@@ -11,53 +11,29 @@ from helpers.templatetags.frontend_extras import octicon
 register = template.Library()
 
 
-@register.simple_tag
-def make_tree(posts, current_post=None):
-    levels = []
-    depth = 0
-    html = '<div class="post-tree">'
+@register.inclusion_tag('forum/post_tree.html')
+def post_tree(post):
+    return {
+            'current_post': post,
+            'thread': post.op.posts.all(),
+            'parents': [],
+            }
 
-    for post in posts:
-        try:
-            while levels[-1] < post.left:
-                html += '</div>'
-                levels.pop()
-                depth -= 1
-        except IndexError:
-            pass
 
-        if post == current_post:
-            label = '<span class="label label-default">{icon}{title}</span>'
-        else:
-            label = '<a href="{url}" class="{css}">{title}</a>'
+@register.filter
+def parents(post, parent_posts):
+    try:
+        while parent_posts[-1] < post.left:
+            yield parent_posts.pop()
+    except IndexError:
+        pass
 
-        label = label.format(
-                icon=octicon('arrow-right'),
-                url=reverse('forum:post', kwargs={
-                    'board':post.board.slug,
-                    'pk':post.pk
-                    }),
-                css=post.css,
-                title=post.subject,
-                )
+    parent_posts.append(post.right)
 
-        line = '<div>{label}{nt} - <span class="author">{user}</span> {date}'
-        html += line.format(
-                label=label,
-                nt=post.nt,
-                user=post.user.username,
-                date=date(timezone.localtime(post.date), 'P M j \'y'),
-                )
 
-        if post.right - post.left > 1:
-            #html += '<ul>'
-            levels.append(post.right)
-            depth = len(levels)
-        else:
-            html += '</div>'
-
-    html += '</div>' * depth
-    html += '</div>'
-
-    return mark_safe(html)
+@register.simple_tag(takes_context=True)
+def close_tree(context):
+    n = len(context['parents'])
+    context['parents'] = []
+    return mark_safe('</div>' * n)
 
