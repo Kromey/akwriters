@@ -105,6 +105,17 @@ li.dropdown-submenu.submenu-open .caret {
 	float: right;
 }
 
+.post-unread {
+	font-size: 90%;
+	color: #a94442;
+	animation: pulse 2s ease-in infinite alternate;
+}
+@keyframes pulse {
+	70%  {color:#a94442;}
+	85%  {color:#cb6664;}
+	100% {color:#a94442;}
+}
+
 img.emoji {
 	width: 16px;
 	height: 16px;

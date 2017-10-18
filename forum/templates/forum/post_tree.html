@@ -11,7 +11,8 @@
 	{% else %}
 	<a href="{{ post.get_absolute_url }}" class="{{ post.css }}">{{ post.subject }}</a>{{ post.nt }}
 	{% endif %}
-	- <span class="author">{{ post.user.username }}</span> {{ post.date|date:"P M j 'y"}}
+	{% if post.unread %}<span class="post-unread">New!</span>{% endif %}
+	- <span class="author">{{ post.author }}</span> {{ post.date|date:"P M j 'y"}}
 	<br>
 	{% endfor %}
 	{% close_tree %}

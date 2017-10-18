@@ -11,11 +11,11 @@ from helpers.templatetags.frontend_extras import octicon
 register = template.Library()
 
 
-@register.inclusion_tag('forum/post_tree.html')
-def post_tree(post):
+@register.inclusion_tag('forum/post_tree.html', takes_context=True)
+def post_tree(context):
     return {
-            'current_post': post,
-            'thread': post.op.posts.all(),
+            'current_post': context['post'],
+            'thread': context['thread'],
             'parents': [],
             }
 

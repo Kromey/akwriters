@@ -2,7 +2,7 @@ import shlex
 
 
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q,F,Count
+from django.db.models import Q,F,Count,Case,When,Sum,IntegerField,Min
 from django.http import HttpResponse
 from django.views.generic import DetailView,ListView,View
 from django.views.generic.edit import CreateView
@@ -80,6 +80,27 @@ class PostView(ForumViewMixin, DetailView):
         context = super().get_context_data(**kwargs)
 
         context['form'] = PostForm()
+
+        thread = self.object.op.posts.annotate(author=F('user__username'))
+        if self.request.user.is_authenticated:
+            # This looks fugly, but we need to annotate our Posts with their
+            # "read" state for the current user, but without duplicating them
+            # as a straight JOIN would. Therefore we have to use an aggregate
+            # function -- in this case, Min -- to get the appropriate GROUP BY
+            # clause in the query Django generates. By using Min and a Case
+            # function that assigns 0 to the user and 1 to anything else, we
+            # end up with a simple boolean-ish "unread" flag on each Post.
+            thread = thread.annotate(
+                    unread=Min(
+                        Case(
+                            When(readers=self.request.user, then=0),
+                            default=1,
+                            output_field=IntegerField(),
+                            )
+                        )
+                    )
+        context['authenticated'] = str(self.request.user.is_authenticated)
+        context['thread'] = thread
 
         return context
 
