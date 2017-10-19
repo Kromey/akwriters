@@ -80,7 +80,7 @@ class BoardView(ForumViewMixin, DetailView):
                             default=0,
                             output_field=IntegerField(),
                             )
-                        ),
+                        )).annotate(
                     unread_count=F('post_count')-F('read_count'),
                     )
         context['topics'] = topics
