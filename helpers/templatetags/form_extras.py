@@ -7,7 +7,7 @@ register = template.Library()
 
 
 @register.simple_tag
-def bs_field(field, icon=None, icon_type='glyphicon'):
+def bs_field(field, icon=None, icon_type='octicon'):
     if icon:
         if icon_type == 'glyphicon':
             icon_html = glyphicon(icon)

@@ -3,7 +3,7 @@
 {% load frontend_extras %}
 {% if user.is_authenticated %}
 <p>
-	<button type="button" class="btn btn-primary" data-popup-uri="{% url 'chat:candy' %}">{% glyphicon 'new-window' %} Launch Web Chat</button>
+	<button type="button" class="btn btn-primary" data-popup-uri="{% url 'chat:candy' %}">{% octicon 'comment-discussion' %} Launch Web Chat</button>
 	<span class="text-info">(Opens in a new window.)</span>
 </p>
 {% else %}
