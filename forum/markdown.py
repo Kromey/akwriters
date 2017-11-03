@@ -95,7 +95,7 @@ class Emoticon(Preprocessor):
             ';þ': ':stuck_out_tongue_winking_eye:',
             ':O': ':open_mouth:',
             ':o': ':open_mouth:',
-            ':/': ':confused:',
+            #':/': ':confused:', #is conflicting with links at the moment
             ':\\': ':confused:',
             '<3': ':heart:',
             '<3<3': ':two_hearts:',
