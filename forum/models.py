@@ -88,6 +88,8 @@ class Post(models.Model):
             related_name='read_posts',
             )
 
+    reply_to = None
+
     @property
     def reply_count(self):
         return int((self.right - self.left - 1) / 2)
@@ -101,8 +103,12 @@ class Post(models.Model):
         return ancestors
 
     @property
+    def is_op(self):
+        return self.id == self.op_id
+
+    @property
     def css(self):
-        if self.id == self.op_id:
+        if self.is_op:
             return 'label label-success'
         else:
             return 'label label-info'
@@ -120,6 +126,27 @@ class Post(models.Model):
         return self.subject
 
     def save(self, *args, **kwargs):
+        if self.reply_to:
+            with transaction.atomic():
+                # We need to lock the topic tree, to prevent race conditions
+                if Post.objects.filter(op_id=self.reply_to.op_id).select_for_update():
+                    pass
+
+                # Make sure nobody else has updated this in the meantime
+                self.reply_to.refresh_from_db()
+                # Make room for our post
+                Post.objects.filter(op_id=self.reply_to.op_id).filter(left__gt = self.reply_to.left).update(left = models.F('left') + 2)
+                Post.objects.filter(op_id=self.reply_to.op_id).filter(right__gt = self.reply_to.left).update(right = models.F('right') + 2)
+
+                # Now fit ourselves right into place
+                self.left = self.reply_to.left + 1
+                self.right = self.left + 1
+                # Let's just make sure we have the topic set right
+                self.op_id = self.reply_to.op_id
+                self.board_id = self.reply_to.board_id
+
+                return super().save()
+
         if self.right <= self.left:
             self.right = self.left + 1
         super().save(*args, **kwargs)
@@ -127,27 +154,6 @@ class Post(models.Model):
         if not self.op_id and self.id:
             self.op_id = self.id
             super().save(*args, **kwargs)
-
-    @transaction.atomic
-    def add_reply(self, post):
-        # We need to lock the topic tree, to prevent race conditions
-        if Post.objects.filter(op_id=self.op_id).select_for_update():
-            pass
-
-        # Make sure nobody else has updated this in the meantime
-        self.refresh_from_db()
-        # Make room for our post
-        Post.objects.filter(op_id=self.op_id).filter(left__gt = self.left).update(left = models.F('left') + 2)
-        Post.objects.filter(op_id=self.op_id).filter(right__gt = self.left).update(right = models.F('right') + 2)
-
-        # Now fit ourselves right into place
-        post.left = self.left + 1
-        post.right = post.left + 1
-        # Let's just make sure we have the topic set right
-        post.op_id = self.op_id
-        post.board_id = self.board_id
-
-        post.save()
 
     class Meta(object):
         ordering = ('left',)

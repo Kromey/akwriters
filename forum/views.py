@@ -235,9 +235,8 @@ class ReplyCreateView(ForumPostMixin, CreateView):
         return context
 
     def form_valid(self, form):
-        resp = super().form_valid(form)
-        self.reply_to.add_reply(self.object)
-        return resp
+        form.instance.reply_to = self.reply_to
+        return super().form_valid(form)
 
 
 class PreviewView(View):
