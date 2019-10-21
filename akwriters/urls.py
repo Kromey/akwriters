@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.urls import include, path
 from django.contrib import admin
 from django.views.generic import TemplateView
 
@@ -7,18 +7,18 @@ urlpatterns = [
     # url(r'^$', 'akwriters.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url('^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url('^resources$', TemplateView.as_view(template_name='resources.html'), name='resources'),
-    url(r'^events/', include('events.urls', namespace='events')),
-    #url(r'^account/', include('account.urls', namespace='account')),
-    url(r'^alerts/', include('alerts.urls', namespace='alerts')),
-    url(r'^api/', include('api.urls', namespace='api')),
-    url(r'^auth/', include('passwordless.urls', namespace='auth')),
-    url(r'^chat/', include('chat.urls', namespace='chat')),
-    url(r'^contact/', include('contact.urls', namespace='contact')),
-    url(r'^favicon/', include('favicon.urls', namespace='favicon')),
-    url(r'^policies/', include('policies.urls', namespace='policies')),
-    url(r'^tools/', include('tools.urls', namespace='tools')),
-    url(r'^forum/', include('forum.urls', namespace='forum')),
-    url(r'^admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('resources', TemplateView.as_view(template_name='resources.html'), name='resources'),
+    path('events/', include('events.urls', namespace='events')),
+    #path(r'^account/', include('account.urls', namespace='account')),
+    path('alerts/', include('alerts.urls', namespace='alerts')),
+    path('api/', include('api.urls', namespace='api')),
+    path('auth/', include('passwordless.urls', namespace='auth')),
+    path('chat/', include('chat.urls', namespace='chat')),
+    path('contact/', include('contact.urls', namespace='contact')),
+    path('favicon/', include('favicon.urls', namespace='favicon')),
+    path('policies/', include('policies.urls', namespace='policies')),
+    path('tools/', include('tools.urls', namespace='tools')),
+    path('forum/', include('forum.urls', namespace='forum')),
+    path('admin/', admin.site.urls),
 ]

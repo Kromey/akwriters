@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 from . import views
 
+app_name = 'forum'
 urlpatterns = [
     # Examples:
     # url(r'^$', 'akwriters.views.home', name='home'),

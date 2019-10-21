@@ -3,6 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from . import views
 
+app_name = 'auth'
 urlpatterns = [
     # Examples:
     # url(r'^$', 'akwriters.views.home', name='home'),

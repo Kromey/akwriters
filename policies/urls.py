@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.views.generic import TemplateView
 
+app_name = 'policies'
 urlpatterns = [
     # Examples:
     # url(r'^$', 'akwriters.views.home', name='home'),

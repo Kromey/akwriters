@@ -3,6 +3,7 @@ from django.conf.urls import include, url
 
 from . import views
 
+app_name = 'tools'
 urlpatterns = [
     # Examples:
     # url(r'^$', 'akwriters.views.home', name='home'),

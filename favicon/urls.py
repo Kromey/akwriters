@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 
 from . import views
 
+app_name = 'favicon'
 urlpatterns = [
     # Examples:
     # url(r'^$', 'akwriters.views.home', name='home'),
