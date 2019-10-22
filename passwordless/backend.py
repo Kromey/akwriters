@@ -19,7 +19,7 @@ class PasswordlessBackendBase(object):
 
 
 class TokenBackend(PasswordlessBackendBase):
-    def authenticate(self, token, session_key=None, username=None):
+    def authenticate(self, request, token, session_key=None, username=None):
         if session_key is None and username is None:
             # Django's authentication framework uses inspection before actually
             # calling us, so we can't "fake" a TypeError here; best we can do
@@ -47,7 +47,7 @@ class TokenBackend(PasswordlessBackendBase):
 
 
 class AppPasswordBackend(PasswordlessBackendBase):
-    def authenticate(self, username, password):
+    def authenticate(self, request, username, password):
         try:
             password = utils.normalize_app_password(password)
 
