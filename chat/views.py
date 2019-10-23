@@ -26,9 +26,9 @@ class NabuView(TemplateView):
 
         data = {
             'sub': 'Kromey',
-            'iss': self.request.headers['Host'],
-            'aud': self.request.headers['Host'],
-            'exp': datetime.utcnow() + timedelta(seconds=30),
+            'iss': settings.NABU['jwt']['iss'],
+            'aud': settings.NABU['jwt']['aud'],
+            'exp': datetime.utcnow() + timedelta(**settings.NABU['jwt']['exp']),
         }
         token = jwt.encode(data, ecc_private, algorithm='ES256')
         context['token'] = token.decode('utf-8')
