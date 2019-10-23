@@ -1,12 +1,83 @@
-{% extends 'base.html' %}
-{% load static from staticfiles %}
-{% load chat_extras %}
-{% load frontend_extras %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Nabu</title>
+		{% load static from staticfiles %}
+		<link rel="stylesheet" href="{% static 'nabu/nabu.css' %}">
+		<script src="{% static 'nabu/vue.js' %}"></script>
+	</head>
+	<body>
+		<div id="nabu" data-jwt="{{ token }}" data-server="wss://dev.akwriters.org/nabu">
+			{% verbatim nabu %}
+			<nav class="navbar">
+				<h1>AKWriters Chat</h1>
+			</nav>
 
-{% block header %}
-Nabu
-{% endblock header %}
+			<div v-if="!connected" id="login">
+				<h2>Connecting...</h2>
+			</div>
+			<div v-else-if="!authenticated" id="login">
+				<h2>Authenticating...</h2>
+			</div>
+			<template v-else>
+				<div id="room-container">
+					<div id="message-box">
+						<template v-for="m in messages">
+							<div v-if="m.type == 'join'" class="system">
+								{{ m.from }} has joined the room
+							</div>
+							<div v-else-if="m.type == 'leave'" class="system">
+								{{ m.from }} has left the room
+							</div>
+							<div v-else :class="[m.type, m.from==username?'self':'']" :style="roster_colors[m.from]">
+								<div class="from" v-if="m.from">{{ m.from }}</div>
+								<img class="img" v-if="m.img_src" :src="m.img_src">
+								<div class="body" v-html="m.body"></div>
+							</div>
+						</template>
+						<div v-if="retry_time > 0" class="system">
+							Reconnecting in {{ retry_time }}
+						</div>
+					</div>
 
-{% block content %}
-<strong>{{ token }}</strong>
-{% endblock content %}
+					<transition-group name="roster" tag="div" class="roster">
+						<div
+							v-for="o in occupants"
+							:class="['occupant', o==username?'self':'']"
+							:key="o"
+							:style="roster_colors[o]"
+							>{{ o }}</div>
+					</transition-group>
+				</div>
+
+				<div
+					id="chat-box"
+					:class="dragging?'dragging':''"
+					@dragover="dragImage"
+					@dragleave="dragging = false"
+					@drop="dropImage">
+					<form @submit.prevent="sendChat()">
+						<div v-if="chatimg" class="preview">
+							<div @click="chatimg = null" class="close">&times;</div>
+							<img :src="chatimg_data">
+						</div>
+						<div class="expandingText">
+							<pre><span>{{ chatbox }}</span><br></pre>
+							<textarea
+								placeholder="Say something!"
+								v-model="chatbox"
+								@keydown.enter.stop
+								@keyup.enter.exact="sendChat()"></textarea>
+						</div>
+						<button type="submit">Send</button>
+					</form>
+				</div>
+			</template>
+			{% endverbatim nabu %}
+		</div>
+		<script src="{% static 'nabu/nabu.js' %}"></script>
+		<script src="{% static 'nabu/parser.js' %}"></script>
+	</body>
+</html>
