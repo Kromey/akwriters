@@ -1,4 +1,4 @@
-from django.conf.urls import include, url
+from django.urls import path
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
@@ -11,6 +11,7 @@ urlpatterns = [
     # url(r'^$', 'akwriters.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url('^$', TemplateView.as_view(template_name='chat/index.html'), name='index'),
-    url(r'^candy$', login_required(views.CandyView.as_view()), name='candy'),
+    path('', TemplateView.as_view(template_name='chat/index.html'), name='index'),
+    path('nabu', login_required(views.NabuView.as_view()), name='nabu'),
+    #url(r'^candy$', login_required(views.CandyView.as_view()), name='candy'),
 ]

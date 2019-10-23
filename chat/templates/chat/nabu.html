@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load chat_extras %}
+{% load frontend_extras %}
+
+{% block header %}
+Nabu
+{% endblock header %}
+
+{% block content %}
+<strong>{{ token }}</strong>
+{% endblock content %}
