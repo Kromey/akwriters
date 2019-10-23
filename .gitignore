@@ -1,6 +1,9 @@
 # Don't track local/site settings (it's a secret)
 /akwriters/site_settings.py
 
+# Ignore our ECC keys
+*/ecc/
+
 # Ignore maintenance mode flag
 /htdocs/maintenance_mode
 # Ignore collected staticfiles
