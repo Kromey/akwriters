@@ -27,12 +27,15 @@ ALLOWED_HOSTS = ['akwriters.org']
 #GCAL_API_KEY = 
 GAPI_CACHE_EXPIRES = 60
 
-# XMPP domain
-JABBER_DOMAIN = 'akwriters.org'
-# Bot automatically added to new users' rosters
-THE_BOT = {
-    'name': 'Annika',
-    'jid': 'annika@akwriters.org',
+NABU = {
+    'jwt': {
+        'iss': ,
+        'aud': ,
+        'exp': {
+            # kwargs for datetime.timedelta
+            'seconds': 30,
+        },
+    },
 }
 
 # Database configuration

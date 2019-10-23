@@ -147,6 +147,8 @@ CONTACT_EMAIL = site_settings.CONTACT_EMAIL
 JABBER_DOMAIN = site_settings.JABBER_DOMAIN
 EMAIL_SENDER = site_settings.EMAIL_SENDER
 
+NABU = site_settings.NABU
+
 # Bot automatically added to new users' rosters
 THE_BOT = site_settings.THE_BOT
 
