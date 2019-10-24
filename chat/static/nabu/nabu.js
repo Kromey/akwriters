@@ -1,3 +1,5 @@
+const MAX_MESSAGES = 100;
+
 var Nabu = new Vue({
 	el: '#nabu',
 	data: {
@@ -184,11 +186,11 @@ var Nabu = new Vue({
 					break;
 				case 'join':
 					this.rooms[msg.room].occupants.push(msg.from);
-					this.rooms[msg.room].messages.push(msg);
+					this.pushMessage(msg.room, msg);
 					break;
 				case 'leave':
 					this.rooms[msg.room].occupants = this.rooms[msg.room].occupants.filter(o => o != msg.from);
-					this.rooms[msg.room].messages.push(msg);
+					this.pushMessage(msg.room, msg);
 					break;
 				case 'chat':
 					if(msg.img) {
@@ -197,8 +199,17 @@ var Nabu = new Vue({
 				case 'error':
 				case 'system':
 					msg.body = (new Parser(msg.body)).parse();
-					this.rooms[msg.room].messages.push(msg);
+					this.pushMessage(msg.room, msg);
 					break;
+			}
+		},
+		pushMessage: function(room, msg) {
+			if(this.rooms[room]) {
+				this.rooms[room].messages.push(msg);
+
+				while(this.rooms[room].messages.length > MAX_MESSAGES) {
+					this.rooms[room].messages.shift();
+				}
 			}
 		},
 		autoscroll: function() {
