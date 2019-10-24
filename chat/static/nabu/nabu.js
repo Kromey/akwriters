@@ -1,8 +1,7 @@
 var Nabu = new Vue({
 	el: '#nabu',
 	data: {
-		connected: false,
-		authenticated: false,
+		status_msg: 'Connecting...',
 		username: null,
 		socket: null,
 
@@ -127,7 +126,7 @@ var Nabu = new Vue({
 				this.socket.onopen = evt => {
 					this.socket.send(JSON.stringify(data));
 
-					this.connected = true;
+					this.status_msg = 'Authenticating...';
 					this.retry_count = 0;
 				};
 
@@ -137,20 +136,20 @@ var Nabu = new Vue({
 				};
 
 				this.socket.onclose = evt => {
+					if(this.status_msg) {
+						this.status_msg = 'Failed!';
+					}
+
 					if(!evt.wasClean) {
 						this.handleMessage({
 							type: 'error',
 							body: 'Connection Error Code '+evt.code,
 						});
-
-						this.reconnect();
 					}
-					this.messages.push({
+					this.handleMessage({
 						type: 'system',
 						body: 'Disconnected from server!',
 					});
-
-					this.connected = false;
 				};
 			}
 		},
@@ -164,7 +163,7 @@ var Nabu = new Vue({
 			switch(msg.type) {
 				case 'authn':
 					this.username = msg.from;
-					this.authenticated = true;
+					this.status_msg = null;
 					break;
 				case 'roster':
 					if(!this.rooms[msg.room]) {

@@ -15,11 +15,8 @@
 				<h1>AKWriters Chat</h1>
 			</nav>
 
-			<div v-if="!connected" id="login">
-				<h2>Connecting...</h2>
-			</div>
-			<div v-else-if="!authenticated" id="login">
-				<h2>Authenticating...</h2>
+			<div v-if="status_msg !== null" id="login">
+				<h2>{{ status_msg }}</h2>
 			</div>
 			<template v-else>
 				<div id="room-container">
