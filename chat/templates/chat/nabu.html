@@ -15,10 +15,10 @@
 				<h1>AKWriters Chat</h1>
 			</nav>
 
-			<div v-if="status_msg !== null" id="login">
+			<div v-cloak v-if="status_msg !== null" id="login">
 				<h2>{{ status_msg }}</h2>
 			</div>
-			<template v-else>
+			<template v-cloak v-else>
 				<div id="room-container">
 					<div id="message-box">
 						<template v-for="m in messages">

@@ -3,6 +3,9 @@ html,body,#nabu {
 	margin: 0;
 	font: 400 16px helvetiva, arial, sans-serif;
 }
+[v-cloak] {
+	display: none !important;
+}
 
 div#nabu {
 	display: flex;
