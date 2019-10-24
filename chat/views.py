@@ -25,7 +25,7 @@ class NabuView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         data = {
-            'sub': 'Kromey',
+            'sub': self.request.user.username,
             'iss': settings.NABU['jwt']['iss'],
             'aud': settings.NABU['jwt']['aud'],
             'exp': datetime.utcnow() + timedelta(**settings.NABU['jwt']['exp']),
