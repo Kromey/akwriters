@@ -111,7 +111,7 @@ var Nabu = new Vue({
 			console.log('Connecting to', server, 'with token', jwt);
 
 			if(server && jwt) {
-				let data = {
+				let authn = {
 					type: 'authn',
 					timestamp: new Date(),
 					from: null,
@@ -126,10 +126,11 @@ var Nabu = new Vue({
 				};
 
 				this.socket.onopen = evt => {
-					this.socket.send(JSON.stringify(data));
-
 					this.status_msg = 'Authenticating...';
 					this.retry_count = 0;
+
+					// Send authn message
+					this.socket.send(JSON.stringify(authn));
 				};
 
 				this.socket.onmessage = msg => {
