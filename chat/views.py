@@ -33,5 +33,7 @@ class NabuView(TemplateView):
         token = jwt.encode(data, ecc_private, algorithm='ES256')
         context['token'] = token.decode('utf-8')
 
+        context['nabu_server'] = settings.NABU['server']
+
         return context
 

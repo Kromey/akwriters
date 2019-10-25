@@ -28,6 +28,7 @@ ALLOWED_HOSTS = ['akwriters.org']
 GAPI_CACHE_EXPIRES = 60
 
 NABU = {
+    'server': 'wss://akwriters.org/nabu',
     'jwt': {
         'iss': ,
         'aud': ,

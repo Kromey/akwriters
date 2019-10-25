@@ -9,7 +9,7 @@
 		<script src="{% static 'nabu/vue.js' %}"></script>
 	</head>
 	<body>
-		<div id="nabu" data-jwt="{{ token }}" data-server="wss://dev.akwriters.org/nabu">
+		<div id="nabu" data-jwt="{{ token }}" data-server="{{ nabu_server }}">
 			{% verbatim nabu %}
 			<nav class="navbar">
 				<h1>AKWriters Chat</h1>
