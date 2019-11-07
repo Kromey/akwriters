@@ -33,7 +33,9 @@ var Nabu = new Vue({
 		dragging: false,
 
 		allow_notifications: window.Notification && Notification.permission !== "denied",
-		show_notifications: false,
+		//FIXME: Persist the user's choice; for now, just assume we can show notifications
+		//if we've previously been granted permission
+		show_notifications: Notification.permission === 'granted',
 	},
 	mounted: function() {
 		let data = this.$el.dataset;
@@ -121,6 +123,18 @@ var Nabu = new Vue({
 	},
 	watch : {
 		chatbox: 'autoscroll',
+		show_notifications: function(newVal, oldVal) {
+			if(newVal && Notification.permission !== "granted") {
+				Notification.requestPermission().then(result => {
+					if(result === 'denied') {
+						this.allow_notifications = false;
+					}
+					if(result !== 'granted') {
+						this.show_notifications = false;
+					}
+				});
+			}
+		},
 	},
 	methods: {
 		connect: function(server, jwt) {
