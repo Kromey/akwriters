@@ -28,6 +28,7 @@
 							<div v-else-if="m.type == 'leave'" class="system">
 								{{ m.from }} has left the room
 							</div>
+							<div v-else-if="m.type == 'unread'" class="unread"></div>
 							<div v-else :class="[m.type, m.from==username?'self':'']" :style="roster_colors[m.from]">
 								<div class="from" v-if="m.from">{{ m.from }}</div>
 								<img class="img" v-if="m.img_src" :src="m.img_src">

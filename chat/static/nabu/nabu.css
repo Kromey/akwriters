@@ -221,3 +221,23 @@ div#message-box {
 	color: white;
 	font-weight: bold;
 }
+.unread {
+	border-top: 1px dotted red;
+	border-radius: 8px;
+	height: 8px;
+	margin: 0 3px -4px;
+	position: relative;
+}
+.unread::before {
+	content: 'NEW';
+	color: red;
+	background-color: white;
+	font-size: 75%;
+	position: absolute;
+	top: -7px;
+	left: 50%;
+	padding: 0 3px;
+}
+.unread:last-child {
+	display:none;
+}

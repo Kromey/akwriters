@@ -25,6 +25,8 @@ var Nabu = new Vue({
 		let data = this.$el.dataset;
 
 		this.connect(data.server, data.jwt);
+
+		window.addEventListener('blur', this.onblur);
 	},
 	computed: {
 		chat_json: function() {
@@ -288,6 +290,13 @@ var Nabu = new Vue({
 				});
 				reader.readAsDataURL(evt.dataTransfer.items[0].getAsFile());
 			}
+		},
+		onblur: function(evt) {
+			//FIXME: This room is hard-coded for the Lobby room only
+			console.log('blurring');
+			let messages = this.rooms['Lobby'].messages.filter(msg => msg.type != 'unread');
+			this.rooms['Lobby'].messages = messages;
+			this.pushMessage('Lobby', {'type':'unread'});
 		},
 	},
 });
