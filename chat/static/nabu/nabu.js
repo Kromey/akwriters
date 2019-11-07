@@ -267,6 +267,14 @@ var Nabu = new Vue({
 				};
 
 				let notification = new Notification('New Message', opts);
+				notification.onclick = function() {
+					parent.focus(); //Newer browsers
+					window.focus(); //Older browsers
+
+					notification.close();
+				};
+				//Ensure notification automatically closes
+				//Some browsers already do this at 4 seconds, so we match them
 				setTimeout(() => notification.close(), 4000);
 			}
 		},
