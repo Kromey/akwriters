@@ -262,7 +262,7 @@ var Nabu = new Vue({
 			if(msg.type == 'chat') {
 				let opts = {
 					body: msg.from + ' just sent a message!',
-					icon: '/static/favicon/apple-touch-icon-120x120.png',
+					icon: '/static/nabu/icon.png',
 					tag: 'NabuNewMessage',
 				};
 
