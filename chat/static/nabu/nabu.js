@@ -32,6 +32,7 @@ var Nabu = new Vue({
 
 		dragging: false,
 
+		allow_notifications: window.Notification && Notification.permission !== "denied",
 		show_notifications: false,
 	},
 	mounted: function() {

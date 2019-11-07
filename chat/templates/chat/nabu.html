@@ -13,7 +13,7 @@
 			{% verbatim nabu %}
 			<nav class="navbar">
 				<h1>AKWriters Chat</h1>
-				<slide-toggle v-model="show_notifications">Notifications</slide-toggle>
+				<slide-toggle v-if="allow_notifications" v-model="show_notifications">Notifications</slide-toggle>
 			</nav>
 
 			<div v-cloak v-if="status_msg !== null" id="login">
