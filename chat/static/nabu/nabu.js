@@ -1,5 +1,16 @@
 const MAX_MESSAGES = 100;
 
+Vue.component('slide-toggle', {
+	model: {
+		prop: 'value',
+		event: 'toggle',
+	},
+	props: {
+		value: Boolean,
+	},
+	template: '<div class="slide-toggle"><slot></slot><div :class="[\'switch\', value?\'on\':\'\']" @click="$emit(\'toggle\', !value)"></div></div>',
+})
+
 var Nabu = new Vue({
 	el: '#nabu',
 	data: {

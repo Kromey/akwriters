@@ -23,6 +23,36 @@ div#nabu {
 	margin: 0;
 }
 
+.slide-toggle .switch {
+	display: inline-block;
+	margin: 0 0 -2px 3px;
+	background-color: #bbb;
+	width: 25px;
+	height: 16px;
+	border-radius: 8px;
+	position: relative;
+	transition-duration: .15s;
+}
+.slide-toggle .switch::before {
+	content: " ";
+	background-color: #eee;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	transition-duration: .15s;
+}
+
+.slide-toggle .switch.on {
+	background-color: #44e;
+}
+.slide-toggle .switch.on::before {
+	background-color: #fff;
+	transform: translateX(9px);
+}
+
 div#login {
 	width: fit-content;
 	/*border: 2px solid #cef;
