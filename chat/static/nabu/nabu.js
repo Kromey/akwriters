@@ -241,6 +241,33 @@ var Nabu = new Vue({
 				while(this.rooms[room].messages.length > MAX_MESSAGES) {
 					this.rooms[room].messages.shift();
 				}
+
+				this.showNotification(room, msg);
+			}
+		},
+		showNotification: function(room, msg) {
+			if(Notification.permission !== 'granted') {
+				//We don't have permission to show notifications, bail
+				return;
+			}
+			if(!this.allow_notifications || !this.show_notifications) {
+				//Our settings don't permit notifications, bail
+				return;
+			}
+			if(document.hasFocus()) {
+				//User's got us in focus, so don't create unnecessary notifications
+				return;
+			}
+
+			if(msg.type == 'chat') {
+				let opts = {
+					body: msg.from + ' just sent a message!',
+					icon: '/static/favicon/apple-touch-icon-120x120.png',
+					tag: 'NabuNewMessage',
+				};
+
+				let notification = new Notification('New Message', opts);
+				setTimeout(() => notification.close(), 4000);
 			}
 		},
 		autoscroll: function() {
