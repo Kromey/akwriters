@@ -31,6 +31,8 @@ var Nabu = new Vue({
 		retry_count: 0,
 
 		dragging: false,
+
+		show_notifications: false,
 	},
 	mounted: function() {
 		let data = this.$el.dataset;
