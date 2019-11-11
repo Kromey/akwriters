@@ -108,7 +108,7 @@ AUTH_USER_MODEL = 'passwordless.User'
 
 AUTHENTICATION_BACKENDS = (
     'passwordless.backend.TokenBackend',
-    'passwordless.backend.AppPasswordBackend',
+    #'passwordless.backend.AppPasswordBackend',
 )
 
 SESSION_COOKIE_NAME = 'author'
