@@ -26,6 +26,9 @@ class TokenBackend(PasswordlessBackendBase):
             # is just return None, i.e. not authenticate the user
             return None
 
+        # Clear out any expired tokens
+        models.AuthToken.clear_expired_tokens()
+
         try:
             auth = models.AuthToken.objects.get(token=token)
             user = auth.user

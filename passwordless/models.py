@@ -112,6 +112,10 @@ class AuthToken(models.Model):
     def is_valid(self):
         return self.date_expires >= timezone.now()
 
+    @classmethod
+    def clear_expired_tokens(cls):
+        cls.objects.filter(date_expires__lt=timezone.now()).delete()
+
 
 class AppPassword(models.Model):
     """
