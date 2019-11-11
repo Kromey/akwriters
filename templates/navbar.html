@@ -58,10 +58,7 @@
 						<li role="separator" class="divider"></li>
 						{% endif %}
 						{#<li><a href="{% url 'account:settings' %}">{% glyphicon 'cog' %} Account Settings</a></li>#}
-						<li>
-							<a href="{% url 'auth:apppasswords' %}">{% octicon 'shield' %} App Passwords <span class="badge">{{ user.apppassword_set.count }}</span></a>
-						</li>
-						<li role="separator" class="divider"></li>
+						{#<li><a href="{% url 'auth:apppasswords' %}">{% octicon 'shield' %} App Passwords <span class="badge">{{ user.apppassword_set.count }}</span></a></li>#}
 						<li><a href="{% url 'auth:logout' %}">{% octicon 'sign-out' %} Logout</a></li>
 					</ul>
 				</li>
