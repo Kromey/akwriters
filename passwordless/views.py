@@ -32,6 +32,8 @@ class LoginView(FormView):
     def form_valid(self, form):
         form.send_email()
 
+        self.request.session['next_path'] = self.request.GET.get('next')
+
         return super().form_valid(form)
 
 
@@ -73,11 +75,11 @@ class AuthnView(View):
                 messages.success(request, 'Your account is now active on this site')
 
             messages.warning(request, 'You are now logged in, and will remain logged in until you use the Logout link in the menu under your username, even if you close your browser.')
-            return redirect('chat:index')
+            return self._redirect(request)
         else:
             if request.user.is_authenticated:
                 messages.info(request, 'You are already authenticated on this site')
-                return redirect('chat:index')
+                return self._redirect(request)
             else:
                 # Put the session key back, just in case user used wrong email
                 if session_key is not None:
@@ -95,6 +97,11 @@ requested it.
 """
                 messages.error(request, mark_safe(msg))
                 return redirect('auth:login')
+
+    def _redirect(self, request):
+        path = request.session.pop('next_path', 'chat:index')
+
+        return redirect(path)
 
 
 class LogoutView(View):
