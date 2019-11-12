@@ -110,7 +110,7 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         messages.success(request, 'You are now logged out of the site')
-        return redirect('index')
+        return safe_redirect(request.GET.get('next'))
 
 
 class ApiAuthView(View):
