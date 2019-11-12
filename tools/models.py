@@ -7,7 +7,7 @@ from django.utils.text import Truncator
 class Character(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=30)
-    age = models.SmallIntegerField(null=True)
+    age = models.SmallIntegerField(null=True, blank=True)
     appearance = models.TextField(blank=True)
 
     def __str__(self):
