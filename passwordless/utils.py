@@ -1,14 +1,36 @@
 import os
 import random
 import re
+from urllib.parse import urlparse
 import uuid
 
 
+from django.shortcuts import redirect
+from django.urls import resolve
 from django.utils import timezone
 from datetime import timedelta
 
 
 WORDLIST_FILE = os.path.join(os.path.dirname(__file__), 'wordlist.txt')
+
+
+class InvalidRedirect(Exception):
+    pass
+
+def _validate_redirect(path):
+    try:
+        p = urlparse(path).path
+        _ = resolve(p)
+
+        return p
+    except:
+        raise InvalidRedirect(path)
+
+def safe_redirect(path, default='/'):
+    try:
+        return redirect(_validate_redirect(path))
+    except InvalidRedirect:
+        return redirect(default)
 
 
 def make_token():

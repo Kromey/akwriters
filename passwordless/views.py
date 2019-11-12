@@ -1,5 +1,4 @@
 import json
-from urllib.parse import urlparse
 
 
 from django.conf import settings
@@ -9,7 +8,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.http import HttpResponse,HttpResponseForbidden
 from django.shortcuts import render,redirect
-from django.urls import resolve
 from django.utils.safestring import mark_safe
 from django.views import View
 from django.views.generic.edit import FormView,CreateView
@@ -18,6 +16,7 @@ from django.views.generic.list import ListView
 
 from . import forms
 from . import models
+from .utils import safe_redirect
 #from prosody.models import ProsodyRoster
 
 # Create your views here.
@@ -103,14 +102,7 @@ requested it.
     def _redirect(self, request):
         path = request.session.pop('next_path', None)
 
-        if path:
-            try:
-                path = urlparse(path).path
-                _ = resolve(path)
-            except:
-                path = None
-
-        return redirect(path or 'forum:index')
+        return safe_redirect(path)
 
 
 class LogoutView(View):
