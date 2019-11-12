@@ -33,9 +33,10 @@ class LoginView(FormView):
     def form_valid(self, form):
         form.send_email()
 
-        self.request.session['next_path'] = self.request.GET.get('next')
+        next_path = self.request.GET.get('next')
+        self.request.session['next_path'] = next_path
 
-        return super().form_valid(form)
+        return safe_redirect(next_path, default=self.get_success_url())
 
 
 class RegisterView(LoginView):
