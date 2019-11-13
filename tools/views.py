@@ -9,31 +9,27 @@ from .models import Character,CharacterNotes,CharacterNotesAnswer,Story
 
 
 # Create your views here.
-class StoryListView(LoginRequiredMixin, ListView):
+class OwnedItemsMixin:
+    def get_queryset(self):
+        return super().get_queryset().filter(owner=self.request.user)
+
+class StoryListView(LoginRequiredMixin, OwnedItemsMixin, ListView):
     model = Story
     context_object_name = 'stories'
 
     def get_queryset(self):
         q = super().get_queryset()
-        return q.filter(owner=self.request.user).order_by('title')
+        return q.order_by('title')
 
 
-class StoryDetailView(LoginRequiredMixin, DetailView):
+class StoryDetailView(LoginRequiredMixin, OwnedItemsMixin, DetailView):
     model = Story
     context_object_name = 'story'
 
-    def get_queryset(self):
-        q = super().get_queryset()
-        return q.filter(owner=self.request.user)
 
-
-class CharacterListView(LoginRequiredMixin, ListView):
+class CharacterListView(LoginRequiredMixin, OwnedItemsMixin, ListView):
     model = Character
     context_object_name = 'characters'
-
-    def get_queryset(self):
-        q = super().get_queryset()
-        return q.filter(owner=self.request.user)
 
 
 class CharacterFormMixin(object):
@@ -69,13 +65,9 @@ class CharacterEditView(CharacterFormMixin, LoginRequiredMixin, UpdateView):
     pass
 
 
-class CharacterDetailView(LoginRequiredMixin, DetailView):
+class CharacterDetailView(LoginRequiredMixin, OwnedItemsMixin, DetailView):
     model = Character
     context_object_name = 'character'
-
-    def get_queryset(self):
-        q = super().get_queryset()
-        return q.filter(owner=self.request.user)
 
 
 class CharacterNotesView(LoginRequiredMixin, View):
