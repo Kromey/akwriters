@@ -15,7 +15,7 @@ class StoryListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         q = super().get_queryset()
-        return q.filter(owner=self.request.user)
+        return q.filter(owner=self.request.user).order_by('title')
 
 
 class CharacterListView(LoginRequiredMixin, ListView):
