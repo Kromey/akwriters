@@ -7,10 +7,31 @@ Your Stories
 {% endblock header %}
 
 {% block content %}
-<ul>
-	{% for story in stories %}
-	<li><a href="{% url 'tools:character_detail' pk=story.id %}">{{ story.title }}</a></li>
-	{% endfor %}
-</ul>
+<div class="table-responsive">
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Genre</th>
+				<th>Synopsis</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for story in stories %}
+			<tr>
+				<td>{{ story.title }}</td>
+				<td>Sci-Fi</td>
+				<td>A story about…</td>
+			</tr>
+			{% empty %}
+			<tr>
+				<td colspan="3">
+					<em>You haven't created any stories yet!</em>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 <a class="btn btn-default btn-sm" href="{% url 'tools:character_create' %}">New Story</a>
 {% endblock content %}
