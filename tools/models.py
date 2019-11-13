@@ -8,6 +8,9 @@ class Story(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=127)
 
+    def __str__(self):
+        return '{} ({})'.format(self.title, self.owner)
+
 class Character(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     story = models.ForeignKey(Story, on_delete=models.CASCADE)
