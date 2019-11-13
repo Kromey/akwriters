@@ -7,8 +7,14 @@ from .models import Character,CharacterNotes,CharacterNotesAnswer
 # Register your models here.
 @admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
-    list_display = ('name','owner',)
-    readonly_fields = ('owner',)
+    list_display = ('name','story',)
+    fields = (
+        'story',
+        ('name', 'age',),
+        'appearance',
+    )
+    readonly_fields = ('story',)
+    select_related = ('story', 'story__owner')
 
 
 @admin.register(CharacterNotes)
