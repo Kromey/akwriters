@@ -9,7 +9,7 @@ class Story(models.Model):
     title = models.CharField(max_length=127)
 
     def __str__(self):
-        return '{} ({})'.format(self.title, self.owner)
+        return '"{}" by {}'.format(self.title, self.owner)
 
 class Character(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -19,7 +19,7 @@ class Character(models.Model):
     appearance = models.TextField(blank=True)
 
     def __str__(self):
-        return '{} ({})'.format(self.name, self.owner)
+        return '{} from {}'.format(self.name, self.story)
 
 
 class QuestionBase(models.Model):
