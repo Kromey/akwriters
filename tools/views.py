@@ -61,7 +61,7 @@ class CharacterCreateView(CharacterFormMixin, LoginRequiredMixin, CreateView):
     pass
 
 
-class CharacterEditView(CharacterFormMixin, LoginRequiredMixin, UpdateView):
+class CharacterEditView(CharacterFormMixin, OwnedItemsMixin, LoginRequiredMixin, UpdateView):
     pass
 
 
