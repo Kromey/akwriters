@@ -5,10 +5,19 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView
 
 
-from .models import Character,CharacterNotes,CharacterNotesAnswer
+from .models import Character,CharacterNotes,CharacterNotesAnswer,Story
 
 
 # Create your views here.
+class StoryListView(LoginRequiredMixin, ListView):
+    model = Story
+    context_object_name = 'stories'
+
+    def get_queryset(self):
+        q = super().get_queryset()
+        return q.filter(owner=self.request.user)
+
+
 class CharacterListView(LoginRequiredMixin, ListView):
     model = Character
     context_object_name = 'characters'
