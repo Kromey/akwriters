@@ -42,9 +42,11 @@ class CharacterFormMixin(object):
         kwargs = super().get_form_kwargs()
 
         try:
-            data = kwargs['data'].copy()
-            data['owner'] = self.request.user.id
-            kwargs['data'] = data
+            # This convoluted-seeming logic is necessary because the data is in
+            # an immutable QueryDict instance, rather than a simple dict
+            data = kwargs['data'].copy() # make a copy, which is mutable
+            data['owner'] = self.request.user.id # update owner to current user
+            kwargs['data'] = data # replace original data with our updated copy
         except KeyError:
             pass
 
