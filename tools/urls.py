@@ -11,6 +11,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     path('stories/', views.StoryListView.as_view(), name='story_list'),
+    path('stories/<int:pk>/', views.StoryDetailView.as_view(), name='story_detail'),
     url(r'^characters$', views.CharacterListView.as_view(), name='character_list'),
     url(r'^characters/new$', views.CharacterCreateView.as_view(), name='character_create'),
     url(r'^characters/view/(?P<pk>[\d]+)$', views.CharacterDetailView.as_view(), name='character_detail'),

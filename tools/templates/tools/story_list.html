@@ -19,7 +19,7 @@ Your Stories
 		<tbody>
 			{% for story in stories %}
 			<tr>
-				<td>{{ story.title }}</td>
+				<td><a href="{% url 'tools:story_detail' pk=story.id %}">{{ story.title }}</a></td>
 				<td>Sci-Fi</td>
 				<td>A story about…</td>
 			</tr>

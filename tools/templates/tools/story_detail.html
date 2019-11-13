@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load frontend_extras %}
+
+{% block header %}
+{{ story.title }}
+<div class="story-controls">
+	<a class="btn btn-default btn-sm" href="{% url 'tools:character_edit' pk=story.id %}">Edit</a>
+	<a class="btn btn-default btn-sm" href="{% url 'tools:story_list' %}">Back</a>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">{{ story.title }}</h3>
+	</div>
+	<div class="panel-body">
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Characters</h3>
+	</div>
+	<div class="panel-body">
+		<div class="table-responsive">
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Age</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for character in story.character_set.all %}
+					<tr>
+						<td><a href="{% url 'tools:character_detail' pk=character.id %}">{{ character.name }}</a></td>
+						<td>{{ character.age | default_if_none:'-'}}</td>
+						<td>{{ character.appearance | default:'-' }}</td>
+					</tr>
+					{% empty %}
+					<tr>
+						<td colspan="3">
+							<em>You haven't added any characters yet!</em>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}

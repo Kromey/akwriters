@@ -18,6 +18,15 @@ class StoryListView(LoginRequiredMixin, ListView):
         return q.filter(owner=self.request.user).order_by('title')
 
 
+class StoryDetailView(LoginRequiredMixin, DetailView):
+    model = Story
+    context_object_name = 'story'
+
+    def get_queryset(self):
+        q = super().get_queryset()
+        return q.filter(owner=self.request.user)
+
+
 class CharacterListView(LoginRequiredMixin, ListView):
     model = Character
     context_object_name = 'characters'
