@@ -145,7 +145,7 @@ input:focus, textarea:focus {
 }
 
 /* Character notes */
-div.character-controls {
+div.tools-controls {
 	float: right;
 }
 div.character-notes {
