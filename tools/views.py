@@ -34,7 +34,6 @@ class CharacterListView(LoginRequiredMixin, OwnedItemsMixin, ListView):
 
 class CharacterFormMixin(object):
     model = Character
-    success_url = '/tools/characters/view/{id}'
     fields = ['owner','name','age','appearance',]
     context_object_name = 'character'
 
@@ -73,7 +72,7 @@ class CharacterDetailView(LoginRequiredMixin, OwnedItemsMixin, DetailView):
 
 
 class CharacterNotesView(LoginRequiredMixin, View):
-    def post(self, request, pk):
+    def post(self, request, story_id, pk):
         character = Character.objects.get(owner=request.user, pk=pk)
 
         for field in request.POST:
@@ -94,5 +93,5 @@ class CharacterNotesView(LoginRequiredMixin, View):
                         character=character,
                         question=question).delete()
 
-        return redirect('tools:character_detail', pk=character.id)
+        return redirect(character)
 

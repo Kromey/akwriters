@@ -5,7 +5,7 @@
 {% block header %}
 {{ character.name }}
 <div class="character-controls">
-	<a class="btn btn-default btn-sm" href="{% url 'tools:character_edit' pk=character.id %}">Edit</a>
+	<a class="btn btn-default btn-sm" href="{% url 'tools:character_edit' story_id=character.story_id pk=character.id %}">Edit</a>
 	<a class="btn btn-default btn-sm" href="{% url 'tools:story_detail' pk=character.story_id %}">Back</a>
 </div>
 {% endblock header %}

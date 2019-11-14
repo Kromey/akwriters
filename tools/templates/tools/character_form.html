@@ -26,7 +26,7 @@ Create Character
 			{{ form.appearance.errors }}
 			<button class="btn btn-success" type="submit">Save</button>
 			{% if character.id %}
-			<a class="btn btn-default" href="{% url 'tools:character_detail' pk=character.id %}">
+			<a class="btn btn-default" href="{{ character.get_absolute_url }}">
 				{% else %}
 				<a class="btn btn-default" href="{% url 'tools:character_list' %}">
 					{% endif %}
@@ -45,11 +45,11 @@ Create Character
 		<h3 class="panel-title">Worksheet</h3>
 	</div>
 	<div class="panel-body">
-		<form action="{% url 'tools:character_notes' pk=character.id %}" method="post">
+		<form action="{% url 'tools:character_notes' story_id=character.story_id pk=character.id %}" method="post">
 			<button class="btn btn-success" type="submit">Save</button>
 			<a
 				class="btn btn-default"
-				href="{% if character.id %}{% url 'tools:character_detail' pk=character.id %}{% else %}{% url 'tools:character_list' %}{% endif %}">
+				href="{% if character.id %}{{ character.get_absolute_url }}{% else %}{% url 'tools:character_list' %}{% endif %}">
 				Cancel
 			</a>
 			{% csrf_token %}
@@ -71,7 +71,7 @@ Create Character
 			<button class="btn btn-success" type="submit">Save</button>
 			<a
 				class="btn btn-default"
-				href="{% if character.id %}{% url 'tools:character_detail' pk=character.id %}{% else %}{% url 'tools:character_list' %}{% endif %}">
+				href="{% if character.id %}{{ character.get_absolute_url }}{% else %}{% url 'tools:character_list' %}{% endif %}">
 				Cancel
 			</a>
 		</form>

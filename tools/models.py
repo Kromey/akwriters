@@ -23,7 +23,7 @@ class Character(models.Model):
     appearance = models.TextField(blank=True)
 
     def get_absolute_url(self):
-        return reverse('tools:character_detail', kwargs={'pk': self.pk})
+        return reverse('tools:character_detail', kwargs={'story_id': self.story_id, 'pk': self.pk})
 
     def __str__(self):
         return '{} from {}'.format(self.name, self.story)
