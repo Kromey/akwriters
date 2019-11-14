@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils.text import Truncator
 
 
@@ -7,6 +8,9 @@ from django.utils.text import Truncator
 class Story(models.Model):
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=127)
+
+    def get_absolute_url(self):
+        return reverse('tools:story_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return '"{}" by {}'.format(self.title, self.owner)
@@ -17,6 +21,9 @@ class Character(models.Model):
     name = models.CharField(max_length=30)
     age = models.SmallIntegerField(null=True, blank=True)
     appearance = models.TextField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse('tools:character_detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return '{} from {}'.format(self.name, self.story)

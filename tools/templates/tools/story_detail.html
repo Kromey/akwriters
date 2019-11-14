@@ -36,7 +36,7 @@
 				<tbody>
 					{% for character in story.character_set.all %}
 					<tr>
-						<td><a href="{% url 'tools:character_detail' pk=character.id %}">{{ character.name }}</a></td>
+						<td><a href="{{ character.get_absolute_url }}">{{ character.name }}</a></td>
 						<td>{{ character.age | default_if_none:'-'}}</td>
 						<td>{{ character.appearance | default:'-' }}</td>
 					</tr>
