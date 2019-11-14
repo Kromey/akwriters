@@ -13,7 +13,6 @@ urlpatterns = [
     path('stories/', views.StoryListView.as_view(), name='story_list'),
     path('stories/<int:pk>/', views.StoryDetailView.as_view(), name='story_detail'),
 
-    path('stories/<int:story_id>/characters/', views.CharacterListView.as_view(), name='character_list'),
     path('stories/<int:story_id>/characters/<int:pk>', views.CharacterDetailView.as_view(), name='character_detail'),
     path('stories/<int:story_id>/characters/<int:pk>/edit', views.CharacterEditView.as_view(), name='character_edit'),
     path('stories/<int:story_id>/characters/<int:pk>/notes', views.CharacterNotesView.as_view(), name='character_notes'),
